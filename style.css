@@ -50,11 +50,12 @@ a.project-card:active {
 
 .connect-photo img {
   display: block;
-  width: 100%;
+  width: 120%;
+  max-width: none;
   height: 520px;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.25);
+  margin-left: -10%;
   opacity: 0.55;
 }
 }
