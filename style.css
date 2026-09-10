@@ -54,7 +54,9 @@ a.project-card:active {
   height: 520px;
   object-fit: cover;
   object-position: center;
+  transform: scale(1.25);
   opacity: 0.55;
+}
 }
 
 .connect-photo-content {
