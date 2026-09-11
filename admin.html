@@ -6,7 +6,7 @@
 
   <meta name="robots" content="noindex, nofollow">
 
-  <title>PRK — Admin Dashboard</title>
+  <title>PRK — Admin Login</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,61 +21,134 @@
 
 <body>
 
-  <header class="admin-header">
-    <div>
-      <p class="eyebrow">PRK · ADMIN</p>
-      <h1>Dashboard</h1>
-    </div>
+  <!-- LOGIN -->
 
-    <button id="themeToggle" class="theme-toggle">
-      ☾
-    </button>
-  </header>
+  <main id="loginScreen" class="login-screen">
 
+    <div class="login-box">
 
-  <main class="dashboard">
+      <p class="eyebrow">PRK · PRIVATE</p>
 
-    <section class="stats-grid">
+      <h1>Admin<br><span>Dashboard.</span></h1>
 
-      <div class="stat-card">
-        <span>Total Submissions</span>
-        <strong id="totalSubmissions">0</strong>
-      </div>
+      <p class="login-description">
+        Sign in to manage your website.
+      </p>
 
-      <div class="stat-card">
-        <span>Latest Submission</span>
-        <strong id="latestSubmission">—</strong>
-      </div>
+      <form id="loginForm" class="login-form">
 
-    </section>
+        <div class="form-field">
+          <label for="loginEmail">EMAIL</label>
 
-
-    <section class="submissions-section">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">JOIN US</p>
-          <h2>Submissions</h2>
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="Your email"
+            required
+          >
         </div>
 
-        <button id="refreshBtn" class="refresh-btn">
-          Refresh ↻
+        <div class="form-field">
+          <label for="loginPassword">PASSWORD</label>
+
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Your password"
+            required
+          >
+        </div>
+
+        <button type="submit" class="login-submit">
+          <span>Sign In</span>
+          <span>↗</span>
         </button>
-      </div>
 
+        <p id="loginStatus" class="login-status"></p>
 
-      <div id="submissionsList" class="submissions-list">
+      </form>
 
-        <div class="empty-state">
-          No submissions loaded yet.
-        </div>
-
-      </div>
-
-    </section>
+    </div>
 
   </main>
 
+
+  <!-- DASHBOARD -->
+
+  <div id="dashboardScreen" class="dashboard-screen" hidden>
+
+    <header class="admin-header">
+
+      <div>
+        <p class="eyebrow">PRK · ADMIN</p>
+        <h1>Dashboard</h1>
+      </div>
+
+      <div class="header-actions">
+
+        <button id="themeToggle" class="theme-toggle">
+          ☾
+        </button>
+
+        <button id="logoutBtn" class="logout-btn">
+          Logout
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <main class="dashboard">
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+          <span>Total Submissions</span>
+          <strong id="totalSubmissions">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Latest Submission</span>
+          <strong id="latestSubmission">—</strong>
+        </div>
+
+      </section>
+
+
+      <section class="submissions-section">
+
+        <div class="section-heading">
+
+          <div>
+            <p class="eyebrow">JOIN US</p>
+            <h2>Submissions</h2>
+          </div>
+
+          <button id="refreshBtn" class="refresh-btn">
+            Refresh ↻
+          </button>
+
+        </div>
+
+        <div id="submissionsList" class="submissions-list">
+
+          <div class="empty-state">
+            Loading submissions...
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- SUPABASE -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script src="admin.js"></script>
 
