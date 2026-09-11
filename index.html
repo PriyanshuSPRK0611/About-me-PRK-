@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,52 +11,38 @@
 
   <title>PRK — Curiosity today. Possibilities tomorrow.</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       DARK MODE BUTTON
-  ========================== -->
-
+  <!-- DARK MODE -->
   <button
     id="themeToggle"
     class="theme-toggle"
     aria-label="Toggle dark mode"
-    type="button"
   >
     <span id="themeIcon">☾</span>
   </button>
 
-
-  <!-- =========================
-       NOISE OVERLAY
-  ========================== -->
-
   <div class="noise"></div>
-
-
-  <!-- =========================
-       MAIN
-  ========================== -->
 
   <main>
 
-    <!-- =========================
-         HERO
-    ========================== -->
-
+    <!-- HERO -->
     <section class="hero" id="home">
 
       <div class="hero-glow"></div>
@@ -90,9 +75,9 @@
         <button
           class="continue-btn reveal"
           id="continueBtn"
-          type="button"
+          data-i18n="continue"
         >
-          <span data-i18n="continue">Continue</span>
+          <span>Continue</span>
           <span class="arrow">↓</span>
         </button>
 
@@ -108,17 +93,9 @@
     </section>
 
 
-    <!-- =========================
-         SITE CONTENT
-    ========================== -->
-
     <div id="siteContent">
 
-
-      <!-- =========================
-           ABOUT ME
-      ========================== -->
-
+      <!-- ABOUT -->
       <section class="section">
 
         <div class="container narrow">
@@ -162,10 +139,7 @@
       </section>
 
 
-      <!-- =========================
-           WHAT DRIVES ME
-      ========================== -->
-
+      <!-- WHAT DRIVES ME -->
       <section class="dark-section section">
 
         <div class="container">
@@ -176,7 +150,6 @@
           >
             02 — WHAT DRIVES ME
           </p>
-
 
           <div class="grid two">
 
@@ -192,7 +165,6 @@
 
             </div>
 
-
             <div class="body-area reveal">
 
               <p
@@ -207,10 +179,9 @@
                 class="body-copy"
                 data-i18n="driveBody"
               >
-                I enjoy exploring different fields and connecting ideas
-                that may seem unrelated. I also love conversations,
-                diplomacy, meeting people, and learning from different
-                perspectives.
+                I enjoy exploring different fields and connecting ideas that
+                may seem unrelated. I also love conversations, diplomacy,
+                meeting people, and learning from different perspectives.
               </p>
 
             </div>
@@ -219,18 +190,17 @@
 
 
           <!-- INTERESTS -->
-
           <div class="interest-grid">
 
             <div class="interest reveal">
 
               <span>01</span>
 
-              <b data-i18n="interest1">
+              <b data-i18n="interest1Title">
                 Artificial Intelligence
               </b>
 
-              <small data-i18n="interest1Small">
+              <small data-i18n="interest1Text">
                 Building what comes next.
               </small>
 
@@ -241,11 +211,11 @@
 
               <span>02</span>
 
-              <b data-i18n="interest2">
+              <b data-i18n="interest2Title">
                 Coding
               </b>
 
-              <small data-i18n="interest2Small">
+              <small data-i18n="interest2Text">
                 Learning how technology works.
               </small>
 
@@ -256,11 +226,11 @@
 
               <span>03</span>
 
-              <b data-i18n="interest3">
+              <b data-i18n="interest3Title">
                 Creative Editing
               </b>
 
-              <small data-i18n="interest3Small">
+              <small data-i18n="interest3Text">
                 Turning ideas into visuals.
               </small>
 
@@ -271,11 +241,11 @@
 
               <span>04</span>
 
-              <b data-i18n="interest4">
+              <b data-i18n="interest4Title">
                 People & Ideas
               </b>
 
-              <small data-i18n="interest4Small">
+              <small data-i18n="interest4Text">
                 Conversation, diplomacy, collaboration.
               </small>
 
@@ -288,10 +258,7 @@
       </section>
 
 
-      <!-- =========================
-           VISION
-      ========================== -->
-
+      <!-- VISION -->
       <section class="section">
 
         <div class="container narrow">
@@ -303,7 +270,6 @@
             03 — VISION
           </p>
 
-
           <h2
             class="display reveal"
             data-i18n="visionTitle"
@@ -312,25 +278,23 @@
             <span>built with technology.</span>
           </h2>
 
-
           <p
             class="large-copy reveal"
             data-i18n="visionLarge"
           >
-            I believe technology will become deeply connected to almost
-            every part of human life. And AI has the potential to change
-            the way we understand and shape the world.
+            I believe technology will become deeply connected to almost every
+            part of human life. And AI has the potential to change the way we
+            understand and shape the world.
           </p>
-
 
           <p
             class="body-copy reveal"
             data-i18n="visionBody"
           >
             I'm fascinated by the possibility of using technology to
-            understand patterns, anticipate what may happen next, and
-            make better decisions. I don't want to simply watch that
-            future arrive. I want to help create it.
+            understand patterns, anticipate what may happen next, and make
+            better decisions. I don't want to simply watch that future
+            arrive. I want to help create it.
           </p>
 
         </div>
@@ -338,10 +302,7 @@
       </section>
 
 
-      <!-- =========================
-           THE TEAM
-      ========================== -->
-
+      <!-- TEAM -->
       <section class="dark-section section">
 
         <div class="container">
@@ -353,7 +314,6 @@
             04 — THE TEAM
           </p>
 
-
           <div class="grid two">
 
             <h2
@@ -363,7 +323,6 @@
               Great ideas become<br>
               <span>greater together.</span>
             </h2>
-
 
             <div class="body-area reveal">
 
@@ -378,9 +337,9 @@
                 class="body-copy"
                 data-i18n="teamBody"
               >
-                People with different skills, perspectives, and ambitions
-                can create things that one person could never create alone.
-                I love connecting with people, exchanging ideas, and finding
+                People with different skills, perspectives, and ambitions can
+                create things that one person could never create alone. I love
+                connecting with people, exchanging ideas, and finding
                 possibilities together.
               </p>
 
@@ -393,10 +352,7 @@
       </section>
 
 
-      <!-- =========================
-           UPCOMING PROJECTS
-      ========================== -->
-
+      <!-- UPCOMING PROJECTS -->
       <section class="section">
 
         <div class="container">
@@ -418,7 +374,6 @@
               01
             </div>
 
-
             <div>
 
               <p
@@ -432,13 +387,12 @@
                 Future Asia Journal
               </h2>
 
-              <p data-i18n="projectBody">
+              <p data-i18n="projectDescription">
                 A news platform covering AI, science, politics, gaming,
                 sports, fitness, and the wider world of ideas and technology.
               </p>
 
             </div>
-
 
             <span
               class="status"
@@ -454,10 +408,7 @@
       </section>
 
 
-      <!-- =========================
-           CHINA
-      ========================== -->
-
+      <!-- CHINA -->
       <section class="china-section section">
 
         <div class="container narrow">
@@ -469,7 +420,6 @@
             06 — A LITTLE MORE
           </p>
 
-
           <h2
             class="display reveal"
             data-i18n="chinaTitle"
@@ -478,15 +428,13 @@
             <span>about China.</span>
           </h2>
 
-
           <p
             class="large-copy reveal"
             data-i18n="chinaLarge"
           >
-            I have a special interest in China. There's an interesting
-            story behind it—but I'll tell that story another time.
+            I have a special interest in China. There's an interesting story
+            behind it—but I'll tell that story another time.
           </p>
-
 
           <p
             class="coming reveal"
@@ -500,10 +448,7 @@
       </section>
 
 
-      <!-- =========================
-           CONNECT
-      ========================== -->
-
+      <!-- CONNECT -->
       <section
         class="connect-section section"
         id="connect"
@@ -528,7 +473,6 @@
                 alt="PRK"
               >
 
-
               <div class="connect-photo-content">
 
                 <h2
@@ -539,10 +483,9 @@
                   <span>connect.</span>
                 </h2>
 
-
                 <p
                   class="large-copy reveal"
-                  data-i18n="connectLarge"
+                  data-i18n="connectText"
                 >
                   I love meeting curious people, sharing ideas, starting
                   conversations, and discovering what we can build together.
@@ -556,12 +499,10 @@
 
 
           <!-- SOCIAL LINKS -->
-
           <div class="social-grid">
 
 
             <!-- INSTAGRAM -->
-
             <a
               class="social-card reveal"
               href="https://instagram.com/prkgoes"
@@ -575,7 +516,7 @@
 
               <span>
 
-                <small>
+                <small data-i18n="instagram">
                   INSTAGRAM
                 </small>
 
@@ -593,7 +534,6 @@
 
 
             <!-- TELEGRAM -->
-
             <a
               class="social-card reveal"
               href="https://t.me/Sowhat1233"
@@ -607,7 +547,7 @@
 
               <span>
 
-                <small>
+                <small data-i18n="telegram">
                   TELEGRAM
                 </small>
 
@@ -625,7 +565,6 @@
 
 
             <!-- GITHUB -->
-
             <a
               class="social-card reveal"
               href="https://github.com/PriyanshuSPRK0611"
@@ -639,7 +578,7 @@
 
               <span>
 
-                <small>
+                <small data-i18n="github">
                   GITHUB
                 </small>
 
@@ -657,7 +596,6 @@
 
 
             <!-- LINKEDIN -->
-
             <a
               class="social-card reveal"
               href="https://www.linkedin.com/in/prkstudio/"
@@ -671,7 +609,7 @@
 
               <span>
 
-                <small>
+                <small data-i18n="linkedin">
                   LINKEDIN
                 </small>
 
@@ -689,7 +627,6 @@
 
 
             <!-- EMAIL -->
-
             <a
               class="social-card reveal"
               href="mailto:prkworldcare@gmail.com"
@@ -701,7 +638,7 @@
 
               <span>
 
-                <small>
+                <small data-i18n="email">
                   EMAIL
                 </small>
 
@@ -724,10 +661,7 @@
       </section>
 
 
-      <!-- =========================
-           JOIN US
-      ========================== -->
-
+      <!-- JOIN US -->
       <section
         class="join-section section"
         id="join"
@@ -754,15 +688,14 @@
 
           <p
             class="large-copy reveal"
-            data-i18n="joinLarge"
+            data-i18n="joinText"
           >
             I'm always interested in meeting curious people, creators,
             developers, and people with ideas.
           </p>
 
 
-          <!-- JOIN FORM -->
-
+          <!-- FORM -->
           <form
             id="joinForm"
             class="join-form reveal"
@@ -770,7 +703,6 @@
 
 
             <!-- NAME -->
-
             <div class="form-field">
 
               <label
@@ -793,7 +725,6 @@
 
 
             <!-- EMAIL -->
-
             <div class="form-field">
 
               <label
@@ -816,7 +747,6 @@
 
 
             <!-- MESSAGE -->
-
             <div class="form-field">
 
               <label
@@ -839,13 +769,12 @@
 
 
             <!-- SUBMIT -->
-
             <button
               type="submit"
               class="join-submit"
             >
 
-              <span data-i18n="submit">
+              <span data-i18n="sendApplication">
                 Send Application
               </span>
 
@@ -855,8 +784,6 @@
 
             </button>
 
-
-            <!-- FORM STATUS -->
 
             <p
               id="joinStatus"
@@ -870,23 +797,16 @@
       </section>
 
 
-      <!-- =========================
-           FOOTER
-      ========================== -->
-
+      <!-- FOOTER -->
       <footer>
 
         <div class="container footer-inner">
 
 
-          <!-- BRAND -->
-
           <span>
             PRK
           </span>
 
-
-          <!-- COPYRIGHT -->
 
           <span>
             ©
@@ -895,10 +815,7 @@
           </span>
 
 
-          <!-- =========================
-               LANGUAGE SELECTOR
-          ========================== -->
-
+          <!-- LANGUAGE SELECTOR -->
           <div class="language-switcher">
 
             <button
@@ -965,6 +882,38 @@
                 Español
               </button>
 
-              <button
-                type="button"
-            
+            </div>
+
+          </div>
+
+
+          <!-- BACK TO TOP -->
+          <a
+            href="#home"
+            data-i18n="backToTop"
+          >
+            Back to top ↑
+          </a>
+
+        </div>
+
+      </footer>
+
+
+      <!-- LANGUAGE TRANSITION -->
+      <div
+        id="languageTransition"
+        class="language-transition"
+        aria-hidden="true"
+      ></div>
+
+    </div>
+
+  </main>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
