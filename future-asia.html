@@ -1,117 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coming Soon</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>We'll Be Back Within 24 Hours</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:#000;color:#f5f5f7;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;padding:2rem;text-align:center;
+  }
+  body::before{content:"";position:fixed;inset:-30%;
+    background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.08),transparent 60%);
+    animation:drift 16s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translateY(-2%)}to{transform:translateY(3%) scale(1.05)}}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  ::selection{background:#f5f5f7;color:#000}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  .stage{position:relative;z-index:1;max-width:640px}
+  .rise{opacity:0;animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}
+  @keyframes rise{from{opacity:0;transform:translateY(26px);filter:blur(12px)}to{opacity:1;transform:none;filter:none}}
 
-    body {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-        "Helvetica Neue", Arial, sans-serif;
-      background: #050505;
-    }
+  .eyebrow{font-size:.68rem;letter-spacing:.42em;color:#86868b;margin-bottom:1.4rem}
+  h1{font-size:clamp(2.6rem,7.5vw,4.6rem);line-height:1.05;font-weight:600;letter-spacing:-.03em}
+  .sub{color:#86868b;margin:1.2rem auto 0;font-size:1.02rem;line-height:1.65;max-width:44ch}
 
-    body::before {
-      content: "";
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #555, transparent 65%);
-      filter: blur(45px);
-      animation: float 8s ease-in-out infinite alternate;
-    }
+  .clock{position:relative;width:min(300px,78vw);margin:3rem auto 0}
+  .clock svg{width:100%;height:auto;display:block;overflow:visible}
+  .track{fill:none;stroke:rgba(255,255,255,.1);stroke-width:3}
+  #arc{fill:none;stroke:#f5f5f7;stroke-width:3;stroke-linecap:round;
+       transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .8s linear}
+  #head{fill:#f5f5f7;filter:drop-shadow(0 0 6px rgba(255,255,255,.9))}
+  .time{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem}
+  .digits{font-size:clamp(1.5rem,5.5vw,2rem);font-weight:600;font-variant-numeric:tabular-nums}
+  .digits span{display:inline-block;min-width:2ch}
+  .digits span.tick{animation:tick .45s cubic-bezier(.22,1,.36,1)}
+  @keyframes tick{from{opacity:0;transform:translateY(-8px);filter:blur(4px)}}
+  .digits i{font-style:normal;color:#48484a;animation:blink 1s ease-in-out infinite}
+  @keyframes blink{50%{opacity:.15}}
+  .tlabel{font-size:.6rem;letter-spacing:.34em;color:#86868b;text-transform:uppercase}
 
-    .container {
-      position: relative;
-      z-index: 1;
-      width: min(90%, 680px);
-      padding: 70px 30px;
-      text-align: center;
-      border: 1px solid #333;
-      border-radius: 28px;
-      background: rgba(20, 20, 20, 0.65);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 25px 80px #000;
-      animation: appear 1.2s ease forwards;
-    }
+  .q{margin-top:2.6rem;min-height:1.5em;color:#a1a1a6;font-size:.95rem;
+     transition:opacity .45s ease,filter .45s ease,transform .45s ease}
+  .q.hide{opacity:0;filter:blur(6px);transform:translateY(-6px)}
 
-    .logo {
-      width: 42px;
-      height: 52px;
-      margin: 0 auto 32px;
-      border-radius: 50% 50% 45% 45%;
-      background: linear-gradient(135deg, #fff, #777);
-      transform: rotate(-12deg);
-      box-shadow: 0 0 35px #888;
-    }
+  footer{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;
+    gap:1rem;padding:1rem 1.6rem;border-top:1px solid rgba(255,255,255,.12);
+    font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#86868b;z-index:1}
+  .status{display:flex;align-items:center;gap:.55rem}
+  .dot{width:6px;height:6px;border-radius:50%;background:#f5f5f7;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.3}}
 
-    .logo::after {
-      content: "";
-      display: block;
-      width: 17px;
-      height: 10px;
-      margin: -5px 0 0 28px;
-      border-radius: 100% 0;
-      background: #aaa;
-      transform: rotate(-25deg);
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      letter-spacing: -0.06em;
-      margin-bottom: 18px;
-    }
-
-    p {
-      color: #aaa;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .line {
-      width: 70px;
-      height: 3px;
-      margin: 28px auto 0;
-      border-radius: 10px;
-      background: #fff;
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes appear {
-      from { opacity: 0; transform: translateY(30px) scale(.96); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes float {
-      from { transform: translate(-120px, -80px) scale(.8); }
-      to { transform: translate(150px, 100px) scale(1.2); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { width: 35px; opacity: .4; }
-      50% { width: 110px; opacity: 1; }
-    }
-  </style>
+  @media(max-width:560px){footer{flex-direction:column;gap:.5rem;text-align:center}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rise{opacity:1}}
+</style>
 </head>
 <body>
-  <main class="container">
-    <div class="logo"></div>
-    <h1>Under Construction</h1>
-    <p>We’re creating something remarkable.<br />We’ll be back soon.</p>
-    <div class="line"></div>
-  </main>
+
+<div class="stage">
+  <p class="eyebrow rise" style="animation-delay:.1s">Under Construction</p>
+  <h1 class="rise" style="animation-delay:.22s">We'll be back<br>within 24 hours.</h1>
+  <p class="sub rise" style="animation-delay:.36s">We are putting the finishing touches on something better.
+     We will come back soon — it will be worth the wait.</p>
+
+  <div class="clock rise" style="animation-delay:.52s">
+    <svg viewBox="0 0 280 280" aria-hidden="true">
+      <circle class="track" cx="140" cy="140" r="128"/>
+      <circle id="arc" cx="140" cy="140" r="128"/>
+      <circle id="head" r="5" cx="140" cy="12"/>
+    </svg>
+    <div class="time">
+      <div class="digits"><span id="hh">24</span><i>:</i><span id="mm">00</span><i>:</i><span id="ss">00</span></div>
+      <span class="tlabel">Until we return</span>
+    </div>
+  </div>
+
+  <p class="q rise" id="q" style="animation-delay:.68s">Apple goes dark the night before every keynote.</p>
+</div>
+
+<footer class="rise" style="animation-delay:.82s">
+  <div class="status"><span class="dot"></span>Status · Maintenance in progress</div>
+  <span>© 2025 · We will come back soon</span>
+</footer>
+
+<script>
+  // 24-hour countdown from page load. For a fixed launch time, replace
+  // "start" with:  const start = Date.now() - (24*3600*1000 - (new Date('2025-06-01T12:00:00') - Date.now()));
+  const TOTAL = 24 * 3600 * 1000, start = Date.now(), C = 2 * Math.PI * 128;
+  const arc = document.getElementById('arc'), head = document.getElementById('head');
+  const hh = document.getElementById('hh'), mm = document.getElementById('mm'), ss = document.getElementById('ss');
+  arc.style.strokeDasharray = C;
+
+  const pad = n => String(n).padStart(2, '0');
+  function set(el, v){
+    if(el.textContent !== v){
+      el.textContent = v;
+      el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
+    }
+  }
+  function tick(){
+    const s = Math.ceil(Math.max(0, TOTAL - (Date.now() - start)) / 1000);
+    set(hh, pad(Math.floor(s / 3600)));
+    set(mm, pad(Math.floor(s / 60) % 60));
+    set(ss, pad(s % 60));
+    const frac = s / (TOTAL / 1000);
+    arc.style.strokeDashoffset = C * (1 - frac);
+    const a = -Math.PI / 2 + frac * 2 * Math.PI;
+    head.setAttribute('cx', 140 + 128 * Math.cos(a));
+    head.setAttribute('cy', 140 + 128 * Math.sin(a));
+  }
+  tick(); setInterval(tick, 250);
+
+  const lines = [
+    "Apple goes dark the night before every keynote.",
+    "Nintendo delays — then it perfects.",
+    "Google once blinked offline for five minutes. The world noticed.",
+    "SpaceX only ever counts down.",
+    "Tesla ships when it is ready, not a moment before.",
+    "Even the greats pause to build something better."
+  ];
+  const q = document.getElementById('q');
+  let i = 0;
+  setInterval(() => {
+    q.classList.add('hide');
+    setTimeout(() => {
+      i = (i + 1) % lines.length;
+      q.textContent = lines[i];
+      q.classList.remove('hide');
+    }, 470);
+  }, 4600);
+</script>
 </body>
 </html>
