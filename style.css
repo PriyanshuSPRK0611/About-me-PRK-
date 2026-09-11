@@ -1063,3 +1063,209 @@ body.dark-mode .language-menu button:hover {
   }
 
 }
+
+/* =====================================================
+   PRK WELCOME SCREEN
+   ===================================================== */
+
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  background: #050505;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  transition:
+    opacity 1s cubic-bezier(.22,.61,.36,1),
+    visibility 1s;
+}
+
+
+/* Soft white / grey blurred atmosphere */
+
+.welcome-glow {
+  position: absolute;
+
+  width: 45vw;
+  height: 45vw;
+
+  max-width: 650px;
+  max-height: 650px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.13);
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+.welcome-glow-one {
+  top: -15%;
+  left: -10%;
+}
+
+.welcome-glow-two {
+  right: -15%;
+  bottom: -20%;
+
+  background: rgba(180,180,180,.12);
+}
+
+
+/* Welcome content */
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 30px;
+}
+
+
+/* PRK */
+
+.welcome-logo {
+  font-family: Arial, sans-serif;
+
+  font-size: clamp(
+    100px,
+    20vw,
+    280px
+  );
+
+  font-weight: 900;
+
+  letter-spacing: -.09em;
+  line-height: .8;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 45px rgba(255,255,255,.08);
+
+  margin-left: -.08em;
+}
+
+
+/* Subtitle */
+
+.welcome-subtitle {
+  margin-top: 38px;
+
+  max-width: 420px;
+
+  color: #999;
+
+  font-size: 13px;
+
+  letter-spacing: .08em;
+
+  line-height: 1.6;
+}
+
+
+/* Button */
+
+.welcome-button {
+  margin-top: 42px;
+
+  min-width: 220px;
+
+  padding: 15px 18px;
+
+  border: 1px solid #444;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.06);
+
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 35px;
+
+  cursor: pointer;
+
+  font-size: 12px;
+  letter-spacing: .04em;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    transform .35s var(--ease);
+}
+
+.welcome-button:hover {
+  background: rgba(255,255,255,.14);
+
+  border-color: #777;
+
+  transform: translateY(-3px);
+}
+
+.welcome-arrow {
+  font-size: 18px;
+
+  transition:
+    transform .35s var(--ease);
+}
+
+.welcome-button:hover .welcome-arrow {
+  transform: translateX(5px);
+}
+
+
+/* Leaving animation */
+
+.welcome-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .welcome-logo {
+    font-size: 34vw;
+  }
+
+  .welcome-subtitle {
+    font-size: 11px;
+    max-width: 290px;
+  }
+
+  .welcome-button {
+    min-width: 205px;
+  }
+
+  .welcome-glow {
+    width: 80vw;
+    height: 80vw;
+
+    filter: blur(90px);
+  }
+
+}
