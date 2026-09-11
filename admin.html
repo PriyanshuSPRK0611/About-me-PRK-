@@ -6,7 +6,7 @@
 
   <meta name="robots" content="noindex, nofollow">
 
-  <title>PRK — Admin Login</title>
+  <title>PRK — Admin Dashboard</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,14 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="./admin.css">
 </head>
 
 <body>
 
-  <!-- LOGIN -->
+  <!-- =========================
+       LOGIN SCREEN
+  ========================== -->
 
   <main id="loginScreen" class="login-screen">
 
@@ -29,7 +31,10 @@
 
       <p class="eyebrow">PRK · PRIVATE</p>
 
-      <h1>Admin<br><span>Dashboard.</span></h1>
+      <h1>
+        Admin<br>
+        <span>Dashboard.</span>
+      </h1>
 
       <p class="login-description">
         Sign in to manage your website.
@@ -44,6 +49,7 @@
             type="email"
             id="loginEmail"
             placeholder="Your email"
+            autocomplete="email"
             required
           >
         </div>
@@ -55,6 +61,7 @@
             type="password"
             id="loginPassword"
             placeholder="Your password"
+            autocomplete="current-password"
             required
           >
         </div>
@@ -73,7 +80,9 @@
   </main>
 
 
-  <!-- DASHBOARD -->
+  <!-- =========================
+       DASHBOARD
+  ========================== -->
 
   <div id="dashboardScreen" class="dashboard-screen" hidden>
 
@@ -86,11 +95,20 @@
 
       <div class="header-actions">
 
-        <button id="themeToggle" class="theme-toggle">
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
           ☾
         </button>
 
-        <button id="logoutBtn" class="logout-btn">
+        <button
+          id="logoutBtn"
+          class="logout-btn"
+          type="button"
+        >
           Logout
         </button>
 
@@ -101,20 +119,24 @@
 
     <main class="dashboard">
 
+      <!-- STATS -->
+
       <section class="stats-grid">
 
         <div class="stat-card">
-          <span>Total Submissions</span>
+          <span>TOTAL SUBMISSIONS</span>
           <strong id="totalSubmissions">0</strong>
         </div>
 
         <div class="stat-card">
-          <span>Latest Submission</span>
+          <span>LATEST SUBMISSION</span>
           <strong id="latestSubmission">—</strong>
         </div>
 
       </section>
 
+
+      <!-- SUBMISSIONS -->
 
       <section class="submissions-section">
 
@@ -125,18 +147,23 @@
             <h2>Submissions</h2>
           </div>
 
-          <button id="refreshBtn" class="refresh-btn">
+          <button
+            id="refreshBtn"
+            class="refresh-btn"
+            type="button"
+          >
             Refresh ↻
           </button>
 
         </div>
 
-        <div id="submissionsList" class="submissions-list">
-
+        <div
+          id="submissionsList"
+          class="submissions-list"
+        >
           <div class="empty-state">
             Loading submissions...
           </div>
-
         </div>
 
       </section>
@@ -150,7 +177,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <script src="admin.js"></script>
+  <script src="./admin.js"></script>
 
 </body>
 </html>
