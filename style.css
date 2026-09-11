@@ -607,3 +607,99 @@ footer {
     font-size: 23px;
   }
 }
+/* =========================
+   JOIN US
+   ========================= */
+
+.join-section {
+  background: #f5f5f7;
+  color: #111;
+}
+
+.join-section .large-copy {
+  max-width: 800px;
+  margin-top: 35px;
+}
+
+.join-form {
+  margin-top: 80px;
+  border-top: 1px solid #d8d8dc;
+}
+
+.form-field {
+  padding: 28px 0;
+  border-bottom: 1px solid #d8d8dc;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: #888;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #111;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 20px;
+  padding: 5px 0;
+}
+
+.form-field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #aaa;
+}
+
+.join-submit {
+  margin-top: 35px;
+  width: 100%;
+  padding: 22px 0;
+  border: 0;
+  border-bottom: 1px solid #111;
+  border-top: 1px solid #111;
+  background: transparent;
+  color: #111;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: Inter, Arial, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.join-submit:hover {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.join-status {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+  min-height: 20px;
+}
+
+@media (max-width: 750px) {
+  .join-form {
+    margin-top: 55px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    font-size: 17px;
+  }
+}
