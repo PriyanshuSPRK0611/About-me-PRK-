@@ -1,13 +1,6 @@
 // =========================
 // PRK ADMIN DASHBOARD
-// =========================
-// Uses Supabase Auth.
-// Never put a service_role/secret key here.
-// =========================
-
-
-// =========================
-// SUPABASE
+// SUPABASE AUTH
 // =========================
 
 const SUPABASE_URL =
@@ -55,19 +48,14 @@ const totalSubmissions =
 const latestSubmission =
   document.getElementById("latestSubmission");
 
-const themeToggle =
-  document.getElementById("themeToggle");
-
 
 // =========================
 // SHOW LOGIN
 // =========================
 
 function showLogin() {
-
   loginScreen.hidden = false;
   dashboardScreen.hidden = true;
-
 }
 
 
@@ -76,10 +64,8 @@ function showLogin() {
 // =========================
 
 function showDashboard() {
-
   loginScreen.hidden = true;
   dashboardScreen.hidden = false;
-
 }
 
 
@@ -87,92 +73,68 @@ function showDashboard() {
 // LOGIN
 // =========================
 
-if (loginForm) {
+loginForm.addEventListener("submit", async (event) => {
 
-  loginForm.addEventListener(
-    "submit",
-    async (event) => {
+  event.preventDefault();
 
-      event.preventDefault();
+  const email =
+    document.getElementById("loginEmail").value.trim();
 
-      const email =
-        document
-          .getElementById("loginEmail")
-          .value
-          .trim();
+  const password =
+    document.getElementById("loginPassword").value;
 
-      const password =
-        document
-          .getElementById("loginPassword")
-          .value;
+  loginStatus.textContent = "Signing in...";
 
+  try {
+
+    const { data, error } =
+      await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if (error) {
+
+      console.error("SUPABASE LOGIN ERROR:", error);
+
+      // Show the REAL error
       loginStatus.textContent =
-        "Signing in...";
+        error.message;
 
-
-      try {
-
-        const {
-          error
-        } = await supabase.auth.signInWithPassword({
-          email: email,
-          password: password
-        });
-
-
-        if (error) {
-
-          console.error(
-            "Login error:",
-            error
-          );
-
-          loginStatus.textContent =
-            "Invalid email or password.";
-
-          return;
-        }
-
-
-        loginStatus.textContent = "";
-
-        showDashboard();
-
-        loadSubmissions();
-
-      } catch (error) {
-
-        console.error(error);
-
-        loginStatus.textContent =
-          "Something went wrong. Please try again.";
-
-      }
-
+      return;
     }
-  );
 
-}
+    console.log("LOGIN SUCCESS:", data);
+
+    loginStatus.textContent = "";
+
+    showDashboard();
+
+    loadSubmissions();
+
+  } catch (error) {
+
+    console.error("LOGIN CRASH:", error);
+
+    loginStatus.textContent =
+      error.message || "Login failed.";
+
+  }
+
+});
 
 
 // =========================
 // LOGOUT
 // =========================
 
-if (logoutBtn) {
+logoutBtn.addEventListener("click", async () => {
 
-  logoutBtn.addEventListener(
-    "click",
-    async () => {
+  await supabase.auth.signOut();
 
-      await supabase.auth.signOut();
+  showLogin();
 
-      showLogin();
-
-    }
-  );
-
-}
+});
 
 
 // =========================
@@ -184,7 +146,6 @@ async function loadSubmissions() {
   submissionsList.innerHTML =
     '<div class="empty-state">Loading submissions...</div>';
 
-
   try {
 
     const {
@@ -192,36 +153,28 @@ async function loadSubmissions() {
       error
     } = await supabase
       .from("join_us")
-      .select("id, name, email, message, created_at")
+      .select("*")
       .order("created_at", {
         ascending: false
       });
 
-
     if (error) {
 
       console.error(
-        "Supabase submissions error:",
+        "SUBMISSIONS ERROR:",
         error
       );
 
       submissionsList.innerHTML =
         `<div class="empty-state">
-          Unable to load submissions.<br>
-          <small>${escapeHTML(error.message)}</small>
+          ${error.message}
         </div>`;
 
       return;
     }
 
-
-    // Update total
-
     totalSubmissions.textContent =
       data.length;
-
-
-    // No submissions
 
     if (data.length === 0) {
 
@@ -235,49 +188,43 @@ async function loadSubmissions() {
       return;
     }
 
-
-    // Latest submission
-
     latestSubmission.textContent =
-      formatDate(data[0].created_at);
-
-
-    // Create submission cards
+      new Date(data[0].created_at)
+        .toLocaleDateString("en-IN");
 
     submissionsList.innerHTML =
-      data
-        .map((item) => {
+      data.map((item) => {
 
-          return `
-            <article class="submission">
+        return `
+          <article class="submission">
 
-              <div class="submission-top">
+            <div class="submission-top">
 
-                <div>
-                  <div class="submission-name">
-                    ${escapeHTML(item.name)}
-                  </div>
-
-                  <div class="submission-email">
-                    ${escapeHTML(item.email)}
-                  </div>
+              <div>
+                <div class="submission-name">
+                  ${escapeHTML(item.name)}
                 </div>
 
+                <div class="submission-email">
+                  ${escapeHTML(item.email)}
+                </div>
               </div>
 
-              <p class="submission-message">
-                ${escapeHTML(item.message)}
-              </p>
+            </div>
 
-              <div class="submission-date">
-                ${formatDate(item.created_at)}
-              </div>
+            <p class="submission-message">
+              ${escapeHTML(item.message)}
+            </p>
 
-            </article>
-          `;
+            <div class="submission-date">
+              ${new Date(item.created_at)
+                .toLocaleString("en-IN")}
+            </div>
 
-        })
-        .join("");
+          </article>
+        `;
+
+      }).join("");
 
   } catch (error) {
 
@@ -285,7 +232,7 @@ async function loadSubmissions() {
 
     submissionsList.innerHTML =
       `<div class="empty-state">
-        Unable to connect to the database.
+        ${error.message}
       </div>`;
 
   }
@@ -301,52 +248,19 @@ if (refreshBtn) {
 
   refreshBtn.addEventListener(
     "click",
-    () => {
-
-      loadSubmissions();
-
-    }
+    loadSubmissions
   );
 
 }
 
 
 // =========================
-// DATE FORMAT
-// =========================
-
-function formatDate(dateString) {
-
-  if (!dateString) {
-    return "—";
-  }
-
-  const date =
-    new Date(dateString);
-
-  return date.toLocaleString(
-    "en-IN",
-    {
-      dateStyle: "medium",
-      timeStyle: "short"
-    }
-  );
-
-}
-
-
-// =========================
-// SECURITY
-// Prevent HTML injection
+// ESCAPE HTML
 // =========================
 
 function escapeHTML(value) {
 
-  if (value === null || value === undefined) {
-    return "";
-  }
-
-  return String(value)
+  return String(value ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -360,15 +274,15 @@ function escapeHTML(value) {
 // DARK MODE
 // =========================
 
+const themeToggle =
+  document.getElementById("themeToggle");
+
 const savedTheme =
   localStorage.getItem("prk-admin-theme");
 
-
 if (savedTheme === "dark") {
 
-  document.body.classList.add(
-    "dark-mode"
-  );
+  document.body.classList.add("dark-mode");
 
   if (themeToggle) {
     themeToggle.textContent = "☀";
@@ -376,81 +290,54 @@ if (savedTheme === "dark") {
 
 }
 
-
 if (themeToggle) {
 
-  themeToggle.addEventListener(
-    "click",
-    () => {
+  themeToggle.addEventListener("click", () => {
 
-      document.body.classList.toggle(
-        "dark-mode"
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+
+      themeToggle.textContent = "☀";
+
+      localStorage.setItem(
+        "prk-admin-theme",
+        "dark"
       );
 
+    } else {
 
-      if (
-        document.body.classList.contains(
-          "dark-mode"
-        )
-      ) {
+      themeToggle.textContent = "☾";
 
-        themeToggle.textContent = "☀";
-
-        localStorage.setItem(
-          "prk-admin-theme",
-          "dark"
-        );
-
-      } else {
-
-        themeToggle.textContent = "☾";
-
-        localStorage.setItem(
-          "prk-admin-theme",
-          "light"
-        );
-
-      }
+      localStorage.setItem(
+        "prk-admin-theme",
+        "light"
+      );
 
     }
-  );
+
+  });
 
 }
 
 
 // =========================
-// CHECK EXISTING LOGIN
+// CHECK EXISTING SESSION
 // =========================
 
 async function checkLogin() {
 
-  try {
+  const {
+    data: { session }
+  } = await supabase.auth.getSession();
 
-    const {
-      data: {
-        session
-      }
-    } = await supabase.auth.getSession();
+  if (session) {
 
+    showDashboard();
 
-    if (session) {
+    loadSubmissions();
 
-      showDashboard();
-
-      loadSubmissions();
-
-    } else {
-
-      showLogin();
-
-    }
-
-  } catch (error) {
-
-    console.error(
-      "Session error:",
-      error
-    );
+  } else {
 
     showLogin();
 
