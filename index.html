@@ -3,186 +3,458 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="PRK — Curiosity today. Possibilities tomorrow."
-  >
+  <meta name="description"
+        content="PRK — Curiosity today. Possibilities tomorrow.">
 
   <title>PRK — Curiosity today. Possibilities tomorrow.</title>
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* =====================================================
+       PRK — FOUNDATION
+       Black / White / Grey Editorial System
+       ===================================================== */
+
+    :root {
+      --white: #ffffff;
+      --paper: #f5f5f3;
+      --black: #0a0a0a;
+      --text: #111111;
+      --grey: #737373;
+      --light-grey: #bcbcbc;
+      --line: #d7d7d7;
+      --dark-line: #292929;
+
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+
+      --max-width: 1400px;
+      --ease: cubic-bezier(.22, .61, .36, 1);
+    }
+
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+
+    /* =====================================================
+       GLOBAL CONTAINER
+       ===================================================== */
+
+    .container {
+      width: min(
+        calc(100% - 48px),
+        var(--max-width)
+      );
+
+      margin: 0 auto;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      padding: 22px 0;
+
+      background: rgba(245,245,243,.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .nav-inner {
+      width: min(
+        calc(100% - 48px),
+        var(--max-width)
+      );
+
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+
+      font-size: 13px;
+      color: #555;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color .3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+
+      width: 100%;
+      height: 1px;
+
+      background: var(--black);
+
+      transform: scaleX(0);
+      transform-origin: right;
+
+      transition: transform .35s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--black);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding-top: 140px;
+      padding-bottom: 70px;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 75% 25%,
+          rgba(0,0,0,.055),
+          transparent 32%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding-bottom: 24px;
+      margin-bottom: 35px;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      color: var(--grey);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        58px,
+        10vw,
+        150px
+      );
+
+      font-weight: 400;
+
+      line-height: .92;
+      letter-spacing: -.055em;
+
+      max-width: 1200px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+    }
+
+    .hero-bottom {
+      margin-top: 65px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 40px;
+
+      align-items: end;
+    }
+
+    .hero-intro {
+      max-width: 480px;
+
+      font-size: 17px;
+      line-height: 1.7;
+
+      color: #555;
+    }
+
+    .hero-scroll {
+      justify-self: end;
+
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      color: var(--grey);
+    }
+
+    .scroll-line {
+      width: 60px;
+      height: 1px;
+
+      background: var(--grey);
+    }
+
+
+    /* =====================================================
+       MOBILE NAV
+       ===================================================== */
+
+    @media (max-width: 700px) {
+
+      .container,
+      .nav-inner {
+        width: calc(100% - 32px);
+      }
+
+      .nav {
+        padding: 17px 0;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 11px;
+      }
+
+      .nav-links a:nth-child(3),
+      .nav-links a:nth-child(4) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 92vh;
+        padding-top: 120px;
+        padding-bottom: 45px;
+      }
+
+      .hero-meta {
+        font-size: 9px;
+      }
+
+      .hero-title {
+        font-size: clamp(
+          52px,
+          17vw,
+          90px
+        );
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 45px;
+      }
+
+      .hero-intro {
+        font-size: 15px;
+      }
+
+      .hero-scroll {
+        justify-self: start;
+      }
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-  <!-- Noise Overlay -->
-  <div class="noise"></div>
 
+  <!-- =====================================================
+       NAVIGATION
+       ===================================================== -->
 
-  <!-- =========================
-       HERO / WELCOME
-  ========================== -->
+  <nav class="nav">
 
-  <section class="hero" id="home">
+    <div class="nav-inner">
 
-    <div class="hero-glow"></div>
+      <a href="#home" class="logo">
+        PRK
+      </a>
 
-    <div class="hero-content">
+      <div class="nav-links">
 
-      <p class="eyebrow">
-        PRK · Purnia, Bihar, India
-      </p>
+        <a href="#about">
+          About
+        </a>
 
-      <h1 class="hero-title">
-        Welcome to PRK
-      </h1>
+        <a href="#vision">
+          Vision
+        </a>
 
-      <p class="hero-tagline">
-        Curiosity today.<br>
-        Possibilities tomorrow.
-      </p>
+        <a href="#projects">
+          Projects
+        </a>
 
-      <button
-        class="continue-btn"
-        id="continueBtn"
-        type="button"
-      >
-        Continue
-        <span>↓</span>
-      </button>
+        <a href="#connect">
+          Connect
+        </a>
 
-      <p class="scroll-note">
-        Explore my world
-      </p>
+      </div>
 
     </div>
 
-  </section>
+  </nav>
 
 
-  <!-- =========================
-       MAIN CONTENT
-  ========================== -->
 
-  <main id="siteContent">
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
 
+  <main>
 
-    <!-- =========================
-         ABOUT ME
-    ========================== -->
+    <section class="hero" id="home">
 
-    <section class="section about" id="about">
+      <div class="container hero-content">
 
-      <div class="section-label reveal">
-        01 · ABOUT ME
-      </div>
+        <div class="hero-meta">
 
-      <div class="section-content">
+          <span>
+            PRK · Purnia, Bihar, India
+          </span>
 
-        <h2 class="section-title reveal">
-          I’m Priyanshu Ranjan Karn.
-        </h2>
+          <span>
+            2026 — Present
+          </span>
 
-        <p class="large-copy reveal">
-          Also known as PRK.
-        </p>
-
-        <p class="body-copy reveal">
-          I’m from Purnia, Bihar, India. I love technology,
-          curiosity, and understanding the reason behind
-          how things happen.
-        </p>
-
-        <p class="body-copy reveal">
-          I’m learning coding and technology more deeply,
-          while exploring ideas around software, applications,
-          artificial intelligence, and the future.
-        </p>
-
-        <p class="body-copy reveal">
-          I enjoy connecting with people, editing, coding,
-          conversations, politics, diplomacy, and thinking
-          about ideas that could become something meaningful.
-        </p>
-
-      </div>
-
-    </section>
+        </div>
 
 
-    <!-- =========================
-         WHAT DRIVES ME
-    ========================== -->
+        <h1 class="hero-title">
 
-    <section class="section drives" id="drives">
+          Curiosity
+          <br>
 
-      <div class="section-label reveal">
-        02 · WHAT DRIVES ME
-      </div>
+          <em>today.</em>
 
-      <div class="section-content">
+          <br>
 
-        <h2 class="section-title reveal">
-          I’m curious about the “why.”
-        </h2>
+          Possibilities
+          <br>
 
-        <p class="body-copy reveal">
-          Whenever something happens, I naturally want to
-          understand why it happened, how it works, and what
-          could happen next.
-        </p>
+          <em>tomorrow.</em>
 
-        <div class="interest-grid">
+        </h1>
 
-          <div class="interest-card reveal">
-            <span>01</span>
-            <h3>Technology</h3>
-            <p>
-              Exploring how technology changes the way
-              people live, communicate, and create.
-            </p>
-          </div>
 
-          <div class="interest-card reveal">
-            <span>02</span>
-            <h3>Coding</h3>
-            <p>
-              Learning programming and turning ideas into
-              real digital products.
-            </p>
-          </div>
+        <div class="hero-bottom">
 
-          <div class="interest-card reveal">
-            <span>03</span>
-            <h3>Artificial Intelligence</h3>
-            <p>
-              Understanding AI and imagining what intelligent
-              technology could make possible.
-            </p>
-          </div>
+          <p class="hero-intro">
+            Welcome to PRK — a personal space for ideas,
+            technology, curiosity and the possibilities
+            of what comes next.
+          </p>
 
-          <div class="interest-card reveal">
-            <span>04</span>
-            <h3>People</h3>
-            <p>
-              Connecting with people, exchanging ideas,
-              and building meaningful collaborations.
-            </p>
+
+          <div class="hero-scroll">
+
+            <span class="scroll-line"></span>
+
+            <span>
+              Explore
+            </span>
+
           </div>
 
         </div>
@@ -192,174 +464,74 @@
     </section>
 
 
-    <!-- =========================
-         VISION
-    ========================== -->
+    <!-- =================================================
+         PART 2 WILL START HERE
+         ================================================= -->
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
 
-    <section class="section vision" id="vision">
+    <section class="editorial-section" id="about">
 
-      <div class="section-label reveal">
-        03 · VISION
-      </div>
+      <div class="container">
 
-      <div class="section-content">
+        <div class="section-top">
 
-        <h2 class="section-title reveal">
-          Build something that matters.
-        </h2>
-
-        <p class="body-copy reveal">
-          I believe the future will be shaped by people who
-          understand technology and use it to solve real
-          problems.
-        </p>
-
-        <p class="body-copy reveal">
-          AI and future technologies could transform
-          industries, create new possibilities, and even
-          help us understand what may come next.
-        </p>
-
-        <p class="body-copy reveal">
-          My goal is to learn, experiment, build, and
-          eventually work with a super-intelligent team
-          of people from around the world.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         THE TEAM
-    ========================== -->
-
-    <section class="section team" id="team">
-
-      <div class="section-label reveal">
-        04 · THE TEAM
-      </div>
-
-      <div class="section-content">
-
-        <h2 class="section-title reveal">
-          Great ideas need great people.
-        </h2>
-
-        <p class="body-copy reveal">
-          I want to meet people who are curious, creative,
-          ambitious, and excited about building the future.
-        </p>
-
-        <p class="body-copy reveal">
-          Different skills, different perspectives, and
-          different experiences can come together to create
-          something much bigger.
-        </p>
-
-        <a
-          href="#join"
-          class="team-link reveal"
-        >
-          Join the journey
-          <span>↗</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         UPCOMING PROJECTS
-    ========================== -->
-
-    <section
-      class="section projects"
-      id="projects"
-    >
-
-      <div class="section-label reveal">
-        05 · UPCOMING PROJECTS
-      </div>
-
-      <div class="section-content">
-
-        <h2 class="section-title reveal">
-          Ideas becoming reality.
-        </h2>
-
-        <p class="body-copy reveal">
-          I’m constantly experimenting with new ideas,
-          websites, applications, AI concepts, and digital
-          projects.
-        </p>
-
-
-        <!-- Future Asia Journal -->
-
-        <a
-          href="future-asia.html"
-          class="project-card reveal"
-        >
-
-          <div class="project-number">
+          <span class="section-number">
             01
-          </div>
+          </span>
 
-          <div class="project-info">
+          <span class="section-label">
+            About Me
+          </span>
 
-            <small>
-              NEWS · TECHNOLOGY · ASIA
-            </small>
+        </div>
 
-            <h3>
-              Future Asia Journal
-            </h3>
 
-            <p>
-              A modern independent publication exploring
-              Asia, technology, AI, politics, science,
-              sports, and the future.
+        <div class="about-grid">
+
+          <div class="section-heading">
+
+            <p class="eyebrow">
+              WHO IS PRK?
             </p>
 
+            <h2>
+              A curious mind
+              <br>
+              exploring what
+              <em>comes next.</em>
+            </h2>
+
           </div>
 
-          <div class="project-arrow">
-            ↗
-          </div>
 
-        </a>
+          <div class="about-copy">
 
-
-        <!-- More projects -->
-
-        <div class="project-card reveal">
-
-          <div class="project-number">
-            02
-          </div>
-
-          <div class="project-info">
-
-            <small>
-              FUTURE · TECHNOLOGY
-            </small>
-
-            <h3>
-              More ideas coming
-            </h3>
-
-            <p>
-              New projects, experiments, and ideas are
-              currently being explored.
+            <p class="large-copy">
+              I’m Priyanshu Ranjan Karn, also known as PRK.
+              I’m from Purnia, Bihar, India.
             </p>
 
-          </div>
+            <p>
+              Technology has always made me curious. I don't
+              just want to know what is happening — I want to
+              understand why it is happening.
+            </p>
 
-          <div class="project-arrow">
-            →
+            <p>
+              From coding and software to artificial
+              intelligence and future technologies, I enjoy
+              exploring ideas and turning curiosity into
+              something real.
+            </p>
+
+            <p>
+              This website is a record of that journey —
+              the things I’m learning, the ideas I’m building,
+              and the possibilities I’m imagining.
+            </p>
+
           </div>
 
         </div>
@@ -369,201 +541,636 @@
     </section>
 
 
-    <!-- =========================
-         CHINA
-    ========================== -->
 
-    <section class="section china" id="china">
+    <!-- =====================================================
+         WHAT DRIVES ME
+         ===================================================== -->
 
-      <div class="section-label reveal">
-        06 · CHINA
-      </div>
+    <section class="dark-section" id="drive">
 
-      <div class="section-content">
+      <div class="container">
 
-        <h2 class="section-title reveal">
-          A country I’m curious about.
-        </h2>
+        <div class="section-top dark-top">
 
-        <p class="body-copy reveal">
-          China is a subject I’m especially interested in.
-          Its technology, development, culture, cities,
-          businesses, and role in the future of Asia are
-          things I want to explore more deeply.
-        </p>
+          <span class="section-number">
+            02
+          </span>
 
-        <p class="body-copy reveal">
-          I’ll share more about this journey in the future.
-        </p>
+          <span class="section-label">
+            What Drives Me
+          </span>
+
+        </div>
+
+
+        <div class="drive-intro">
+
+          <p class="eyebrow">
+            CURIOSITY → CREATION
+          </p>
+
+          <h2>
+            I ask questions
+            <br>
+            before I build
+            <em>answers.</em>
+          </h2>
+
+        </div>
+
+
+        <div class="drive-list">
+
+          <div class="drive-item">
+
+            <span>01</span>
+
+            <div>
+              <h3>Technology</h3>
+
+              <p>
+                Understanding how technology works,
+                how it changes people, and where it
+                could take us next.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="drive-item">
+
+            <span>02</span>
+
+            <div>
+              <h3>Artificial Intelligence</h3>
+
+              <p>
+                Exploring AI, intelligent systems and
+                the possibility of creating technology
+                that can solve meaningful problems.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="drive-item">
+
+            <span>03</span>
+
+            <div>
+              <h3>Ideas</h3>
+
+              <p>
+                Turning thoughts into projects — from
+                software and applications to ideas
+                that could exist in the physical world.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="drive-item">
+
+            <span>04</span>
+
+            <div>
+              <h3>People & Conversation</h3>
+
+              <p>
+                Connecting with people, exchanging
+                perspectives and understanding how
+                different ideas shape the future.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
-         CONNECT
-    ========================== -->
 
-    <section
-      class="section connect"
-      id="connect"
-    >
+    <!-- =====================================================
+         VISION
+         ===================================================== -->
 
-      <div class="section-label reveal">
-        07 · CONNECT
+    <section class="editorial-section vision-section" id="vision">
+
+      <div class="container">
+
+        <div class="section-top">
+
+          <span class="section-number">
+            03
+          </span>
+
+          <span class="section-label">
+            Vision
+          </span>
+
+        </div>
+
+
+        <div class="vision-grid">
+
+          <div>
+
+            <p class="eyebrow">
+              LOOKING AHEAD
+            </p>
+
+            <h2>
+              The future
+              <br>
+              is something
+              <em>we build.</em>
+            </h2>
+
+          </div>
+
+
+          <div class="vision-copy">
+
+            <p class="large-copy">
+              I believe the next generation of technology
+              will change the way people live, communicate,
+              work and imagine the world.
+            </p>
+
+            <p>
+              My long-term vision is to build and work with
+              a highly capable team of people who are curious,
+              creative and willing to solve difficult problems.
+            </p>
+
+            <p>
+              The possibilities range from AI and software
+              to new businesses, infrastructure, buildings
+              and technologies that have not yet become
+              mainstream.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="vision-statement">
+
+          <span>
+            PRK / FUTURE
+          </span>
+
+          <p>
+            Think deeply.
+            Build boldly.
+            Stay curious.
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="section-content">
+    </section>
 
-        <h2 class="section-title reveal">
-          Let’s connect.
-        </h2>
 
-        <p class="body-copy reveal">
-          Have an idea, want to collaborate, or simply want
-          to talk? Find me here.
-        </p>
+
+    <!-- =====================================================
+         THE TEAM
+         ===================================================== -->
+
+    <section class="team-section">
+
+      <div class="container">
+
+        <div class="section-top">
+
+          <span class="section-number">
+            04
+          </span>
+
+          <span class="section-label">
+            The Team
+          </span>
+
+        </div>
+
+
+        <div class="team-header">
+
+          <h2>
+            Big ideas rarely
+            <br>
+            happen <em>alone.</em>
+          </h2>
+
+          <p>
+            The future I imagine is collaborative.
+            I want to connect with talented people
+            across different fields and build things
+            together.
+          </p>
+
+        </div>
+
+
+        <div class="team-grid">
+
+          <div class="team-card">
+
+            <span class="team-index">
+              01
+            </span>
+
+            <h3>
+              Technology
+            </h3>
+
+            <p>
+              Developers, engineers and people who
+              love understanding how things work.
+            </p>
+
+          </div>
+
+
+          <div class="team-card">
+
+            <span class="team-index">
+              02
+            </span>
+
+            <h3>
+              Creative
+            </h3>
+
+            <p>
+              Designers, editors, storytellers and
+              people who can turn ideas into experiences.
+            </p>
+
+          </div>
+
+
+          <div class="team-card">
+
+            <span class="team-index">
+              03
+            </span>
+
+            <h3>
+              Strategy
+            </h3>
+
+            <p>
+              People who think about businesses,
+              society, diplomacy and long-term possibilities.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECTS
+         ===================================================== -->
+
+    <section class="projects-section" id="projects">
+
+      <div class="container">
+
+        <div class="section-top">
+
+          <span class="section-number">
+            05
+          </span>
+
+          <span class="section-label">
+            Selected Projects
+          </span>
+
+        </div>
+
+
+        <div class="projects-heading">
+
+          <h2>
+            From ideas
+            <br>
+            to <em>reality.</em>
+          </h2>
+
+          <p>
+            A growing collection of projects, experiments
+            and ideas built around technology and the future.
+          </p>
+
+        </div>
+
+
+        <div class="project-list">
+
+
+          <!-- PROJECT 01 -->
+
+          <a
+            href="future-asia.html"
+            class="project-row"
+          >
+
+            <div class="project-number">
+              01
+            </div>
+
+            <div class="project-main">
+
+              <span class="project-category">
+                MEDIA · ASIA · TECHNOLOGY
+              </span>
+
+              <h3>
+                Future Asia Journal
+              </h3>
+
+              <p>
+                An editorial platform focused on Asia,
+                technology, artificial intelligence,
+                geopolitics and the future.
+              </p>
+
+            </div>
+
+            <div class="project-arrow">
+              ↗
+            </div>
+
+          </a>
+
+
+
+          <!-- PROJECT 02 -->
+
+          <div class="project-row">
+
+            <div class="project-number">
+              02
+            </div>
+
+            <div class="project-main">
+
+              <span class="project-category">
+                SOFTWARE · SOCIAL
+              </span>
+
+              <h3>
+                PRK Fade
+              </h3>
+
+              <p>
+                A concept for a modern communication
+                platform designed around people,
+                identity and connection.
+              </p>
+
+            </div>
+
+            <div class="project-status">
+              CONCEPT
+            </div>
+
+          </div>
+
+
+
+          <!-- PROJECT 03 -->
+
+          <div class="project-row">
+
+            <div class="project-number">
+              03
+            </div>
+
+            <div class="project-main">
+
+              <span class="project-category">
+                FUTURE · EXPERIMENTAL
+              </span>
+
+              <h3>
+                Next Ideas
+              </h3>
+
+              <p>
+                More ideas are being explored —
+                from AI and software to future
+                businesses and physical spaces.
+              </p>
+
+            </div>
+
+            <div class="project-status">
+              DEVELOPING
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CHINA / ASIA
+         ===================================================== -->
+
+    <section class="dark-section asia-section">
+
+      <div class="container">
+
+        <div class="section-top dark-top">
+
+          <span class="section-number">
+            06
+          </span>
+
+          <span class="section-label">
+            Asia
+          </span>
+
+        </div>
+
+
+        <div class="asia-content">
+
+          <p class="eyebrow">
+            OBSERVING THE WORLD
+          </p>
+
+          <h2>
+            Asia is not
+            <br>
+            just the future.
+            <br>
+            It is <em>already happening.</em>
+          </h2>
+
+          <p class="asia-copy">
+            I’m especially interested in Asia — its
+            technology, economies, politics, diplomacy,
+            people and rapidly changing societies.
+          </p>
+
+        </div>
+
+
+        <div class="asia-bottom">
+
+          <span>
+            ASIA / 01
+          </span>
+
+          <span>
+            TECHNOLOGY · PEOPLE · POWER · FUTURE
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PART 3 WILL CONTINUE HERE
+         ===================================================== -->    <!-- =====================================================
+         CONNECT
+         ===================================================== -->
+
+    <section class="connect-section" id="connect">
+
+      <div class="container">
+
+        <div class="section-top">
+
+          <span class="section-number">
+            07
+          </span>
+
+          <span class="section-label">
+            Connect
+          </span>
+
+        </div>
 
 
         <div class="connect-grid">
 
+          <div class="connect-heading">
 
-          <!-- Instagram -->
+            <p class="eyebrow">
+              LET'S TALK
+            </p>
 
-          <a
-            class="social-card reveal"
-            href="https://instagram.com/prkgoes"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+            <h2>
+              Ideas become
+              <br>
+              better when
+              <em>shared.</em>
+            </h2>
 
-            <span class="social-icon">
-              ◎
-            </span>
-
-            <span>
-              <small>INSTAGRAM</small>
-              <strong>@prkgoes</strong>
-            </span>
-
-            <span class="external">
-              ↗
-            </span>
-
-          </a>
+          </div>
 
 
-          <!-- Telegram -->
+          <div class="connect-content">
 
-          <a
-            class="social-card reveal"
-            href="https://t.me/Sowhat1233"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <span class="social-icon">
-              ➤
-            </span>
-
-            <span>
-              <small>TELEGRAM</small>
-              <strong>@Sowhat1233</strong>
-            </span>
-
-            <span class="external">
-              ↗
-            </span>
-
-          </a>
+            <p>
+              Whether you want to talk about technology,
+              collaborate on a project, exchange ideas,
+              or simply say hello — you can reach me here.
+            </p>
 
 
-          <!-- GitHub -->
+            <div class="connect-links">
 
-          <a
-            class="social-card reveal"
-            href="https://github.com/PriyanshuSPRK0611"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+              <a
+                href="mailto:prkworldcare@gmail.com"
+                class="connect-link"
+              >
 
-            <span class="social-icon">
-              ◉
-            </span>
+                <span>Email</span>
 
-            <span>
-              <small>GITHUB</small>
-              <strong>PriyanshuSPRK0611</strong>
-            </span>
+                <span>
+                  prkworldcare@gmail.com ↗
+                </span>
 
-            <span class="external">
-              ↗
-            </span>
-
-          </a>
+              </a>
 
 
-          <!-- LinkedIn -->
+              <a
+                href="https://instagram.com/prkgoes"
+                target="_blank"
+                rel="noopener"
+                class="connect-link"
+              >
 
-          <a
-            class="social-card reveal"
-            href="https://www.linkedin.com/in/prkstudio/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+                <span>Instagram</span>
 
-            <span class="social-icon">
-              in
-            </span>
+                <span>
+                  @prkgoes ↗
+                </span>
 
-            <span>
-              <small>LINKEDIN</small>
-              <strong>@prkstudio</strong>
-            </span>
-
-            <span class="external">
-              ↗
-            </span>
-
-          </a>
+              </a>
 
 
-          <!-- Email -->
+              <a
+                href="https://t.me/Sowhat1233"
+                target="_blank"
+                rel="noopener"
+                class="connect-link"
+              >
 
-          <a
-            class="social-card reveal"
-            href="mailto:prkworldcare@gmail.com"
-          >
+                <span>Telegram</span>
 
-            <span class="social-icon">
-              @
-            </span>
+                <span>
+                  @Sowhat1233 ↗
+                </span>
 
-            <span>
-              <small>EMAIL</small>
-              <strong>prkworldcare@gmail.com</strong>
-            </span>
-
-            <span class="external">
-              ↗
-            </span>
-
-          </a>
+              </a>
 
 
-        </div>
+              <a
+                href="https://github.com/PriyanshuSPRK0611"
+                target="_blank"
+                rel="noopener"
+                class="connect-link"
+              >
 
+                <span>GitHub</span>
 
-        <!-- Connect Photo -->
+                <span>
+                  @PriyanshuSPRK0611 ↗
+                </span>
 
-        <div class="connect-photo reveal">
+              </a>
 
-          <img
-            src="kv-0515-mo.jpg.thumb.webp"
-            alt="PRK"
-            class="connect-photo-content"
-          >
+            </div>
+
+          </div>
 
         </div>
 
@@ -572,168 +1179,1059 @@
     </section>
 
 
-    <!-- =========================
-         JOIN US
-    ========================== -->
 
-    <section
-      class="section join"
-      id="join"
-    >
+    <!-- =====================================================
+         FINAL STATEMENT
+         ===================================================== -->
 
-      <div class="section-label reveal">
-        08 · JOIN US
-      </div>
+    <section class="final-section">
 
-      <div class="section-content">
+      <div class="container">
 
-        <h2 class="section-title reveal">
-          Build the future with us.
-        </h2>
-
-        <p class="body-copy reveal">
-          If you are curious, creative, and interested in
-          technology, ideas, AI, media, or future projects,
-          tell me a little about yourself.
+        <p class="final-eyebrow">
+          PRK · 2026
         </p>
 
+        <h2>
+          Stay curious.
+          <br>
+          <em>Keep building.</em>
+        </h2>
 
-        <form
-          id="joinForm"
-          class="join-form reveal"
-        >
+        <div class="final-line"></div>
 
-          <div class="form-group">
-
-            <label for="joinName">
-              NAME
-            </label>
-
-            <input
-              type="text"
-              id="joinName"
-              name="name"
-              placeholder="Your name"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="joinEmail">
-              EMAIL
-            </label>
-
-            <input
-              type="email"
-              id="joinEmail"
-              name="email"
-              placeholder="Your email"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="joinMessage">
-              MESSAGE
-            </label>
-
-            <textarea
-              id="joinMessage"
-              name="message"
-              rows="6"
-              placeholder="Tell me about yourself or your idea..."
-              required
-            ></textarea>
-
-          </div>
-
-
-          <button
-            type="submit"
-            class="submit-btn"
-          >
-            Send message
-            <span>↗</span>
-          </button>
-
-
-          <p
-            id="joinStatus"
-            class="join-status"
-            aria-live="polite"
-          ></p>
-
-        </form>
+        <p class="final-copy">
+          The journey is only beginning.
+        </p>
 
       </div>
 
     </section>
+
 
 
   </main>
 
 
-  <!-- =========================
+
+  <!-- =====================================================
        FOOTER
-  ========================== -->
+       ===================================================== -->
 
   <footer class="footer">
 
-    <div class="footer-top">
+    <div class="container">
 
-      <div>
+      <div class="footer-top">
 
-        <h2>
+        <div class="footer-brand">
           PRK
-        </h2>
+        </div>
 
         <p>
-          Curiosity today.<br>
+          Curiosity today.
+          <br>
           Possibilities tomorrow.
         </p>
 
       </div>
 
 
-      <button
-        id="themeToggle"
-        class="theme-toggle"
-        type="button"
-        aria-label="Toggle dark mode"
-      >
+      <div class="footer-bottom">
 
-        <span id="themeIcon">
-          ☾
+        <span>
+          © 2026 PRK
         </span>
 
-      </button>
+        <a href="#home">
+          Back to top ↑
+        </a>
 
-    </div>
-
-
-    <div class="footer-bottom">
-
-      <p>
-        © <span id="year"></span> PRK
-      </p>
-
-      <p>
-        Purnia, Bihar, India
-      </p>
+      </div>
 
     </div>
 
   </footer>
 
 
-  <!-- Main JavaScript -->
-  <script src="script.js"></script>
+
+  <!-- =====================================================
+       STYLES
+       ===================================================== -->
+
+  <style>
+
+    /* =====================================================
+       SHARED SECTIONS
+       ===================================================== */
+
+    .editorial-section,
+    .team-section,
+    .projects-section,
+    .connect-section {
+      padding: 150px 0;
+    }
+
+    .section-top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      padding-bottom: 22px;
+      margin-bottom: 75px;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      color: var(--grey);
+    }
+
+    .section-number {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .section-label {
+      color: var(--grey);
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+
+      color: var(--grey);
+
+      margin-bottom: 28px;
+    }
+
+
+    /* =====================================================
+       ABOUT
+       ===================================================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+
+      gap: 100px;
+    }
+
+    .section-heading h2,
+    .vision-grid h2,
+    .connect-heading h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        45px,
+        6vw,
+        90px
+      );
+
+      font-weight: 400;
+
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    h2 em {
+      font-style: italic;
+    }
+
+    .about-copy {
+      max-width: 560px;
+      padding-top: 5px;
+    }
+
+    .about-copy p,
+    .vision-copy p,
+    .connect-content > p {
+      font-size: 16px;
+      line-height: 1.8;
+
+      color: #5f5f5f;
+
+      margin-bottom: 28px;
+    }
+
+    .about-copy .large-copy,
+    .vision-copy .large-copy {
+      font-family: var(--serif);
+
+      font-size: 25px;
+      line-height: 1.45;
+
+      color: var(--text);
+
+      margin-bottom: 35px;
+    }
+
+
+    /* =====================================================
+       DARK SECTIONS
+       ===================================================== */
+
+    .dark-section {
+      background: var(--black);
+      color: var(--white);
+
+      padding: 150px 0;
+    }
+
+    .dark-top {
+      border-color: var(--dark-line);
+    }
+
+    .dark-top .section-number {
+      color: var(--white);
+    }
+
+    .drive-intro {
+      max-width: 900px;
+      margin-bottom: 100px;
+    }
+
+    .drive-intro .eyebrow {
+      color: #777;
+    }
+
+    .drive-intro h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        50px,
+        7vw,
+        105px
+      );
+
+      font-weight: 400;
+
+      line-height: .98;
+      letter-spacing: -.05em;
+    }
+
+    .drive-list {
+      border-top: 1px solid var(--dark-line);
+    }
+
+    .drive-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+
+      gap: 35px;
+
+      padding: 38px 0;
+
+      border-bottom: 1px solid var(--dark-line);
+    }
+
+    .drive-item > span {
+      color: #666;
+      font-size: 12px;
+    }
+
+    .drive-item h3 {
+      font-family: var(--serif);
+
+      font-size: 28px;
+      font-weight: 400;
+
+      margin-bottom: 10px;
+    }
+
+    .drive-item p {
+      max-width: 600px;
+
+      color: #999;
+
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       VISION
+       ===================================================== */
+
+    .vision-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+
+      gap: 100px;
+    }
+
+    .vision-copy {
+      padding-top: 5px;
+    }
+
+    .vision-statement {
+      margin-top: 120px;
+
+      padding: 45px 0;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 40px;
+    }
+
+    .vision-statement span {
+      font-size: 10px;
+      letter-spacing: .14em;
+      color: var(--grey);
+    }
+
+    .vision-statement p {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        25px,
+        3vw,
+        42px
+      );
+
+      line-height: 1.1;
+      letter-spacing: -.03em;
+
+      text-align: right;
+    }
+
+
+    /* =====================================================
+       TEAM
+       ===================================================== */
+
+    .team-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 100px;
+
+      align-items: end;
+
+      margin-bottom: 90px;
+    }
+
+    .team-header h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        48px,
+        6vw,
+        85px
+      );
+
+      font-weight: 400;
+
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    .team-header h2 em {
+      font-style: italic;
+    }
+
+    .team-header > p {
+      max-width: 480px;
+
+      font-size: 15px;
+      line-height: 1.8;
+
+      color: var(--grey);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      border-top: 1px solid var(--line);
+    }
+
+    .team-card {
+      min-height: 300px;
+
+      padding: 30px;
+
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      transition:
+        background .4s ease,
+        transform .4s var(--ease);
+    }
+
+    .team-card:last-child {
+      border-right: none;
+    }
+
+    .team-card:hover {
+      background: #ebebeb;
+      transform: translateY(-5px);
+    }
+
+    .team-index {
+      display: block;
+
+      font-size: 11px;
+      color: var(--grey);
+
+      margin-bottom: 95px;
+    }
+
+    .team-card h3 {
+      font-family: var(--serif);
+
+      font-size: 30px;
+      font-weight: 400;
+
+      margin-bottom: 12px;
+    }
+
+    .team-card p {
+      max-width: 300px;
+
+      font-size: 13px;
+      line-height: 1.7;
+
+      color: var(--grey);
+    }
+
+
+    /* =====================================================
+       PROJECTS
+       ===================================================== */
+
+    .projects-section {
+      background: #eeeeec;
+    }
+
+    .projects-heading {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 100px;
+
+      align-items: end;
+
+      margin-bottom: 90px;
+    }
+
+    .projects-heading h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        50px,
+        7vw,
+        100px
+      );
+
+      font-weight: 400;
+
+      line-height: .95;
+      letter-spacing: -.05em;
+    }
+
+    .projects-heading h2 em {
+      font-style: italic;
+    }
+
+    .projects-heading p {
+      max-width: 430px;
+
+      color: var(--grey);
+
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .project-list {
+      border-top: 1px solid #cfcfcf;
+    }
+
+    .project-row {
+      display: grid;
+
+      grid-template-columns:
+        80px
+        1fr
+        100px;
+
+      gap: 30px;
+
+      padding: 42px 0;
+
+      border-bottom: 1px solid #cfcfcf;
+
+      transition:
+        padding .4s var(--ease),
+        background .4s ease;
+    }
+
+    .project-row:hover {
+      padding-left: 18px;
+      padding-right: 18px;
+      background: rgba(255,255,255,.45);
+    }
+
+    .project-number {
+      font-size: 11px;
+      color: var(--grey);
+    }
+
+    .project-category {
+      display: block;
+
+      font-size: 9px;
+      letter-spacing: .14em;
+
+      color: var(--grey);
+
+      margin-bottom: 15px;
+    }
+
+    .project-main h3 {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        28px,
+        4vw,
+        48px
+      );
+
+      font-weight: 400;
+
+      line-height: 1;
+
+      margin-bottom: 14px;
+    }
+
+    .project-main p {
+      max-width: 600px;
+
+      color: #666;
+
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .project-arrow {
+      justify-self: end;
+
+      font-size: 25px;
+
+      transition:
+        transform .35s var(--ease);
+    }
+
+    .project-row:hover .project-arrow {
+      transform: translate(5px, -5px);
+    }
+
+    .project-status {
+      justify-self: end;
+
+      align-self: start;
+
+      font-size: 9px;
+      letter-spacing: .12em;
+
+      color: var(--grey);
+    }
+
+
+    /* =====================================================
+       ASIA
+       ===================================================== */
+
+    .asia-section {
+      min-height: 90vh;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .asia-content {
+      max-width: 1050px;
+      padding: 70px 0;
+    }
+
+    .asia-content .eyebrow {
+      color: #777;
+    }
+
+    .asia-content h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        50px,
+        8vw,
+        120px
+      );
+
+      font-weight: 400;
+
+      line-height: .94;
+      letter-spacing: -.055em;
+    }
+
+    .asia-content h2 em {
+      font-style: italic;
+    }
+
+    .asia-copy {
+      max-width: 530px;
+
+      margin-top: 55px;
+
+      color: #999;
+
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .asia-bottom {
+      display: flex;
+      justify-content: space-between;
+
+      padding-top: 25px;
+
+      border-top: 1px solid var(--dark-line);
+
+      font-size: 9px;
+      letter-spacing: .13em;
+
+      color: #666;
+    }
+
+
+    /* =====================================================
+       CONNECT
+       ===================================================== */
+
+    .connect-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 100px;
+    }
+
+    .connect-content {
+      max-width: 550px;
+    }
+
+    .connect-links {
+      margin-top: 55px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .connect-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      padding: 23px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: 13px;
+
+      transition:
+        padding .35s var(--ease);
+    }
+
+    .connect-link span:first-child {
+      color: var(--grey);
+    }
+
+    .connect-link span:last-child {
+      text-align: right;
+    }
+
+    .connect-link:hover {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+
+    /* =====================================================
+       FINAL SECTION
+       ===================================================== */
+
+    .final-section {
+      background: var(--black);
+      color: var(--white);
+
+      padding: 180px 0;
+    }
+
+    .final-eyebrow {
+      font-size: 10px;
+      letter-spacing: .15em;
+
+      color: #666;
+
+      margin-bottom: 55px;
+    }
+
+    .final-section h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(
+        65px,
+        11vw,
+        165px
+      );
+
+      font-weight: 400;
+
+      line-height: .88;
+      letter-spacing: -.06em;
+    }
+
+    .final-section h2 em {
+      font-style: italic;
+    }
+
+    .final-line {
+      height: 1px;
+
+      background: #292929;
+
+      margin: 80px 0 25px;
+    }
+
+    .final-copy {
+      color: #666;
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+      background: var(--black);
+      color: var(--white);
+
+      padding: 0 0 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 30px 0 70px;
+
+      border-top: 1px solid var(--dark-line);
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .footer-top p {
+      color: #666;
+
+      font-size: 11px;
+      line-height: 1.6;
+
+      text-align: right;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+
+      padding-top: 22px;
+
+      border-top: 1px solid var(--dark-line);
+
+      font-size: 10px;
+
+      color: #555;
+    }
+
+    .footer-bottom a {
+      transition: color .3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: white;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 800px) {
+
+      .editorial-section,
+      .team-section,
+      .projects-section,
+      .connect-section,
+      .dark-section {
+        padding: 100px 0;
+      }
+
+      .section-top {
+        margin-bottom: 50px;
+      }
+
+      .about-grid,
+      .vision-grid,
+      .connect-grid,
+      .team-header,
+      .projects-heading {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+      }
+
+      .about-copy,
+      .vision-copy {
+        max-width: none;
+      }
+
+      .vision-statement {
+        margin-top: 75px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .vision-statement p {
+        text-align: left;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-card {
+        min-height: auto;
+        padding: 28px;
+      }
+
+      .team-index {
+        margin-bottom: 55px;
+      }
+
+      .team-card {
+        border-right: none;
+      }
+
+      .projects-heading {
+        margin-bottom: 55px;
+      }
+
+      .project-row {
+        grid-template-columns: 35px 1fr;
+
+        gap: 15px;
+      }
+
+      .project-arrow,
+      .project-status {
+        display: none;
+      }
+
+      .asia-section {
+        min-height: 80vh;
+      }
+
+      .asia-bottom {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .connect-link {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .connect-link span:last-child {
+        text-align: left;
+      }
+
+      .final-section {
+        padding: 120px 0;
+      }
+
+      .footer-top {
+        padding-bottom: 50px;
+      }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+      .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+      }
+
+      .section-heading h2,
+      .vision-grid h2,
+      .connect-heading h2 {
+        font-size: 48px;
+      }
+
+      .drive-intro h2 {
+        font-size: 48px;
+      }
+
+      .asia-content h2 {
+        font-size: 52px;
+      }
+
+      .final-section h2 {
+        font-size: 65px;
+      }
+
+    }
+
+
+    /* =====================================================
+       ACCESSIBILITY
+       ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+
+    }
+
+  </style>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    /* =====================================================
+       SMOOTH ANCHOR NAVIGATION
+       ===================================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+      link.addEventListener("click", function(event) {
+
+        const targetId =
+          this.getAttribute("href");
+
+        const target =
+          document.querySelector(targetId);
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      });
+
+    });
+
+
+
+    /* =====================================================
+       NAVIGATION SCROLL EFFECT
+       ===================================================== */
+
+    let lastScroll = 0;
+
+    const nav =
+      document.querySelector(".nav");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        const currentScroll =
+          window.scrollY;
+
+        if (currentScroll > 80) {
+
+          nav.style.boxShadow =
+            "0 8px 30px rgba(0,0,0,.05)";
+
+        } else {
+
+          nav.style.boxShadow =
+            "none";
+
+        }
+
+        lastScroll = currentScroll;
+
+      },
+      { passive: true }
+    );
+
+
+
+    /* =====================================================
+       SUBTLE HERO DEPTH
+       ===================================================== */
+
+    const heroTitle =
+      document.querySelector(".hero-title");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (!heroTitle) return;
+
+        const scroll =
+          window.scrollY;
+
+        if (scroll < window.innerHeight) {
+
+          heroTitle.style.transform =
+            `translateY(${scroll * .08}px)`;
+
+        }
+
+      },
+      { passive: true }
+    );
+
+  </script>
+
 
 </body>
 </html>
