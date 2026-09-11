@@ -1,6 +1,10 @@
 // =========================
 // PRK ADMIN DASHBOARD
-// SUPABASE AUTH
+// =========================
+
+
+// =========================
+// SUPABASE
 // =========================
 
 const SUPABASE_URL =
@@ -9,12 +13,24 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
   "sb_publishable_s2Ym-RnAG49LFcS3L8DIbQ_UZ9V3oFw";
 
-const { createClient } = window.supabase;
 
-const supabase = createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+// Make sure Supabase library loaded
+
+if (!window.supabase) {
+
+  document.getElementById("loginMessage").textContent =
+    "Supabase could not load. Please refresh the page.";
+
+  throw new Error("Supabase library not loaded.");
+
+}
+
+
+const supabase =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
 // =========================
@@ -30,20 +46,20 @@ const dashboardScreen =
 const loginForm =
   document.getElementById("loginForm");
 
-const loginStatus =
-  document.getElementById("loginStatus");
+const loginMessage =
+  document.getElementById("loginMessage");
 
-const logoutBtn =
-  document.getElementById("logoutBtn");
+const logoutButton =
+  document.getElementById("logoutButton");
 
-const refreshBtn =
-  document.getElementById("refreshBtn");
+const refreshButton =
+  document.getElementById("refreshButton");
 
-const submissionsList =
-  document.getElementById("submissionsList");
+const submissions =
+  document.getElementById("submissions");
 
-const totalSubmissions =
-  document.getElementById("totalSubmissions");
+const total =
+  document.getElementById("total");
 
 const latestSubmission =
   document.getElementById("latestSubmission");
@@ -54,8 +70,11 @@ const latestSubmission =
 // =========================
 
 function showLogin() {
+
   loginScreen.hidden = false;
+
   dashboardScreen.hidden = true;
+
 }
 
 
@@ -64,8 +83,11 @@ function showLogin() {
 // =========================
 
 function showDashboard() {
+
   loginScreen.hidden = true;
+
   dashboardScreen.hidden = false;
+
 }
 
 
@@ -73,68 +95,97 @@ function showDashboard() {
 // LOGIN
 // =========================
 
-loginForm.addEventListener("submit", async (event) => {
+loginForm.addEventListener(
+  "submit",
+  async function (event) {
 
-  event.preventDefault();
+    event.preventDefault();
 
-  const email =
-    document.getElementById("loginEmail").value.trim();
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
 
-  const password =
-    document.getElementById("loginPassword").value;
+    const password =
+      document
+        .getElementById("password")
+        .value;
 
-  loginStatus.textContent = "Signing in...";
+    loginMessage.textContent =
+      "Signing in...";
 
-  try {
 
-    const { data, error } =
-      await supabase.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
+    try {
 
-    if (error) {
+      const {
+        data,
+        error
+      } =
+        await supabase.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
 
-      console.error("SUPABASE LOGIN ERROR:", error);
 
-      // Show the REAL error
-      loginStatus.textContent =
-        error.message;
+      if (error) {
 
-      return;
+        console.error(
+          "LOGIN ERROR:",
+          error
+        );
+
+        loginMessage.textContent =
+          error.message;
+
+        return;
+      }
+
+
+      console.log(
+        "LOGIN SUCCESS:",
+        data.user
+      );
+
+
+      loginMessage.textContent = "";
+
+      showDashboard();
+
+      loadSubmissions();
+
     }
 
-    console.log("LOGIN SUCCESS:", data);
+    catch (error) {
 
-    loginStatus.textContent = "";
+      console.error(
+        "LOGIN ERROR:",
+        error
+      );
 
-    showDashboard();
+      loginMessage.textContent =
+        "Something went wrong. Please try again.";
 
-    loadSubmissions();
-
-  } catch (error) {
-
-    console.error("LOGIN CRASH:", error);
-
-    loginStatus.textContent =
-      error.message || "Login failed.";
+    }
 
   }
-
-});
+);
 
 
 // =========================
 // LOGOUT
 // =========================
 
-logoutBtn.addEventListener("click", async () => {
+logoutButton.addEventListener(
+  "click",
+  async function () {
 
-  await supabase.auth.signOut();
+    await supabase.auth.signOut();
 
-  showLogin();
+    showLogin();
 
-});
+  }
+);
 
 
 // =========================
@@ -143,73 +194,89 @@ logoutBtn.addEventListener("click", async () => {
 
 async function loadSubmissions() {
 
-  submissionsList.innerHTML =
-    '<div class="empty-state">Loading submissions...</div>';
+  submissions.innerHTML =
+    '<p class="loading">Loading submissions...</p>';
 
-  try {
 
-    const {
-      data,
-      error
-    } = await supabase
+  const {
+    data,
+    error
+  } =
+    await supabase
       .from("join_us")
-      .select("*")
-      .order("created_at", {
-        ascending: false
-      });
-
-    if (error) {
-
-      console.error(
-        "SUBMISSIONS ERROR:",
-        error
+      .select(
+        "id, name, email, message, created_at"
+      )
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
       );
 
-      submissionsList.innerHTML =
-        `<div class="empty-state">
-          ${error.message}
-        </div>`;
 
-      return;
-    }
+  if (error) {
 
-    totalSubmissions.textContent =
-      data.length;
+    console.error(
+      "DATABASE ERROR:",
+      error
+    );
 
-    if (data.length === 0) {
+    submissions.innerHTML =
+      `<p class="empty">
+        Database error: ${escapeHTML(error.message)}
+      </p>`;
 
-      latestSubmission.textContent = "—";
+    return;
+  }
 
-      submissionsList.innerHTML =
-        `<div class="empty-state">
-          No submissions yet.
-        </div>`;
 
-      return;
-    }
+  // Total
+
+  total.textContent =
+    data.length;
+
+
+  // No submissions
+
+  if (data.length === 0) {
 
     latestSubmission.textContent =
-      new Date(data[0].created_at)
-        .toLocaleDateString("en-IN");
+      "—";
 
-    submissionsList.innerHTML =
-      data.map((item) => {
+    submissions.innerHTML =
+      '<p class="empty">No submissions yet.</p>';
+
+    return;
+  }
+
+
+  // Latest
+
+  latestSubmission.textContent =
+    new Date(
+      data[0].created_at
+    ).toLocaleDateString(
+      "en-IN"
+    );
+
+
+  // Display submissions
+
+  submissions.innerHTML =
+    data
+      .map(function (item) {
 
         return `
+
           <article class="submission">
 
-            <div class="submission-top">
+            <div class="submission-name">
+              ${escapeHTML(item.name)}
+            </div>
 
-              <div>
-                <div class="submission-name">
-                  ${escapeHTML(item.name)}
-                </div>
-
-                <div class="submission-email">
-                  ${escapeHTML(item.email)}
-                </div>
-              </div>
-
+            <div class="submission-email">
+              ${escapeHTML(item.email)}
             </div>
 
             <p class="submission-message">
@@ -217,25 +284,17 @@ async function loadSubmissions() {
             </p>
 
             <div class="submission-date">
-              ${new Date(item.created_at)
-                .toLocaleString("en-IN")}
+              ${new Date(
+                item.created_at
+              ).toLocaleString("en-IN")}
             </div>
 
           </article>
+
         `;
 
-      }).join("");
-
-  } catch (error) {
-
-    console.error(error);
-
-    submissionsList.innerHTML =
-      `<div class="empty-state">
-        ${error.message}
-      </div>`;
-
-  }
+      })
+      .join("");
 
 }
 
@@ -244,23 +303,23 @@ async function loadSubmissions() {
 // REFRESH
 // =========================
 
-if (refreshBtn) {
+refreshButton.addEventListener(
+  "click",
+  function () {
 
-  refreshBtn.addEventListener(
-    "click",
-    loadSubmissions
-  );
+    loadSubmissions();
 
-}
+  }
+);
 
 
 // =========================
-// ESCAPE HTML
+// SECURITY
 // =========================
 
 function escapeHTML(value) {
 
-  return String(value ?? "")
+  return String(value || "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -271,65 +330,18 @@ function escapeHTML(value) {
 
 
 // =========================
-// DARK MODE
-// =========================
-
-const themeToggle =
-  document.getElementById("themeToggle");
-
-const savedTheme =
-  localStorage.getItem("prk-admin-theme");
-
-if (savedTheme === "dark") {
-
-  document.body.classList.add("dark-mode");
-
-  if (themeToggle) {
-    themeToggle.textContent = "☀";
-  }
-
-}
-
-if (themeToggle) {
-
-  themeToggle.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-
-      themeToggle.textContent = "☀";
-
-      localStorage.setItem(
-        "prk-admin-theme",
-        "dark"
-      );
-
-    } else {
-
-      themeToggle.textContent = "☾";
-
-      localStorage.setItem(
-        "prk-admin-theme",
-        "light"
-      );
-
-    }
-
-  });
-
-}
-
-
-// =========================
 // CHECK EXISTING SESSION
 // =========================
 
-async function checkLogin() {
+async function checkSession() {
 
   const {
-    data: { session }
-  } = await supabase.auth.getSession();
+    data: {
+      session
+    }
+  } =
+    await supabase.auth.getSession();
+
 
   if (session) {
 
@@ -337,7 +349,9 @@ async function checkLogin() {
 
     loadSubmissions();
 
-  } else {
+  }
+
+  else {
 
     showLogin();
 
@@ -350,4 +364,4 @@ async function checkLogin() {
 // START
 // =========================
 
-checkLogin();
+checkSession();
