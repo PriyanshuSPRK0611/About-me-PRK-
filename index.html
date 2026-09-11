@@ -206,12 +206,52 @@
         </div>
             </section>
       <footer>
-        <div class="container footer-inner">
-          <span>PRK</span>
-          <span>© <span id="year"></span> Priyanshu Ranjan Karn</span>
-          <a href="#home">Back to top ↑</a>
-        </div>
-      </footer>
+  <div class="container footer-inner">
+
+    <span>PRK</span>
+
+    <span>© <span id="year"></span> Priyanshu Ranjan Karn</span>
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="language-switcher">
+
+      <button
+        id="languageButton"
+        class="language-button"
+        type="button"
+        aria-expanded="false"
+      >
+        <span>Language</span>
+        <span id="currentLanguage">English</span>
+        <span class="language-arrow">⌄</span>
+      </button>
+
+      <div
+        id="languageMenu"
+        class="language-menu"
+        aria-hidden="true"
+      >
+        <button type="button" data-lang="en">English</button>
+        <button type="button" data-lang="zh">中文</button>
+        <button type="button" data-lang="ja">日本語</button>
+        <button type="button" data-lang="ko">한국어</button>
+        <button type="button" data-lang="es">Español</button>
+        <button type="button" data-lang="ru">Русский</button>
+      </div>
+
+    </div>
+
+    <a href="#home">Back to top ↑</a>
+
+  </div>
+</footer>
+
+<!-- LANGUAGE CHANGE TRANSITION -->
+<div
+  id="languageTransition"
+  class="language-transition"
+  aria-hidden="true"
+></div>
     </div>
   </main>
 
