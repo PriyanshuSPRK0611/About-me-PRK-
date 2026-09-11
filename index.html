@@ -1,45 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <meta name="description"
-        content="PRK — Curiosity today. Possibilities tomorrow.">
+  <meta
+    name="description"
+    content="PRK — Curiosity today. Possibilities tomorrow."
+  >
 
-  <title>PRK — Curiosity today. Possibilities tomorrow.</title>
+  <title>
+    PRK — Curiosity today. Possibilities tomorrow.
+  </title>
 
-  <!-- Fonts -->
+
+  <!-- =====================================================
+       FONTS
+       ===================================================== -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
-        rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    rel="stylesheet"
+  >
+
 
   <style>
 
     /* =====================================================
-       PRK — FOUNDATION
-       Black / White / Grey Editorial System
+       FOUNDATION
        ===================================================== */
 
     :root {
+
+      --black: #080808;
       --white: #ffffff;
+
       --paper: #f5f5f3;
-      --black: #0a0a0a;
+
       --text: #111111;
+
       --grey: #737373;
-      --light-grey: #bcbcbc;
+      --light-grey: #bdbdbd;
+
       --line: #d7d7d7;
       --dark-line: #292929;
 
-      --serif: "Playfair Display", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
+      --serif:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      --sans:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+      --archivo:
+        "Archivo Black",
+        Arial,
+        sans-serif;
 
       --max-width: 1400px;
-      --ease: cubic-bezier(.22, .61, .36, 1);
+
+      --ease:
+        cubic-bezier(.22,.61,.36,1);
     }
 
 
@@ -53,44 +91,412 @@
       box-sizing: border-box;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
-      background: var(--paper);
-      color: var(--text);
-      font-family: var(--sans);
-      line-height: 1.6;
-      overflow-x: hidden;
+
+      margin: 0;
+
+      background:
+        var(--paper);
+
+      color:
+        var(--text);
+
+      font-family:
+        var(--sans);
+
+      overflow-x:
+        hidden;
+
+      line-height:
+        1.6;
     }
 
-    img {
-      display: block;
-      width: 100%;
+
+    body.welcome-active {
+      overflow: hidden;
     }
+
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
+
     button {
       font: inherit;
     }
 
 
-    /* =====================================================
-       GLOBAL CONTAINER
-       ===================================================== */
+    img {
+      display: block;
+      width: 100%;
+    }
+
 
     .container {
-      width: min(
-        calc(100% - 48px),
-        var(--max-width)
-      );
 
-      margin: 0 auto;
+      width:
+        min(
+          calc(100% - 48px),
+          var(--max-width)
+        );
+
+      margin:
+        0 auto;
+    }
+
+
+    /* =====================================================
+       WELCOME SCREEN
+       ===================================================== */
+
+    .welcome-screen {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 99999;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      overflow: hidden;
+
+      background:
+        #050505;
+
+      color:
+        white;
+
+      opacity: 1;
+
+      visibility: visible;
+
+      transition:
+        opacity 1s var(--ease),
+        visibility 1s var(--ease);
+    }
+
+
+    /*
+      Main blurred white/grey light
+    */
+
+    .welcome-screen::before {
+
+      content: "";
+
+      position: absolute;
+
+      width:
+        65vw;
+
+      height:
+        65vw;
+
+      max-width:
+        850px;
+
+      max-height:
+        850px;
+
+      left:
+        50%;
+
+      top:
+        50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius:
+        50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.22) 0%,
+          rgba(220,220,220,.13) 25%,
+          rgba(150,150,150,.07) 43%,
+          transparent 70%
+        );
+
+      filter:
+        blur(75px);
+
+      pointer-events:
+        none;
+    }
+
+
+    /*
+      Secondary grey glow
+    */
+
+    .welcome-screen::after {
+
+      content: "";
+
+      position: absolute;
+
+      width:
+        40vw;
+
+      height:
+        40vw;
+
+      right:
+        -12%;
+
+      bottom:
+        -15%;
+
+      border-radius:
+        50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.11),
+          transparent 70%
+        );
+
+      filter:
+        blur(90px);
+
+      pointer-events:
+        none;
+    }
+
+
+    .welcome-content {
+
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      text-align:
+        center;
+
+      padding:
+        30px;
+
+      animation:
+        welcomeAppear
+        1.2s
+        var(--ease)
+        both;
+    }
+
+
+    @keyframes welcomeAppear {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(30px);
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+
+    /*
+      IMPORTANT:
+      PRK = ARCHIVO BLACK
+    */
+
+    .welcome-logo {
+
+      font-family:
+        var(--archivo);
+
+      font-size:
+        clamp(
+          110px,
+          23vw,
+          310px
+        );
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        -.085em;
+
+      line-height:
+        .75;
+
+      color:
+        #ffffff;
+
+      text-shadow:
+        0 0 55px
+        rgba(255,255,255,.08);
+    }
+
+
+    .welcome-subtitle {
+
+      margin-top:
+        48px;
+
+      max-width:
+        450px;
+
+      color:
+        #909090;
+
+      font-size:
+        12px;
+
+      letter-spacing:
+        .10em;
+
+      line-height:
+        1.7;
+    }
+
+
+    /*
+      Welcome button
+    */
+
+    .welcome-button {
+
+      margin-top:
+        40px;
+
+      min-width:
+        235px;
+
+      padding:
+        16px 19px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        30px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.28);
+
+      border-radius:
+        999px;
+
+      background:
+        rgba(255,255,255,.07);
+
+      color:
+        white;
+
+      cursor:
+        pointer;
+
+      font-size:
+        12px;
+
+      letter-spacing:
+        .03em;
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      transition:
+        background .35s ease,
+        border-color .35s ease,
+        transform .35s var(--ease);
+    }
+
+
+    .welcome-button:hover {
+
+      background:
+        rgba(255,255,255,.15);
+
+      border-color:
+        rgba(255,255,255,.55);
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    .welcome-arrow {
+
+      font-size:
+        18px;
+
+      transition:
+        transform .35s var(--ease);
+    }
+
+
+    .welcome-button:hover
+    .welcome-arrow {
+
+      transform:
+        translateX(5px);
+    }
+
+
+    /*
+      Hide welcome screen
+    */
+
+    .welcome-screen.hide {
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      pointer-events:
+        none;
     }
 
 
@@ -99,79 +505,152 @@
        ===================================================== */
 
     .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
 
-      padding: 22px 0;
+      position:
+        fixed;
 
-      background: rgba(245,245,243,.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      top:
+        0;
 
-      border-bottom: 1px solid rgba(0,0,0,.08);
+      left:
+        0;
+
+      width:
+        100%;
+
+      z-index:
+        1000;
+
+      padding:
+        22px 0;
+
+      background:
+        rgba(245,245,243,.84);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border-bottom:
+        1px solid
+        rgba(0,0,0,.08);
     }
+
 
     .nav-inner {
-      width: min(
-        calc(100% - 48px),
-        var(--max-width)
-      );
 
-      margin: auto;
+      width:
+        min(
+          calc(100% - 48px),
+          var(--max-width)
+        );
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      margin:
+        0 auto;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
     }
+
 
     .logo {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -.04em;
+
+      font-family:
+        var(--archivo);
+
+      font-size:
+        18px;
+
+      letter-spacing:
+        -.05em;
     }
+
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
 
-      font-size: 13px;
-      color: #555;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        32px;
+
+      font-size:
+        12px;
+
+      color:
+        #555;
     }
+
 
     .nav-links a {
-      position: relative;
-      transition: color .3s ease;
+
+      position:
+        relative;
+
+      transition:
+        color .3s ease;
     }
+
 
     .nav-links a::after {
-      content: "";
 
-      position: absolute;
-      left: 0;
-      bottom: -5px;
+      content:
+        "";
 
-      width: 100%;
-      height: 1px;
+      position:
+        absolute;
 
-      background: var(--black);
+      left:
+        0;
 
-      transform: scaleX(0);
-      transform-origin: right;
+      bottom:
+        -6px;
 
-      transition: transform .35s var(--ease);
+      width:
+        100%;
+
+      height:
+        1px;
+
+      background:
+        #111;
+
+      transform:
+        scaleX(0);
+
+      transform-origin:
+        right;
+
+      transition:
+        transform .35s var(--ease);
     }
+
 
     .nav-links a:hover {
-      color: var(--black);
+
+      color:
+        #111;
     }
 
+
     .nav-links a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+
+      transform:
+        scaleX(1);
+
+      transform-origin:
+        left;
     }
 
 
@@ -180,2085 +659,2427 @@
        ===================================================== */
 
     .hero {
-      min-height: 100vh;
 
-      display: flex;
-      align-items: flex-end;
+      min-height:
+        100vh;
 
-      padding-top: 140px;
-      padding-bottom: 70px;
+      display:
+        flex;
 
-      position: relative;
-      overflow: hidden;
+      align-items:
+        flex-end;
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+
+      padding-top:
+        140px;
+
+      padding-bottom:
+        70px;
     }
 
-    .hero::before {
-      content: "";
 
-      position: absolute;
-      inset: 0;
+    .hero::before {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        700px;
+
+      height:
+        700px;
+
+      right:
+        -250px;
+
+      top:
+        5%;
+
+      border-radius:
+        50%;
 
       background:
         radial-gradient(
-          circle at 75% 25%,
-          rgba(0,0,0,.055),
-          transparent 32%
+          circle,
+          rgba(0,0,0,.07),
+          transparent 68%
         );
 
-      pointer-events: none;
+      filter:
+        blur(20px);
+
+      pointer-events:
+        none;
     }
+
 
     .hero-content {
-      position: relative;
-      z-index: 2;
 
-      width: 100%;
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      width:
+        100%;
     }
+
 
     .hero-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
 
-      padding-bottom: 24px;
-      margin-bottom: 35px;
+      display:
+        flex;
 
-      border-bottom: 1px solid var(--line);
+      align-items:
+        center;
 
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      justify-content:
+        space-between;
 
-      color: var(--grey);
+      padding-bottom:
+        24px;
+
+      margin-bottom:
+        35px;
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      font-size:
+        10px;
+
+      letter-spacing:
+        .12em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--grey);
     }
+
 
     .hero-title {
-      font-family: var(--serif);
 
-      font-size: clamp(
-        58px,
-        10vw,
-        150px
-      );
+      font-family:
+        var(--serif);
 
-      font-weight: 400;
+      font-size:
+        clamp(
+          58px,
+          10vw,
+          150px
+        );
 
-      line-height: .92;
-      letter-spacing: -.055em;
+      font-weight:
+        400;
 
-      max-width: 1200px;
+      line-height:
+        .91;
+
+      letter-spacing:
+        -.055em;
+
+      max-width:
+        1250px;
+
+      animation:
+        heroTitleIn
+        1.1s
+        var(--ease)
+        .15s
+        both;
     }
+
+
+    @keyframes heroTitleIn {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(35px);
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
 
     .hero-title em {
-      font-style: italic;
+
+      font-style:
+        italic;
     }
+
 
     .hero-bottom {
-      margin-top: 65px;
 
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      margin-top:
+        65px;
 
-      gap: 40px;
+      display:
+        grid;
 
-      align-items: end;
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        40px;
+
+      align-items:
+        end;
     }
+
 
     .hero-intro {
-      max-width: 480px;
 
-      font-size: 17px;
-      line-height: 1.7;
+      max-width:
+        500px;
 
-      color: #555;
+      font-size:
+        16px;
+
+      line-height:
+        1.75;
+
+      color:
+        #555;
+
+      animation:
+        heroBottomIn
+        1s
+        var(--ease)
+        .4s
+        both;
     }
+
+
+    @keyframes heroBottomIn {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(20px);
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
 
     .hero-scroll {
-      justify-self: end;
 
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      justify-self:
+        end;
 
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      display:
+        flex;
 
-      color: var(--grey);
+      align-items:
+        center;
+
+      gap:
+        14px;
+
+      font-size:
+        10px;
+
+      letter-spacing:
+        .14em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--grey);
     }
+
 
     .scroll-line {
-      width: 60px;
-      height: 1px;
 
-      background: var(--grey);
-    }
+      width:
+        60px;
 
+      height:
+        1px;
 
-    /* =====================================================
-       MOBILE NAV
-       ===================================================== */
+      background:
+        var(--grey);
+    }<!DOCTYPE html>
+<html lang="en">
 
-    @media (max-width: 700px) {
+<head>
 
-      .container,
-      .nav-inner {
-        width: calc(100% - 32px);
-      }
+  <meta charset="UTF-8">
 
-      .nav {
-        padding: 17px 0;
-      }
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-      .nav-links {
-        gap: 15px;
-        font-size: 11px;
-      }
+  <meta
+    name="description"
+    content="PRK — Curiosity today. Possibilities tomorrow."
+  >
 
-      .nav-links a:nth-child(3),
-      .nav-links a:nth-child(4) {
-        display: none;
-      }
-
-      .hero {
-        min-height: 92vh;
-        padding-top: 120px;
-        padding-bottom: 45px;
-      }
-
-      .hero-meta {
-        font-size: 9px;
-      }
-
-      .hero-title {
-        font-size: clamp(
-          52px,
-          17vw,
-          90px
-        );
-      }
-
-      .hero-bottom {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        margin-top: 45px;
-      }
-
-      .hero-intro {
-        font-size: 15px;
-      }
-
-      .hero-scroll {
-        justify-self: start;
-      }
-    }
-
-  </style>
-</head>
-
-
-<body>
-<!-- =====================================================
-     PRK WELCOME SCREEN
-     ===================================================== -->
-
-<div class="welcome-screen" id="welcomeScreen">
-
-  <div class="welcome-glow welcome-glow-one"></div>
-  <div class="welcome-glow welcome-glow-two"></div>
-
-  <div class="welcome-content">
-
-    <div class="welcome-logo">
-      PRK
-    </div>
-
-    <p class="welcome-subtitle">
-      Curiosity today. Possibilities tomorrow.
-    </p>
-
-    <button class="welcome-button" id="enterPRK">
-      <span>Welcome to PRK</span>
-      <span class="welcome-arrow">→</span>
-    </button>
-
-  </div>
-
-</div>
+  <title>
+    PRK — Curiosity today. Possibilities tomorrow.
+  </title>
 
 
   <!-- =====================================================
-       NAVIGATION
+       FONTS
        ===================================================== -->
 
-  <nav class="nav">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    rel="stylesheet"
+  >
 
-    <div class="nav-inner">
-
-      <a href="#home" class="logo">
-        PRK
-      </a>
-
-      <div class="nav-links">
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#vision">
-          Vision
-        </a>
-
-        <a href="#projects">
-          Projects
-        </a>
-
-        <a href="#connect">
-          Connect
-        </a>
-
-      </div>
-
-    </div>
-
-  </nav>
-
-
-
-  <!-- =====================================================
-       HERO
-       ===================================================== -->
-
-  <main>
-
-    <section class="hero" id="home">
-
-      <div class="container hero-content">
-
-        <div class="hero-meta">
-
-          <span>
-            PRK · Purnia, Bihar, India
-          </span>
-
-          <span>
-            2026 — Present
-          </span>
-
-        </div>
-
-
-        <h1 class="hero-title">
-
-          Curiosity
-          <br>
-
-          <em>today.</em>
-
-          <br>
-
-          Possibilities
-          <br>
-
-          <em>tomorrow.</em>
-
-        </h1>
-
-
-        <div class="hero-bottom">
-
-          <p class="hero-intro">
-            Welcome to PRK — a personal space for ideas,
-            technology, curiosity and the possibilities
-            of what comes next.
-          </p>
-
-
-          <div class="hero-scroll">
-
-            <span class="scroll-line"></span>
-
-            <span>
-              Explore
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         PART 2 WILL START HERE
-         ================================================= -->
-    <!-- =====================================================
-         ABOUT
-         ===================================================== -->
-
-    <section class="editorial-section" id="about">
-
-      <div class="container">
-
-        <div class="section-top">
-
-          <span class="section-number">
-            01
-          </span>
-
-          <span class="section-label">
-            About Me
-          </span>
-
-        </div>
-
-
-        <div class="about-grid">
-
-          <div class="section-heading">
-
-            <p class="eyebrow">
-              WHO IS PRK?
-            </p>
-
-            <h2>
-              A curious mind
-              <br>
-              exploring what
-              <em>comes next.</em>
-            </h2>
-
-          </div>
-
-
-          <div class="about-copy">
-
-            <p class="large-copy">
-              I’m Priyanshu Ranjan Karn, also known as PRK.
-              I’m from Purnia, Bihar, India.
-            </p>
-
-            <p>
-              Technology has always made me curious. I don't
-              just want to know what is happening — I want to
-              understand why it is happening.
-            </p>
-
-            <p>
-              From coding and software to artificial
-              intelligence and future technologies, I enjoy
-              exploring ideas and turning curiosity into
-              something real.
-            </p>
-
-            <p>
-              This website is a record of that journey —
-              the things I’m learning, the ideas I’m building,
-              and the possibilities I’m imagining.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         WHAT DRIVES ME
-         ===================================================== -->
-
-    <section class="dark-section" id="drive">
-
-      <div class="container">
-
-        <div class="section-top dark-top">
-
-          <span class="section-number">
-            02
-          </span>
-
-          <span class="section-label">
-            What Drives Me
-          </span>
-
-        </div>
-
-
-        <div class="drive-intro">
-
-          <p class="eyebrow">
-            CURIOSITY → CREATION
-          </p>
-
-          <h2>
-            I ask questions
-            <br>
-            before I build
-            <em>answers.</em>
-          </h2>
-
-        </div>
-
-
-        <div class="drive-list">
-
-          <div class="drive-item">
-
-            <span>01</span>
-
-            <div>
-              <h3>Technology</h3>
-
-              <p>
-                Understanding how technology works,
-                how it changes people, and where it
-                could take us next.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="drive-item">
-
-            <span>02</span>
-
-            <div>
-              <h3>Artificial Intelligence</h3>
-
-              <p>
-                Exploring AI, intelligent systems and
-                the possibility of creating technology
-                that can solve meaningful problems.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="drive-item">
-
-            <span>03</span>
-
-            <div>
-              <h3>Ideas</h3>
-
-              <p>
-                Turning thoughts into projects — from
-                software and applications to ideas
-                that could exist in the physical world.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="drive-item">
-
-            <span>04</span>
-
-            <div>
-              <h3>People & Conversation</h3>
-
-              <p>
-                Connecting with people, exchanging
-                perspectives and understanding how
-                different ideas shape the future.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         VISION
-         ===================================================== -->
-
-    <section class="editorial-section vision-section" id="vision">
-
-      <div class="container">
-
-        <div class="section-top">
-
-          <span class="section-number">
-            03
-          </span>
-
-          <span class="section-label">
-            Vision
-          </span>
-
-        </div>
-
-
-        <div class="vision-grid">
-
-          <div>
-
-            <p class="eyebrow">
-              LOOKING AHEAD
-            </p>
-
-            <h2>
-              The future
-              <br>
-              is something
-              <em>we build.</em>
-            </h2>
-
-          </div>
-
-
-          <div class="vision-copy">
-
-            <p class="large-copy">
-              I believe the next generation of technology
-              will change the way people live, communicate,
-              work and imagine the world.
-            </p>
-
-            <p>
-              My long-term vision is to build and work with
-              a highly capable team of people who are curious,
-              creative and willing to solve difficult problems.
-            </p>
-
-            <p>
-              The possibilities range from AI and software
-              to new businesses, infrastructure, buildings
-              and technologies that have not yet become
-              mainstream.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="vision-statement">
-
-          <span>
-            PRK / FUTURE
-          </span>
-
-          <p>
-            Think deeply.
-            Build boldly.
-            Stay curious.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         THE TEAM
-         ===================================================== -->
-
-    <section class="team-section">
-
-      <div class="container">
-
-        <div class="section-top">
-
-          <span class="section-number">
-            04
-          </span>
-
-          <span class="section-label">
-            The Team
-          </span>
-
-        </div>
-
-
-        <div class="team-header">
-
-          <h2>
-            Big ideas rarely
-            <br>
-            happen <em>alone.</em>
-          </h2>
-
-          <p>
-            The future I imagine is collaborative.
-            I want to connect with talented people
-            across different fields and build things
-            together.
-          </p>
-
-        </div>
-
-
-        <div class="team-grid">
-
-          <div class="team-card">
-
-            <span class="team-index">
-              01
-            </span>
-
-            <h3>
-              Technology
-            </h3>
-
-            <p>
-              Developers, engineers and people who
-              love understanding how things work.
-            </p>
-
-          </div>
-
-
-          <div class="team-card">
-
-            <span class="team-index">
-              02
-            </span>
-
-            <h3>
-              Creative
-            </h3>
-
-            <p>
-              Designers, editors, storytellers and
-              people who can turn ideas into experiences.
-            </p>
-
-          </div>
-
-
-          <div class="team-card">
-
-            <span class="team-index">
-              03
-            </span>
-
-            <h3>
-              Strategy
-            </h3>
-
-            <p>
-              People who think about businesses,
-              society, diplomacy and long-term possibilities.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PROJECTS
-         ===================================================== -->
-
-    <section class="projects-section" id="projects">
-
-      <div class="container">
-
-        <div class="section-top">
-
-          <span class="section-number">
-            05
-          </span>
-
-          <span class="section-label">
-            Selected Projects
-          </span>
-
-        </div>
-
-
-        <div class="projects-heading">
-
-          <h2>
-            From ideas
-            <br>
-            to <em>reality.</em>
-          </h2>
-
-          <p>
-            A growing collection of projects, experiments
-            and ideas built around technology and the future.
-          </p>
-
-        </div>
-
-
-        <div class="project-list">
-
-
-          <!-- PROJECT 01 -->
-
-          <a
-            href="future-asia.html"
-            class="project-row"
-          >
-
-            <div class="project-number">
-              01
-            </div>
-
-            <div class="project-main">
-
-              <span class="project-category">
-                MEDIA · ASIA · TECHNOLOGY
-              </span>
-
-              <h3>
-                Future Asia Journal
-              </h3>
-
-              <p>
-                An editorial platform focused on Asia,
-                technology, artificial intelligence,
-                geopolitics and the future.
-              </p>
-
-            </div>
-
-            <div class="project-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-
-          <!-- PROJECT 02 -->
-
-          <div class="project-row">
-
-            <div class="project-number">
-              02
-            </div>
-
-            <div class="project-main">
-
-              <span class="project-category">
-                SOFTWARE · SOCIAL
-              </span>
-
-              <h3>
-                PRK Fade
-              </h3>
-
-              <p>
-                A concept for a modern communication
-                platform designed around people,
-                identity and connection.
-              </p>
-
-            </div>
-
-            <div class="project-status">
-              CONCEPT
-            </div>
-
-          </div>
-
-
-
-          <!-- PROJECT 03 -->
-
-          <div class="project-row">
-
-            <div class="project-number">
-              03
-            </div>
-
-            <div class="project-main">
-
-              <span class="project-category">
-                FUTURE · EXPERIMENTAL
-              </span>
-
-              <h3>
-                Next Ideas
-              </h3>
-
-              <p>
-                More ideas are being explored —
-                from AI and software to future
-                businesses and physical spaces.
-              </p>
-
-            </div>
-
-            <div class="project-status">
-              DEVELOPING
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         CHINA / ASIA
-         ===================================================== -->
-
-    <section class="dark-section asia-section">
-
-      <div class="container">
-
-        <div class="section-top dark-top">
-
-          <span class="section-number">
-            06
-          </span>
-
-          <span class="section-label">
-            Asia
-          </span>
-
-        </div>
-
-
-        <div class="asia-content">
-
-          <p class="eyebrow">
-            OBSERVING THE WORLD
-          </p>
-
-          <h2>
-            Asia is not
-            <br>
-            just the future.
-            <br>
-            It is <em>already happening.</em>
-          </h2>
-
-          <p class="asia-copy">
-            I’m especially interested in Asia — its
-            technology, economies, politics, diplomacy,
-            people and rapidly changing societies.
-          </p>
-
-        </div>
-
-
-        <div class="asia-bottom">
-
-          <span>
-            ASIA / 01
-          </span>
-
-          <span>
-            TECHNOLOGY · PEOPLE · POWER · FUTURE
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PART 3 WILL CONTINUE HERE
-         ===================================================== -->    <!-- =====================================================
-         CONNECT
-         ===================================================== -->
-
-    <section class="connect-section" id="connect">
-
-      <div class="container">
-
-        <div class="section-top">
-
-          <span class="section-number">
-            07
-          </span>
-
-          <span class="section-label">
-            Connect
-          </span>
-
-        </div>
-
-
-        <div class="connect-grid">
-
-          <div class="connect-heading">
-
-            <p class="eyebrow">
-              LET'S TALK
-            </p>
-
-            <h2>
-              Ideas become
-              <br>
-              better when
-              <em>shared.</em>
-            </h2>
-
-          </div>
-
-
-          <div class="connect-content">
-
-            <p>
-              Whether you want to talk about technology,
-              collaborate on a project, exchange ideas,
-              or simply say hello — you can reach me here.
-            </p>
-
-
-            <div class="connect-links">
-
-              <a
-                href="mailto:prkworldcare@gmail.com"
-                class="connect-link"
-              >
-
-                <span>Email</span>
-
-                <span>
-                  prkworldcare@gmail.com ↗
-                </span>
-
-              </a>
-
-
-              <a
-                href="https://instagram.com/prkgoes"
-                target="_blank"
-                rel="noopener"
-                class="connect-link"
-              >
-
-                <span>Instagram</span>
-
-                <span>
-                  @prkgoes ↗
-                </span>
-
-              </a>
-
-
-              <a
-                href="https://t.me/Sowhat1233"
-                target="_blank"
-                rel="noopener"
-                class="connect-link"
-              >
-
-                <span>Telegram</span>
-
-                <span>
-                  @Sowhat1233 ↗
-                </span>
-
-              </a>
-
-
-              <a
-                href="https://github.com/PriyanshuSPRK0611"
-                target="_blank"
-                rel="noopener"
-                class="connect-link"
-              >
-
-                <span>GitHub</span>
-
-                <span>
-                  @PriyanshuSPRK0611 ↗
-                </span>
-
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         FINAL STATEMENT
-         ===================================================== -->
-
-    <section class="final-section">
-
-      <div class="container">
-
-        <p class="final-eyebrow">
-          PRK · 2026
-        </p>
-
-        <h2>
-          Stay curious.
-          <br>
-          <em>Keep building.</em>
-        </h2>
-
-        <div class="final-line"></div>
-
-        <p class="final-copy">
-          The journey is only beginning.
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-  </main>
-
-
-
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
-
-  <footer class="footer">
-
-    <div class="container">
-
-      <div class="footer-top">
-
-        <div class="footer-brand">
-          PRK
-        </div>
-
-        <p>
-          Curiosity today.
-          <br>
-          Possibilities tomorrow.
-        </p>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <span>
-          © 2026 PRK
-        </span>
-
-        <a href="#home">
-          Back to top ↑
-        </a>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-
-  <!-- =====================================================
-       STYLES
-       ===================================================== -->
 
   <style>
 
     /* =====================================================
-       SHARED SECTIONS
+       FOUNDATION
        ===================================================== */
 
-    .editorial-section,
-    .team-section,
-    .projects-section,
-    .connect-section {
-      padding: 150px 0;
-    }
+    :root {
 
-    .section-top {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      --black: #080808;
+      --white: #ffffff;
 
-      padding-bottom: 22px;
-      margin-bottom: 75px;
+      --paper: #f5f5f3;
 
-      border-bottom: 1px solid var(--line);
+      --text: #111111;
 
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      --grey: #737373;
+      --light-grey: #bdbdbd;
 
-      color: var(--grey);
-    }
+      --line: #d7d7d7;
+      --dark-line: #292929;
 
-    .section-number {
-      font-weight: 600;
-      color: var(--text);
-    }
+      --serif:
+        "Playfair Display",
+        Georgia,
+        serif;
 
-    .section-label {
-      color: var(--grey);
-    }
+      --sans:
+        "DM Sans",
+        Arial,
+        sans-serif;
 
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      --archivo:
+        "Archivo Black",
+        Arial,
+        sans-serif;
 
-      color: var(--grey);
+      --max-width: 1400px;
 
-      margin-bottom: 28px;
+      --ease:
+        cubic-bezier(.22,.61,.36,1);
     }
 
 
     /* =====================================================
-       ABOUT
+       RESET
        ===================================================== */
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-
-      gap: 100px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .section-heading h2,
-    .vision-grid h2,
-    .connect-heading h2 {
-      font-family: var(--serif);
 
-      font-size: clamp(
-        45px,
-        6vw,
-        90px
-      );
-
-      font-weight: 400;
-
-      line-height: .98;
-      letter-spacing: -.045em;
+    html {
+      scroll-behavior: smooth;
     }
 
-    h2 em {
-      font-style: italic;
+
+    body {
+
+      margin: 0;
+
+      background:
+        var(--paper);
+
+      color:
+        var(--text);
+
+      font-family:
+        var(--sans);
+
+      overflow-x:
+        hidden;
+
+      line-height:
+        1.6;
     }
 
-    .about-copy {
-      max-width: 560px;
-      padding-top: 5px;
+
+    body.welcome-active {
+      overflow: hidden;
     }
 
-    .about-copy p,
-    .vision-copy p,
-    .connect-content > p {
-      font-size: 16px;
-      line-height: 1.8;
 
-      color: #5f5f5f;
-
-      margin-bottom: 28px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .about-copy .large-copy,
-    .vision-copy .large-copy {
-      font-family: var(--serif);
 
-      font-size: 25px;
-      line-height: 1.45;
+    button {
+      font: inherit;
+    }
 
-      color: var(--text);
 
-      margin-bottom: 35px;
+    img {
+      display: block;
+      width: 100%;
+    }
+
+
+    .container {
+
+      width:
+        min(
+          calc(100% - 48px),
+          var(--max-width)
+        );
+
+      margin:
+        0 auto;
     }
 
 
     /* =====================================================
-       DARK SECTIONS
+       WELCOME SCREEN
        ===================================================== */
 
-    .dark-section {
-      background: var(--black);
-      color: var(--white);
+    .welcome-screen {
 
-      padding: 150px 0;
-    }
+      position: fixed;
 
-    .dark-top {
-      border-color: var(--dark-line);
-    }
+      inset: 0;
 
-    .dark-top .section-number {
-      color: var(--white);
-    }
-
-    .drive-intro {
-      max-width: 900px;
-      margin-bottom: 100px;
-    }
-
-    .drive-intro .eyebrow {
-      color: #777;
-    }
-
-    .drive-intro h2 {
-      font-family: var(--serif);
-
-      font-size: clamp(
-        50px,
-        7vw,
-        105px
-      );
-
-      font-weight: 400;
-
-      line-height: .98;
-      letter-spacing: -.05em;
-    }
-
-    .drive-list {
-      border-top: 1px solid var(--dark-line);
-    }
-
-    .drive-item {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-
-      gap: 35px;
-
-      padding: 38px 0;
-
-      border-bottom: 1px solid var(--dark-line);
-    }
-
-    .drive-item > span {
-      color: #666;
-      font-size: 12px;
-    }
-
-    .drive-item h3 {
-      font-family: var(--serif);
-
-      font-size: 28px;
-      font-weight: 400;
-
-      margin-bottom: 10px;
-    }
-
-    .drive-item p {
-      max-width: 600px;
-
-      color: #999;
-
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-
-    /* =====================================================
-       VISION
-       ===================================================== */
-
-    .vision-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-
-      gap: 100px;
-    }
-
-    .vision-copy {
-      padding-top: 5px;
-    }
-
-    .vision-statement {
-      margin-top: 120px;
-
-      padding: 45px 0;
-
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      z-index: 99999;
 
       display: flex;
+
       align-items: center;
-      justify-content: space-between;
 
-      gap: 40px;
-    }
+      justify-content: center;
 
-    .vision-statement span {
-      font-size: 10px;
-      letter-spacing: .14em;
-      color: var(--grey);
-    }
+      overflow: hidden;
 
-    .vision-statement p {
-      font-family: var(--serif);
+      background:
+        #050505;
 
-      font-size: clamp(
-        25px,
-        3vw,
-        42px
-      );
+      color:
+        white;
 
-      line-height: 1.1;
-      letter-spacing: -.03em;
+      opacity: 1;
 
-      text-align: right;
-    }
-
-
-    /* =====================================================
-       TEAM
-       ===================================================== */
-
-    .team-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      gap: 100px;
-
-      align-items: end;
-
-      margin-bottom: 90px;
-    }
-
-    .team-header h2 {
-      font-family: var(--serif);
-
-      font-size: clamp(
-        48px,
-        6vw,
-        85px
-      );
-
-      font-weight: 400;
-
-      line-height: .98;
-      letter-spacing: -.045em;
-    }
-
-    .team-header h2 em {
-      font-style: italic;
-    }
-
-    .team-header > p {
-      max-width: 480px;
-
-      font-size: 15px;
-      line-height: 1.8;
-
-      color: var(--grey);
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-
-      border-top: 1px solid var(--line);
-    }
-
-    .team-card {
-      min-height: 300px;
-
-      padding: 30px;
-
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      visibility: visible;
 
       transition:
-        background .4s ease,
-        transform .4s var(--ease);
-    }
-
-    .team-card:last-child {
-      border-right: none;
-    }
-
-    .team-card:hover {
-      background: #ebebeb;
-      transform: translateY(-5px);
-    }
-
-    .team-index {
-      display: block;
-
-      font-size: 11px;
-      color: var(--grey);
-
-      margin-bottom: 95px;
-    }
-
-    .team-card h3 {
-      font-family: var(--serif);
-
-      font-size: 30px;
-      font-weight: 400;
-
-      margin-bottom: 12px;
-    }
-
-    .team-card p {
-      max-width: 300px;
-
-      font-size: 13px;
-      line-height: 1.7;
-
-      color: var(--grey);
+        opacity 1s var(--ease),
+        visibility 1s var(--ease);
     }
 
 
-    /* =====================================================
-       PROJECTS
-       ===================================================== */
+    /*
+      Main blurred white/grey light
+    */
 
-    .projects-section {
-      background: #eeeeec;
+    .welcome-screen::before {
+
+      content: "";
+
+      position: absolute;
+
+      width:
+        65vw;
+
+      height:
+        65vw;
+
+      max-width:
+        850px;
+
+      max-height:
+        850px;
+
+      left:
+        50%;
+
+      top:
+        50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius:
+        50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.22) 0%,
+          rgba(220,220,220,.13) 25%,
+          rgba(150,150,150,.07) 43%,
+          transparent 70%
+        );
+
+      filter:
+        blur(75px);
+
+      pointer-events:
+        none;
     }
 
-    .projects-heading {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
 
-      gap: 100px;
+    /*
+      Secondary grey glow
+    */
 
-      align-items: end;
+    .welcome-screen::after {
 
-      margin-bottom: 90px;
+      content: "";
+
+      position: absolute;
+
+      width:
+        40vw;
+
+      height:
+        40vw;
+
+      right:
+        -12%;
+
+      bottom:
+        -15%;
+
+      border-radius:
+        50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.11),
+          transparent 70%
+        );
+
+      filter:
+        blur(90px);
+
+      pointer-events:
+        none;
     }
 
-    .projects-heading h2 {
-      font-family: var(--serif);
 
-      font-size: clamp(
-        50px,
-        7vw,
-        100px
-      );
+    .welcome-content {
 
-      font-weight: 400;
+      position:
+        relative;
 
-      line-height: .95;
-      letter-spacing: -.05em;
+      z-index:
+        2;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      text-align:
+        center;
+
+      padding:
+        30px;
+
+      animation:
+        welcomeAppear
+        1.2s
+        var(--ease)
+        both;
     }
 
-    .projects-heading h2 em {
-      font-style: italic;
+
+    @keyframes welcomeAppear {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(30px);
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+      }
     }
 
-    .projects-heading p {
-      max-width: 430px;
 
-      color: var(--grey);
+    /*
+      IMPORTANT:
+      PRK = ARCHIVO BLACK
+    */
 
-      font-size: 15px;
-      line-height: 1.8;
+    .welcome-logo {
+
+      font-family:
+        var(--archivo);
+
+      font-size:
+        clamp(
+          110px,
+          23vw,
+          310px
+        );
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        -.085em;
+
+      line-height:
+        .75;
+
+      color:
+        #ffffff;
+
+      text-shadow:
+        0 0 55px
+        rgba(255,255,255,.08);
     }
 
-    .project-list {
-      border-top: 1px solid #cfcfcf;
+
+    .welcome-subtitle {
+
+      margin-top:
+        48px;
+
+      max-width:
+        450px;
+
+      color:
+        #909090;
+
+      font-size:
+        12px;
+
+      letter-spacing:
+        .10em;
+
+      line-height:
+        1.7;
     }
 
-    .project-row {
-      display: grid;
 
-      grid-template-columns:
-        80px
-        1fr
-        100px;
+    /*
+      Welcome button
+    */
 
-      gap: 30px;
+    .welcome-button {
 
-      padding: 42px 0;
+      margin-top:
+        40px;
 
-      border-bottom: 1px solid #cfcfcf;
+      min-width:
+        235px;
+
+      padding:
+        16px 19px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        30px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.28);
+
+      border-radius:
+        999px;
+
+      background:
+        rgba(255,255,255,.07);
+
+      color:
+        white;
+
+      cursor:
+        pointer;
+
+      font-size:
+        12px;
+
+      letter-spacing:
+        .03em;
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
 
       transition:
-        padding .4s var(--ease),
-        background .4s ease;
+        background .35s ease,
+        border-color .35s ease,
+        transform .35s var(--ease);
     }
 
-    .project-row:hover {
-      padding-left: 18px;
-      padding-right: 18px;
-      background: rgba(255,255,255,.45);
+
+    .welcome-button:hover {
+
+      background:
+        rgba(255,255,255,.15);
+
+      border-color:
+        rgba(255,255,255,.55);
+
+      transform:
+        translateY(-3px);
     }
 
-    .project-number {
-      font-size: 11px;
-      color: var(--grey);
-    }
 
-    .project-category {
-      display: block;
+    .welcome-arrow {
 
-      font-size: 9px;
-      letter-spacing: .14em;
-
-      color: var(--grey);
-
-      margin-bottom: 15px;
-    }
-
-    .project-main h3 {
-      font-family: var(--serif);
-
-      font-size: clamp(
-        28px,
-        4vw,
-        48px
-      );
-
-      font-weight: 400;
-
-      line-height: 1;
-
-      margin-bottom: 14px;
-    }
-
-    .project-main p {
-      max-width: 600px;
-
-      color: #666;
-
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .project-arrow {
-      justify-self: end;
-
-      font-size: 25px;
+      font-size:
+        18px;
 
       transition:
         transform .35s var(--ease);
     }
 
-    .project-row:hover .project-arrow {
-      transform: translate(5px, -5px);
-    }
 
-    .project-status {
-      justify-self: end;
+    .welcome-button:hover
+    .welcome-arrow {
 
-      align-self: start;
-
-      font-size: 9px;
-      letter-spacing: .12em;
-
-      color: var(--grey);
+      transform:
+        translateX(5px);
     }
 
 
-    /* =====================================================
-       ASIA
-       ===================================================== */
+    /*
+      Hide welcome screen
+    */
 
-    .asia-section {
-      min-height: 90vh;
+    .welcome-screen.hide {
 
-      display: flex;
-      align-items: center;
-    }
+      opacity:
+        0;
 
-    .asia-content {
-      max-width: 1050px;
-      padding: 70px 0;
-    }
+      visibility:
+        hidden;
 
-    .asia-content .eyebrow {
-      color: #777;
-    }
-
-    .asia-content h2 {
-      font-family: var(--serif);
-
-      font-size: clamp(
-        50px,
-        8vw,
-        120px
-      );
-
-      font-weight: 400;
-
-      line-height: .94;
-      letter-spacing: -.055em;
-    }
-
-    .asia-content h2 em {
-      font-style: italic;
-    }
-
-    .asia-copy {
-      max-width: 530px;
-
-      margin-top: 55px;
-
-      color: #999;
-
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .asia-bottom {
-      display: flex;
-      justify-content: space-between;
-
-      padding-top: 25px;
-
-      border-top: 1px solid var(--dark-line);
-
-      font-size: 9px;
-      letter-spacing: .13em;
-
-      color: #666;
+      pointer-events:
+        none;
     }
 
 
     /* =====================================================
-       CONNECT
+       NAVIGATION
        ===================================================== */
 
-    .connect-grid {
-      display: grid;
+    .nav {
 
-      grid-template-columns: 1fr 1fr;
+      position:
+        fixed;
 
-      gap: 100px;
+      top:
+        0;
+
+      left:
+        0;
+
+      width:
+        100%;
+
+      z-index:
+        1000;
+
+      padding:
+        22px 0;
+
+      background:
+        rgba(245,245,243,.84);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border-bottom:
+        1px solid
+        rgba(0,0,0,.08);
     }
 
-    .connect-content {
-      max-width: 550px;
+
+    .nav-inner {
+
+      width:
+        min(
+          calc(100% - 48px),
+          var(--max-width)
+        );
+
+      margin:
+        0 auto;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
     }
 
-    .connect-links {
-      margin-top: 55px;
 
-      border-top: 1px solid var(--line);
+    .logo {
+
+      font-family:
+        var(--archivo);
+
+      font-size:
+        18px;
+
+      letter-spacing:
+        -.05em;
     }
 
-    .connect-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
 
-      gap: 20px;
+    .nav-links {
 
-      padding: 23px 0;
+      display:
+        flex;
 
-      border-bottom: 1px solid var(--line);
+      align-items:
+        center;
 
-      font-size: 13px;
+      gap:
+        32px;
+
+      font-size:
+        12px;
+
+      color:
+        #555;
+    }
+
+
+    .nav-links a {
+
+      position:
+        relative;
 
       transition:
-        padding .35s var(--ease);
-    }
-
-    .connect-link span:first-child {
-      color: var(--grey);
-    }
-
-    .connect-link span:last-child {
-      text-align: right;
-    }
-
-    .connect-link:hover {
-      padding-left: 12px;
-      padding-right: 12px;
+        color .3s ease;
     }
 
 
-    /* =====================================================
-       FINAL SECTION
-       ===================================================== */
+    .nav-links a::after {
 
-    .final-section {
-      background: var(--black);
-      color: var(--white);
+      content:
+        "";
 
-      padding: 180px 0;
+      position:
+        absolute;
+
+      left:
+        0;
+
+      bottom:
+        -6px;
+
+      width:
+        100%;
+
+      height:
+        1px;
+
+      background:
+        #111;
+
+      transform:
+        scaleX(0);
+
+      transform-origin:
+        right;
+
+      transition:
+        transform .35s var(--ease);
     }
 
-    .final-eyebrow {
-      font-size: 10px;
-      letter-spacing: .15em;
 
-      color: #666;
+    .nav-links a:hover {
 
-      margin-bottom: 55px;
+      color:
+        #111;
     }
 
-    .final-section h2 {
-      font-family: var(--serif);
 
-      font-size: clamp(
-        65px,
-        11vw,
-        165px
-      );
+    .nav-links a:hover::after {
 
-      font-weight: 400;
+      transform:
+        scaleX(1);
 
-      line-height: .88;
-      letter-spacing: -.06em;
-    }
-
-    .final-section h2 em {
-      font-style: italic;
-    }
-
-    .final-line {
-      height: 1px;
-
-      background: #292929;
-
-      margin: 80px 0 25px;
-    }
-
-    .final-copy {
-      color: #666;
-
-      font-size: 12px;
+      transform-origin:
+        left;
     }
 
 
     /* =====================================================
-       FOOTER
+       HERO
        ===================================================== */
 
-    .footer {
-      background: var(--black);
-      color: var(--white);
+    .hero {
 
-      padding: 0 0 30px;
-    }
+      min-height:
+        100vh;
 
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
+      display:
+        flex;
 
-      padding: 30px 0 70px;
+      align-items:
+        flex-end;
 
-      border-top: 1px solid var(--dark-line);
-    }
+      position:
+        relative;
 
-    .footer-brand {
-      font-size: 18px;
-      font-weight: 600;
-    }
+      overflow:
+        hidden;
 
-    .footer-top p {
-      color: #666;
+      padding-top:
+        140px;
 
-      font-size: 11px;
-      line-height: 1.6;
-
-      text-align: right;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-
-      padding-top: 22px;
-
-      border-top: 1px solid var(--dark-line);
-
-      font-size: 10px;
-
-      color: #555;
-    }
-
-    .footer-bottom a {
-      transition: color .3s ease;
-    }
-
-    .footer-bottom a:hover {
-      color: white;
+      padding-bottom:
+        70px;
     }
 
 
-    /* =====================================================
-       RESPONSIVE
-       ===================================================== */
+    .hero::before {
 
-    @media (max-width: 800px) {
+      content:
+        "";
 
-      .editorial-section,
-      .team-section,
-      .projects-section,
-      .connect-section,
-      .dark-section {
-        padding: 100px 0;
-      }
+      position:
+        absolute;
 
-      .section-top {
-        margin-bottom: 50px;
-      }
+      width:
+        700px;
 
-      .about-grid,
-      .vision-grid,
-      .connect-grid,
-      .team-header,
-      .projects-heading {
-        grid-template-columns: 1fr;
+      height:
+        700px;
 
-        gap: 50px;
-      }
+      right:
+        -250px;
 
-      .about-copy,
-      .vision-copy {
-        max-width: none;
-      }
+      top:
+        5%;
 
-      .vision-statement {
-        margin-top: 75px;
+      border-radius:
+        50%;
 
-        align-items: flex-start;
+      background:
+        radial-gradient(
+          circle,
+          rgba(0,0,0,.07),
+          transparent 68%
+        );
 
-        flex-direction: column;
-      }
+      filter:
+        blur(20px);
 
-      .vision-statement p {
-        text-align: left;
-      }
-
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .team-card {
-        min-height: auto;
-        padding: 28px;
-      }
-
-      .team-index {
-        margin-bottom: 55px;
-      }
-
-      .team-card {
-        border-right: none;
-      }
-
-      .projects-heading {
-        margin-bottom: 55px;
-      }
-
-      .project-row {
-        grid-template-columns: 35px 1fr;
-
-        gap: 15px;
-      }
-
-      .project-arrow,
-      .project-status {
-        display: none;
-      }
-
-      .asia-section {
-        min-height: 80vh;
-      }
-
-      .asia-bottom {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .connect-link {
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-
-      .connect-link span:last-child {
-        text-align: left;
-      }
-
-      .final-section {
-        padding: 120px 0;
-      }
-
-      .footer-top {
-        padding-bottom: 50px;
-      }
-
+      pointer-events:
+        none;
     }
 
 
-    @media (max-width: 500px) {
+    .hero-content {
 
-      .hero-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 7px;
-      }
+      position:
+        relative;
 
-      .section-heading h2,
-      .vision-grid h2,
-      .connect-heading h2 {
-        font-size: 48px;
-      }
+      z-index:
+        2;
 
-      .drive-intro h2 {
-        font-size: 48px;
-      }
-
-      .asia-content h2 {
-        font-size: 52px;
-      }
-
-      .final-section h2 {
-        font-size: 65px;
-      }
-
+      width:
+        100%;
     }
 
 
-    /* =====================================================
-       ACCESSIBILITY
-       ===================================================== */
+    .hero-meta {
 
-    @media (prefers-reduced-motion: reduce) {
+      display:
+        flex;
 
-      html {
-        scroll-behavior: auto;
-      }
+      align-items:
+        center;
 
-      *,
-      *::before,
-      *::after {
-        transition-duration: .01ms !important;
-      }
+      justify-content:
+        space-between;
 
+      padding-bottom:
+        24px;
+
+      margin-bottom:
+        35px;
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      font-size:
+        10px;
+
+      letter-spacing:
+        .12em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--grey);
     }
 
-  </style>
+
+    .hero-title {
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(
+          58px,
+          10vw,
+          150px
+        );
+
+      font-weight:
+        400;
+
+      line-height:
+        .91;
+
+      letter-spacing:
+        -.055em;
+
+      max-width:
+        1250px;
+
+      animation:
+        heroTitleIn
+        1.1s
+        var(--ease)
+        .15s
+        both;
+    }
 
 
+    @keyframes heroTitleIn {
 
-  <!-- =====================================================
-       JAVASCRIPT
-       ===================================================== -->
+      from {
 
-  <script>
+        opacity:
+          0;
 
-    /* =====================================================
-       SMOOTH ANCHOR NAVIGATION
-       ===================================================== */
+        transform:
+          translateY(35px);
+      }
 
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      to {
 
-      link.addEventListener("click", function(event) {
+        opacity:
+          1;
 
-        const targetId =
-          this.getAttribute("href");
+        transform:
+          translateY(0);
+      }
+    }
 
-        const target =
-          document.querySelector(targetId);
 
-        if (!target) return;
+    .hero-title em {
 
-        event.preventDefault();
+      font-style:
+        italic;
+    }
 
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+
+    .hero-bottom {
+
+      margin-top:
+        65px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        40px;
+
+      align-items:
+        end;
+    }
+
+
+    .hero-intro {
+
+      max-width:
+        500px;
+
+      font-size:
+        16px;
+
+      line-height:
+        1.75;
+
+      color:
+        #555;
+
+      animation:
+        heroBottomIn
+        1s
+        var(--ease)
+        .4s
+        both;
+    }
+
+
+    @keyframes heroBottomIn {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(20px);
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+
+    .hero-scroll {
+
+      justify-self:
+        end;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        14px;
+
+      font-size:
+        10px;
+
+      letter-spacing:
+        .14em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--grey);
+    }
+
+
+    .scroll-line {
+
+      width:
+        60px;
+
+      height:
+        1px;
+
+      background:
+        var(--grey);
+    }
+<!-- =================================
+     TEAM
+================================= -->
+
+<section class="team" id="team">
+
+  <div class="container">
+
+    <div class="section-label">
+      04 — The Team
+    </div>
+
+    <div class="team-header">
+
+      <h2 class="team-title reveal">
+        Great ideas<br>
+        need great people.
+      </h2>
+
+      <p class="team-intro reveal">
+        The future is rarely built alone. I want to
+        connect with curious people who enjoy
+        creating, experimenting and thinking beyond
+        the obvious.
+      </p>
+
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card reveal">
+
+        <div class="team-number">
+          01
+        </div>
+
+        <h3>
+          Thinkers
+        </h3>
+
+        <p>
+          People who question assumptions and look
+          for better ways to understand problems.
+        </p>
+
+      </div>
+
+
+      <div class="team-card reveal">
+
+        <div class="team-number">
+          02
+        </div>
+
+        <h3>
+          Builders
+        </h3>
+
+        <p>
+          People who turn ideas into websites,
+          applications, technology and real products.
+        </p>
+
+      </div>
+
+
+      <div class="team-card reveal">
+
+        <div class="team-number">
+          03
+        </div>
+
+        <h3>
+          Creators
+        </h3>
+
+        <p>
+          People who bring imagination, design,
+          storytelling and new perspectives.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     PROJECTS
+================================= -->
+
+<section class="projects" id="projects">
+
+  <div class="container">
+
+    <div class="section-label">
+      05 — Projects
+    </div>
+
+    <div class="projects-header">
+
+      <h2 class="projects-title reveal">
+        Ideas in<br>
+        progress.
+      </h2>
+
+      <p class="projects-description reveal">
+        Projects are experiments. Some become
+        products, some become lessons, and some
+        simply create the next idea.
+      </p>
+
+    </div>
+
+
+    <div class="project-list">
+
+
+      <!-- PROJECT 01 -->
+
+      <a
+        href="future-asia.html"
+        class="project-card reveal"
+      >
+
+        <div class="project-info">
+
+          <div class="project-meta">
+            PROJECT 01 · MEDIA · ASIA
+          </div>
+
+          <h3>
+            Future Asia Journal
+          </h3>
+
+          <p>
+            An independent editorial project exploring
+            Asia, technology, artificial intelligence,
+            geopolitics and the future.
+          </p>
+
+        </div>
+
+        <div class="project-arrow">
+          ↗
+        </div>
+
+      </a>
+
+
+      <!-- PROJECT 02 -->
+
+      <div class="project-card project-card-static reveal">
+
+        <div class="project-info">
+
+          <div class="project-meta">
+            PROJECT 02 · TECHNOLOGY
+          </div>
+
+          <h3>
+            Future Projects
+          </h3>
+
+          <p>
+            New digital products, applications and
+            technology experiments are being explored.
+          </p>
+
+        </div>
+
+        <div class="project-arrow">
+          +
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 03 -->
+
+      <div class="project-card project-card-static reveal">
+
+        <div class="project-info">
+
+          <div class="project-meta">
+            PROJECT 03 · AI
+          </div>
+
+          <h3>
+            AI & Beyond
+          </h3>
+
+          <p>
+            Exploring how artificial intelligence can
+            change the way people create, communicate
+            and solve problems.
+          </p>
+
+        </div>
+
+        <div class="project-arrow">
+          +
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     ASIA
+================================= -->
+
+<section class="asia" id="asia">
+
+  <div class="container">
+
+    <div class="section-label">
+      06 — Asia
+    </div>
+
+    <div class="asia-layout">
+
+      <div class="asia-heading reveal">
+
+        <span>Looking</span>
+        <strong>East.</strong>
+
+      </div>
+
+      <div class="asia-content reveal">
+
+        <p class="asia-lead">
+          Asia is becoming one of the most important
+          places for technology, innovation, business
+          and geopolitical change.
+        </p>
+
+        <p>
+          Understanding what happens across the
+          region means looking beyond borders and
+          thinking about how different societies,
+          technologies and ideas interact.
+        </p>
+
+        <div class="asia-facts">
+
+          <div>
+            <span>01</span>
+            <strong>Technology</strong>
+          </div>
+
+          <div>
+            <span>02</span>
+            <strong>AI</strong>
+          </div>
+
+          <div>
+            <span>03</span>
+            <strong>Geopolitics</strong>
+          </div>
+
+          <div>
+            <span>04</span>
+            <strong>Future</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     PROJECT STATEMENT
+================================= -->
+
+<section class="statement">
+
+  <div class="container">
+
+    <div class="statement-line"></div>
+
+    <p class="statement-text reveal">
+      The world is changing.
+      <br>
+      The question is what we build next.
+    </p>
+
+    <div class="statement-line"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     EXTRA RESPONSIVE STYLES
+================================= -->
+
+<style>
+
+.team {
+  padding: 180px 0;
+  background: #f5f5f5;
+  border-top: 1px solid var(--line);
+}
+
+.team-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 100px;
+  align-items: end;
+}
+
+.team-title {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  font-weight: 400;
+}
+
+.team-intro {
+  font-family: var(--sans);
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 470px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 110px;
+  border-top: 1px solid var(--line);
+}
+
+.team-card {
+  padding: 35px 35px 35px 0;
+  border-right: 1px solid var(--line);
+  margin-right: 35px;
+}
+
+.team-card:last-child {
+  border-right: none;
+}
+
+.team-number {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: #888;
+  letter-spacing: 0.1em;
+  margin-bottom: 70px;
+}
+
+.team-card h3 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.team-card p {
+  font-family: var(--sans);
+  color: #666;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  max-width: 320px;
+}
+
+
+/* PROJECTS */
+
+.projects {
+  padding: 180px 0;
+  background: #080808;
+  color: #f5f5f5;
+}
+
+.projects .section-label {
+  color: #777;
+}
+
+.projects-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 100px;
+  align-items: end;
+}
+
+.projects-title {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+  font-weight: 400;
+}
+
+.projects-description {
+  color: #999;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 470px;
+}
+
+.project-list {
+  margin-top: 110px;
+  border-top: 1px solid #292929;
+}
+
+.project-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 55px 0;
+  border-bottom: 1px solid #292929;
+  color: #f5f5f5;
+  text-decoration: none;
+  transition:
+    padding-left 0.45s ease,
+    padding-right 0.45s ease,
+    background 0.45s ease;
+}
+
+.project-card:hover {
+  padding-left: 25px;
+  padding-right: 25px;
+  background: #101010;
+}
+
+.project-info {
+  max-width: 800px;
+}
+
+.project-meta {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.project-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin-bottom: 15px;
+}
+
+.project-card p {
+  color: #999;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.project-arrow {
+  width: 55px;
+  height: 55px;
+  border: 1px solid #3a3a3a;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+.project-card:hover .project-arrow {
+  transform: rotate(45deg);
+  background: #f5f5f5;
+  color: #080808;
+}
+
+
+/* ASIA */
+
+.asia {
+  padding: 190px 0;
+  background: #e9e9e9;
+  color: #111;
+}
+
+.asia-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+.asia-heading {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+}
+
+.asia-heading span {
+  font-weight: 400;
+}
+
+.asia-heading strong {
+  font-weight: 400;
+  font-style: italic;
+  color: #777;
+}
+
+.asia-content {
+  max-width: 600px;
+  align-self: end;
+}
+
+.asia-content p {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 28px;
+}
+
+.asia-content .asia-lead {
+  font-size: 1.3rem;
+  color: #111;
+  line-height: 1.6;
+}
+
+.asia-facts {
+  margin-top: 70px;
+  border-top: 1px solid #c8c8c8;
+}
+
+.asia-facts div {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid #c8c8c8;
+  font-family: var(--sans);
+}
+
+.asia-facts span {
+  color: #888;
+  font-size: 0.7rem;
+}
+
+.asia-facts strong {
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+
+/* STATEMENT */
+
+.statement {
+  padding: 160px 0;
+  background: #080808;
+  color: #f5f5f5;
+}
+
+.statement-line {
+  height: 1px;
+  background: #292929;
+}
+
+.statement-text {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  padding: 100px 0;
+  max-width: 1100px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .team,
+  .projects,
+  .asia,
+  .statement {
+    padding: 110px 0;
+  }
+
+  .team-header,
+  .projects-header,
+  .asia-layout {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    margin-top: 70px;
+  }
+
+  .team-card {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    margin-right: 0;
+    padding: 30px 0;
+  }
+
+  .team-card:last-child {
+    border-bottom: none;
+  }
+
+  .team-number {
+    margin-bottom: 40px;
+  }
+
+  .project-list {
+    margin-top: 70px;
+  }
+
+  .project-card {
+    padding: 40px 0;
+    gap: 20px;
+  }
+
+  .project-card:hover {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .project-arrow {
+    width: 45px;
+    height: 45px;
+  }
+
+  .asia-heading {
+    font-size: clamp(4.5rem, 22vw, 8rem);
+  }
+
+  .statement-text {
+    padding: 70px 0;
+  }
+
+}
+
+</style>
+<!-- =================================
+     CONNECT
+================================= -->
+
+<section class="connect" id="connect">
+
+  <div class="container">
+
+    <div class="section-label">
+      07 — Connect
+    </div>
+
+    <div class="connect-header">
+
+      <h2 class="connect-title reveal">
+        Let's stay<br>
+        connected.
+      </h2>
+
+      <p class="connect-text reveal">
+        Ideas become more interesting when they
+        are shared. If you want to talk, collaborate,
+        build something or simply say hello, connect
+        with PRK.
+      </p>
+
+    </div>
+
+
+    <div class="connect-links">
+
+      <a href="#" class="connect-link reveal">
+        <span>Instagram</span>
+        <span>↗</span>
+      </a>
+
+      <a href="#" class="connect-link reveal">
+        <span>Telegram</span>
+        <span>↗</span>
+      </a>
+
+      <a href="#" class="connect-link reveal">
+        <span>GitHub</span>
+        <span>↗</span>
+      </a>
+
+      <a href="mailto:hello@example.com" class="connect-link reveal">
+        <span>Email</span>
+        <span>↗</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     FINAL
+================================= -->
+
+<section class="final-section">
+
+  <div class="final-glow"></div>
+
+  <div class="container final-inner">
+
+    <div class="final-small">
+      PRK · ENDLESS POSSIBILITY
+    </div>
+
+    <h2 class="final-title reveal">
+      Keep asking.
+      <br>
+      Keep building.
+    </h2>
+
+    <div class="final-bottom">
+
+      <p>
+        Curiosity today.<br>
+        Possibilities tomorrow.
+      </p>
+
+      <a href="#home" class="back-top">
+        BACK TO TOP
+        <span>↑</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-top">
+
+      <div class="footer-logo">
+        PRK
+      </div>
+
+      <div class="footer-description">
+        Personal space for curiosity,
+        technology and future ideas.
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 PRK
+      </span>
+
+      <span>
+        MADE WITH CURIOSITY
+      </span>
+
+      <a href="#home">
+        ↑ TOP
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =================================
+     FINAL PAGE STYLES
+================================= -->
+
+<style>
+
+.connect {
+  padding: 180px 0 140px;
+  background: #f5f5f5;
+  border-top: 1px solid var(--line);
+}
+
+.connect-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 100px;
+  align-items: end;
+}
+
+.connect-title {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  font-weight: 400;
+}
+
+.connect-text {
+  font-family: var(--sans);
+  color: #666;
+  line-height: 1.8;
+  max-width: 450px;
+}
+
+.connect-links {
+  margin-top: 110px;
+  border-top: 1px solid var(--line);
+}
+
+.connect-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+  color: #111;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 1rem;
+  transition:
+    padding-left 0.4s ease,
+    padding-right 0.4s ease,
+    background 0.4s ease;
+}
+
+.connect-link:hover {
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #eaeaea;
+}
+
+.connect-link span:last-child {
+  font-size: 1.2rem;
+  transition: transform 0.35s ease;
+}
+
+.connect-link:hover span:last-child {
+  transform: translate(4px, -4px);
+}
+
+
+/* FINAL */
+
+.final-section {
+  position: relative;
+  overflow: hidden;
+  padding: 190px 0 100px;
+  background: #080808;
+  color: #f5f5f5;
+}
+
+.final-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.07) 0%,
+    rgba(255,255,255,0.025) 35%,
+    transparent 70%
+  );
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+.final-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.final-small {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: #666;
+  margin-bottom: 60px;
+}
+
+.final-title {
+  font-family: var(--serif);
+  font-size: clamp(4.5rem, 10vw, 10rem);
+  line-height: 0.83;
+  letter-spacing: -0.075em;
+  font-weight: 400;
+  max-width: 1100px;
+}
+
+.final-bottom {
+  margin-top: 150px;
+  padding-top: 30px;
+  border-top: 1px solid #292929;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.final-bottom p {
+  margin: 0;
+  color: #777;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.back-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+.back-top span {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #3a3a3a;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+.back-top:hover span {
+  transform: translateY(-5px);
+  background: #f5f5f5;
+  color: #080808;
+}
+
+
+/* FOOTER */
+
+.footer {
+  background: #080808;
+  color: #f5f5f5;
+  padding: 0 0 30px;
+}
+
+.footer-top {
+  border-top: 1px solid #292929;
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.footer-logo {
+  font-family: var(--archivo);
+  font-size: 2.5rem;
+  letter-spacing: -0.05em;
+}
+
+.footer-description {
+  max-width: 300px;
+  color: #666;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.footer-bottom {
+  padding-top: 25px;
+  border-top: 1px solid #1f1f1f;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #555;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+}
+
+.footer-bottom a {
+  color: #777;
+  text-decoration: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .connect {
+    padding: 110px 0;
+  }
+
+  .connect-header {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .connect-links {
+    margin-top: 70px;
+  }
+
+  .final-section {
+    padding: 120px 0 70px;
+  }
+
+  .final-bottom {
+    margin-top: 100px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+}
+
+</style>
+
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
+
+<script>
+
+/* =================================
+   WELCOME SCREEN
+================================= */
+
+const welcomeScreen =
+  document.getElementById("welcomeScreen");
+
+const welcomeButton =
+  document.getElementById("welcomeButton");
+
+const body =
+  document.body;
+
+
+welcomeButton.addEventListener("click", function () {
+
+  welcomeScreen.classList.add("welcome-hide");
+
+  body.classList.remove("welcome-active");
+
+});
+
+
+/* =================================
+   SCROLL REVEAL
+================================= */
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+  new IntersectionObserver(
+    function(entries) {
+
+      entries.forEach(function(entry) {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("visible");
+
+          revealObserver.unobserve(entry.target);
+
+        }
 
       });
 
-    });
+    },
+    {
+      threshold: 0.12
+    }
+  );
 
 
+revealElements.forEach(function(element) {
 
-    /* =====================================================
-       NAVIGATION SCROLL EFFECT
-       ===================================================== */
+  revealObserver.observe(element);
 
-    let lastScroll = 0;
-
-    const nav =
-      document.querySelector(".nav");
-
-    window.addEventListener(
-      "scroll",
-      () => {
-
-        const currentScroll =
-          window.scrollY;
-
-        if (currentScroll > 80) {
-
-          nav.style.boxShadow =
-            "0 8px 30px rgba(0,0,0,.05)";
-
-        } else {
-
-          nav.style.boxShadow =
-            "none";
-
-        }
-
-        lastScroll = currentScroll;
-
-      },
-      { passive: true }
-    );
+});
 
 
+/* =================================
+   NAVIGATION BACKGROUND
+================================= */
 
-    /* =====================================================
-       SUBTLE HERO DEPTH
-       ===================================================== */
+const nav =
+  document.querySelector(".nav");
 
-    const heroTitle =
-      document.querySelector(".hero-title");
 
-    window.addEventListener(
-      "scroll",
-      () => {
+window.addEventListener("scroll", function() {
 
-        if (!heroTitle) return;
+  if (window.scrollY > 40) {
 
-        const scroll =
-          window.scrollY;
+    nav.classList.add("nav-scrolled");
 
-        if (scroll < window.innerHeight) {
+  } else {
 
-          heroTitle.style.transform =
-            `translateY(${scroll * .08}px)`;
+    nav.classList.remove("nav-scrolled");
 
-        }
+  }
 
-      },
-      { passive: true }
-    );
+});
 
-  </script>
 
+/* =================================
+   WELCOME SCREEN KEYBOARD SUPPORT
+================================= */
+
+document.addEventListener("keydown", function(event) {
+
+  if (
+    event.key === "Enter" ||
+    event.key === " "
+  ) {
+
+    if (
+      !welcomeScreen.classList.contains("welcome-hide")
+    ) {
+
+      welcomeScreen.classList.add("welcome-hide");
+
+      body.classList.remove("welcome-active");
+
+    }
+
+  }
+
+});
+
+</script>
+
+
+<!-- =================================
+     FINAL NAV STYLES
+================================= -->
+
+<style>
+
+.nav-scrolled {
+  background: rgba(245,245,247,0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom-color: #cfcfd2;
+}
+
+.welcome-hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.03);
+}
+
+.welcome-screen {
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease,
+    transform 1.1s cubic-bezier(.2,.7,.2,1);
+}
+
+</style>
+
+
+</main>
 
 </body>
 </html>
