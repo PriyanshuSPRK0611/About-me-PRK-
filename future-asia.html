@@ -2,138 +2,693 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>We'll Be Back Within 24 Hours</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Asia Journal — The definitive record of Asia's rise</title>
+<meta name="description" content="Future Asia Journal is a newsroom for the world's most consequential continent. Every story verified twice — before it publishes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    background:#000;color:#f5f5f7;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    display:flex;align-items:center;justify-content:center;
-    overflow:hidden;padding:2rem;text-align:center;
-  }
-  body::before{content:"";position:fixed;inset:-30%;
-    background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.08),transparent 60%);
-    animation:drift 16s ease-in-out infinite alternate}
-  @keyframes drift{from{transform:translateY(-2%)}to{transform:translateY(3%) scale(1.05)}}
-  body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;
-    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  ::selection{background:#f5f5f7;color:#000}
+/* ============ Foundation ============ */
+:root{
+  --ease: cubic-bezier(.22,1,.36,1);
+  --paper:#faf9f6;
+  --paper-2:#f2f0ea;
+  --ink:#171512;
+  --ink-soft:#3d3a35;
+  --ink-mute:#6f6a63;
+  --ink-faint:#96908a;
+  --coal:#0f0e0c;
+  --snow:#f5f3ee;
+  --snow-mute:#a29c93;
+  --red:#c02b1e;
+  --red-deep:#a32419;
+  --red-bright:#e0472e;
+  --line:rgba(23,21,18,.12);
+  --line-inv:rgba(245,243,238,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{
+  font-family:"Hanken Grotesk",-apple-system,"Helvetica Neue",sans-serif;
+  font-size:17px;line-height:1.55;color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;-webkit-user-drag:none;user-select:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit}
+::selection{background:rgba(192,43,30,.18)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+section{position:relative}
+[id]{scroll-margin-top:72px}
 
-  .stage{position:relative;z-index:1;max-width:640px}
-  .rise{opacity:0;animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}
-  @keyframes rise{from{opacity:0;transform:translateY(26px);filter:blur(12px)}to{opacity:1;transform:none;filter:none}}
+/* ============ Type ============ */
+.eyebrow{
+  font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:22px;
+}
+.dark .eyebrow{color:var(--snow-mute)}
+.kicker{color:var(--red)}
+.h1{
+  font-family:"Fraunces",Georgia,serif;font-weight:560;
+  font-size:clamp(2.9rem,5.6vw,5.4rem);
+  letter-spacing:-.02em;line-height:1.02;
+}
+.h2{
+  font-family:"Fraunces",Georgia,serif;font-weight:560;
+  font-size:clamp(2.1rem,4.2vw,3.7rem);
+  letter-spacing:-.018em;line-height:1.06;
+}
+.h1 em,.h2 em{font-style:italic;color:var(--red);font-weight:500}
+.dark .h1 em,.dark .h2 em{color:var(--red-bright)}
+.lede{font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--ink-mute);line-height:1.6}
+.dark .lede{color:var(--snow-mute)}
 
-  .eyebrow{font-size:.68rem;letter-spacing:.42em;color:#86868b;margin-bottom:1.4rem}
-  h1{font-size:clamp(2.6rem,7.5vw,4.6rem);line-height:1.05;font-weight:600;letter-spacing:-.03em}
-  .sub{color:#86868b;margin:1.2rem auto 0;font-size:1.02rem;line-height:1.65;max-width:44ch}
+/* ============ Buttons & links ============ */
+.btn-pill{
+  display:inline-block;background:var(--red);color:#fff;
+  font-size:16px;font-weight:500;padding:13px 28px;border-radius:999px;
+  transition:background .25s ease,transform .25s var(--ease);
+}
+.btn-pill:hover{background:var(--red-deep);transform:scale(1.03)}
+.btn-pill:active{transform:scale(.97)}
+.tlink{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:16.5px;font-weight:600;color:var(--red);
+  transition:gap .25s var(--ease);
+}
+.tlink:hover{gap:11px}
+.dark .tlink{color:var(--red-bright)}
 
-  .clock{position:relative;width:min(300px,78vw);margin:3rem auto 0}
-  .clock svg{width:100%;height:auto;display:block;overflow:visible}
-  .track{fill:none;stroke:rgba(255,255,255,.1);stroke-width:3}
-  #arc{fill:none;stroke:#f5f5f7;stroke-width:3;stroke-linecap:round;
-       transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .8s linear}
-  #head{fill:#f5f5f7;filter:drop-shadow(0 0 6px rgba(255,255,255,.9))}
-  .time{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem}
-  .digits{font-size:clamp(1.5rem,5.5vw,2rem);font-weight:600;font-variant-numeric:tabular-nums}
-  .digits span{display:inline-block;min-width:2ch}
-  .digits span.tick{animation:tick .45s cubic-bezier(.22,1,.36,1)}
-  @keyframes tick{from{opacity:0;transform:translateY(-8px);filter:blur(4px)}}
-  .digits i{font-style:normal;color:#48484a;animation:blink 1s ease-in-out infinite}
-  @keyframes blink{50%{opacity:.15}}
-  .tlabel{font-size:.6rem;letter-spacing:.34em;color:#86868b;text-transform:uppercase}
+/* ============ Reveal ============ */
+[data-reveal]{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .95s var(--ease),transform .95s var(--ease);
+  transition-delay:var(--d,0s);
+}
+[data-reveal].in{opacity:1;transform:none}
+.h-anim{
+  opacity:0;transform:translateY(30px);filter:blur(12px);
+  transition:opacity 1.05s var(--ease),transform 1.05s var(--ease),filter 1.05s var(--ease);
+  transition-delay:var(--d,0s);
+}
+body.ready .h-anim{opacity:1;transform:none;filter:none}
 
-  .q{margin-top:2.6rem;min-height:1.5em;color:#a1a1a6;font-size:.95rem;
-     transition:opacity .45s ease,filter .45s ease,transform .45s ease}
-  .q.hide{opacity:0;filter:blur(6px);transform:translateY(-6px)}
+/* ============ Nav ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,249,246,.72);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid transparent;
+  transition:transform .45s var(--ease),background .4s ease,border-color .4s ease,color .4s ease;
+  color:var(--ink);
+}
+.nav.scrolled{border-color:var(--line)}
+.nav.nav-dark{background:rgba(15,14,12,.72);color:var(--snow)}
+.nav.nav-dark.scrolled{border-color:var(--line-inv)}
+.nav.nav-hidden{transform:translateY(-100%)}
+.nav-in{width:min(1180px,calc(100% - 48px));margin-inline:auto;height:58px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-brand{
+  font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(.98rem,2.4vw,1.08rem);
+  letter-spacing:-.01em;white-space:nowrap;
+}
+.nav-brand .amp{font-style:italic;color:var(--red)}
+.nav-dark .nav-brand .amp{color:var(--red-bright)}
+.nav-links{display:flex;gap:30px}
+.nav-links a{font-size:13.5px;font-weight:500;opacity:.82;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{
+  font-size:13px;font-weight:600;padding:7px 16px;border-radius:999px;
+  background:var(--red);color:#fff;white-space:nowrap;transition:background .25s;
+}
+.nav-cta:hover{background:var(--red-deep)}
 
-  footer{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;
-    gap:1rem;padding:1rem 1.6rem;border-top:1px solid rgba(255,255,255,.12);
-    font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#86868b;z-index:1}
-  .status{display:flex;align-items:center;gap:.55rem}
-  .dot{width:6px;height:6px;border-radius:50%;background:#f5f5f7;animation:pulse 2s ease-in-out infinite}
-  @keyframes pulse{50%{opacity:.3}}
+/* ============ Hero ============ */
+.hero{background:var(--paper);padding:clamp(120px,14vh,160px) 0 64px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,80px);align-items:center}
+.hero-copy .h1{max-width:12ch}
+.hero-sub{max-width:52ch;margin-top:28px;color:var(--ink-mute);font-size:clamp(1.02rem,1.4vw,1.18rem);line-height:1.6}
+.hero-ctas{display:flex;align-items:center;gap:30px;margin-top:36px;flex-wrap:wrap}
+.trust-line{
+  display:flex;align-items:center;gap:10px;margin-top:34px;
+  font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--ink-soft);
+}
+.trust-line svg{flex:none}
+.hero-vis{perspective:1400px;display:flex;justify-content:center}
 
-  @media(max-width:560px){footer{flex-direction:column;gap:.5rem;text-align:center}}
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rise{opacity:1}}
+/* The newspaper stack */
+.stack{
+  position:relative;width:min(430px,86vw);aspect-ratio:3/4;
+  transform-style:preserve-3d;will-change:transform;
+}
+.page{
+  position:absolute;inset:0;background:#fdfcf9;
+  border:1px solid rgba(23,21,18,.16);border-radius:6px;
+  padding:clamp(14px,3vw,24px);
+  display:flex;flex-direction:column;gap:clamp(8px,1.6vw,14px);
+  overflow:hidden;
+  box-shadow:0 34px 60px -20px rgba(23,21,18,.34),0 6px 16px rgba(23,21,18,.1);
+}
+.p-mast{
+  font-family:"Fraunces",Georgia,serif;font-weight:600;text-align:center;
+  text-transform:uppercase;letter-spacing:.14em;font-size:clamp(.7rem,1.5vw,.82rem);
+}
+.p-dateline{
+  font-size:clamp(.52rem,1vw,.58rem);font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);text-align:center;
+  padding:4px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+.p-photo{flex:none;aspect-ratio:16/9;overflow:hidden;background:#e8e4db;border-radius:2px}
+.p-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.p-head{
+  font-family:"Fraunces",Georgia,serif;font-weight:600;
+  font-size:clamp(1rem,2vw,1.35rem);line-height:1.12;letter-spacing:-.01em;
+}
+.p-body{
+  flex:1;border-radius:1px;
+  background:repeating-linear-gradient(180deg,rgba(23,21,18,.24) 0 2px,transparent 2px 8px);
+}
+.pg-front{transform:translateZ(46px)}
+.pg-mid{transform:translate3d(-8%,4%,0) rotate(-4.5deg);box-shadow:0 22px 44px -18px rgba(23,21,18,.28)}
+.pg-back{transform:translate3d(9%,7%,-46px) rotate(4.5deg);box-shadow:0 16px 34px -14px rgba(23,21,18,.22)}
+.stamp{
+  position:absolute;top:19%;right:5%;z-index:3;
+  font-size:clamp(.55rem,1.2vw,.68rem);font-weight:700;letter-spacing:.2em;
+  color:var(--red);border:2px solid var(--red);outline:1px solid var(--red);outline-offset:2px;
+  padding:6px 12px;border-radius:4px;transform:rotate(-9deg);
+  background:rgba(253,252,249,.66);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+
+/* ============ Ticker ============ */
+.ticker{
+  background:var(--coal);color:var(--snow);overflow:hidden;
+  padding:13px 0;white-space:nowrap;
+}
+.ticker-track{display:flex;width:max-content;animation:ticker 34s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes ticker{to{transform:translateX(-50%)}}
+.ticker-set{display:flex;align-items:center;gap:44px;padding-right:44px}
+.tk{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.tk i{font-style:italic;font-family:"Fraunces",Georgia,serif;letter-spacing:.03em;text-transform:none;font-weight:500;color:var(--snow-mute)}
+.tk-dot{width:5px;height:5px;border-radius:50%;background:var(--red-bright);flex:none}
+
+/* ============ Manifesto ============ */
+.manifesto{background:var(--paper);height:240vh}
+.manifesto-sticky{position:sticky;top:0;height:100svh;display:flex;align-items:center}
+.manifesto-inner{width:min(960px,calc(100% - 48px));margin-inline:auto}
+.manifesto-text{
+  font-family:"Fraunces",Georgia,serif;font-weight:520;
+  font-size:clamp(1.7rem,3.8vw,3.2rem);
+  letter-spacing:-.014em;line-height:1.28;
+}
+.mw{color:rgba(23,21,18,.14);transition:color .35s ease}
+.mw.on{color:var(--ink)}
+.manifesto-serif{
+  font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:500;
+  font-size:clamp(1.5rem,2.8vw,2.4rem);letter-spacing:-.01em;
+  margin-top:44px;color:var(--red);
+  opacity:0;transform:translateY(24px);will-change:opacity,transform;
+}
+
+/* ============ Coverage ============ */
+.coverage{background:var(--paper-2);padding:clamp(96px,12vw,168px) 0}
+.cov-head{margin-bottom:64px;max-width:680px}
+.cov-head .lede{margin-top:22px}
+.cov-grid{display:grid;grid-template-columns:1fr .85fr;gap:clamp(48px,7vw,110px);align-items:start}
+.cov-panel{position:sticky;top:110px}
+.cov-frame{
+  position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;background:#dcd8cf;
+}
+.cov-frame img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.05);
+  opacity:0;transform:scale(1.07);
+  transition:opacity .8s ease,transform 1.2s var(--ease);
+}
+.cov-frame img.show{opacity:1;transform:scale(1)}
+.cov-cap{
+  position:absolute;left:16px;bottom:16px;z-index:2;
+  font-size:13px;font-weight:500;color:var(--ink);
+  background:rgba(250,249,246,.78);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  padding:8px 15px;border-radius:999px;
+}
+.cov-list{display:flex;flex-direction:column}
+.cov-row{
+  width:100%;text-align:left;padding:28px 0;
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:58px 1fr;gap:6px 20px;align-items:baseline;
+}
+.cov-list .cov-row:last-child{border-bottom:1px solid var(--line)}
+.cov-num{
+  font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:500;
+  font-size:15px;color:var(--ink-faint);transition:color .3s;
+}
+.cov-title{
+  font-family:"Fraunces",Georgia,serif;font-weight:560;
+  font-size:clamp(1.55rem,2.7vw,2.4rem);letter-spacing:-.015em;line-height:1.08;
+  transition:transform .5s var(--ease);
+}
+.cov-desc{grid-column:2;font-size:15px;color:var(--ink-mute);line-height:1.55;max-width:52ch}
+.cov-row:hover .cov-title,.cov-row.active .cov-title{transform:translateX(10px)}
+.cov-row:hover .cov-num,.cov-row.active .cov-num{color:var(--red)}
+.cov-row.active .cov-title{color:var(--ink)}
+.cov-note{margin-top:28px;font-size:13.5px;color:var(--ink-faint)}
+
+/* ============ Why Asia ============ */
+.why{background:var(--coal);color:var(--snow);padding:clamp(100px,13vw,180px) 0}
+.why-head{max-width:760px}
+.why-head .lede{margin-top:26px}
+.why-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,4vw,48px);
+  margin-top:clamp(64px,8vw,100px);
+}
+.stat{border-top:1px solid var(--line-inv);padding-top:24px}
+.stat-num{
+  font-family:"Fraunces",Georgia,serif;font-weight:560;
+  font-size:clamp(2.7rem,4.6vw,4.3rem);line-height:1;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+}
+.stat-num .unit{font-style:italic;color:var(--red-bright);font-weight:500;margin-left:2px}
+.stat-label{margin-top:14px;font-size:14.5px;line-height:1.5;color:var(--snow-mute)}
+.why-pillars{margin-top:clamp(72px,9vw,120px)}
+.pillar{
+  display:grid;grid-template-columns:170px 1fr;gap:14px 40px;
+  padding:clamp(30px,4vw,44px) 0;border-top:1px solid var(--line-inv);
+}
+.pillar-tag{
+  font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--red-bright);padding-top:8px;
+}
+.pillar h3{
+  font-family:"Fraunces",Georgia,serif;font-weight:560;
+  font-size:clamp(1.35rem,2.2vw,1.85rem);letter-spacing:-.01em;margin-bottom:12px;
+}
+.pillar p{color:var(--snow-mute);max-width:62ch;line-height:1.65}
+.why-note{margin-top:40px;font-size:12.5px;color:rgba(162,156,147,.75)}
+
+/* ============ The Standard ============ */
+.standard{background:var(--paper);padding:clamp(96px,12vw,168px) 0}
+.std-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,110px);align-items:start}
+.std-copy{position:sticky;top:110px}
+.std-copy .lede{margin-top:26px}
+.ck-line{display:flex;align-items:center;gap:16px;margin-top:34px}
+.ck{flex:none}
+.ck path{stroke:var(--red);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset 1s var(--ease) .25s}
+.ck + .ck path{transition-delay:.55s}
+[data-reveal].in .ck path{stroke-dashoffset:0}
+.ck-text{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--ink-soft)}
+.principles{margin-top:52px;border-top:1px solid var(--line)}
+.principle{padding:26px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:8px 28px}
+.principle-tag{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);padding-top:5px}
+.principle p{font-size:15.5px;color:var(--ink-mute);line-height:1.6;max-width:48ch}
+.principle p strong{color:var(--ink);font-weight:600}
+
+/* Verification demo */
+.demo{
+  background:#fdfcf9;border:1px solid var(--line);border-radius:26px;
+  padding:clamp(26px,3.5vw,42px);position:relative;
+  box-shadow:0 30px 70px -30px rgba(23,21,18,.22);
+}
+.demo-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:26px}
+.demo-k{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+.draft{border:1px dashed rgba(23,21,18,.25);border-radius:14px;padding:22px;position:relative;background:var(--paper)}
+.draft-tag{
+  position:absolute;top:-11px;left:18px;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);background:var(--paper);padding:0 8px;
+  transition:color .3s;
+}
+.draft.published .draft-tag{color:var(--red)}
+.draft-head{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.3rem;line-height:1.2;letter-spacing:-.01em}
+.draft-by{font-size:12.5px;color:var(--ink-faint);margin-top:8px}
+.draft-body{
+  margin-top:16px;height:58px;border-radius:1px;
+  background:repeating-linear-gradient(180deg,rgba(23,21,18,.18) 0 2px,transparent 2px 9px);
+}
+.stages{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+.stage{display:flex;align-items:center;gap:14px;font-size:15px;color:var(--ink-faint);transition:color .35s}
+.stage-dot{
+  width:22px;height:22px;border-radius:50%;flex:none;
+  border:1.5px solid rgba(23,21,18,.28);position:relative;transition:all .35s ease;
+}
+.stage.done{color:var(--ink)}
+.stage.done .stage-dot{border-color:var(--red);background:var(--red)}
+.stage.done .stage-dot::after{
+  content:"";position:absolute;inset:0;
+  background:center/10px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.5l2.5 2.5 4.5-5.5' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.demo-actions{margin-top:30px}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:14.5px;font-weight:600;color:var(--ink);
+  border:1.5px solid var(--ink);border-radius:999px;padding:11px 24px;
+  transition:all .25s var(--ease);
+}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-ghost:disabled{opacity:.45;cursor:default;transform:none}
+.v-stamp{
+  position:absolute;top:46px;right:26px;z-index:5;
+  font-size:13px;font-weight:700;letter-spacing:.22em;color:var(--red);
+  border:2.5px solid var(--red);outline:1.5px solid var(--red);outline-offset:3px;
+  padding:9px 16px;border-radius:5px;transform:rotate(-8deg) scale(1.5);
+  background:rgba(253,252,249,.8);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease,transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.v-stamp.show{opacity:1;transform:rotate(-8deg) scale(1)}
+
+/* ============ Founder ============ */
+.founder{background:var(--paper-2);padding:clamp(96px,12vw,168px) 0;border-top:1px solid var(--line)}
+.founder-inner{width:min(760px,calc(100% - 48px));margin-inline:auto}
+.founder-rule{width:56px;height:3px;background:var(--red);margin-bottom:34px}
+.founder-letter{
+  font-family:"Fraunces",Georgia,serif;font-weight:420;
+  font-size:clamp(1.2rem,1.9vw,1.5rem);line-height:1.65;color:var(--ink-soft);
+}
+.founder-letter p + p{margin-top:26px}
+.founder-letter p:first-of-type::first-letter{
+  float:left;font-size:4.1em;line-height:.82;padding:6px 14px 0 0;
+  color:var(--red);font-weight:600;
+}
+.sig{margin-top:44px;text-align:right}
+.sig-name{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:1.45rem;color:var(--ink)}
+.sig-role{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:6px}
+
+/* ============ Finale ============ */
+.finale{background:var(--coal);color:var(--snow);text-align:center;padding:clamp(110px,14vw,190px) 0}
+.finale .h2{max-width:16ch;margin-inline:auto}
+.finale-sub{color:var(--snow-mute);margin-top:24px;font-size:1.05rem;max-width:52ch;margin-inline:auto}
+.sub-form{
+  display:flex;gap:8px;max-width:540px;margin:42px auto 0;
+  background:rgba(255,255,255,.06);border:1px solid var(--line-inv);
+  border-radius:999px;padding:7px 7px 7px 24px;
+  transition:border-color .3s;
+}
+.sub-form.err{border-color:var(--red-bright)}
+.sub-form input{
+  flex:1;min-width:0;background:none;border:none;outline:none;
+  color:var(--snow);font:inherit;font-size:15.5px;
+}
+.sub-form input::placeholder{color:rgba(162,156,147,.7)}
+.sub-err{margin-top:14px;font-size:13.5px;color:var(--red-bright);min-height:20px}
+.finale-micro{margin-top:26px;font-size:13px;color:rgba(162,156,147,.8)}
+.finale-micro i{font-family:"Fraunces",Georgia,serif;font-size:13.5px}
+
+/* ============ Footer ============ */
+footer{background:var(--paper-2);border-top:1px solid var(--line);padding:40px 0}
+.foot-in{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.foot-brand{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:17px}
+.foot-motto{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:13.5px;color:var(--ink-faint)}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap}
+.foot-links a{font-size:12.5px;font-weight:500;color:var(--ink-mute);transition:color .2s}
+.foot-links a:hover{color:var(--ink)}
+.foot-note{width:100%;font-size:12px;color:var(--ink-faint)}
+
+/* ============ Toast ============ */
+.toast{
+  position:fixed;left:50%;bottom:30px;z-index:200;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(23,21,18,.94);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  color:var(--snow);font-size:14px;font-weight:500;
+  padding:13px 22px;border-radius:999px;white-space:nowrap;max-width:calc(100vw - 32px);
+  transform:translate(-50%,90px);opacity:0;
+  transition:transform .55s var(--ease),opacity .45s ease;
+  pointer-events:none;
+}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.toast svg{flex:none}
+
+/* ============ Responsive ============ */
+@media (max-width:960px){
+  .nav-links{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-vis{margin-top:56px}
+  .stack{width:min(360px,82vw)}
+  .manifesto{height:auto;padding:130px 0}
+  .manifesto-sticky{position:static;height:auto}
+  .cov-grid{grid-template-columns:1fr}
+  .cov-panel{position:static;order:-1;margin-bottom:48px}
+  .cov-frame{aspect-ratio:4/3}
+  .why-stats{grid-template-columns:repeat(2,1fr)}
+  .pillar{grid-template-columns:1fr}
+  .std-grid{grid-template-columns:1fr}
+  .std-copy{position:static}
+  .principle{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .sub-form{flex-direction:column;border-radius:24px;padding:8px}
+  .sub-form input{padding:12px 14px}
+  .v-stamp{top:34px;right:14px}
+}
+
+
+/* ============ Reduced motion ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+  [data-reveal],.h-anim{opacity:1;transform:none;filter:none}
+  .mw{color:var(--ink)}
+  .manifesto-serif{opacity:1;transform:none}
+  .ck path{stroke-dashoffset:0}
+  .cov-frame img.show{transform:none}
+}
 </style>
 </head>
 <body>
 
-<div class="stage">
-  <p class="eyebrow rise" style="animation-delay:.1s">Under Construction</p>
-  <h1 class="rise" style="animation-delay:.22s">We'll be back<br>within 24 hours.</h1>
-  <p class="sub rise" style="animation-delay:.36s">We are putting the finishing touches on something better.
-     We will come back soon — it will be worth the wait.</p>
 
-  <div class="clock rise" style="animation-delay:.52s">
-    <svg viewBox="0 0 280 280" aria-hidden="true">
-      <circle class="track" cx="140" cy="140" r="128"/>
-      <circle id="arc" cx="140" cy="140" r="128"/>
-      <circle id="head" r="5" cx="140" cy="12"/>
-    </svg>
-    <div class="time">
-      <div class="digits"><span id="hh">24</span><i>:</i><span id="mm">00</span><i>:</i><span id="ss">00</span></div>
-      <span class="tlabel">Until we return</span>
+<!-- ================= Nav ================= -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="#top">Future <span class="amp">Asia</span> Journal</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#coverage">Coverage</a>
+      <a href="#why-asia">Why Asia</a>
+      <a href="#standard">Our Standard</a>
+      <a href="#founder">The Founder</a>
+    </nav>
+    <a class="nav-cta" href="#subscribe">Early access</a>
+  </div>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow h-anim" style="--d:.05s"><span class="kicker">Launching soon</span> &mdash; a new standard of journalism</p>
+      <h1 class="h1 h-anim" style="--d:.15s">The story of this century is being <em>written</em> in Asia.</h1>
+      <p class="hero-sub h-anim" style="--d:.28s">Future Asia Journal is a newsroom for the world&rsquo;s most consequential continent &mdash; its technology, politics, markets, people, and culture. Reported where it happens, sourced so you can check it, and verified twice before it ever asks for your trust.</p>
+      <div class="hero-ctas h-anim" style="--d:.4s">
+        <a class="btn-pill" href="#subscribe">Get early access</a>
+        <a class="tlink" href="#standard">Read our standard
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="trust-line h-anim" style="--d:.5s">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="8.5" cy="8.5" r="7.5" stroke="#c02b1e" stroke-width="1.5"/><path d="M5.3 8.7l2.1 2.1 4.2-4.6" stroke="#c02b1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Every story verified twice &mdash; before it publishes. Always.
+      </p>
+    </div>
+
+    <div class="hero-vis h-anim" style="--d:.45s" id="heroVis">
+      <div class="stack" id="heroStack" aria-hidden="true">
+        <div class="page pg-back">
+          <p class="p-mast">Future Asia Journal</p>
+          <p class="p-dateline">The definitive record of Asia&rsquo;s rise</p>
+          <figure class="p-photo"><img src="https://picsum.photos/seed/faj-c/800/450.jpg" alt="" loading="eager"></figure>
+          <p class="p-head">The century&rsquo;s story starts here</p>
+          <div class="p-body"></div>
+        </div>
+        <div class="page pg-mid">
+          <p class="p-mast">Future Asia Journal</p>
+          <p class="p-dateline">The definitive record of Asia&rsquo;s rise</p>
+          <figure class="p-photo"><img src="https://picsum.photos/seed/faj-b/800/450.jpg" alt="" loading="eager"></figure>
+          <p class="p-head">Half of humanity. One definitive record.</p>
+          <div class="p-body"></div>
+        </div>
+        <div class="page pg-front">
+          <p class="p-mast">Future Asia Journal</p>
+          <p class="p-dateline">Politics &middot; Technology &middot; Markets &middot; Culture &middot; Sports</p>
+          <figure class="p-photo"><img src="https://picsum.photos/seed/faj-a/800/450.jpg" alt="" loading="eager"></figure>
+          <p class="p-head">Chips, charts, and the new map of power</p>
+          <div class="p-body"></div>
+          <span class="stamp">Verified &times;2</span>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <p class="q rise" id="q" style="animation-delay:.68s">Apple goes dark the night before every keynote.</p>
+<!-- ================= Ticker ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-set">
+      <span class="tk">Politics</span><span class="tk-dot"></span>
+      <span class="tk">Technology</span><span class="tk-dot"></span>
+      <span class="tk">Markets <i>&amp;</i> Business</span><span class="tk-dot"></span>
+      <span class="tk">Culture</span><span class="tk-dot"></span>
+      <span class="tk">Sports</span><span class="tk-dot"></span>
+      <span class="tk">Society</span><span class="tk-dot"></span>
+      <span class="tk">Science</span><span class="tk-dot"></span>
+      <span class="tk">Climate</span><span class="tk-dot"></span>
+      <span class="tk"><i>Every story. Twice verified.</i></span><span class="tk-dot"></span>
+    </div>
+    <div class="ticker-set">
+      <span class="tk">Politics</span><span class="tk-dot"></span>
+      <span class="tk">Technology</span><span class="tk-dot"></span>
+      <span class="tk">Markets <i>&amp;</i> Business</span><span class="tk-dot"></span>
+      <span class="tk">Culture</span><span class="tk-dot"></span>
+      <span class="tk">Sports</span><span class="tk-dot"></span>
+      <span class="tk">Society</span><span class="tk-dot"></span>
+      <span class="tk">Science</span><span class="tk-dot"></span>
+      <span class="tk">Climate</span><span class="tk-dot"></span>
+      <span class="tk"><i>Every story. Twice verified.</i></span><span class="tk-dot"></span>
+    </div>
+  </div>
 </div>
+<ul class="sr-only">
+  <li>Politics</li><li>Technology</li><li>Markets and Business</li><li>Culture</li><li>Sports</li><li>Society</li><li>Science</li><li>Climate</li>
+</ul>
 
-<footer class="rise" style="animation-delay:.82s">
-  <div class="status"><span class="dot"></span>Status · Maintenance in progress</div>
-  <span>© 2025 · We will come back soon</span>
-</footer>
+<!-- ================= Manifesto ================= -->
+<section class="manifesto" id="manifestoSec">
+  <div class="manifesto-sticky">
+    <div class="manifesto-inner">
+      <p class="manifesto-text" id="manifestoText">Every morning, half of humanity wakes up to a world being remade &mdash; in laboratories in Shenzhen, parliaments in Delhi, studios in Seoul, trading floors in Mumbai, ports in Singapore, startup lofts in Jakarta. Most newsrooms watch it from a distance. We decided to move in.</p>
+      <p class="manifesto-serif" id="manifestoSerif">The story of Asia, told from within.</p>
+    </div>
+  </div>
+</section>
 
-<script>
-  // 24-hour countdown from page load. For a fixed launch time, replace
-  // "start" with:  const start = Date.now() - (24*3600*1000 - (new Date('2025-06-01T12:00:00') - Date.now()));
-  const TOTAL = 24 * 3600 * 1000, start = Date.now(), C = 2 * Math.PI * 128;
-  const arc = document.getElementById('arc'), head = document.getElementById('head');
-  const hh = document.getElementById('hh'), mm = document.getElementById('mm'), ss = document.getElementById('ss');
-  arc.style.strokeDasharray = C;
+<!-- ================= Coverage ================= -->
+<section class="coverage" id="coverage">
+  <div class="wrap">
+    <div class="cov-head" data-reveal>
+      <p class="eyebrow">Coverage</p>
+      <h2 class="h2">One continent.<br>Every angle.</h2>
+      <p class="lede">World news in full &mdash; with Asia as the front page, not the foreign desk. Six desks, one standard.</p>
+    </div>
+    <div class="cov-grid">
+      <div class="cov-list" id="covList" data-reveal style="--d:.1s">
+        <button class="cov-row active" data-i="0" aria-pressed="true">
+          <span class="cov-num">01</span>
+          <span class="cov-title">Politics &amp; Policy</span>
+          <span class="cov-desc">Elections, diplomacy, and the decisions that redraw maps &mdash; reported from the room, not the wire.</span>
+        </button>
+        <button class="cov-row" data-i="1" aria-pressed="false">
+          <span class="cov-num">02</span>
+          <span class="cov-title">Technology</span>
+          <span class="cov-desc">From semiconductor fabs to super-apps: the machinery of the next economy, explained by people who use it.</span>
+        </button>
+        <button class="cov-row" data-i="2" aria-pressed="false">
+          <span class="cov-num">03</span>
+          <span class="cov-title">Markets &amp; Business</span>
+          <span class="cov-desc">The capital, companies, and supply chains shifting east by the day &mdash; followed with rigor, not hype.</span>
+        </button><button class="cov-row" data-i="3" aria-pressed="false">
+          <span class="cov-num">04</span>
+          <span class="cov-title">Culture &amp; Entertainment</span>
+          <span class="cov-desc">Film, music, design, and the pop culture exporting itself to the world &mdash; covered as news, not novelty.</span>
+        </button>
+        <button class="cov-row" data-i="4" aria-pressed="false">
+          <span class="cov-num">05</span>
+          <span class="cov-title">Sports</span>
+          <span class="cov-desc">Leagues, legends, and the largest audiences on Earth &mdash; with the reporting they deserve.</span>
+        </button>
+        <button class="cov-row" data-i="5" aria-pressed="false">
+          <span class="cov-num">06</span>
+          <span class="cov-title">Society &amp; People</span>
+          <span class="cov-desc">The lives, ideas, and movements behind the headlines &mdash; because people are never just context.</span>
+        </button>
+      </div>
+      <div class="cov-panel" data-reveal style="--d:.2s">
+        <div class="cov-frame">
+          <img id="covImgA" src="https://picsum.photos/seed/faj-politics/900/1200.jpg" alt="" class="show">
+          <img id="covImgB" src="https://picsum.photos/seed/faj-tech/900/1200.jpg" alt="" style="display:none">
+          <span class="cov-cap" id="covCap">The floor of power &mdash; New Delhi</span>
+        </div>
+        <p class="cov-note">Hover or tap a desk to preview its world.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  const pad = n => String(n).padStart(2, '0');
-  function set(el, v){
-    if(el.textContent !== v){
-      el.textContent = v;
-      el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
-    }
-  }
-  function tick(){
-    const s = Math.ceil(Math.max(0, TOTAL - (Date.now() - start)) / 1000);
-    set(hh, pad(Math.floor(s / 3600)));
-    set(mm, pad(Math.floor(s / 60) % 60));
-    set(ss, pad(s % 60));
-    const frac = s / (TOTAL / 1000);
-    arc.style.strokeDashoffset = C * (1 - frac);
-    const a = -Math.PI / 2 + frac * 2 * Math.PI;
-    head.setAttribute('cx', 140 + 128 * Math.cos(a));
-    head.setAttribute('cy', 140 + 128 * Math.sin(a));
-  }
-  tick(); setInterval(tick, 250);
+<!-- ================= Why Asia ================= -->
+<section class="why dark" id="why-asia" data-nav="dark">
+  <div class="wrap">
+    <div class="why-head" data-reveal>
+      <p class="eyebrow">Why Asia</p>
+      <h2 class="h2">The center of gravity moved. The newsroom should <em>follow</em>.</h2>
+      <p class="lede">Asia is not a beat. It is the main event. Nearly six in ten people alive live here. More than half the world&rsquo;s internet users log on here. This decade, the region is expected to drive the majority of global growth. Yet global coverage of Asia too often happens from somewhere else, framed for somewhere else. We are building the newsroom Asia has earned &mdash; based here, sourced here, obsessed with here.</p>
+    </div>
 
-  const lines = [
-    "Apple goes dark the night before every keynote.",
-    "Nintendo delays — then it perfects.",
-    "Google once blinked offline for five minutes. The world noticed.",
-    "SpaceX only ever counts down.",
-    "Tesla ships when it is ready, not a moment before.",
-    "Even the greats pause to build something better."
-  ];
-  const q = document.getElementById('q');
-  let i = 0;
-  setInterval(() => {
-    q.classList.add('hide');
-    setTimeout(() => {
-      i = (i + 1) % lines.length;
-      q.textContent = lines[i];
-      q.classList.remove('hide');
-    }, 470);
-  }, 4600);
-</script>
-</body>
-</html>
+    <div class="why-stats" data-reveal style="--d:.1s">
+      <div class="stat">
+        <div class="stat-num"><span data-count="4.8" data-decimals="1">0</span><span class="unit">B</span></div>
+        <p class="stat-label">people &mdash; six in ten humans &mdash; call Asia home</p>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span data-count="60">0</span><span class="unit">%</span></div>
+        <p class="stat-label">of the world&rsquo;s economic growth is generated here this decade</p>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span data-count="2.9" data-decimals="1">0</span><span class="unit">B</span></div>
+        <p class="stat-label">internet users &mdash; more than every other region combined</p>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span data-count="32">0</span></div>
+        <p class="stat-label">the median age of the continent building tomorrow</p>
+      </div>
+    </div>
+
+    <div class="why-pillars">
+      <div class="pillar" data-reveal>
+        <span class="pillar-tag">The Scale</span>
+        <div>
+          <h3>Decisions made here reach every timezone by breakfast.</h3>
+          <p>A rate decision in Tokyo, a fab opening in Taiwan, an election in the world&rsquo;s largest democracy &mdash; none of it stays regional for long. Covering Asia well is not regional interest. It is world news, reported at the source.</p>
+        </div>
+      </div><div class="pillar" data-reveal style="--d:.08s">
+        <span class="pillar-tag">The Gap</span>
+        <div>
+          <h3>A continent this consequential deserves a permanent newsroom.</h3>
+          <p>Global coverage of Asia spikes for emergencies and election weeks, then moves on. The daily texture of the region &mdash; the policy fights, the breakthroughs, the culture shifting in real time &mdash; goes underreported. That gap is our opening, and our obligation.</p>
+        </div>
+      </div>
+      <div class="pillar" data-reveal style="--d:.16s">
+        <span class="pillar-tag">The Byline</span>
+        <div>
+          <h3>The best coverage of a place is written by people of it.</h3>
+          <p>Our reporters live in the cities they cover. They speak the languages, read the local papers, and know which sources hold up. For too long the story of Asia carried someone else&rsquo;s byline. We are changing that &mdash; permanently.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="why-note" data-reveal>Figures: UN population estimates &middot; World Bank growth projections &middot; ITU connectivity data. We check our own numbers, too.</p>
+  </div>
+</section>
+
+<!-- ================= The Standard ================= -->
+<section class="standard" id="standard">
+  <div class="wrap std-grid">
+    <div class="std-copy" data-reveal>
+      <p class="eyebrow">Our Standard</p>
+      <h2 class="h2">Twice-checked.<br>Before it&rsquo;s <em>true</em>.</h2>
+      <p class="lede">Speed means nothing without trust. Every story at Future Asia Journal passes two independent verifications &mdash; sources confirmed, documents checked, claims cross-examined by a second editor &mdash; before it reaches you. If it cannot be verified twice, it does not run. That is the entire rulebook.</p>
+      <div class="ck-line">
+        <svg class="ck" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M6 15.5l6.5 6.5L24 8.5"/></svg>
+        <svg class="ck" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M6 15.5l6.5 6.5L24 8.5"/></svg>
+        <span class="ck-text">Every story. Twice verified.</span>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <span class="principle-tag">Independence</span>
+          <p><strong>No story is for sale.</strong> Our allegiance is to the reader and to the record &mdash; in that order, always.</p>
+        </div>
