@@ -703,3 +703,183 @@ footer {
     font-size: 17px;
   }
 }
+/* =========================
+   DARK MODE TOGGLE
+========================= */
+
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid #d8d8dc;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(10deg) scale(1.05);
+}
+
+
+/* =========================
+   DARK THEME
+========================= */
+
+body.dark-mode {
+  background: #0b0b0d;
+  color: #f5f5f7;
+}
+
+body.dark-mode .theme-toggle {
+  background: rgba(25, 25, 28, 0.9);
+  color: #fff;
+  border-color: #333338;
+}
+
+body.dark-mode .hero,
+body.dark-mode .section,
+body.dark-mode .connect-section {
+  background: #0b0b0d;
+  color: #f5f5f7;
+}
+
+body.dark-mode .dark-section {
+  background: #050506;
+  color: #f5f5f7;
+}
+
+body.dark-mode .china-section {
+  background: #101014;
+  color: #f5f5f7;
+}
+
+body.dark-mode .join-section {
+  background: #101014;
+  color: #f5f5f7;
+}
+
+
+/* Text */
+
+body.dark-mode .section-label,
+body.dark-mode .project-type,
+body.dark-mode .form-field label {
+  color: #888;
+}
+
+body.dark-mode .body-copy,
+body.dark-mode .large-copy {
+  color: #c9c9ce;
+}
+
+body.dark-mode .display span {
+  color: #999;
+}
+
+
+/* Project card */
+
+body.dark-mode .project-card {
+  border-color: #333338;
+  color: #f5f5f7;
+}
+
+body.dark-mode .project-card:hover {
+  border-color: #66666d;
+}
+
+
+/* Social cards */
+
+body.dark-mode .social-card {
+  border-color: #333338;
+  color: #f5f5f7;
+}
+
+body.dark-mode .social-card:hover {
+  background: #18181c;
+}
+
+
+/* Join form */
+
+body.dark-mode .join-form {
+  border-color: #333338;
+}
+
+body.dark-mode .form-field {
+  border-color: #333338;
+}
+
+body.dark-mode .form-field input,
+body.dark-mode .form-field textarea {
+  color: #f5f5f7;
+}
+
+body.dark-mode .form-field input::placeholder,
+body.dark-mode .form-field textarea::placeholder {
+  color: #66666d;
+}
+
+body.dark-mode .join-submit {
+  color: #f5f5f7;
+  border-color: #f5f5f7;
+}
+
+
+/* Footer */
+
+body.dark-mode footer {
+  background: #050506;
+  color: #f5f5f7;
+  border-color: #333338;
+}
+
+
+/* Smooth transition */
+
+body,
+section,
+.project-card,
+.social-card,
+.join-section,
+.form-field,
+.join-submit,
+.theme-toggle {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* Mobile */
+
+@media (max-width: 750px) {
+  .theme-toggle {
+    top: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    font-size: 19px;
+  }
+}
