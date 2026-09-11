@@ -692,3 +692,301 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:40px 0
           <span class="principle-tag">Independence</span>
           <p><strong>No story is for sale.</strong> Our allegiance is to the reader and to the record &mdash; in that order, always.</p>
         </div>
+        <div class="principle">
+          <span class="principle-tag">Precision</span>
+          <p><strong>We would rather be second and right than first and loud.</strong> Accuracy is the product; speed is just a feature.</p>
+        </div>
+        <div class="principle">
+          <span class="principle-tag">Transparency</span>
+          <p><strong>Corrections are public, dated, and permanent.</strong> Trust is not claimed. It is built in the open.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo" data-reveal style="--d:.12s">
+      <span class="v-stamp" id="vStamp">Verified &times;2</span>
+      <div class="demo-head">
+        <span class="demo-k">How a story ships</span>
+        <span class="demo-k" id="vClock"></span>
+      </div>
+      <div class="draft" id="vDraft">
+        <span class="draft-tag" id="vTag">Draft</span>
+        <p class="draft-head">Parliament passes landmark data-protection bill after late-night session</p>
+        <p class="draft-by">Future Asia Journal &middot; Politics Desk &middot; New Delhi</p>
+        <div class="draft-body"></div>
+      </div>
+      <div class="stages" id="vStages">
+        <div class="stage"><span class="stage-dot"></span>Sources confirmed &mdash; every claim traced to a named source or document</div>
+        <div class="stage"><span class="stage-dot"></span>Records checked &mdash; votes, filings, and figures verified against primary records</div>
+        <div class="stage"><span class="stage-dot"></span>Second editor signed off &mdash; an independent verification, not a courtesy read</div>
+        <div class="stage"><span class="stage-dot"></span>Published &mdash; with a public, permanent corrections policy behind it</div>
+      </div>
+      <div class="demo-actions">
+        <button class="btn-ghost" id="vBtn">Run the verification
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.8l2.6 2.6 5.4-5.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Founder ================= -->
+<section class="founder" id="founder">
+  <div class="founder-inner" data-reveal>
+    <div class="founder-rule"></div>
+    <p class="eyebrow">A note from the founder</p>
+    <div class="founder-letter">
+      <p>I started Future Asia Journal because of a frustration I could never shake: the region I live in was everyone else&rsquo;s foreign desk. The stories that will define my lifetime &mdash; the rise of Asian technology, the remaking of its politics, markets, and culture &mdash; kept being written by newsrooms ten thousand kilometers away. And it showed.</p>
+      <p>So I decided to build the newsroom I kept looking for. One where Asia is the front page, not a section. One where every headline has been checked twice before it asks for your trust. One where you can open any story &mdash; politics, technology, sports, culture &mdash; and feel certain it was reported with rigor, from here, by people who understand what it means.</p>
+      <p>The future is being written in Asia. We intend to report it &mdash; accurately, independently, and first.</p>
+    </div>
+    <div class="sig">
+      <p class="sig-name">Your Name</p>
+      <p class="sig-role">Founder &amp; Editor-in-Chief</p>
+    </div>
+  </div>
+</section>
+<!-- ================= Finale ================= -->
+<section class="finale dark" id="subscribe" data-nav="dark">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal><span class="kicker" style="color:var(--red-bright)">Launching soon</span></p>
+    <h2 class="h2" data-reveal style="--d:.08s">Be there for the first <em>edition</em>.</h2>
+    <p class="finale-sub" data-reveal style="--d:.16s">Founding readers receive the first issue before anyone else &mdash; free for the first year &mdash; with their names printed in it.</p>
+    <form class="sub-form" id="subForm" data-reveal style="--d:.24s" novalidate>
+      <input type="email" id="subEmail" placeholder="Your email address" autocomplete="email" aria-label="Email address">
+      <button type="submit" class="btn-pill">Reserve my copy</button>
+    </form>
+    <p class="sub-err" id="subErr" aria-live="polite"></p>
+    <p class="finale-micro" data-reveal style="--d:.32s">No noise. No spam. Just <i>the definitive record of Asia&rsquo;s rise.</i></p>
+  </div>
+</section>
+
+<!-- ================= Footer ================= -->
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-brand">Future Asia Journal</p>
+      <p class="foot-motto">Verified twice. Trusted always.</p>
+    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="#top">Overview</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#why-asia">Why Asia</a>
+      <a href="#standard">Our Standard</a>
+      <a href="#founder">The Founder</a>
+    </nav>
+    <p class="foot-note">&copy; 2025 Future Asia Journal. All rights reserved. Independent journalism, based in Asia, for the world.</p>
+  </div>
+</footer>
+
+<!-- ================= Toast ================= -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#30d158" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#30d158" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="toastMsg">You&rsquo;re on the list.</span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const FINE = window.matchMedia("(pointer: fine)").matches;
+  const $ = id => document.getElementById(id);
+
+  /* ---------- Entrance ---------- */
+  const arm = () => requestAnimationFrame(() => document.body.classList.add("ready"));
+  window.addEventListener("load", arm);
+  setTimeout(arm, 1600);
+
+  /* ---------- Reveal on scroll ---------- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold:.14, rootMargin:"0px 0px -5% 0px" });
+  document.querySelectorAll("[data-reveal]").forEach(el => io.observe(el));
+
+  /* ---------- Toast ---------- */
+  const toast = $("toast"), toastMsg = $("toastMsg");
+  let toastTimer;
+  function showToast(msg){
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 3400);
+  }
+
+  /* ---------- Nav: hide on scroll down, adapt to section theme ---------- */
+  const nav = $("nav");
+  const themeSecs = Array.from(document.querySelectorAll("[data-nav]"));
+  let lastY = window.scrollY;
+  function updateNav(){
+    const y = window.scrollY;
+    nav.classList.toggle("nav-hidden", y > 160 && y > lastY);
+    lastY = y;
+    nav.classList.toggle("scrolled", y > 8);
+    let dark = false;
+    for (const s of themeSecs){
+      const r = s.getBoundingClientRect();
+      if (r.top < 30 && r.bottom > 30){ dark = s.dataset.nav === "dark"; break; }
+    }
+    nav.classList.toggle("nav-dark", dark);
+  }
+
+  /* ---------- Manifesto word reveal ---------- */
+  const mSec  = $("manifestoSec");
+  const mText = $("manifestoText");
+  const serif = $("manifestoSerif");
+  const words = mText.textContent.trim().split(/\s+/);
+  mText.innerHTML = words.map(w => `<span class="mw">${w}</span>`).join(" ");
+  const spans = Array.from(mText.querySelectorAll(".mw"));
+  let lastN = -1;
+  function updateManifesto(){
+    if (RM) return;
+    const r = mSec.getBoundingClientRect();
+    const total = r.height - window.innerHeight;
+    if (total <= 0) return;
+    const p = Math.min(1, Math.max(0, -r.top / total));
+    const n = Math.round(p * spans.length);
+    if (n !== lastN){
+      spans.forEach((s,i) => s.classList.toggle("on", i < n));
+      lastN = n;
+    }
+    const sp = Math.min(1, Math.max(0, (p - .88) / .12));
+    serif.style.opacity = sp;
+    serif.style.transform = `translateY(${(1 - sp) * 24}px)`;
+  }
+  if (RM){ spans.forEach(s => s.classList.add("on")); }
+
+  /* ---------- Hero newspaper tilt ---------- */
+  const heroVis = $("heroVis"), stack = $("heroStack");
+  let trx = 0, try_ = 0, crx = 0, cry = 0;
+  if (!RM && FINE){
+    heroVis.addEventListener("pointermove", e => {
+      const r = heroVis.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      try_ = x * 9; trx = y * -7;
+    });
+    heroVis.addEventListener("pointerleave", () => { trx = 0; try_ = 0; });
+  }
+
+  /* ---------- Shared rAF loop ---------- */
+  function loop(){
+    updateNav(); updateManifesto();
+    if (!RM && FINE){
+      crx += (trx - crx) * .07;
+      cry += (try_ - cry) * .07;
+      stack.style.transform = `rotateX(${crx.toFixed(2)}deg) rotateY(${cry.toFixed(2)}deg)`;
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  /* ---------- Coverage desk switcher ---------- */
+  const TOPICS = [
+    { seed:"faj-politics",  cap:"The floor of power — New Delhi" },
+    { seed:"faj-tech",      cap:"Where the hardware is born — Shenzhen" },
+    { seed:"faj-markets",   cap:"Trading hours — Mumbai" },
+    { seed:"faj-culture",   cap:"The export of now — Seoul" },
+    { seed:"faj-sports",    cap:"Roar of a billion — Jakarta" },
+    { seed:"faj-society",   cap:"Street level — Bangkok" }
+  ];
+  TOPICS.forEach(t => { const i = new Image(); i.src = `https://picsum.photos/seed/${t.seed}/900/1200.jpg`; });
+  const rows = Array.from(document.querySelectorAll(".cov-row"));
+  const imgA = $("covImgA"), imgB = $("covImgB"), covCap = $("covCap");
+  let front = imgA, back = imgB, covIndex = 0, swapping = false;
+  function setTopic(i){
+    if (i === covIndex || swapping) return;
+    covIndex = i; swapping = true;
+    rows.forEach((r,ri) => {
+      r.classList.toggle("active", ri === i);
+      r.setAttribute("aria-pressed", ri === i ? "true" : "false");
+    });
+    back.src = `https://picsum.photos/seed/${TOPICS[i].seed}/900/1200.jpg`;
+    const go = () => {
+      back.classList.add("show");
+      setTimeout(() => {
+        front.classList.remove("show");
+        const t = front; front = back; back = t;
+        covCap.textContent = TOPICS[i].cap;
+        swapping = false;
+      }, RM ? 0 : 420);
+    };
+    back.complete ? go() : (back.onload = go);
+  }
+  rows.forEach(r => {
+    const i = +r.dataset.i;
+    r.addEventListener("click", () => setTopic(i));
+    if (FINE) r.addEventListener("pointerenter", () => setTopic(i));
+  });
+
+  /* ---------- Count-up stats ---------- */
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const dec = +(el.dataset.decimals || 0);
+    if (RM){ el.textContent = target.toFixed(dec); return; }
+    const dur = 1600, t0 = performance.now();
+    (function tick(t){
+      const p = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 4);
+      el.textContent = (target * e).toFixed(dec);
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+  }), { threshold:.6 });
+  document.querySelectorAll("[data-count]").forEach(el => cio.observe(el));
+
+  /* ---------- Verification demo ---------- */
+  const vBtn = $("vBtn"), vStages = Array.from(document.querySelectorAll(".stage")),
+        vStamp = $("vStamp"), vTag = $("vTag"), vDraft = $("vDraft"), vClock = $("vClock");
+  let running = false;
+  const sleep = ms => new Promise(r => setTimeout(r, RM ? ms * .25 : ms));
+
+  async function runVerification(){
+    if (running) return;
+    running = true;
+    vBtn.disabled = true;
+    vBtn.firstChild.textContent = "Verifying\u2026 ";
+    vStamp.classList.remove("show");
+    vDraft.classList.remove("published");
+    vTag.textContent = "Draft";
+    vStages.forEach(s => s.classList.remove("done"));
+    for (let i = 0; i < vStages.length; i++){
+      vClock.textContent = `Step ${i + 1} of ${vStages.length}`;
+      await sleep(850);
+      vStages[i].classList.add("done");
+      if (i === 2){ vTag.textContent = "Cleared for release"; }
+    }
+    vClock.textContent = "Complete";
+    vStamp.classList.add("show");
+    vDraft.classList.add("published");
+    vTag.textContent = "Published";
+    vBtn.disabled = false;
+    vBtn.firstChild.textContent = "Run it again ";
+    running = false;
+  }
+  vBtn.addEventListener("click", runVerification);
+
+  /* ---------- Subscribe ---------- */
+  const form = $("subForm"), email = $("subEmail"), err = $("subErr");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const v = email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){
+      form.classList.add("err");
+      err.textContent = "Please enter a valid email address.";
+      email.focus();
+      return;
+    }
+    form.classList.remove("err");
+    err.textContent = "";
+    email.value = "";
+    showToast("You\u2019re on the founding list. The first edition will find you.");
+  });
+  email.addEventListener("input", () => { form.classList.remove("err"); err.textContent = ""; });
+})();
+</script>
+</body>
+</html>
