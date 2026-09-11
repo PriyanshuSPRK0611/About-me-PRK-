@@ -2,917 +2,737 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="The personal website of Priyanshu Ranjan Karn, also known as PRK."
+    content="PRK — Curiosity today. Possibilities tomorrow."
   >
 
   <title>PRK — Curiosity today. Possibilities tomorrow.</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- DARK MODE -->
-  <button
-    id="themeToggle"
-    class="theme-toggle"
-    aria-label="Toggle dark mode"
-  >
-    <span id="themeIcon">☾</span>
-  </button>
-
+  <!-- Noise Overlay -->
   <div class="noise"></div>
 
-  <main>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+  <!-- =========================
+       HERO / WELCOME
+  ========================== -->
 
-      <div class="hero-glow"></div>
+  <section class="hero" id="home">
 
-      <div class="hero-content">
+    <div class="hero-glow"></div>
 
-        <p
-          class="eyebrow reveal"
-          data-i18n="eyebrow"
-        >
-          PRK · Purnia, Bihar, India
-        </p>
+    <div class="hero-content">
 
-        <h1
-          class="hero-title reveal"
-          data-i18n="welcome"
-        >
-          Welcome to<br>
-          <span>PRK</span>
-        </h1>
+      <p class="eyebrow">
+        PRK · Purnia, Bihar, India
+      </p>
 
-        <p
-          class="hero-tagline reveal"
-          data-i18n="tagline"
-        >
-          Curiosity today.<br>
-          Possibilities tomorrow.
-        </p>
+      <h1 class="hero-title">
+        Welcome to PRK
+      </h1>
 
-        <button
-          class="continue-btn reveal"
-          id="continueBtn"
-          data-i18n="continue"
-        >
-          <span>Continue</span>
-          <span class="arrow">↓</span>
-        </button>
+      <p class="hero-tagline">
+        Curiosity today.<br>
+        Possibilities tomorrow.
+      </p>
 
+      <button
+        class="continue-btn"
+        id="continueBtn"
+        type="button"
+      >
+        Continue
+        <span>↓</span>
+      </button>
+
+      <p class="scroll-note">
+        Explore my world
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main id="siteContent">
+
+
+    <!-- =========================
+         ABOUT ME
+    ========================== -->
+
+    <section class="section about" id="about">
+
+      <div class="section-label reveal">
+        01 · ABOUT ME
       </div>
 
-      <div
-        class="scroll-hint"
-        data-i18n="scroll"
-      >
-        Scroll to explore
+      <div class="section-content">
+
+        <h2 class="section-title reveal">
+          I’m Priyanshu Ranjan Karn.
+        </h2>
+
+        <p class="large-copy reveal">
+          Also known as PRK.
+        </p>
+
+        <p class="body-copy reveal">
+          I’m from Purnia, Bihar, India. I love technology,
+          curiosity, and understanding the reason behind
+          how things happen.
+        </p>
+
+        <p class="body-copy reveal">
+          I’m learning coding and technology more deeply,
+          while exploring ideas around software, applications,
+          artificial intelligence, and the future.
+        </p>
+
+        <p class="body-copy reveal">
+          I enjoy connecting with people, editing, coding,
+          conversations, politics, diplomacy, and thinking
+          about ideas that could become something meaningful.
+        </p>
+
       </div>
 
     </section>
 
 
-    <div id="siteContent">
+    <!-- =========================
+         WHAT DRIVES ME
+    ========================== -->
 
-      <!-- ABOUT -->
-      <section class="section">
+    <section class="section drives" id="drives">
 
-        <div class="container narrow">
+      <div class="section-label reveal">
+        02 · WHAT DRIVES ME
+      </div>
 
-          <p
-            class="section-label reveal"
-            data-i18n="aboutLabel"
-          >
-            01 — ABOUT ME
-          </p>
+      <div class="section-content">
 
-          <h2
-            class="display reveal"
-            data-i18n="aboutTitle"
-          >
-            I'm Priyanshu Ranjan Karn.<br>
-            <span>People call me PRK.</span>
-          </h2>
+        <h2 class="section-title reveal">
+          I’m curious about the “why.”
+        </h2>
 
-          <p
-            class="large-copy reveal"
-            data-i18n="aboutLarge"
-          >
-            I'm from Purnia, Bihar, India. I'm a curious person who loves
-            technology and constantly asks one simple question:
-            <strong>why?</strong>
-          </p>
+        <p class="body-copy reveal">
+          Whenever something happens, I naturally want to
+          understand why it happened, how it works, and what
+          could happen next.
+        </p>
 
-          <p
-            class="body-copy reveal"
-            data-i18n="aboutBody"
-          >
-            I want to understand how things work, what makes them happen,
-            and what could be possible next. Coding is something I want to
-            learn deeply—not just to write software, but to understand the
-            ideas and systems behind it.
-          </p>
+        <div class="interest-grid">
 
-        </div>
-
-      </section>
-
-
-      <!-- WHAT DRIVES ME -->
-      <section class="dark-section section">
-
-        <div class="container">
-
-          <p
-            class="section-label reveal"
-            data-i18n="driveLabel"
-          >
-            02 — WHAT DRIVES ME
-          </p>
-
-          <div class="grid two">
-
-            <div>
-
-              <h2
-                class="display reveal"
-                data-i18n="driveTitle"
-              >
-                I have too many<br>
-                <span>ideas to ignore.</span>
-              </h2>
-
-            </div>
-
-            <div class="body-area reveal">
-
-              <p
-                class="large-copy"
-                data-i18n="driveLarge"
-              >
-                Technology. Software. Applications. AI. Editing. Coding.
-                Communication.
-              </p>
-
-              <p
-                class="body-copy"
-                data-i18n="driveBody"
-              >
-                I enjoy exploring different fields and connecting ideas that
-                may seem unrelated. I also love conversations, diplomacy,
-                meeting people, and learning from different perspectives.
-              </p>
-
-            </div>
-
+          <div class="interest-card reveal">
+            <span>01</span>
+            <h3>Technology</h3>
+            <p>
+              Exploring how technology changes the way
+              people live, communicate, and create.
+            </p>
           </div>
 
+          <div class="interest-card reveal">
+            <span>02</span>
+            <h3>Coding</h3>
+            <p>
+              Learning programming and turning ideas into
+              real digital products.
+            </p>
+          </div>
 
-          <!-- INTERESTS -->
-          <div class="interest-grid">
+          <div class="interest-card reveal">
+            <span>03</span>
+            <h3>Artificial Intelligence</h3>
+            <p>
+              Understanding AI and imagining what intelligent
+              technology could make possible.
+            </p>
+          </div>
 
-            <div class="interest reveal">
-
-              <span>01</span>
-
-              <b data-i18n="interest1Title">
-                Artificial Intelligence
-              </b>
-
-              <small data-i18n="interest1Text">
-                Building what comes next.
-              </small>
-
-            </div>
-
-
-            <div class="interest reveal">
-
-              <span>02</span>
-
-              <b data-i18n="interest2Title">
-                Coding
-              </b>
-
-              <small data-i18n="interest2Text">
-                Learning how technology works.
-              </small>
-
-            </div>
-
-
-            <div class="interest reveal">
-
-              <span>03</span>
-
-              <b data-i18n="interest3Title">
-                Creative Editing
-              </b>
-
-              <small data-i18n="interest3Text">
-                Turning ideas into visuals.
-              </small>
-
-            </div>
-
-
-            <div class="interest reveal">
-
-              <span>04</span>
-
-              <b data-i18n="interest4Title">
-                People & Ideas
-              </b>
-
-              <small data-i18n="interest4Text">
-                Conversation, diplomacy, collaboration.
-              </small>
-
-            </div>
-
+          <div class="interest-card reveal">
+            <span>04</span>
+            <h3>People</h3>
+            <p>
+              Connecting with people, exchanging ideas,
+              and building meaningful collaborations.
+            </p>
           </div>
 
         </div>
 
-      </section>
+      </div>
+
+    </section>
 
 
-      <!-- VISION -->
-      <section class="section">
+    <!-- =========================
+         VISION
+    ========================== -->
 
-        <div class="container narrow">
+    <section class="section vision" id="vision">
 
-          <p
-            class="section-label reveal"
-            data-i18n="visionLabel"
-          >
-            03 — VISION
-          </p>
+      <div class="section-label reveal">
+        03 · VISION
+      </div>
 
-          <h2
-            class="display reveal"
-            data-i18n="visionTitle"
-          >
-            The future will be<br>
-            <span>built with technology.</span>
-          </h2>
+      <div class="section-content">
 
-          <p
-            class="large-copy reveal"
-            data-i18n="visionLarge"
-          >
-            I believe technology will become deeply connected to almost every
-            part of human life. And AI has the potential to change the way we
-            understand and shape the world.
-          </p>
+        <h2 class="section-title reveal">
+          Build something that matters.
+        </h2>
 
-          <p
-            class="body-copy reveal"
-            data-i18n="visionBody"
-          >
-            I'm fascinated by the possibility of using technology to
-            understand patterns, anticipate what may happen next, and make
-            better decisions. I don't want to simply watch that future
-            arrive. I want to help create it.
-          </p>
+        <p class="body-copy reveal">
+          I believe the future will be shaped by people who
+          understand technology and use it to solve real
+          problems.
+        </p>
 
-        </div>
+        <p class="body-copy reveal">
+          AI and future technologies could transform
+          industries, create new possibilities, and even
+          help us understand what may come next.
+        </p>
 
-      </section>
+        <p class="body-copy reveal">
+          My goal is to learn, experiment, build, and
+          eventually work with a super-intelligent team
+          of people from around the world.
+        </p>
+
+      </div>
+
+    </section>
 
 
-      <!-- TEAM -->
-      <section class="dark-section section">
+    <!-- =========================
+         THE TEAM
+    ========================== -->
 
-        <div class="container">
+    <section class="section team" id="team">
 
-          <p
-            class="section-label reveal"
-            data-i18n="teamLabel"
-          >
-            04 — THE TEAM
-          </p>
+      <div class="section-label reveal">
+        04 · THE TEAM
+      </div>
 
-          <div class="grid two">
+      <div class="section-content">
 
-            <h2
-              class="display reveal"
-              data-i18n="teamTitle"
-            >
-              Great ideas become<br>
-              <span>greater together.</span>
-            </h2>
+        <h2 class="section-title reveal">
+          Great ideas need great people.
+        </h2>
 
-            <div class="body-area reveal">
+        <p class="body-copy reveal">
+          I want to meet people who are curious, creative,
+          ambitious, and excited about building the future.
+        </p>
 
-              <p
-                class="large-copy"
-                data-i18n="teamLarge"
-              >
-                I want to build a super-intelligent, creative team.
-              </p>
+        <p class="body-copy reveal">
+          Different skills, different perspectives, and
+          different experiences can come together to create
+          something much bigger.
+        </p>
 
-              <p
-                class="body-copy"
-                data-i18n="teamBody"
-              >
-                People with different skills, perspectives, and ambitions can
-                create things that one person could never create alone. I love
-                connecting with people, exchanging ideas, and finding
-                possibilities together.
-              </p>
+        <a
+          href="#join"
+          class="team-link reveal"
+        >
+          Join the journey
+          <span>↗</span>
+        </a>
 
-            </div>
+      </div>
 
+    </section>
+
+
+    <!-- =========================
+         UPCOMING PROJECTS
+    ========================== -->
+
+    <section
+      class="section projects"
+      id="projects"
+    >
+
+      <div class="section-label reveal">
+        05 · UPCOMING PROJECTS
+      </div>
+
+      <div class="section-content">
+
+        <h2 class="section-title reveal">
+          Ideas becoming reality.
+        </h2>
+
+        <p class="body-copy reveal">
+          I’m constantly experimenting with new ideas,
+          websites, applications, AI concepts, and digital
+          projects.
+        </p>
+
+
+        <!-- Future Asia Journal -->
+
+        <a
+          href="future-asia.html"
+          class="project-card reveal"
+        >
+
+          <div class="project-number">
+            01
+          </div>
+
+          <div class="project-info">
+
+            <small>
+              NEWS · TECHNOLOGY · ASIA
+            </small>
+
+            <h3>
+              Future Asia Journal
+            </h3>
+
+            <p>
+              A modern independent publication exploring
+              Asia, technology, AI, politics, science,
+              sports, and the future.
+            </p>
+
+          </div>
+
+          <div class="project-arrow">
+            ↗
+          </div>
+
+        </a>
+
+
+        <!-- More projects -->
+
+        <div class="project-card reveal">
+
+          <div class="project-number">
+            02
+          </div>
+
+          <div class="project-info">
+
+            <small>
+              FUTURE · TECHNOLOGY
+            </small>
+
+            <h3>
+              More ideas coming
+            </h3>
+
+            <p>
+              New projects, experiments, and ideas are
+              currently being explored.
+            </p>
+
+          </div>
+
+          <div class="project-arrow">
+            →
           </div>
 
         </div>
 
-      </section>
+      </div>
+
+    </section>
 
 
-      <!-- UPCOMING PROJECTS -->
-      <section class="section">
+    <!-- =========================
+         CHINA
+    ========================== -->
 
-        <div class="container">
+    <section class="section china" id="china">
 
-          <p
-            class="section-label reveal"
-            data-i18n="projectsLabel"
-          >
-            05 — UPCOMING PROJECTS
-          </p>
+      <div class="section-label reveal">
+        06 · CHINA
+      </div>
 
+      <div class="section-content">
+
+        <h2 class="section-title reveal">
+          A country I’m curious about.
+        </h2>
+
+        <p class="body-copy reveal">
+          China is a subject I’m especially interested in.
+          Its technology, development, culture, cities,
+          businesses, and role in the future of Asia are
+          things I want to explore more deeply.
+        </p>
+
+        <p class="body-copy reveal">
+          I’ll share more about this journey in the future.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONNECT
+    ========================== -->
+
+    <section
+      class="section connect"
+      id="connect"
+    >
+
+      <div class="section-label reveal">
+        07 · CONNECT
+      </div>
+
+      <div class="section-content">
+
+        <h2 class="section-title reveal">
+          Let’s connect.
+        </h2>
+
+        <p class="body-copy reveal">
+          Have an idea, want to collaborate, or simply want
+          to talk? Find me here.
+        </p>
+
+
+        <div class="connect-grid">
+
+
+          <!-- Instagram -->
 
           <a
-            href="future-asia.html"
-            class="project-card reveal"
+            class="social-card reveal"
+            href="https://instagram.com/prkgoes"
+            target="_blank"
+            rel="noopener noreferrer"
           >
 
-            <div class="project-number">
-              01
-            </div>
+            <span class="social-icon">
+              ◎
+            </span>
 
-            <div>
+            <span>
+              <small>INSTAGRAM</small>
+              <strong>@prkgoes</strong>
+            </span>
 
-              <p
-                class="project-type"
-                data-i18n="projectType"
-              >
-                FIRST PROJECT
-              </p>
-
-              <h2 data-i18n="projectTitle">
-                Future Asia Journal
-              </h2>
-
-              <p data-i18n="projectDescription">
-                A news platform covering AI, science, politics, gaming,
-                sports, fitness, and the wider world of ideas and technology.
-              </p>
-
-            </div>
-
-            <span
-              class="status"
-              data-i18n="projectStatus"
-            >
-              Explore
+            <span class="external">
+              ↗
             </span>
 
           </a>
 
-        </div>
 
-      </section>
+          <!-- Telegram -->
 
-
-      <!-- CHINA -->
-      <section class="china-section section">
-
-        <div class="container narrow">
-
-          <p
-            class="section-label reveal"
-            data-i18n="chinaLabel"
-          >
-            06 — A LITTLE MORE
-          </p>
-
-          <h2
-            class="display reveal"
-            data-i18n="chinaTitle"
-          >
-            There is also a story<br>
-            <span>about China.</span>
-          </h2>
-
-          <p
-            class="large-copy reveal"
-            data-i18n="chinaLarge"
-          >
-            I have a special interest in China. There's an interesting story
-            behind it—but I'll tell that story another time.
-          </p>
-
-          <p
-            class="coming reveal"
-            data-i18n="chinaComing"
-          >
-            TO BE CONTINUED…
-          </p>
-
-        </div>
-
-      </section>
-
-
-      <!-- CONNECT -->
-      <section
-        class="connect-section section"
-        id="connect"
-      >
-
-        <div class="container">
-
-          <p
-            class="section-label reveal"
-            data-i18n="connectLabel"
-          >
-            07 — CONNECT
-          </p>
-
-
-          <div class="connect-heading">
-
-            <div class="connect-photo">
-
-              <img
-                src="kv-0515-mo.jpg.thumb.webp"
-                alt="PRK"
-              >
-
-              <div class="connect-photo-content">
-
-                <h2
-                  class="display reveal"
-                  data-i18n="connectTitle"
-                >
-                  Let's<br>
-                  <span>connect.</span>
-                </h2>
-
-                <p
-                  class="large-copy reveal"
-                  data-i18n="connectText"
-                >
-                  I love meeting curious people, sharing ideas, starting
-                  conversations, and discovering what we can build together.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <!-- SOCIAL LINKS -->
-          <div class="social-grid">
-
-
-            <!-- INSTAGRAM -->
-            <a
-              class="social-card reveal"
-              href="https://instagram.com/prkgoes"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-
-              <span class="social-icon">
-                ◎
-              </span>
-
-              <span>
-
-                <small data-i18n="instagram">
-                  INSTAGRAM
-                </small>
-
-                <strong>
-                  @prkgoes
-                </strong>
-
-              </span>
-
-              <span class="external">
-                ↗
-              </span>
-
-            </a>
-
-
-            <!-- TELEGRAM -->
-            <a
-              class="social-card reveal"
-              href="https://t.me/Sowhat1233"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-
-              <span class="social-icon">
-                ✈
-              </span>
-
-              <span>
-
-                <small data-i18n="telegram">
-                  TELEGRAM
-                </small>
-
-                <strong>
-                  @Sowhat1233
-                </strong>
-
-              </span>
-
-              <span class="external">
-                ↗
-              </span>
-
-            </a>
-
-
-            <!-- GITHUB -->
-            <a
-              class="social-card reveal"
-              href="https://github.com/PriyanshuSPRK0611"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-
-              <span class="social-icon">
-                ⌘
-              </span>
-
-              <span>
-
-                <small data-i18n="github">
-                  GITHUB
-                </small>
-
-                <strong>
-                  PriyanshuSPRK0611
-                </strong>
-
-              </span>
-
-              <span class="external">
-                ↗
-              </span>
-
-            </a>
-
-
-            <!-- LINKEDIN -->
-            <a
-              class="social-card reveal"
-              href="https://www.linkedin.com/in/prkstudio/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-
-              <span class="social-icon">
-                in
-              </span>
-
-              <span>
-
-                <small data-i18n="linkedin">
-                  LINKEDIN
-                </small>
-
-                <strong>
-                  @prkstudio
-                </strong>
-
-              </span>
-
-              <span class="external">
-                ↗
-              </span>
-
-            </a>
-
-
-            <!-- EMAIL -->
-            <a
-              class="social-card reveal"
-              href="mailto:prkworldcare@gmail.com"
-            >
-
-              <span class="social-icon">
-                @
-              </span>
-
-              <span>
-
-                <small data-i18n="email">
-                  EMAIL
-                </small>
-
-                <strong>
-                  prkworldcare@gmail.com
-                </strong>
-
-              </span>
-
-              <span class="external">
-                ↗
-              </span>
-
-            </a>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- JOIN US -->
-      <section
-        class="join-section section"
-        id="join"
-      >
-
-        <div class="container narrow">
-
-          <p
-            class="section-label reveal"
-            data-i18n="joinLabel"
-          >
-            08 — JOIN US
-          </p>
-
-
-          <h2
-            class="display reveal"
-            data-i18n="joinTitle"
-          >
-            Have an idea?<br>
-            <span>Let's build together.</span>
-          </h2>
-
-
-          <p
-            class="large-copy reveal"
-            data-i18n="joinText"
-          >
-            I'm always interested in meeting curious people, creators,
-            developers, and people with ideas.
-          </p>
-
-
-          <!-- FORM -->
-          <form
-            id="joinForm"
-            class="join-form reveal"
-          >
-
-
-            <!-- NAME -->
-            <div class="form-field">
-
-              <label
-                for="joinName"
-                data-i18n="nameLabel"
-              >
-                NAME
-              </label>
-
-              <input
-                type="text"
-                id="joinName"
-                name="name"
-                placeholder="Your name"
-                data-i18n-placeholder="namePlaceholder"
-                required
-              >
-
-            </div>
-
-
-            <!-- EMAIL -->
-            <div class="form-field">
-
-              <label
-                for="joinEmail"
-                data-i18n="emailLabel"
-              >
-                EMAIL
-              </label>
-
-              <input
-                type="email"
-                id="joinEmail"
-                name="email"
-                placeholder="your@email.com"
-                data-i18n-placeholder="emailPlaceholder"
-                required
-              >
-
-            </div>
-
-
-            <!-- MESSAGE -->
-            <div class="form-field">
-
-              <label
-                for="joinMessage"
-                data-i18n="messageLabel"
-              >
-                MESSAGE
-              </label>
-
-              <textarea
-                id="joinMessage"
-                name="message"
-                rows="6"
-                placeholder="Tell me about yourself or your idea..."
-                data-i18n-placeholder="messagePlaceholder"
-                required
-              ></textarea>
-
-            </div>
-
-
-            <!-- SUBMIT -->
-            <button
-              type="submit"
-              class="join-submit"
-            >
-
-              <span data-i18n="sendApplication">
-                Send Application
-              </span>
-
-              <span>
-                ↗
-              </span>
-
-            </button>
-
-
-            <p
-              id="joinStatus"
-              class="join-status"
-            ></p>
-
-          </form>
-
-        </div>
-
-      </section>
-
-
-      <!-- FOOTER -->
-      <footer>
-
-        <div class="container footer-inner">
-
-
-          <span>
-            PRK
-          </span>
-
-
-          <span>
-            ©
-            <span id="year"></span>
-            Priyanshu Ranjan Karn
-          </span>
-
-
-          <!-- LANGUAGE SELECTOR -->
-          <div class="language-switcher">
-
-            <button
-              id="languageButton"
-              class="language-button"
-              type="button"
-              aria-expanded="false"
-              aria-controls="languageMenu"
-            >
-
-              <span data-i18n="language">
-                Language
-              </span>
-
-              <span id="currentLanguage">
-                English
-              </span>
-
-              <span class="language-arrow">
-                ⌄
-              </span>
-
-            </button>
-
-
-            <div
-              id="languageMenu"
-              class="language-menu"
-              aria-hidden="true"
-            >
-
-              <button
-                type="button"
-                data-lang="en"
-              >
-                English
-              </button>
-
-              <button
-                type="button"
-                data-lang="zh"
-              >
-                中文
-              </button>
-
-              <button
-                type="button"
-                data-lang="ja"
-              >
-                日本語
-              </button>
-
-              <button
-                type="button"
-                data-lang="ko"
-              >
-                한국어
-              </button>
-
-              <button
-                type="button"
-                data-lang="es"
-              >
-                Español
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <!-- BACK TO TOP -->
           <a
-            href="#home"
-            data-i18n="backToTop"
+            class="social-card reveal"
+            href="https://t.me/Sowhat1233"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Back to top ↑
+
+            <span class="social-icon">
+              ➤
+            </span>
+
+            <span>
+              <small>TELEGRAM</small>
+              <strong>@Sowhat1233</strong>
+            </span>
+
+            <span class="external">
+              ↗
+            </span>
+
           </a>
 
+
+          <!-- GitHub -->
+
+          <a
+            class="social-card reveal"
+            href="https://github.com/PriyanshuSPRK0611"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="social-icon">
+              ◉
+            </span>
+
+            <span>
+              <small>GITHUB</small>
+              <strong>PriyanshuSPRK0611</strong>
+            </span>
+
+            <span class="external">
+              ↗
+            </span>
+
+          </a>
+
+
+          <!-- LinkedIn -->
+
+          <a
+            class="social-card reveal"
+            href="https://www.linkedin.com/in/prkstudio/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="social-icon">
+              in
+            </span>
+
+            <span>
+              <small>LINKEDIN</small>
+              <strong>@prkstudio</strong>
+            </span>
+
+            <span class="external">
+              ↗
+            </span>
+
+          </a>
+
+
+          <!-- Email -->
+
+          <a
+            class="social-card reveal"
+            href="mailto:prkworldcare@gmail.com"
+          >
+
+            <span class="social-icon">
+              @
+            </span>
+
+            <span>
+              <small>EMAIL</small>
+              <strong>prkworldcare@gmail.com</strong>
+            </span>
+
+            <span class="external">
+              ↗
+            </span>
+
+          </a>
+
+
         </div>
 
-      </footer>
+
+        <!-- Connect Photo -->
+
+        <div class="connect-photo reveal">
+
+          <img
+            src="kv-0515-mo.jpg.thumb.webp"
+            alt="PRK"
+            class="connect-photo-content"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
 
 
-      <!-- LANGUAGE TRANSITION -->
-      <div
-        id="languageTransition"
-        class="language-transition"
-        aria-hidden="true"
-      ></div>
+    <!-- =========================
+         JOIN US
+    ========================== -->
 
-    </div>
+    <section
+      class="section join"
+      id="join"
+    >
+
+      <div class="section-label reveal">
+        08 · JOIN US
+      </div>
+
+      <div class="section-content">
+
+        <h2 class="section-title reveal">
+          Build the future with us.
+        </h2>
+
+        <p class="body-copy reveal">
+          If you are curious, creative, and interested in
+          technology, ideas, AI, media, or future projects,
+          tell me a little about yourself.
+        </p>
+
+
+        <form
+          id="joinForm"
+          class="join-form reveal"
+        >
+
+          <div class="form-group">
+
+            <label for="joinName">
+              NAME
+            </label>
+
+            <input
+              type="text"
+              id="joinName"
+              name="name"
+              placeholder="Your name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="joinEmail">
+              EMAIL
+            </label>
+
+            <input
+              type="email"
+              id="joinEmail"
+              name="email"
+              placeholder="Your email"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="joinMessage">
+              MESSAGE
+            </label>
+
+            <textarea
+              id="joinMessage"
+              name="message"
+              rows="6"
+              placeholder="Tell me about yourself or your idea..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="submit-btn"
+          >
+            Send message
+            <span>↗</span>
+          </button>
+
+
+          <p
+            id="joinStatus"
+            class="join-status"
+            aria-live="polite"
+          ></p>
+
+        </form>
+
+      </div>
+
+    </section>
+
 
   </main>
 
 
-  <!-- JAVASCRIPT -->
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="footer-top">
+
+      <div>
+
+        <h2>
+          PRK
+        </h2>
+
+        <p>
+          Curiosity today.<br>
+          Possibilities tomorrow.
+        </p>
+
+      </div>
+
+
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle dark mode"
+      >
+
+        <span id="themeIcon">
+          ☾
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © <span id="year"></span> PRK
+      </p>
+
+      <p>
+        Purnia, Bihar, India
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Main JavaScript -->
   <script src="script.js"></script>
 
 </body>
