@@ -6,7 +6,7 @@
 
   <meta name="robots" content="noindex, nofollow">
 
-  <title>PRK — Admin Dashboard</title>
+  <title>PRK — Admin</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,11 @@
 
 <body>
 
-  <!-- =========================
-       LOGIN SCREEN
-  ========================== -->
+  <!-- LOGIN -->
 
-  <main id="loginScreen" class="login-screen">
+  <section id="loginScreen" class="login-screen">
 
-    <div class="login-box">
+    <div class="login-container">
 
       <p class="eyebrow">PRK · PRIVATE</p>
 
@@ -36,141 +34,102 @@
         <span>Dashboard.</span>
       </h1>
 
-      <p class="login-description">
-        Sign in to manage your website.
+      <p class="description">
+        Sign in to manage your PRK website.
       </p>
 
-      <form id="loginForm" class="login-form">
+      <form id="loginForm">
 
-        <div class="form-field">
-          <label for="loginEmail">EMAIL</label>
+        <label for="email">EMAIL</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Your email"
+          autocomplete="email"
+          required
+        >
 
-          <input
-            type="email"
-            id="loginEmail"
-            placeholder="Your email"
-            autocomplete="email"
-            required
-          >
-        </div>
+        <label for="password">PASSWORD</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Your password"
+          autocomplete="current-password"
+          required
+        >
 
-        <div class="form-field">
-          <label for="loginPassword">PASSWORD</label>
-
-          <input
-            type="password"
-            id="loginPassword"
-            placeholder="Your password"
-            autocomplete="current-password"
-            required
-          >
-        </div>
-
-        <button type="submit" class="login-submit">
+        <button type="submit">
           <span>Sign In</span>
           <span>↗</span>
         </button>
 
-        <p id="loginStatus" class="login-status"></p>
+        <p id="loginMessage"></p>
 
       </form>
 
     </div>
 
-  </main>
+  </section>
 
 
-  <!-- =========================
-       DASHBOARD
-  ========================== -->
+  <!-- DASHBOARD -->
 
-  <div id="dashboardScreen" class="dashboard-screen" hidden>
+  <section id="dashboardScreen" class="dashboard-screen" hidden>
 
-    <header class="admin-header">
+    <header>
 
       <div>
         <p class="eyebrow">PRK · ADMIN</p>
-        <h1>Dashboard</h1>
+        <h2>Dashboard</h2>
       </div>
 
-      <div class="header-actions">
-
-        <button
-          id="themeToggle"
-          class="theme-toggle"
-          type="button"
-          aria-label="Toggle dark mode"
-        >
-          ☾
-        </button>
-
-        <button
-          id="logoutBtn"
-          class="logout-btn"
-          type="button"
-        >
-          Logout
-        </button>
-
-      </div>
+      <button id="logoutButton">
+        Logout
+      </button>
 
     </header>
 
 
-    <main class="dashboard">
+    <main>
 
-      <!-- STATS -->
+      <div class="stats">
 
-      <section class="stats-grid">
-
-        <div class="stat-card">
+        <div class="stat">
           <span>TOTAL SUBMISSIONS</span>
-          <strong id="totalSubmissions">0</strong>
+          <strong id="total">0</strong>
         </div>
 
-        <div class="stat-card">
-          <span>LATEST SUBMISSION</span>
-          <strong id="latestSubmission">—</strong>
+        <div class="stat">
+          <span>STATUS</span>
+          <strong>ACTIVE</strong>
         </div>
 
-      </section>
+      </div>
 
 
-      <!-- SUBMISSIONS -->
+      <div class="heading">
 
-      <section class="submissions-section">
-
-        <div class="section-heading">
-
-          <div>
-            <p class="eyebrow">JOIN US</p>
-            <h2>Submissions</h2>
-          </div>
-
-          <button
-            id="refreshBtn"
-            class="refresh-btn"
-            type="button"
-          >
-            Refresh ↻
-          </button>
-
+        <div>
+          <p class="eyebrow">JOIN US</p>
+          <h3>Submissions</h3>
         </div>
 
-        <div
-          id="submissionsList"
-          class="submissions-list"
-        >
-          <div class="empty-state">
-            Loading submissions...
-          </div>
-        </div>
+        <button id="refreshButton">
+          Refresh ↻
+        </button>
 
-      </section>
+      </div>
+
+
+      <div id="submissions">
+        <p class="loading">
+          Loading submissions...
+        </p>
+      </div>
 
     </main>
 
-  </div>
+  </section>
 
 
   <!-- SUPABASE -->
