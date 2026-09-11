@@ -74,7 +74,7 @@ if (joinForm) {
   joinForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const name = document.getElementById("joinName").value.trim();
+    const name = document.getElementById("joinNames").value.trim();
     const email = document.getElementById("joinEmail").value.trim();
     const message = document.getElementById("joinMessage").value.trim();
 
