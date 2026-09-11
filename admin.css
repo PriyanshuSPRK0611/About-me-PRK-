@@ -15,15 +15,6 @@ body {
   background: #f5f5f7;
   color: #111;
   font-family: Inter, Arial, sans-serif;
-  transition:
-    background-color 0.35s ease,
-    color 0.35s ease;
-}
-
-button,
-input,
-textarea {
-  font: inherit;
 }
 
 
@@ -41,7 +32,7 @@ textarea {
   padding: 30px;
 }
 
-.login-box {
+.login-container {
   width: min(520px, 100%);
 }
 
@@ -54,28 +45,28 @@ textarea {
   color: #888;
 }
 
-.login-box h1 {
+.login-container h1 {
   margin: 0;
 
   font-family: "Space Grotesk", Inter, sans-serif;
-  font-size: clamp(48px, 9vw, 90px);
+
+  font-size: clamp(52px, 9vw, 90px);
   line-height: 0.95;
+
   letter-spacing: -0.055em;
 }
 
-.login-box h1 span {
+.login-container h1 span {
   color: #888;
 }
 
-.login-description {
+.description {
   margin: 35px 0 0;
 
-  max-width: 420px;
+  color: #777;
 
   font-size: 17px;
   line-height: 1.6;
-
-  color: #777;
 }
 
 
@@ -83,22 +74,17 @@ textarea {
    LOGIN FORM
 ========================= */
 
-.login-form {
+#loginForm {
   margin-top: 55px;
 
   border-top: 1px solid #d8d8dc;
 }
 
-.form-field {
-  padding: 25px 0;
-
-  border-bottom: 1px solid #d8d8dc;
-}
-
-.form-field label {
+#loginForm label {
   display: block;
 
-  margin-bottom: 12px;
+  margin-top: 25px;
+  margin-bottom: 10px;
 
   font-size: 10px;
   letter-spacing: 0.18em;
@@ -106,12 +92,14 @@ textarea {
   color: #888;
 }
 
-.form-field input {
+#loginForm input {
   width: 100%;
 
-  padding: 5px 0;
+  padding: 10px 0;
 
   border: 0;
+  border-bottom: 1px solid #d8d8dc;
+
   outline: none;
 
   background: transparent;
@@ -121,15 +109,19 @@ textarea {
   font-size: 18px;
 }
 
-.form-field input::placeholder {
+#loginForm input:focus {
+  border-bottom-color: #111;
+}
+
+#loginForm input::placeholder {
   color: #aaa;
 }
 
-.login-submit {
+#loginForm button {
   width: 100%;
 
-  margin-top: 30px;
-  padding: 20px 0;
+  margin-top: 35px;
+  padding: 20px;
 
   border: 1px solid #111;
 
@@ -142,36 +134,34 @@ textarea {
 
   cursor: pointer;
 
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.login-submit:hover {
+#loginForm button:hover {
   background: transparent;
   color: #111;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
-.login-status {
+#loginMessage {
   min-height: 22px;
 
-  margin: 18px 0 0;
-
-  font-size: 13px;
+  margin-top: 18px;
 
   color: #777;
+
+  font-size: 13px;
 }
 
 
 /* =========================
-   DASHBOARD HEADER
+   DASHBOARD
 ========================= */
 
 .dashboard-screen {
   min-height: 100vh;
 }
 
-.admin-header {
+.dashboard-screen header {
   padding: 35px 6vw;
 
   border-bottom: 1px solid #d8d8dc;
@@ -179,11 +169,9 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  gap: 30px;
 }
 
-.admin-header h1 {
+.dashboard-screen header h2 {
   margin: 0;
 
   font-family: "Space Grotesk", Inter, sans-serif;
@@ -195,20 +183,10 @@ textarea {
   letter-spacing: -0.05em;
 }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+#logoutButton,
+#refreshButton {
+  padding: 12px 18px;
 
-
-/* =========================
-   BUTTONS
-========================= */
-
-.theme-toggle,
-.logout-btn,
-.refresh-btn {
   border: 1px solid #111;
 
   background: transparent;
@@ -216,42 +194,21 @@ textarea {
 
   cursor: pointer;
 
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.theme-toggle {
-  width: 44px;
-  height: 44px;
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 19px;
-}
-
-.logout-btn {
-  padding: 12px 18px;
-}
-
-.refresh-btn {
-  padding: 12px 18px;
-}
-
-.logout-btn:hover,
-.refresh-btn:hover {
+#logoutButton:hover,
+#refreshButton:hover {
   background: #111;
   color: #fff;
 }
 
 
 /* =========================
-   DASHBOARD
+   DASHBOARD CONTENT
 ========================= */
 
-.dashboard {
+.dashboard-screen main {
   width: min(1200px, 88%);
 
   margin: 70px auto;
@@ -262,7 +219,7 @@ textarea {
    STATS
 ========================= */
 
-.stats-grid {
+.stats {
   display: grid;
 
   grid-template-columns: repeat(2, 1fr);
@@ -270,52 +227,48 @@ textarea {
   gap: 20px;
 }
 
-.stat-card {
+.stat {
   padding: 30px;
 
   border: 1px solid #d8d8dc;
 }
 
-.stat-card span {
+.stat span {
   display: block;
 
   margin-bottom: 20px;
 
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
 
   color: #777;
 }
 
-.stat-card strong {
+.stat strong {
   font-family: "Space Grotesk", Inter, sans-serif;
 
-  font-size: 44px;
+  font-size: 42px;
 
   letter-spacing: -0.04em;
 }
 
 
 /* =========================
-   SUBMISSIONS
+   SUBMISSIONS HEADING
 ========================= */
 
-.submissions-section {
+.heading {
   margin-top: 90px;
-}
+  margin-bottom: 35px;
 
-.section-heading {
   display: flex;
-
   justify-content: space-between;
   align-items: end;
 
   gap: 20px;
-
-  margin-bottom: 35px;
 }
 
-.section-heading h2 {
+.heading h3 {
   margin: 0;
 
   font-family: "Space Grotesk", Inter, sans-serif;
@@ -325,7 +278,12 @@ textarea {
   letter-spacing: -0.045em;
 }
 
-.submissions-list {
+
+/* =========================
+   SUBMISSIONS
+========================= */
+
+#submissions {
   border-top: 1px solid #d8d8dc;
 }
 
@@ -335,28 +293,21 @@ textarea {
   border-bottom: 1px solid #d8d8dc;
 }
 
-.submission-top {
-  display: flex;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
-  margin-bottom: 16px;
-}
-
 .submission-name {
   font-size: 18px;
   font-weight: 600;
 }
 
 .submission-email {
+  margin-top: 6px;
+
   font-size: 14px;
+
   color: #777;
 }
 
 .submission-message {
-  margin: 0;
+  margin: 18px 0 0;
 
   max-width: 850px;
 
@@ -378,74 +329,11 @@ textarea {
   color: #999;
 }
 
-.empty-state {
+.loading,
+.empty {
   padding: 55px 0;
 
   color: #888;
-}
-
-
-/* =========================
-   DARK MODE
-========================= */
-
-body.dark-mode {
-  background: #0b0b0d;
-  color: #f5f5f7;
-}
-
-body.dark-mode .admin-header {
-  border-color: #333338;
-}
-
-body.dark-mode .stat-card,
-body.dark-mode .submissions-list,
-body.dark-mode .submission {
-  border-color: #333338;
-}
-
-body.dark-mode .form-field {
-  border-color: #333338;
-}
-
-body.dark-mode .form-field input {
-  color: #f5f5f7;
-}
-
-body.dark-mode .form-field input::placeholder {
-  color: #66666d;
-}
-
-body.dark-mode .login-form {
-  border-color: #333338;
-}
-
-body.dark-mode .login-submit {
-  background: #f5f5f7;
-  color: #111;
-  border-color: #f5f5f7;
-}
-
-body.dark-mode .login-submit:hover {
-  background: transparent;
-  color: #f5f5f7;
-}
-
-body.dark-mode .submission-message {
-  color: #c9c9ce;
-}
-
-body.dark-mode .theme-toggle,
-body.dark-mode .logout-btn,
-body.dark-mode .refresh-btn {
-  border-color: #f5f5f7;
-  color: #f5f5f7;
-}
-
-body.dark-mode .logout-btn:hover,
-body.dark-mode .refresh-btn:hover {
-  background: #f5f5f7;
-  color: #111;
 }
 
 
@@ -459,46 +347,39 @@ body.dark-mode .refresh-btn:hover {
     padding: 25px;
   }
 
-  .login-box h1 {
+  .login-container h1 {
     font-size: 55px;
   }
 
-  .admin-header {
+  .dashboard-screen header {
     padding: 25px 6%;
 
     align-items: flex-start;
+
+    gap: 25px;
+  }
+
+  .dashboard-screen header {
     flex-direction: column;
   }
 
-  .header-actions {
-    width: 100%;
-
-    justify-content: flex-end;
-  }
-
-  .dashboard {
+  .dashboard-screen main {
     width: 88%;
 
     margin: 50px auto;
   }
 
-  .stats-grid {
+  .stats {
     grid-template-columns: 1fr;
   }
 
-  .section-heading {
+  .heading {
+    flex-direction: column;
+
     align-items: flex-start;
-
-    flex-direction: column;
   }
 
-  .submission-top {
-    flex-direction: column;
-
-    gap: 8px;
-  }
-
-  .stat-card strong {
+  .stat strong {
     font-size: 38px;
   }
 }
