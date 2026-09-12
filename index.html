@@ -4956,4 +4956,119 @@ nav a.active::after{
     animation:none;
   }
 }
-</
+
+<style>
+/* PRK VISION — CONTINUOUS ROTATING RINGS */
+
+.vision-section {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Outer ring */
+.vision-section::before {
+  content: "";
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  left: 50%;
+  top: 50%;
+  margin-left: -310px;
+  margin-top: -310px;
+  border: 1px solid rgba(17,17,17,0.14);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: PRKVisionRotate 24s linear infinite;
+}
+
+/* Inner ring */
+.vision-section::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  left: 50%;
+  top: 50%;
+  margin-left: -210px;
+  margin-top: -210px;
+  border: 1px solid rgba(17,17,17,0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: PRKVisionRotateReverse 16s linear infinite;
+}
+
+/* Keep Vision content above the rings */
+.vision-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Light mode */
+body:not(.dark) .vision-section::before {
+  border-color: rgba(17,17,17,0.14);
+}
+
+body:not(.dark) .vision-section::after {
+  border-color: rgba(17,17,17,0.08);
+}
+
+/* Dark mode */
+body.dark .vision-section::before {
+  border-color: rgba(255,255,255,0.18);
+}
+
+body.dark .vision-section::after {
+  border-color: rgba(255,255,255,0.09);
+}
+
+/* Rotation */
+@keyframes PRKVisionRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes PRKVisionRotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+  .vision-section::before {
+    width: 390px;
+    height: 390px;
+    margin-left: -195px;
+    margin-top: -195px;
+  }
+
+  .vision-section::after {
+    width: 270px;
+    height: 270px;
+    margin-left: -135px;
+    margin-top: -135px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  .vision-section::before,
+  .vision-section::after {
+    animation: none;
+  }
+
+}
+</style>
