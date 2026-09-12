@@ -1,0 +1,22 @@
+.about-name-reveal {
+  margin-top:40px;
+}
+
+.about-name {
+  font-family:var(--sans);
+  font-size:clamp(48px,10vw,105px);
+  font-weight:700;
+  line-height:.95;
+  letter-spacing:-.055em;
+  color:#111;
+  margin-bottom:45px;
+}
+
+.about-fade-text {
+  max-width:850px;
+  font-size:clamp(18px,2.2vw,27px);
+  line-height:1.55;
+  color:#111;
+  opacity:.18;
+  transition:opacity .25s linear;
+}
