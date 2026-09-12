@@ -3,4559 +3,2304 @@
 
 <head>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-<meta
-  name="description"
-  content="PRK — Curiosity today. Possibilities tomorrow."
->
+  <meta
+    name="description"
+    content="PRK — Curiosity today. Possibilities tomorrow."
+  >
 
-<title>PRK — Curiosity today. Possibilities tomorrow.</title>
+  <title>
+    PRK — Curiosity today. Possibilities tomorrow.
+  </title>
 
 
-<!-- FONTS -->
+  <!-- =========================
+       PRK FONTS
+  ========================= -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
-  rel="stylesheet"
->
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-
-<style>
-
-/* =====================================================
-   PRK — CORE SYSTEM
-===================================================== */
-
-:root {
-
-  --bg:#f4f4f2;
-  --white:#fafaf8;
-
-  --black:#070707;
-  --dark:#0b0b0b;
-
-  --text:#111111;
-
-  --muted:#707070;
-  --soft:#999999;
-
-  --line:#d5d5d1;
-  --dark-line:#292929;
-
-  --sans:"DM Sans", Arial, sans-serif;
-  --serif:"Playfair Display", Georgia, serif;
-  --prk:"Archivo Black", Impact, sans-serif;
-}
-
-
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-
-html {
-  scroll-behavior:smooth;
-}
-
-
-body {
-
-  background:var(--bg);
-  color:var(--text);
-
-  font-family:var(--sans);
-
-  overflow-x:hidden;
-}
-
-
-body.welcome-active {
-
-  height:100vh;
-  overflow:hidden;
-
-}
-
-
-a {
-  color:inherit;
-}
-
-
-button {
-  font-family:inherit;
-}
-
-
-.container {
-
-  width:min(1180px, calc(100% - 40px));
-
-  margin:0 auto;
-
-}
-
-
-.section-label {
-
-  font-size:10px;
-
-  letter-spacing:.18em;
-
-  text-transform:uppercase;
-
-  color:#777;
-
-}
-
-
-.technical {
-
-  font-size:9px;
-
-  letter-spacing:.17em;
-
-  text-transform:uppercase;
-
-  color:#888;
-
-}
-
-
-/* =====================================================
-   WELCOME SCREEN
-===================================================== */
-
-.welcome-screen {
-
-  position:fixed;
-
-  inset:0;
-
-  z-index:9999;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  overflow:hidden;
-
-  background:#050505;
-
-  color:white;
-
-  transition:
-    opacity .9s ease,
-    visibility .9s ease;
-
-}
-
-
-.welcome-screen.hide {
-
-  opacity:0;
-
-  visibility:hidden;
-
-  pointer-events:none;
-
-}
-
-
-/* technical grid */
-
-.welcome-grid {
-
-  position:absolute;
-
-  inset:0;
-
-  opacity:.08;
-
-  background-image:
-
-    linear-gradient(
-      rgba(255,255,255,.3) 1px,
-      transparent 1px
-    ),
-
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.3) 1px,
-      transparent 1px
-    );
-
-  background-size:70px 70px;
-
-}
-
-
-/* moving soft light */
-
-.welcome-blur {
-
-  position:absolute;
-
-  width:650px;
-
-  height:650px;
-
-  border-radius:50%;
-
-  background:
-
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.16),
-      rgba(255,255,255,.06) 35%,
-      transparent 70%
-    );
-
-  filter:blur(55px);
-
-  animation:
-    welcomeFloat 12s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes welcomeFloat {
-
-  0% {
-
-    transform:
-      translate(-18%,-12%)
-      scale(.9);
-
-  }
-
-  50% {
-
-    transform:
-      translate(12%,10%)
-      scale(1.08);
-
-  }
-
-  100% {
-
-    transform:
-      translate(-5%,20%)
-      scale(.96);
-
-  }
-
-}
-
-
-.welcome-content {
-
-  position:relative;
-
-  z-index:2;
-
-  text-align:center;
-
-}
-
-
-.welcome-system {
-
-  margin-bottom:25px;
-
-  color:#666;
-
-  font-size:9px;
-
-  letter-spacing:.2em;
-
-}
-
-
-.welcome-mark {
-
-  font-family:var(--prk);
-
-  font-size:clamp(
-    110px,
-    20vw,
-    250px
-  );
-
-  line-height:.75;
-
-  letter-spacing:-.09em;
-
-}
-
-
-.welcome-caption {
-
-  margin-top:42px;
-
-  margin-bottom:23px;
-
-  color:#888;
-
-  font-family:var(--serif);
-
-  font-size:16px;
-
-}
-
-
-.welcome-button {
-
-  padding:14px 25px;
-
-  border:1px solid #444;
-
-  background:transparent;
-
-  color:white;
-
-  font-size:10px;
-
-  letter-spacing:.15em;
-
-  text-transform:uppercase;
-
-  cursor:pointer;
-
-  transition:.35s ease;
-
-}
-
-
-.welcome-button:hover {
-
-  background:white;
-
-  color:black;
-
-  border-color:white;
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-.nav {
-
-  position:fixed;
-
-  top:0;
-  left:0;
-  right:0;
-
-  z-index:1000;
-
-  padding:21px 0;
-
-  transition:.35s ease;
-
-}
-
-
-.nav.scrolled {
-
-  background:
-    rgba(244,244,242,.88);
-
-  backdrop-filter:blur(18px);
-
-  border-bottom:
-    1px solid rgba(0,0,0,.08);
-
-}
-
-
-.nav-inner {
-
-  width:min(
-    1180px,
-    calc(100% - 40px)
-  );
-
-  margin:0 auto;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-}
-
-
-.nav-logo {
-
-  font-family:var(--prk);
-
-  font-size:20px;
-
-  letter-spacing:-.06em;
-
-  text-decoration:none;
-
-}
-
-
-.nav-links {
-
-  display:flex;
-
-  gap:24px;
-
-  list-style:none;
-
-}
-
-
-.nav-links a {
-
-  color:#666;
-
-  font-size:10px;
-
-  text-decoration:none;
-
-  transition:.25s ease;
-
-}
-
-
-.nav-links a:hover {
-
-  color:#111;
-
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero {
-
-  position:relative;
-
-  display:flex;
-
-  align-items:flex-start;
-
-  overflow:hidden;
-
-  border-bottom:
-    1px solid var(--line);
-
-  min-height:auto;
-
-  height:auto;
-
-  padding-bottom:45px;
-
-}
-
-
-.hero-grid {
-
-  position:absolute;
-
-  inset:0;
-
-  opacity:.27;
-
-  background-image:
-
-    linear-gradient(
-      rgba(0,0,0,.045) 1px,
-      transparent 1px
-    ),
-
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.045) 1px,
-      transparent 1px
-    );
-
-  background-size:80px 80px;
-
-}
-
-
-.hero-blur {
-
-  position:absolute;
-
-  width:650px;
-
-  height:650px;
-
-  right:-180px;
-
-  top:-150px;
-
-  background:
-
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.95),
-      rgba(255,255,255,.45) 38%,
-      transparent 72%
-    );
-
-  filter:blur(35px);
-
-  animation:
-    heroFloat 13s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes heroFloat {
-
-  from {
-
-    transform:
-      translate(0,0)
-      scale(.9);
-
-  }
-
-  to {
-
-    transform:
-      translate(-90px,100px)
-      scale(1.1);
-
-  }
-
-}
-
-
-.hero-content {
-
-  position:relative;
-
-  z-index:2;
-
-  width:100%;
-
-  padding-top:70px;
-
-}
-
-
-.hero-topline {
-
-  display:flex;
-
-  justify-content:space-between;
-
-  margin-bottom:32px;
-
-}
-
-
-.hero-topline span {
-
-  color:#777;
-
-  font-size:9px;
-
-  letter-spacing:.16em;
-
-}
-
-
-/* BIG PRK */
-
-.hero-prk {
-
-  font-family:var(--prk);
-
-  font-size:
-    clamp(
-      90px,
-      24vw,
-      180px
-    );
-
-  line-height:.75;
-
-  letter-spacing:-.09em;
-
-  margin-bottom:55px;
-
-  color:#111;
-
-}
-
-
-/* HERO TITLE */
-
-.hero-title {
-
-  max-width:1050px;
-
-  font-family:var(--serif);
-
-  font-size:
-    clamp(
-      65px,
-      9vw,
-      125px
-    );
-
-  line-height:.88;
-
-  letter-spacing:-.06em;
-
-}
-
-
-.hero-title em {
-
-  font-weight:400;
-
-}
-
-
-.hero-description {
-
-  max-width:510px;
-
-  margin-top:34px;
-
-  color:#666;
-
-  font-size:17px;
-
-  line-height:1.65;
-
-}
-
-
-.hero-scroll {
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  margin-top:24px;
-
-  color:#888;
-
-  font-size:9px;
-
-  letter-spacing:.15em;
-
-}
-
-
-.scroll-line {
-
-  width:38px;
-
-  height:1px;
-
-  background:#999;
-
-}
-
-
-/* =====================================================
-   GENERAL REVEAL
-===================================================== */
-
-.reveal {
-
-  opacity:0;
-
-  transform:
-    translateY(30px);
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-
-}
-
-
-.reveal.visible {
-
-  opacity:1;
-
-  transform:
-    translateY(0);
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width:800px) {
-
-  .container {
-
-    width:
-      calc(100% - 30px);
-
-  }
-
-
-  .nav-inner {
-
-    width:
-      calc(100% - 30px);
-
-  }
-
-
-  .nav-links {
-
-    display:none;
-
-  }
-
-
-  .welcome-mark {
-
-    font-size:
-      clamp(
-        95px,
-        27vw,
-        170px
-      );
-
-  }
-
-
-  .welcome-caption {
-
-    margin-top:32px;
-
-  }
-
-
-  .hero {
-
-    padding-bottom:35px;
-
-  }
-
-
-  .hero-content {
-
-    padding-top:118px;
-
-  }
-
-
-  .hero-topline {
-
-    margin-bottom:27px;
-
-  }
-
-
-  .hero-prk {
-
-    font-size:
-      clamp(
-        85px,
-        25vw,
-        150px
-      );
-
-    margin-bottom:42px;
-
-  }
-
-
-  .hero-title {
-
-    font-size:
-      clamp(
-        52px,
-        13.5vw,
-        82px
-      );
-
-    line-height:.9;
-
-  }
-
-
-  .hero-description {
-
-    max-width:350px;
-
-    margin-top:27px;
-
-    font-size:15px;
-
-    line-height:1.6;
-
-  }
-
-
-  .hero-scroll {
-
-    margin-top:24px;
-
-  }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media (prefers-reduced-motion:reduce) {
-
-  *,
-  *::before,
-  *::after {
-
-    animation:none !important;
-
-    transition:none !important;
-
-    scroll-behavior:auto !important;
-
-  }
-
-}
-
-</style>
-
-</head>
-
-
-<body class="welcome-active">
-
-
-<!-- =================================================
-     WELCOME SCREEN
-================================================= -->
-
-<div
-  class="welcome-screen"
-  id="welcomeScreen"
->
-
-  <div class="welcome-grid"></div>
-
-  <div class="welcome-blur"></div>
-
-
-  <div class="welcome-content">
-
-    <div class="welcome-system">
-
-      PRK / SYSTEM 001
-
-    </div>
-
-
-    <div class="welcome-mark">
-
-      PRK
-
-    </div>
-
-
-    <div class="welcome-caption">
-
-      Curiosity today.
-      Possibilities tomorrow.
-
-    </div>
-
-
-    <button
-      class="welcome-button"
-      id="welcomeButton"
-    >
-
-      Welcome to PRK
-
-    </button>
-
-  </div>
-
-</div>
-
-
-
-<!-- =================================================
-     NAVIGATION
-================================================= -->
-
-<header
-  class="nav"
-  id="mainNav"
->
-
-  <div class="nav-inner">
-
-
-    <a
-      href="#home"
-      class="nav-logo"
-    >
-
-      PRK
-
-    </a>
-
-
-    <ul class="nav-links">
-
-      <li>
-        <a href="#about">
-          About
-        </a>
-      </li>
-
-      <li>
-        <a href="#drives">
-          Drives
-        </a>
-      </li>
-
-      <li>
-        <a href="#vision">
-          Vision
-        </a>
-      </li>
-
-      <li>
-        <a href="#team">
-          Team
-        </a>
-      </li>
-
-      <li>
-        <a href="#projects">
-          Projects
-        </a>
-      </li>
-
-      <li>
-        <a href="#connect">
-          Connect
-        </a>
-      </li>
-
-    </ul>
-
-  </div>
-
-</header>
-
-
-
-<!-- =================================================
-     MAIN
-================================================= -->
-
-<main>
-
-
-<!-- =================================================
-     HERO
-================================================= -->
-
-<section
-  class="hero"
-  id="home"
->
-
-  <div class="hero-grid"></div>
-
-  <div class="hero-blur"></div>
-
-
-  <div
-    class="container hero-content"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
   >
 
 
-    <div class="hero-topline">
+  <style>
 
-      <span>
-        PRK / PERSONAL SYSTEM
-      </span>
+    /* =========================
+       PRK DESIGN SYSTEM
+    ========================= */
 
-      <span>
-        PURNIA · INDIA
-      </span>
+    :root {
 
-    </div>
+      --bg: #f4f4f2;
 
+      --surface: #fafaf8;
 
-    <!-- LARGE PRK -->
+      --text: #111111;
 
-    <div class="hero-prk">
+      --muted: #6f6f6f;
 
-      PRK
+      --soft: #999999;
 
-    </div>
+      --line: #d6d6d2;
 
+      --black: #070707;
 
-    <h1 class="hero-title">
+      --white: #f4f4f2;
 
-      Curiosity today.
-      <br>
 
-      <em>
-        Possibilities tomorrow.
-      </em>
+      --sans:
+        "DM Sans",
+        Arial,
+        sans-serif;
 
-    </h1>
+      --serif:
+        "Playfair Display",
+        Georgia,
+        serif;
 
+      --prk:
+        "Archivo Black",
+        Impact,
+        sans-serif;
 
-    <p class="hero-description">
 
-      A mind that keeps asking why,
-      how and what if — and refuses
-      to stop at the obvious answer.
-
-    </p>
-
-
-    <div class="hero-scroll">
-
-      <span class="scroll-line"></span>
-
-      SCROLL TO EXPLORE
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =================================================
-     PART 2 STARTS HERE
-================================================= -->
-<!-- =====================================================
-     PART 2 — ABOUT / DRIVES / VISION
-===================================================== -->
-
-
-<!-- =====================================================
-     01 — ABOUT ME
-===================================================== -->
-
-<section
-  class="about-section"
-  id="about"
->
-
-  <div class="container">
-
-
-    <div class="section-head reveal">
-
-      <div class="section-label">
-
-        01 — ABOUT ME
-
-      </div>
-
-
-      <div class="technical">
-
-        PERSONAL / 001
-
-      </div>
-
-    </div>
-
-
-    <!-- =================================================
-         LARGE NAME + SCROLL FADE
-    ================================================== -->
-
-    <div class="about-name-reveal">
-
-
-      <div class="about-name">
-
-        Priyanshu Ranjan Karn
-
-      </div>
-
-
-      <div class="about-fade-text">
-
-
-        <p>
-
-          Hi, I am
-          <strong>
-            Priyanshu Ranjan Karn
-          </strong>.
-
-          People also know me as
-          <strong>
-            PRK
-          </strong>.
-
-        </p>
-
-
-        <p>
-
-          I was born in Purnia, Bihar, India,
-          in a middle-class family.
-
-          But being middle-class never meant
-          having middle-sized thoughts.
-
-        </p>
-
-
-        <p>
-
-          Since childhood, my mind has been
-          unusually interested in three simple
-          questions:
-
-        </p>
-
-
-        <div class="question-line">
-
-          WHY?
-
-        </div>
-
-
-        <div class="question-line">
-
-          HOW?
-
-        </div>
-
-
-        <div class="question-line">
-
-          WHAT IF?
-
-        </div>
-
-
-        <p>
-
-          Those questions have taken me into
-          technology, politics, business,
-          editing, documentaries, conversations
-          and countless ideas that probably
-          should have stayed inside my head.
-
-          Fortunately, they didn't.
-
-        </p>
-
-
-        <p>
-
-          I am fascinated by technology because
-          I believe it does more than make life
-          convenient.
-
-          It changes the way people think,
-          communicate, build and see the world.
-
-        </p>
-
-
-        <p>
-
-          I am especially interested in coding,
-          artificial intelligence, machine
-          learning and engineering.
-
-          Not because technology is automatically
-          the answer to everything —
-
-          <em>
-
-            but because finding better questions
-            usually starts there.
-
-          </em>
-
-        </p>
-
-
-        <p>
-
-          Politics interests me for a completely
-          different reason.
-
-          Politics decides how ideas move through
-          society.
-
-          It influences technology, business,
-          people, resources, opinions and
-          sometimes even what becomes possible.
-
-        </p>
-
-
-        <p>
-
-          I like debating.
-
-          I like questioning.
-
-          I like conversations where nobody is
-          completely sure who is right.
-
-          Because sometimes the best idea is the
-          one that survives the argument.
-
-        </p>
-
-
-        <p>
-
-          I also enjoy editing, documentaries,
-          discovering unusual ideas and learning
-          from people who see the world differently.
-
-        </p>
-
-
-        <p>
-
-          I don't believe curiosity is a hobby.
-
-          I think it is a way of looking at the
-          world.
-
-        </p>
-
-
-        <p>
-
-          And honestly, I would rather spend my
-          time asking an uncomfortable question
-          than accepting a comfortable answer.
-
-        </p>
-
-
-        <p class="about-ending">
-
-          I am not trying to have all the answers.
-
-          I am more interested in becoming the
-          person who keeps asking better questions.
-
-        </p>
-
-
-      </div>
-
-    </div>
-
-
-    <!-- =================================================
-         ABOUT META
-    ================================================== -->
-
-    <div class="about-meta reveal">
-
-
-      <div>
-
-        <span>
-          ORIGIN
-        </span>
-
-        <strong>
-          PURNIA, BIHAR
-        </strong>
-
-      </div>
-
-
-      <div>
-
-        <span>
-          INTERESTS
-        </span>
-
-        <strong>
-          TECH · AI · POLITICS · BUSINESS
-        </strong>
-
-      </div>
-
-
-      <div>
-
-        <span>
-          APPROACH
-        </span>
-
-        <strong>
-          QUESTION EVERYTHING
-        </strong>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     02 — WHAT DRIVES ME
-===================================================== -->
-
-<section
-  class="drives-section"
-  id="drives"
->
-
-  <div class="container">
-
-
-    <div
-      class="section-head section-head-dark reveal"
-    >
-
-      <div class="section-label">
-
-        02 — WHAT DRIVES ME
-
-      </div>
-
-
-      <div class="technical">
-
-        MINDSET / 002
-
-      </div>
-
-    </div>
-
-
-    <div class="drives-intro reveal">
-
-
-      <div class="drives-index">
-
-        02
-
-      </div>
-
-
-      <h2>
-
-        Curiosity is
-
-        <em>
-          the engine.
-        </em>
-
-      </h2>
-
-    </div>
-
-
-
-    <div class="drives-grid">
-
-
-      <!-- DRIVE 01 -->
-
-      <article class="drive-item reveal">
-
-
-        <div class="drive-top">
-
-          <span>
-            01
-          </span>
-
-          <span>
-            WHY
-          </span>
-
-        </div>
-
-
-        <h3>
-
-          Question
-          <br>
-          everything.
-
-        </h3>
-
-
-        <p>
-
-          I naturally want to understand
-          what is happening underneath
-          the surface.
-
-        </p>
-
-      </article>
-
-
-
-      <!-- DRIVE 02 -->
-
-      <article class="drive-item reveal">
-
-
-        <div class="drive-top">
-
-          <span>
-            02
-          </span>
-
-          <span>
-            HOW
-          </span>
-
-        </div>
-
-
-        <h3>
-
-          Understand
-          <br>
-          the system.
-
-        </h3>
-
-
-        <p>
-
-          Knowing what something does
-          is useful.
-
-          Understanding how it actually
-          works is better.
-
-        </p>
-
-      </article>
-
-
-
-      <!-- DRIVE 03 -->
-
-      <article class="drive-item reveal">
-
-
-        <div class="drive-top">
-
-          <span>
-            03
-          </span>
-
-          <span>
-            WHAT IF
-          </span>
-
-        </div>
-
-
-        <h3>
-
-          Imagine
-          <br>
-          what's next.
-
-        </h3>
-
-
-        <p>
-
-          The most interesting ideas
-          usually begin as something
-          that sounds slightly impossible.
-
-        </p>
-
-      </article>
-
-
-
-      <!-- DRIVE 04 -->
-
-      <article class="drive-item reveal">
-
-
-        <div class="drive-top">
-
-          <span>
-            04
-          </span>
-
-          <span>
-            BUILD
-          </span>
-
-        </div>
-
-
-        <h3>
-
-          Turn ideas
-          <br>
-          into reality.
-
-        </h3>
-
-
-        <p>
-
-          Thinking is only the beginning.
-
-          The real challenge is building
-          something that actually works.
-
-        </p>
-
-      </article>
-
-
-    </div>
-
-
-
-    <div class="drive-statement reveal">
-
-
-      <span class="statement-mark">
-
-        "
-
-      </span>
-
-
-      <p>
-
-        The world doesn't need more people
-        who simply accept how things are.
-
-        It needs people willing to ask
-        why they are that way.
-
-      </p>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT / DRIVES CSS
-     PUT THIS INSIDE THE SAME <style> TAG
-===================================================== -->
-
-<style>
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about-section {
-
-  padding:
-    105px 0
-    110px;
-
-}
-
-
-.section-head {
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  padding-bottom:18px;
-
-  border-bottom:
-    1px solid var(--line);
-
-}
-
-
-.about-name-reveal {
-
-  margin-top:70px;
-
-}
-
-
-/* BIG NAME */
-
-.about-name {
-
-  font-family:var(--prk);
-
-  font-size:
-    clamp(
-      55px,
-      10vw,
-      120px
-    );
-
-  line-height:.86;
-
-  letter-spacing:-.075em;
-
-  color:#111;
-
-  margin-bottom:65px;
-
-}
-
-
-/* WHOLE TEXT FADE */
-
-.about-fade-text {
-
-  max-width:780px;
-
-  margin-left:auto;
-
-  color:#111;
-
-  opacity:.12;
-
-  transition:
-    opacity .15s linear;
-
-}
-
-
-.about-fade-text p {
-
-  margin-bottom:34px;
-
-  font-size:18px;
-
-  line-height:1.8;
-
-}
-
-
-.about-fade-text strong {
-
-  font-weight:700;
-
-}
-
-
-.about-fade-text em {
-
-  font-family:var(--serif);
-
-  font-size:1.05em;
-
-}
-
-
-.question-line {
-
-  font-family:var(--prk);
-
-  font-size:
-    clamp(
-      45px,
-      8vw,
-      90px
-    );
-
-  line-height:.85;
-
-  letter-spacing:-.06em;
-
-  margin:
-    24px 0;
-
-  color:#111;
-
-}
-
-
-.about-ending {
-
-  font-family:var(--serif);
-
-  font-size:24px !important;
-
-  line-height:1.5 !important;
-
-  padding-top:20px;
-
-  border-top:
-    1px solid var(--line);
-
-}
-
-
-.about-meta {
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:20px;
-
-  margin-top:90px;
-
-  padding-top:25px;
-
-  border-top:
-    1px solid var(--line);
-
-}
-
-
-.about-meta div {
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:10px;
-
-}
-
-
-.about-meta span {
-
-  font-size:9px;
-
-  letter-spacing:.15em;
-
-  color:#888;
-
-}
-
-
-.about-meta strong {
-
-  font-size:11px;
-
-  letter-spacing:.05em;
-
-}
-
-
-/* =====================================================
-   DRIVES
-===================================================== */
-
-.drives-section {
-
-  background:var(--dark);
-
-  color:var(--white);
-
-  padding:
-    105px 0
-    115px;
-
-}
-
-
-.section-head-dark {
-
-  border-bottom:
-    1px solid var(--dark-line);
-
-}
-
-
-.section-head-dark .section-label {
-
-  color:#777;
-
-}
-
-
-.drives-intro {
-
-  display:grid;
-
-  grid-template-columns:
-    120px 1fr;
-
-  gap:35px;
-
-  align-items:start;
-
-  margin-top:75px;
-
-  margin-bottom:80px;
-
-}
-
-
-.drives-index {
-
-  font-size:10px;
-
-  color:#666;
-
-  letter-spacing:.15em;
-
-}
-
-
-.drives-intro h2 {
-
-  font-family:var(--serif);
-
-  font-weight:400;
-
-  font-size:
-    clamp(
-      55px,
-      8vw,
-      110px
-    );
-
-  line-height:.9;
-
-  letter-spacing:-.06em;
-
-}
-
-
-.drives-intro h2 em {
-
-  color:#888;
-
-}
-
-
-.drives-grid {
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  border-top:
-    1px solid var(--dark-line);
-
-  border-left:
-    1px solid var(--dark-line);
-
-}
-
-
-.drive-item {
-
-  min-height:330px;
-
-  padding:30px;
-
-  border-right:
-    1px solid var(--dark-line);
-
-  border-bottom:
-    1px solid var(--dark-line);
-
-}
-
-
-.drive-top {
-
-  display:flex;
-
-  justify-content:space-between;
-
-  color:#666;
-
-  font-size:9px;
-
-  letter-spacing:.15em;
-
-}
-
-
-.drive-item h3 {
-
-  margin-top:75px;
-
-  font-family:var(--serif);
-
-  font-size:42px;
-
-  font-weight:400;
-
-  line-height:.95;
-
-  letter-spacing:-.04em;
-
-}
-
-
-.drive-item p {
-
-  max-width:380px;
-
-  margin-top:28px;
-
-  color:#888;
-
-  font-size:14px;
-
-  line-height:1.7;
-
-}
-
-
-.drive-statement {
-
-  display:grid;
-
-  grid-template-columns:100px 1fr;
-
-  gap:30px;
-
-  margin-top:90px;
-
-  padding-top:30px;
-
-  border-top:
-    1px solid var(--dark-line);
-
-}
-
-
-.statement-mark {
-
-  font-family:var(--serif);
-
-  font-size:70px;
-
-  color:#555;
-
-  line-height:.6;
-
-}
-
-
-.drive-statement p {
-
-  max-width:800px;
-
-  font-family:var(--serif);
-
-  font-size:
-    clamp(
-      28px,
-      4vw,
-      48px
-    );
-
-  line-height:1.15;
-
-  letter-spacing:-.035em;
-
-  color:#aaa;
-
-}
-
-
-/* =====================================================
-   MOBILE ABOUT + DRIVES
-===================================================== */
-
-@media (max-width:800px) {
-
-
-  .about-section {
-
-    padding:
-      75px 0
-      80px;
-
-  }
-
-
-  .section-head {
-
-    align-items:flex-start;
-
-    gap:20px;
-
-  }
-
-
-  .about-name-reveal {
-
-    margin-top:50px;
-
-  }
-
-
-  .about-name {
-
-    font-size:
-      clamp(
-        48px,
-        13vw,
-        80px
-      );
-
-    margin-bottom:45px;
-
-  }
-
-
-  .about-fade-text {
-
-    margin-left:0;
-
-  }
-
-
-  .about-fade-text p {
-
-    font-size:16px;
-
-    line-height:1.7;
-
-    margin-bottom:28px;
-
-  }
-
-
-  .question-line {
-
-    font-size:
-      clamp(
-        42px,
-        14vw,
-        70px
-      );
-
-  }
-
-
-  .about-ending {
-
-    font-size:21px !important;
-
-  }
-
-
-  .about-meta {
-
-    grid-template-columns:1fr;
-
-    margin-top:60px;
-
-    gap:25px;
-
-  }
-
-
-  .drives-section {
-
-    padding:
-      75px 0
-      80px;
-
-  }
-
-
-  .drives-intro {
-
-    grid-template-columns:1fr;
-
-    gap:20px;
-
-    margin-top:50px;
-
-    margin-bottom:55px;
-
-  }
-
-
-  .drives-intro h2 {
-
-    font-size:
-      clamp(
-        48px,
-        13vw,
-        75px
-      );
-
-  }
-
-
-  .drives-grid {
-
-    grid-template-columns:1fr;
-
-  }
-
-
-  .drive-item {
-
-    min-height:auto;
-
-    padding:25px;
-
-  }
-
-
-  .drive-item h3 {
-
-    margin-top:55px;
-
-    font-size:36px;
-
-  }
-
-
-  .drive-statement {
-
-    grid-template-columns:1fr;
-
-    gap:15px;
-
-    margin-top:65px;
-
-  }
-
-
-  .statement-mark {
-
-    font-size:55px;
-
-  }
-
-
-  .drive-statement p {
-
-    font-size:30px;
-
-  }
-
-}
-
-</style>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT FOR PART 1 + PART 2
-     KEEP THIS BEFORE </body>
-===================================================== -->
-
-<script>
-
-/* =====================================================
-   WELCOME SCREEN
-===================================================== */
-
-const welcomeScreen =
-  document.getElementById("welcomeScreen");
-
-const welcomeButton =
-  document.getElementById("welcomeButton");
-
-
-if (welcomeButton) {
-
-  welcomeButton.addEventListener(
-    "click",
-    function() {
-
-      welcomeScreen.classList.add("hide");
-
-      document.body.classList.remove(
-        "welcome-active"
-      );
-
-    }
-  );
-
-}
-
-
-/* =====================================================
-   NAVIGATION SCROLL
-===================================================== */
-
-const mainNav =
-  document.getElementById("mainNav");
-
-
-window.addEventListener(
-  "scroll",
-  function() {
-
-    if (!mainNav) return;
-
-    if (window.scrollY > 40) {
-
-      mainNav.classList.add("scrolled");
-
-    } else {
-
-      mainNav.classList.remove("scrolled");
+      --ease:
+        cubic-bezier(.2,.7,.2,1);
 
     }
 
-  },
-  { passive:true }
-);
+
+    /* =========================
+       DARK MODE
+    ========================= */
+
+    html.dark {
+
+      --bg: #080808;
+
+      --surface: #111111;
+
+      --text: #f4f4f2;
+
+      --muted: #a0a0a0;
+
+      --soft: #707070;
+
+      --line: #292929;
+
+      --black: #f4f4f2;
+
+      --white: #080808;
+
+    }
 
 
-/* =====================================================
-   NORMAL REVEAL ANIMATION
-===================================================== */
+    /* =========================
+       RESET
+    ========================= */
 
-const revealElements =
-  document.querySelectorAll(".reveal");
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
 
 
-const revealObserver =
-  new IntersectionObserver(
-    function(entries) {
+    html {
 
-      entries.forEach(
-        function(entry) {
+      scroll-behavior: smooth;
 
-          if (entry.isIntersecting) {
+    }
 
-            entry.target.classList.add(
-              "visible"
-            );
 
-          }
+    body {
 
-        }
+      margin: 0;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      font-family: var(--sans);
+
+      overflow-x: hidden;
+
+      transition:
+        background .45s ease,
+        color .45s ease;
+
+    }
+
+
+    a {
+
+      color: inherit;
+
+      text-decoration: none;
+
+    }
+
+
+    button {
+
+      font-family: inherit;
+
+    }
+
+
+    img {
+
+      max-width: 100%;
+
+      display: block;
+
+    }
+
+
+    .container {
+
+      width: min(
+        1180px,
+        calc(100% - 40px)
       );
 
-    },
-    {
-      threshold:.12
-    }
-  );
-
-
-revealElements.forEach(
-  function(element) {
-
-    revealObserver.observe(element);
-
-  }
-);
-
-
-/* =====================================================
-   ABOUT TEXT SCROLL FADE
-===================================================== */
-
-const aboutFadeText =
-  document.querySelector(
-    ".about-fade-text"
-  );
-
-
-function updateAboutFade() {
-
-  if (!aboutFadeText) return;
-
-
-  const rect =
-    aboutFadeText.getBoundingClientRect();
-
-
-  const screenHeight =
-    window.innerHeight;
-
-
-  /*
-     Starts around 12% opacity.
-
-     As the About text moves upward
-     through the screen, it gradually
-     becomes darker.
-
-     Maximum = full black.
-  */
-
-  const progress =
-    (screenHeight - rect.top) /
-    (screenHeight * 0.75);
-
-
-  const opacity =
-    Math.max(
-      0.12,
-      Math.min(
-        1,
-        progress
-      )
-    );
-
-
-  aboutFadeText.style.opacity =
-    opacity;
-
-}
-
-
-window.addEventListener(
-  "scroll",
-  updateAboutFade,
-  { passive:true }
-);
-
-
-updateAboutFade();
-
-
-</script>
-
-</body>
-
-</html>
-
-
-<!-- PART 3 STARTS HERE -->
-
-<!-- =========================
-     PART 3 — TEAM / PROJECTS
-========================= -->
-
-<section class="team-section" id="team">
-
-  <div class="container">
-
-    <div class="section-head reveal">
-
-      <div class="section-label">
-        04 — THE TEAM
-      </div>
-
-      <div class="technical">
-        PEOPLE / 004
-      </div>
-
-    </div>
-
-
-    <div class="team-hero reveal">
-
-      <div class="team-number">
-        04
-      </div>
-
-      <h2>
-        Different minds.
-        <br>
-        <em>One direction.</em>
-      </h2>
-
-    </div>
-
-
-    <div class="team-layout">
-
-      <div class="team-intro reveal">
-
-        <p>
-
-          I don't believe great things are
-          built by everyone thinking the same way.
-
-        </p>
-
-      </div>
-
-
-      <div class="team-copy reveal">
-
-        <p>
-
-          I want to bring together people
-          with completely different ways of
-          looking at the world.
-
-        </p>
-
-        <p>
-
-          The positive thinker.
-
-          The negative thinker.
-
-          The person who doubts everything.
-
-          The person who keeps asking
-          uncomfortable questions.
-
-        </p>
-
-        <p>
-
-          Builders, thinkers, creators,
-          engineers, designers, strategists
-          and people who simply see something
-          differently.
-
-        </p>
-
-        <p>
-
-          Different skills are useful.
-
-          Different perspectives are even more
-          useful.
-
-        </p>
-
-        <p>
-
-          The goal is not to create a room
-          where everyone agrees.
-
-          The goal is to create a room where
-          ideas become stronger because they
-          are challenged.
-
-        </p>
-
-        <p class="team-ending">
-
-          I am looking for the right people
-          to make the circle bigger,
-
-          more powerful,
-
-          and more meaningful.
-
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="team-tags reveal">
-
-      <span>THINKERS</span>
-      <span>BUILDERS</span>
-      <span>CREATORS</span>
-      <span>QUESTIONERS</span>
-      <span>EXPLORERS</span>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<section class="projects-section" id="projects">
-
-  <div class="container">
-
-    <div class="section-head reveal">
-
-      <div class="section-label">
-        05 — PROJECTS
-      </div>
-
-      <div class="technical">
-        WORK / 005
-      </div>
-
-    </div>
-
-
-    <div class="projects-heading reveal">
-
-      <div class="projects-number">
-        05
-      </div>
-
-      <h2>
-        Ideas are easy.
-        <br>
-        <em>Building them isn't.</em>
-      </h2>
-
-    </div>
-
-
-    <div class="projects-list">
-
-
-      <!-- PROJECT 01 — CLICKABLE -->
-
-      <a
-        href="future-asia.html"
-        class="project-card project-card-link reveal"
-      >
-
-        <div class="project-index">
-          01
-        </div>
-
-        <div class="project-main">
-
-          <div class="project-meta">
-            <span>EDITORIAL</span>
-            <span>01 / LIVE</span>
-          </div>
-
-          <h3>
-            Future Asia Journal
-          </h3>
-
-          <p>
-
-            An independent publication focused
-            on Asia-Pacific politics, technology,
-            artificial intelligence, countries
-            and the forces shaping the future.
-
-          </p>
-
-        </div>
-
-        <div class="project-arrow">
-          ↗
-        </div>
-
-      </a>
-
-
-
-      <!-- PROJECT 02 — STATIC -->
-
-      <article class="project-card reveal">
-
-        <div class="project-index">
-          02
-        </div>
-
-        <div class="project-main">
-
-          <div class="project-meta">
-            <span>HARDWARE</span>
-            <span>02 / IN PROGRESS</span>
-          </div>
-
-          <h3>
-            Ideas in Progress
-          </h3>
-
-          <p>
-
-            I want to build my own hardware
-            company and create products that
-            can genuinely change the way people
-            interact with technology.
-
-          </p>
-
-          <p>
-
-            The idea is still evolving.
-
-            I would rather return with a clear
-            idea than pretend an unfinished
-            thought is a finished company.
-
-          </p>
-
-        </div>
-
-        <div class="project-status">
-          IN PROGRESS
-        </div>
-
-      </article>
-
-
-
-      <!-- PROJECT 03 — STATIC -->
-
-      <article class="project-card reveal">
-
-        <div class="project-index">
-          03
-        </div>
-
-        <div class="project-main">
-
-          <div class="project-meta">
-            <span>AI / RESEARCH</span>
-            <span>03 / EXPLORING</span>
-          </div>
-
-          <h3>
-            Intelligence Lab
-          </h3>
-
-          <p>
-
-            A growing collection of ideas around
-            artificial intelligence, machine
-            learning and the possibilities of
-            intelligent systems.
-
-          </p>
-
-          <p>
-
-            Some ideas are technical.
-
-            Some are experimental.
-
-            Some are probably slightly crazy.
-
-            That's usually where things get
-            interesting.
-
-          </p>
-
-        </div>
-
-        <div class="project-status">
-          EXPLORING
-        </div>
-
-      </article>
-
-
-    </div>
-
-
-    <div class="projects-footer reveal">
-
-      <span class="technical">
-        MORE IDEAS / LOADING
-      </span>
-
-      <span class="project-dots">
-        • • •
-      </span>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PART 4 STARTS HERE -->
-<!-- =========================
-     PART 4 — CONNECT
-========================= -->
-
-<section class="connect-section" id="connect">
-
-  <div class="connect-grid"></div>
-
-  <div class="connect-blur"></div>
-
-  <div class="container">
-
-    <div class="section-head section-head-dark reveal">
-
-      <div class="section-label">
-        06 — LET'S CONNECT
-      </div>
-
-      <div class="technical">
-        SIGNAL / 006
-      </div>
-
-    </div>
-
-
-    <div class="connect-hero reveal">
-
-      <div class="connect-number">
-        06
-      </div>
-
-      <h2>
-        Have an idea?
-        <br>
-        <em>Let's talk.</em>
-      </h2>
-
-    </div>
-
-
-    <div class="connect-layout">
-
-
-      <div class="connect-message reveal">
-
-        <p class="connect-lead">
-
-          I like meeting people who think
-          differently.
-
-        </p>
-
-        <p>
-
-          If you have an idea, a question,
-          a project, a collaboration or simply
-          something interesting to discuss,
-          you can reach me here.
-
-        </p>
-
-        <div class="signal-system">
-
-          <div class="signal-dots">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-          </div>
-
-          <div class="signal-label">
-            CONNECTION AVAILABLE
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="connect-links reveal">
-
-
-        <a
-          href="https://instagram.com/prkgoes"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="connect-link"
-        >
-
-          <span class="connect-link-number">
-            01
-          </span>
-
-          <span class="connect-link-name">
-            Instagram
-          </span>
-
-          <span class="connect-link-arrow">
-            ↗
-          </span>
-
-        </a>
-
-
-
-        <a
-          href="https://t.me/Sowhat1233"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="connect-link"
-        >
-
-          <span class="connect-link-number">
-            02
-          </span>
-
-          <span class="connect-link-name">
-            Telegram
-          </span>
-
-          <span class="connect-link-arrow">
-            ↗
-          </span>
-
-        </a>
-
-
-
-        <a
-          href="https://github.com/PriyanshuSPRK0611"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="connect-link"
-        >
-
-          <span class="connect-link-number">
-            03
-          </span>
-
-          <span class="connect-link-name">
-            GitHub
-          </span>
-
-          <span class="connect-link-arrow">
-            ↗
-          </span>
-
-        </a>
-
-
-
-        <a
-          href="mailto:prkworldcare@gmail.com"
-          class="connect-link"
-        >
-
-          <span class="connect-link-number">
-            04
-          </span>
-
-          <span class="connect-link-name">
-            Email
-          </span>
-
-          <span class="connect-link-arrow">
-            ↗
-          </span>
-
-        </a>
-
-
-      </div>
-
-    </div>
-
-
-    <div class="connect-bottom reveal">
-
-      <div class="technical">
-        PRK / OPEN CHANNEL
-      </div>
-
-      <div class="connect-dots-large">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- PART 5 STARTS HERE -->
-<!-- =========================
-     PART 5 — FINAL / FOOTER / JS
-========================= -->
-
-<!-- CONNECT IMAGE -->
-
-<section class="connect-image-section">
-
-  <div class="connect-photo">
-
-    <img
-      src="kv-0515-mo.jpg.thumb.webp"
-      alt="PRK"
-      class="connect-photo-content"
-    >
-
-    <div class="connect-photo-overlay"></div>
-
-    <div class="connect-photo-text">
-
-      <span>
-        PRK / 2026
-      </span>
-
-      <strong>
-        KEEP<br>
-        QUESTIONING.
-      </strong>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-  <div class="container">
-
-    <div class="footer-top">
-
-      <div class="footer-brand">
-
-        <div class="footer-logo">
-          PRK
-        </div>
-
-        <p>
-          Curiosity today.<br>
-          Possibilities tomorrow.
-        </p>
-
-      </div>
-
-
-      <div class="footer-right">
-
-        <span class="technical">
-          PERSONAL SYSTEM / 001
-        </span>
-
-        <span class="footer-location">
-          PURNIA · INDIA
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-line"></div>
-
-
-    <div class="footer-bottom">
-
-      <span>
-        © 2026 PRK
-      </span>
-
-      <span>
-        BUILT WITH CURIOSITY
-      </span>
-
-      <a href="#home">
-        BACK TO TOP ↑
-      </a>
-
-    </div>
-
-  </div>
-
-</footer>
-
-
-
-<!-- =========================
-     FINAL CSS
-========================= -->
-
-<style>
-
-/* =================================
-   COMMON SECTION STYLING
-================================= */
-
-section:not(.hero):not(.connect-section) {
-  position:relative;
-}
-
-.section-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:28px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.section-head-dark {
-  border-color:var(--dark-line);
-  color:white;
-}
-
-.section-head-dark .section-label,
-.section-head-dark .technical {
-  color:#777;
-}
-
-
-/* =================================
-   REVEAL ANIMATION
-================================= */
-
-.reveal {
-  opacity:0;
-  transform:translateY(28px);
-  transition:
-    opacity .9s ease,
-    transform .9s cubic-bezier(.22,1,.36,1);
-}
-
-.reveal.visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-
-/* =================================
-   ABOUT
-================================= */
-
-.about-section {
-  padding:0 0 120px;
-  background:var(--bg);
-}
-
-.about-layout {
-  display:grid;
-  grid-template-columns:38% 62%;
-  padding-top:90px;
-}
-
-.about-intro {
-  padding-right:60px;
-}
-
-.about-number {
-  font-size:10px;
-  color:#999;
-  letter-spacing:.18em;
-  margin-bottom:35px;
-}
-
-.about-intro h2 {
-  font-family:var(--serif);
-  font-size:clamp(45px,6vw,78px);
-  line-height:.95;
-  letter-spacing:-.055em;
-  font-weight:400;
-}
-
-.about-intro h2 em {
-  color:#777;
-}
-
-.about-text {
-  max-width:650px;
-  padding-left:35px;
-  border-left:1px solid var(--line);
-}
-
-.about-text p {
-  margin-bottom:25px;
-  color:#666;
-  font-size:16px;
-  line-height:1.75;
-}
-
-.about-text .about-lead {
-  color:#111;
-  font-size:23px;
-  line-height:1.45;
-}
-
-.about-text strong {
-  color:#111;
-}
-
-.about-text em {
-  color:#111;
-  font-family:var(--serif);
-}
-
-.question-line {
-  display:inline-block;
-  margin:0 5px;
-  color:#111;
-  font-family:var(--prk);
-  font-size:12px;
-  letter-spacing:.05em;
-}
-
-.about-ending {
-  margin-top:45px;
-  padding-top:30px;
-  border-top:1px solid var(--line);
-  color:#111!important;
-  font-family:var(--serif);
-  font-size:22px!important;
-}
-
-.about-meta {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--line);
-  margin-top:90px;
-}
-
-.about-meta div {
-  padding:23px 25px;
-  border-right:1px solid var(--line);
-}
-
-.about-meta div:first-child {
-  padding-left:0;
-}
-
-.about-meta div:last-child {
-  border-right:0;
-}
-
-.about-meta span {
-  display:block;
-  color:#999;
-  font-size:9px;
-  letter-spacing:.17em;
-  margin-bottom:12px;
-}
-
-.about-meta strong {
-  font-size:10px;
-  letter-spacing:.08em;
-  font-weight:600;
-}
-
-
-/* =================================
-   WHAT DRIVES ME
-================================= */
-
-.drives-section {
-  background:var(--dark);
-  color:#f5f5f5;
-  padding-bottom:120px;
-}
-
-.drives-intro {
-  display:grid;
-  grid-template-columns:38% 62%;
-  padding:90px 0 75px;
-}
-
-.drives-number {
-  font-size:10px;
-  color:#666;
-  letter-spacing:.18em;
-}
-
-.drives-intro h2 {
-  font-family:var(--serif);
-  font-size:clamp(50px,7vw,90px);
-  font-weight:400;
-  line-height:.9;
-  letter-spacing:-.06em;
-}
-
-.drives-intro h2 em {
-  color:#777;
-}
-
-.drives-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  border-top:1px solid var(--dark-line);
-  border-left:1px solid var(--dark-line);
-}
-
-.drive-item {
-  min-height:330px;
-  padding:30px;
-  border-right:1px solid var(--dark-line);
-  border-bottom:1px solid var(--dark-line);
-  transition:background .4s ease;
-}
-
-.drive-item:hover {
-  background:#111;
-}
-
-.drive-top {
-  display:flex;
-  justify-content:space-between;
-  color:#666;
-  font-size:9px;
-  letter-spacing:.16em;
-}
-
-.drive-item h3 {
-  margin-top:80px;
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:clamp(32px,4vw,52px);
-  line-height:.95;
-  letter-spacing:-.045em;
-}
-
-.drive-item p {
-  max-width:360px;
-  margin-top:25px;
-  color:#888;
-  font-size:14px;
-  line-height:1.6;
-}
-
-.drive-statement {
-  display:grid;
-  grid-template-columns:38% 62%;
-  margin-top:90px;
-  padding-top:55px;
-  border-top:1px solid var(--dark-line);
-}
-
-.statement-mark {
-  font-family:var(--serif);
-  font-size:80px;
-  line-height:.5;
-  color:#555;
-}
-
-.drive-statement p {
-  max-width:650px;
-  font-family:var(--serif);
-  color:#ddd;
-  font-size:clamp(24px,3vw,38px);
-  line-height:1.25;
-}
-
-
-/* =================================
-   VISION
-================================= */
-
-.vision-section {
-  padding-bottom:130px;
-  background:var(--bg);
-}
-
-.vision-hero {
-  display:grid;
-  grid-template-columns:38% 62%;
-  padding:90px 0 75px;
-}
-
-.vision-number {
-  color:#999;
-  font-size:10px;
-  letter-spacing:.18em;
-}
-
-.vision-hero h2 {
-  font-family:var(--serif);
-  font-size:clamp(55px,8vw,105px);
-  font-weight:400;
-  line-height:.85;
-  letter-spacing:-.065em;
-}
-
-.vision-hero h2 em {
-  color:#777;
-}
-
-.vision-copy {
-  max-width:650px;
-  margin-left:38%;
-  padding-left:35px;
-  border-left:1px solid var(--line);
-}
-
-.vision-copy p {
-  margin-bottom:27px;
-  color:#666;
-  font-size:17px;
-  line-height:1.7;
-}
-
-.vision-copy .vision-lead {
-  color:#111;
-  font-family:var(--serif);
-  font-size:25px;
-  line-height:1.4;
-}
-
-.vision-copy em {
-  color:#111;
-  font-family:var(--serif);
-}
-
-.vision-principles {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  margin-top:90px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.principle {
-  min-height:210px;
-  padding:28px;
-  border-right:1px solid var(--line);
-}
-
-.principle:first-child {
-  padding-left:0;
-}
-
-.principle:last-child {
-  border-right:0;
-}
-
-.principle span {
-  color:#999;
-  font-size:9px;
-  letter-spacing:.15em;
-}
-
-.principle h3 {
-  margin-top:65px;
-  font-size:10px;
-  letter-spacing:.16em;
-}
-
-.principle p {
-  margin-top:12px;
-  color:#777;
-  font-size:13px;
-}
-
-.vision-ending {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  margin-top:80px;
-}
-
-.vision-ending p {
-  max-width:600px;
-  font-family:var(--serif);
-  font-size:30px;
-  line-height:1.2;
-  text-align:right;
-}
-
-.vision-ending em {
-  color:#777;
-}
-
-
-/* =================================
-   TEAM
-================================= */
-
-.team-section {
-  padding-bottom:120px;
-  background:var(--bg);
-}
-
-.team-hero {
-  display:grid;
-  grid-template-columns:38% 62%;
-  padding:90px 0;
-}
-
-.team-number {
-  color:#999;
-  font-size:10px;
-  letter-spacing:.18em;
-}
-
-.team-hero h2 {
-  font-family:var(--serif);
-  font-size:clamp(55px,8vw,105px);
-  font-weight:400;
-  line-height:.85;
-  letter-spacing:-.065em;
-}
-
-.team-hero h2 em {
-  color:#777;
-}
-
-.team-layout {
-  display:grid;
-  grid-template-columns:38% 62%;
-}
-
-.team-intro {
-  padding-right:50px;
-}
-
-.team-intro p {
-  font-family:var(--serif);
-  font-size:27px;
-  line-height:1.25;
-}
-
-.team-copy {
-  max-width:650px;
-  padding-left:35px;
-  border-left:1px solid var(--line);
-}
-
-.team-copy p {
-  margin-bottom:25px;
-  color:#666;
-  font-size:16px;
-  line-height:1.7;
-}
-
-.team-ending {
-  color:#111!important;
-  font-family:var(--serif);
-  font-size:22px!important;
-}
-
-.team-tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:80px;
-  padding-top:25px;
-  border-top:1px solid var(--line);
-}
-
-.team-tags span {
-  padding:10px 14px;
-  border:1px solid #c9c9c5;
-  color:#777;
-  font-size:9px;
-  letter-spacing:.15em;
-}
-
-
-/* =================================
-   PROJECTS
-================================= */
-
-.projects-section {
-  padding-bottom:130px;
-  background:#ededeb;
-}
-
-.projects-heading {
-  display:grid;
-  grid-template-columns:38% 62%;
-  padding:90px 0 75px;
-}
-
-.projects-number {
-  color:#999;
-  font-size:10px;
-  letter-spacing:.18em;
-}
-
-.projects-heading h2 {
-  font-family:var(--serif);
-  font-size:clamp(50px,7vw,90px);
-  font-weight:400;
-  line-height:.88;
-  letter-spacing:-.06em;
-}
-
-.projects-heading h2 em {
-  color:#777;
-}
-
-.projects-list {
-  border-top:1px solid #cfcfcb;
-}
-
-.project-card {
-  position:relative;
-  display:grid;
-  grid-template-columns:12% 1fr auto;
-  gap:25px;
-  padding:38px 0;
-  border-bottom:1px solid #cfcfcb;
-  text-decoration:none;
-}
-
-.project-card-link {
-  cursor:pointer;
-}
-
-.project-card-link:hover .project-arrow {
-  transform:translate(5px,-5px);
-}
-
-.project-index {
-  color:#999;
-  font-size:10px;
-  letter-spacing:.15em;
-}
-
-.project-meta {
-  display:flex;
-  gap:20px;
-  margin-bottom:20px;
-  color:#999;
-  font-size:8px;
-  letter-spacing:.16em;
-}
-
-.project-main h3 {
-  font-family:var(--serif);
-  font-size:clamp(31px,4vw,52px);
-  font-weight:400;
-  line-height:1;
-  letter-spacing:-.04em;
-}
-
-.project-main p {
-  max-width:620px;
-  margin-top:20px;
-  color:#666;
-  font-size:14px;
-  line-height:1.65;
-}
-
-.project-arrow {
-  align-self:start;
-  font-size:25px;
-  transition:.35s ease;
-}
-
-.project-status {
-  align-self:start;
-  color:#999;
-  font-size:8px;
-  letter-spacing:.15em;
-}
-
-.projects-footer {
-  display:flex;
-  justify-content:space-between;
-  padding-top:25px;
-}
-
-.project-dots {
-  color:#888;
-  letter-spacing:8px;
-}
-
-
-/* =================================
-   CONNECT
-================================= */
-
-.connect-section {
-  position:relative;
-  overflow:hidden;
-  padding-bottom:90px;
-  background:var(--dark);
-  color:white;
-}
-
-.connect-grid {
-  position:absolute;
-  inset:0;
-  opacity:.08;
-  background-image:
-    linear-gradient(rgba(255,255,255,.3) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.3) 1px,transparent 1px);
-  background-size:75px 75px;
-}
-
-.connect-blur {
-  position:absolute;
-  width:600px;
-  height:600px;
-  right:-250px;
-  top:100px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(255,255,255,.13),
-    transparent 70%
-  );
-  filter:blur(50px);
-  animation:connectFloat 14s ease-in-out infinite alternate;
-}
-
-@keyframes connectFloat {
-  from {
-    transform:translate(-40px,-20px);
-  }
-  to {
-    transform:translate(40px,60px);
-  }
-}
-
-.connect-section .container {
-  position:relative;
-  z-index:2;
-}
-
-.connect-hero {
-  display:grid;
-  grid-template-columns:38% 62%;
-  padding:90px 0 80px;
-}
-
-.connect-number {
-  color:#666;
-  font-size:10px;
-  letter-spacing:.18em;
-}
-
-.connect-hero h2 {
-  font-family:var(--serif);
-  font-size:clamp(55px,8vw,105px);
-  font-weight:400;
-  line-height:.85;
-  letter-spacing:-.065em;
-}
-
-.connect-hero h2 em {
-  color:#777;
-}
-
-.connect-layout {
-  display:grid;
-  grid-template-columns:38% 62%;
-}
-
-.connect-message {
-  padding-right:55px;
-}
-
-.connect-message p {
-  max-width:420px;
-  margin-bottom:25px;
-  color:#888;
-  font-size:15px;
-  line-height:1.7;
-}
-
-.connect-message .connect-lead {
-  color:#eee;
-  font-family:var(--serif);
-  font-size:25px;
-  line-height:1.3;
-}
-
-.signal-system {
-  margin-top:60px;
-}
-
-.signal-dots {
-  display:grid;
-  grid-template-columns:repeat(12,7px);
-  gap:7px;
-}
-
-.signal-dots span,
-.connect-dots-large span {
-  display:block;
-  width:5px;
-  height:5px;
-  background:#777;
-  border-radius:50%;
-  animation:dotPulse 2.4s ease-in-out infinite;
-}
-
-.signal-dots span:nth-child(2n),
-.connect-dots-large span:nth-child(2n) {
-  animation-delay:.4s;
-}
-
-.signal-dots span:nth-child(3n),
-.connect-dots-large span:nth-child(3n) {
-  animation-delay:.8s;
-}
-
-@keyframes dotPulse {
-  0%,100% {
-    opacity:.25;
-    transform:scale(.7);
-  }
-
-  50% {
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
-.signal-label {
-  margin-top:18px;
-  color:#555;
-  font-size:8px;
-  letter-spacing:.17em;
-}
-
-.connect-links {
-  border-top:1px solid var(--dark-line);
-}
-
-.connect-link {
-  display:grid;
-  grid-template-columns:45px 1fr auto;
-  align-items:center;
-  min-height:82px;
-  border-bottom:1px solid var(--dark-line);
-  text-decoration:none;
-  transition:.3s ease;
-}
-
-.connect-link:hover {
-  padding-left:10px;
-  background:#101010;
-}
-
-.connect-link-number {
-  color:#555;
-  font-size:9px;
-  letter-spacing:.12em;
-}
-
-.connect-link-name {
-  font-family:var(--serif);
-  font-size:25px;
-}
-
-.connect-link-arrow {
-  color:#777;
-  font-size:20px;
-  transition:.3s ease;
-}
-
-.connect-link:hover .connect-link-arrow {
-  color:white;
-  transform:translate(4px,-4px);
-}
-
-.connect-bottom {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:70px;
-  padding-top:25px;
-  border-top:1px solid var(--dark-line);
-}
-
-.connect-dots-large {
-  display:flex;
-  gap:8px;
-}
-
-.connect-dots-large span {
-  width:4px;
-  height:4px;
-}
-
-
-/* =================================
-   CONNECT IMAGE
-================================= */
-
-.connect-image-section {
-  position:relative;
-  overflow:hidden;
-  background:#080808;
-  height:min(620px,65svh);
-}
-
-.connect-photo {
-  position:relative;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-}
-
-.connect-photo-content {
-  position:absolute;
-  inset:-8%;
-  width:116%;
-  height:116%;
-  object-fit:cover;
-  object-position:center center;
-  filter:grayscale(100%);
-  opacity:.72;
-  transform:scale(1.02);
-  transition:transform 1.5s cubic-bezier(.22,1,.36,1);
-}
-
-.connect-image-section:hover .connect-photo-content {
-  transform:scale(1.08);
-}
-
-.connect-photo-overlay {
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.05),
-      rgba(0,0,0,.15) 35%,
-      rgba(0,0,0,.72) 100%
-    );
-}
-
-.connect-photo-text {
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:45px;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  padding:0 5%;
-  color:white;
-}
-
-.connect-photo-text span {
-  font-size:9px;
-  letter-spacing:.17em;
-  color:#bbb;
-}
-
-.connect-photo-text strong {
-  font-family:var(--prk);
-  font-size:clamp(32px,6vw,75px);
-  line-height:.85;
-  letter-spacing:-.06em;
-  text-align:right;
-}
-
-
-/* =================================
-   FOOTER
-================================= */
-
-.footer {
-  background:#050505;
-  color:#f5f5f5;
-  padding:55px 0 25px;
-}
-
-.footer-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-}
-
-.footer-logo {
-  font-family:var(--prk);
-  font-size:70px;
-  line-height:.8;
-  letter-spacing:-.08em;
-}
-
-.footer-brand p {
-  margin-top:28px;
-  color:#666;
-  font-family:var(--serif);
-  font-size:15px;
-  line-height:1.5;
-}
-
-.footer-right {
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:15px;
-  color:#666;
-}
-
-.footer-location {
-  font-size:9px;
-  letter-spacing:.16em;
-}
-
-.footer-line {
-  height:1px;
-  margin:70px 0 20px;
-  background:#222;
-}
-
-.footer-bottom {
-  display:flex;
-  justify-content:space-between;
-  color:#555;
-  font-size:8px;
-  letter-spacing:.14em;
-}
-
-.footer-bottom a {
-  color:#888;
-  text-decoration:none;
-  transition:.25s ease;
-}
-
-.footer-bottom a:hover {
-  color:white;
-}
-
-
-/* =================================
-   TABLET
-================================= */
-
-@media (max-width:900px) {
-
-  .about-layout,
-  .drives-intro,
-  .vision-hero,
-  .team-hero,
-  .team-layout,
-  .projects-heading,
-  .connect-hero,
-  .connect-layout {
-    grid-template-columns:1fr;
-  }
-
-  .about-intro,
-  .team-intro,
-  .connect-message {
-    padding-right:0;
-  }
-
-  .about-text,
-  .team-copy,
-  .vision-copy {
-    margin-top:55px;
-    margin-left:0;
-    padding-left:25px;
-  }
-
-  .vision-copy {
-    margin-left:0;
-  }
-
-  .drives-intro h2,
-  .vision-hero h2,
-  .team-hero h2,
-  .projects-heading h2,
-  .connect-hero h2 {
-    margin-top:35px;
-  }
-
-  .about-meta {
-    margin-top:65px;
-  }
-
-}
-
-
-/* =================================
-   MOBILE
-================================= */
-
-@media (max-width:600px) {
-
-  .section-head {
-    padding:22px 0;
-  }
-
-  .technical {
-    font-size:8px;
-  }
-
-  .about-section,
-  .drives-section,
-  .vision-section,
-  .team-section,
-  .projects-section {
-    padding-bottom:80px;
-  }
-
-  .about-layout {
-    padding-top:55px;
-  }
-
-  .about-intro h2 {
-    font-size:48px;
-  }
-
-  .about-text {
-    margin-top:45px;
-    padding-left:18px;
-  }
-
-  .about-text p {
-    font-size:14px;
-    line-height:1.65;
-  }
-
-  .about-text .about-lead {
-    font-size:20px;
-  }
-
-  .about-ending {
-    font-size:19px!important;
-  }
-
-  .about-meta {
-    grid-template-columns:1fr;
-    margin-top:55px;
-  }
-
-  .about-meta div,
-  .about-meta div:first-child {
-    padding:18px 0;
-    border-right:0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .about-meta div:last-child {
-    border-bottom:0;
-  }
-
-
-  /* DRIVES */
-
-  .drives-intro {
-    padding:55px 0;
-  }
-
-  .drives-intro h2 {
-    font-size:51px;
-  }
-
-  .drives-grid {
-    grid-template-columns:1fr;
-  }
-
-  .drive-item {
-    min-height:auto;
-    padding:25px;
-  }
-
-  .drive-item h3 {
-    margin-top:55px;
-    font-size:37px;
-  }
-
-  .drive-statement {
-    grid-template-columns:1fr;
-    margin-top:65px;
-    padding-top:40px;
-  }
-
-  .statement-mark {
-    margin-bottom:25px;
-  }
-
-  .drive-statement p {
-    font-size:25px;
-  }
-
-
-  /* VISION */
-
-  .vision-hero,
-  .team-hero,
-  .projects-heading,
-  .connect-hero {
-    padding:55px 0;
-  }
-
-  .vision-hero h2,
-  .team-hero h2,
-  .projects-heading h2,
-  .connect-hero h2 {
-    font-size:53px;
-  }
-
-  .vision-copy {
-    margin-top:0;
-    padding-left:18px;
-  }
-
-  .vision-copy p {
-    font-size:14px;
-  }
-
-  .vision-copy .vision-lead {
-    font-size:21px;
-  }
-
-  .vision-principles {
-    grid-template-columns:1fr;
-    margin-top:60px;
-  }
-
-  .principle,
-  .principle:first-child {
-    min-height:auto;
-    padding:25px 0;
-    border-right:0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .principle:last-child {
-    border-bottom:0;
-  }
-
-  .principle h3 {
-    margin-top:35px;
-  }
-
-  .vision-ending {
-    display:block;
-    margin-top:60px;
-  }
-
-  .vision-ending p {
-    margin-top:30px;
-    font-size:25px;
-    text-align:left;
-  }
-
-
-  /* TEAM */
-
-  .team-layout {
-    margin-top:0;
-  }
-
-  .team-intro p {
-    font-size:22px;
-  }
-
-  .team-copy {
-    margin-top:40px;
-    padding-left:18px;
-  }
-
-  .team-copy p {
-    font-size:14px;
-  }
-
-  .team-tags {
-    margin-top:55px;
-  }
-
-
-  /* PROJECTS */
-
-  .project-card {
-    grid-template-columns:30px 1fr auto;
-    gap:10px;
-    padding:28px 0;
-  }
-
-  .project-main h3 {
-    font-size:31px;
-  }
-
-  .project-main p {
-    font-size:13px;
-  }
-
-  .project-meta {
-    flex-direction:column;
-    gap:5px;
-  }
-
-  .project-status {
-    display:none;
-  }
-
-  .project-arrow {
-    font-size:20px;
-  }
-
-
-  /* CONNECT */
-
-  .connect-section {
-    padding-bottom:65px;
-  }
-
-  .connect-message {
-    padding-right:0;
-  }
-
-  .connect-message .connect-lead {
-    font-size:22px;
-  }
-
-  .connect-message p {
-    font-size:14px;
-  }
-
-  .connect-links {
-    margin-top:45px;
-  }
-
-  .connect-link {
-    min-height:70px;
-  }
-
-  .connect-link-name {
-    font-size:22px;
-  }
-
-  .connect-bottom {
-    margin-top:50px;
-  }
-
-  .connect-dots-large {
-    gap:6px;
-  }
-
-
-  /* IMAGE */
-
-.connect-image-section {
-  height:48svh;
-  min-height:310px;
-}
-
-.connect-photo-content {
-  inset:-5%;
-  width:110%;
-  height:110%;
-}
-
-.connect-photo-text {
-  bottom:28px;
-  padding:0 20px;
-}
-
-.connect-photo-text strong {
-  font-size:38px;
-}
-
-
-/* FOOTER */
-
-.footer {
-  padding-top:40px;
-}
-
-.footer-top {
-  display:block;
-}
-
-.footer-logo {
-  font-size:58px;
-}
-
-.footer-right {
-  align-items:flex-start;
-  margin-top:35px;
-}
-
-.footer-line {
-  margin-top:50px;
-}
-
-.footer-bottom {
-  flex-wrap:wrap;
-  gap:18px;
-}
-
-}
-
-
-/* =================================
-   VERY SMALL PHONES
-================================= */
-
-@media (max-width:380px) {
-
-.container {
-  width:calc(100% - 24px);
-}
-
-.hero-title {
-  font-size:50px;
-}
-
-.about-intro h2,
-.drives-intro h2,
-.vision-hero h2,
-.team-hero h2,
-.projects-heading h2,
-.connect-hero h2 {
-  font-size:46px;
-}
-
-.connect-photo-text strong {
-  font-size:32px;
-}
-
-}
-
-
-/* =================================
-   REDUCED MOTION
-================================= */
-
-@media (prefers-reduced-motion:reduce) {
-
-.reveal {
-  opacity:1;
-  transform:none;
-}
-
-.signal-dots span,
-.connect-dots-large span {
-  animation:none;
-}
-
-}
-
-</style>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
-/* =================================
-   WELCOME SCREEN
-================================= */
-
-const welcomeScreen =
-  document.getElementById("welcomeScreen");
-
-const welcomeButton =
-  document.getElementById("welcomeButton");
-
-document.body.classList.add("welcome-active");
-
-welcomeButton.addEventListener("click", function () {
-
-  welcomeScreen.classList.add("hide");
-
-  document.body.classList.remove("welcome-active");
-
-});
-
-
-/* =================================
-   NAVIGATION SCROLL EFFECT
-================================= */
-
-const mainNav =
-  document.getElementById("mainNav");
-
-function updateNavigation() {
-
-  if (window.scrollY > 40) {
-
-    mainNav.classList.add("scrolled");
-
-  } else {
-
-    mainNav.classList.remove("scrolled");
-
-  }
-
-}
-
-window.addEventListener(
-  "scroll",
-  updateNavigation,
-  { passive:true }
-);
-
-updateNavigation();
-
-
-/* =================================
-   SCROLL REVEAL
-================================= */
-
-const revealElements =
-  document.querySelectorAll(".reveal");
-
-const revealObserver =
-  new IntersectionObserver(
-
-    function(entries) {
-
-      entries.forEach(function(entry) {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add("visible");
-
-          revealObserver.unobserve(entry.target);
-
-        }
-
-      });
-
-    },
-
-    {
-      threshold:0.12,
-      rootMargin:"0px 0px -40px 0px"
-    }
-
-  );
-
-revealElements.forEach(function(element) {
-
-  revealObserver.observe(element);
-
-});
-
-
-/* =================================
-   SMOOTH NAVIGATION
-================================= */
-
-document.querySelectorAll(
-  '.nav-links a, .nav-logo, .footer-bottom a'
-).forEach(function(link) {
-
-  link.addEventListener("click", function(event) {
-
-    const target =
-      document.querySelector(
-        link.getAttribute("href")
-      );
-
-    if (!target) return;
-
-    event.preventDefault();
-
-    target.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  });
-
-});
-
-
-/* =================================
-   PARALLAX EFFECT
-================================= */
-
-const heroBlur =
-  document.querySelector(".hero-blur");
-
-const connectBlur =
-  document.querySelector(".connect-blur");
-
-window.addEventListener(
-  "scroll",
-  function() {
-
-    const scroll =
-      window.scrollY;
-
-    if (heroBlur) {
-
-      heroBlur.style.transform =
-        `translateY(${scroll * 0.08}px)`;
+      margin: 0 auto;
 
     }
 
-    if (connectBlur) {
 
-      const connectSection =
-        document.querySelector(".connect-section");
+    /* =========================
+       COMMON TECHNICAL TEXT
+    ========================= */
 
-      if (connectSection) {
+    .section-label {
 
-        const rect =
-          connectSection.getBoundingClientRect();
+      font-size: 10px;
 
-        const offset =
-          window.innerHeight - rect.top;
+      letter-spacing: .18em;
 
-        connectBlur.style.transform =
-          `translateY(${offset * 0.04}px)`;
+      text-transform: uppercase;
+
+      color: var(--soft);
+
+    }
+
+
+    .technical {
+
+      font-size: 9px;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      color: var(--soft);
+
+    }
+
+
+    /* =========================
+       MOBILE FOUNDATION
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .container {
+
+        width:
+          calc(100% - 30px);
 
       }
 
     }
 
-  },
-  { passive:true }
-);
 
-</script>
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      * {
+
+        animation: none !important;
+
+        transition: none !important;
+
+        scroll-behavior: auto !important;
+
+      }
+
+    }
+
+  </style>
+
+</head>
 
 
-</main>
+<body>
+
+
+  <!-- =================================================
+       PART 2 WILL CONTINUE HERE
+  ================================================== -->  <!-- =================================================
+       PRK WELCOME SCREEN
+  ================================================== -->
+
+  <div class="welcome-screen" id="welcomeScreen">
+
+    <div class="welcome-blur"></div>
+
+    <div class="welcome-content">
+
+      <div class="welcome-prk">
+        PRK
+      </div>
+
+      <div class="welcome-meta">
+        PERSONAL SPACE / 2026
+      </div>
+
+      <button
+        class="welcome-button"
+        id="welcomeButton"
+        type="button"
+      >
+        <span>Welcome to PRK</span>
+        <span class="welcome-arrow">↗</span>
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       MAIN NAVIGATION
+  ================================================== -->
+
+  <header class="nav" id="mainNav">
+
+    <a href="#home" class="nav-logo">
+      PRK
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#drives">
+        Drives
+      </a>
+
+      <a href="#vision">
+        Vision
+      </a>
+
+      <a href="#team">
+        Team
+      </a>
+
+      <a href="#projects">
+        Projects
+      </a>
+
+      <a href="#connect">
+        Connect
+      </a>
+
+    </nav>
+
+
+    <button
+      class="theme-button"
+      id="themeButton"
+      type="button"
+      aria-label="Toggle dark mode"
+    >
+
+      <span class="theme-dot"></span>
+
+      <span class="theme-text">
+        MODE
+      </span>
+
+    </button>
+
+  </header>
+
+
+
+  <!-- =================================================
+       MAIN CONTENT
+  ================================================== -->
+
+  <main id="home">
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-grid"></div>
+
+      <div class="hero-blur hero-blur-one"></div>
+
+      <div class="hero-blur hero-blur-two"></div>
+
+
+      <div class="container hero-content">
+
+        <div class="hero-topline">
+
+          <span>
+            PRK · PURNIA, BIHAR, INDIA
+          </span>
+
+          <span>
+            01 / 08
+          </span>
+
+        </div>
+
+
+        <div class="hero-prk">
+          PRK
+        </div>
+
+
+        <h1 class="hero-title">
+
+          Curiosity today.
+
+          <br>
+
+          <em>
+            Possibilities tomorrow.
+          </em>
+
+        </h1>
+
+
+        <div class="hero-bottom">
+
+          <p class="hero-description">
+
+            A personal space for ideas,
+            questions, technology,
+            politics, people and whatever
+            comes next.
+
+          </p>
+
+
+          <a
+            href="#about"
+            class="scroll-link"
+          >
+
+            <span class="scroll-line"></span>
+
+            <span>
+              SCROLL TO EXPLORE
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PART 3 WILL CONTINUE HERE
+    ================================================== -->
+    <!-- =================================================
+         ABOUT ME
+    ================================================== -->
+
+    <section class="section about-section" id="about">
+
+      <div class="container">
+
+        <div class="section-header reveal">
+
+          <div class="section-label">
+            03 — ABOUT ME
+          </div>
+
+          <div class="section-number">
+            PRK / 03
+          </div>
+
+        </div>
+
+
+        <div class="about-intro reveal">
+
+          <h2 class="about-name">
+            Priyanshu Ranjan Karn
+          </h2>
+
+          <p class="about-alias">
+            Also known as <strong>PRK</strong>.
+          </p>
+
+        </div>
+
+
+        <!--
+          The entire text is inside this wrapper.
+          JavaScript in Part 8 will control the
+          fade effect while scrolling.
+        -->
+
+        <div class="about-fade-text">
+
+          <p>
+            I was born in Purnia, Bihar, India,
+            in a middle-class family.
+            But being middle-class never meant
+            having middle-sized thoughts.
+          </p>
+
+
+          <p>
+            Since childhood, my mind has been
+            unusually interested in three simple
+            questions:
+          </p>
+
+
+          <p class="question-line">
+            WHY? &nbsp; HOW? &nbsp; WHAT IF?
+          </p>
+
+
+          <p>
+            Those questions have taken me into
+            technology, politics, business,
+            editing, documentaries, conversations
+            and countless ideas that probably
+            should have stayed inside my head.
+            Fortunately, they didn't.
+          </p>
+
+
+          <p>
+            I am fascinated by technology because
+            I believe it does more than make life
+            convenient. It changes the way people
+            think, communicate, build and see
+            the world.
+          </p>
+
+
+          <p>
+            I am especially interested in coding,
+            artificial intelligence, machine learning
+            and engineering.
+          </p>
+
+
+          <p>
+            Not because technology is automatically
+            the answer to everything —
+            but because finding better questions
+            usually starts there.
+          </p>
+
+
+          <p>
+            Politics interests me for a completely
+            different reason.
+          </p>
+
+
+          <p>
+            Politics decides how ideas move through
+            society. It influences technology,
+            business, people, resources, opinions
+            and sometimes even what becomes possible.
+          </p>
+
+
+          <p>
+            I like debating.
+            I like questioning.
+            I like conversations where nobody is
+            completely sure who is right.
+          </p>
+
+
+          <p>
+            Because sometimes the best idea is the
+            one that survives the argument.
+          </p>
+
+
+          <p>
+            I also enjoy editing, documentaries,
+            discovering unusual ideas and learning
+            from people who see the world differently.
+          </p>
+
+
+          <p>
+            I don't believe curiosity is a hobby.
+            I think it is a way of looking at
+            the world.
+          </p>
+
+
+          <p class="about-statement">
+            And honestly, I would rather spend my
+            time asking an uncomfortable question
+            than accepting a comfortable answer.
+          </p>
+
+
+          <p class="about-ending">
+            I am not trying to have all the answers.
+            I am more interested in becoming the
+            person who keeps asking better questions.
+          </p>
+
+        </div>
+
+
+        <div class="about-footer reveal">
+
+          <span class="technical">
+            CURIOUS BY DEFAULT
+          </span>
+
+          <span class="technical">
+            ALWAYS QUESTIONING
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PART 4 — WHAT DRIVES ME WILL CONTINUE HERE
+    ================================================== -->
+    <!-- =================================================
+         WHAT DRIVES ME
+    ================================================== -->
+
+    <section class="section drives-section" id="drives">
+
+      <div class="container">
+
+        <div class="section-header drives-header reveal">
+
+          <div class="section-label">
+            04 — WHAT DRIVES ME
+          </div>
+
+          <div class="section-number">
+            PRK / 04
+          </div>
+
+        </div>
+
+
+        <div class="drives-content">
+
+          <div class="drives-intro reveal">
+
+            <span class="technical">
+              THE QUESTIONS NEVER STOP.
+            </span>
+
+            <h2>
+              I don't chase answers.
+              <br>
+              <span>I chase better questions.</span>
+            </h2>
+
+          </div>
+
+
+          <div class="drives-grid">
+
+
+            <!-- DRIVE 01 -->
+
+            <article class="drive-card reveal">
+
+              <div class="drive-number">
+                01
+              </div>
+
+              <div class="drive-line"></div>
+
+              <h3>
+                Curiosity
+              </h3>
+
+              <p>
+                Why does something work?
+                Why does it fail?
+                And what happens if we look at
+                the problem from a completely
+                different direction?
+              </p>
+
+            </article>
+
+
+            <!-- DRIVE 02 -->
+
+            <article class="drive-card reveal">
+
+              <div class="drive-number">
+                02
+              </div>
+
+              <div class="drive-line"></div>
+
+              <h3>
+                Technology
+              </h3>
+
+              <p>
+                Technology is not just about
+                machines and code. It is about
+                changing what people believe is
+                possible.
+              </p>
+
+            </article>
+
+
+            <!-- DRIVE 03 -->
+
+            <article class="drive-card reveal">
+
+              <div class="drive-number">
+                03
+              </div>
+
+              <div class="drive-line"></div>
+
+              <h3>
+                Debate
+              </h3>
+
+              <p>
+                I like ideas that can survive
+                disagreement. A good argument
+                does not have to destroy an idea.
+                Sometimes it makes the idea better.
+              </p>
+
+            </article>
+
+
+            <!-- DRIVE 04 -->
+
+            <article class="drive-card reveal">
+
+              <div class="drive-number">
+                04
+              </div>
+
+              <div class="drive-line"></div>
+
+              <h3>
+                Perspective
+              </h3>
+
+              <p>
+                Positive, negative, doubtful,
+                optimistic or completely
+                unexpected — different minds
+                create better possibilities.
+              </p>
+
+            </article>
+
+
+          </div>
+
+
+          <div class="drives-bottom reveal">
+
+            <div class="drives-mark">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <p>
+              Question the obvious.
+              <br>
+              Examine the impossible.
+              <br>
+              Build what comes next.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PART 5 — VISION WILL CONTINUE HERE
+    ================================================== -->    <!-- =================================================
+         VISION
+    ================================================== -->
+
+    <section class="section vision-section" id="vision">
+
+      <div class="container">
+
+        <div class="section-header reveal">
+
+          <div class="section-label">
+            05 — VISION
+          </div>
+
+          <div class="section-number">
+            PRK / 05
+          </div>
+
+        </div>
+
+
+        <div class="vision-content">
+
+
+          <div class="vision-title reveal">
+
+            <span class="technical">
+              THREE FORCES.
+            </span>
+
+            <h2>
+              Technology.
+              <br>
+              Politics.
+              <br>
+              Business.
+            </h2>
+
+          </div>
+
+
+          <div class="vision-statement reveal">
+
+            <p class="vision-lead">
+              I believe meaningful change rarely
+              comes from one direction.
+            </p>
+
+            <p>
+              Technology can create new
+              possibilities. Politics decides
+              how those possibilities move through
+              society. Business turns ideas into
+              systems that can actually exist,
+              grow and reach people.
+            </p>
+
+            <p>
+              Put them together and something
+              interesting happens:
+              ideas stop being ideas.
+              They become influence,
+              infrastructure and change.
+            </p>
+
+            <p>
+              My vision is not simply to build
+              another product, another company or
+              another project.
+            </p>
+
+            <p class="vision-highlight">
+              It is to understand how these three
+              forces interact — and eventually use
+              them to build things that matter.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- VISION SYSTEM -->
+
+        <div class="vision-system reveal">
+
+          <div class="vision-system-line"></div>
+
+
+          <div class="vision-node">
+
+            <span class="vision-node-number">
+              01
+            </span>
+
+            <strong>
+              TECHNOLOGY
+            </strong>
+
+            <small>
+              BUILD
+            </small>
+
+          </div>
+
+
+          <div class="vision-connector"></div>
+
+
+          <div class="vision-node">
+
+            <span class="vision-node-number">
+              02
+            </span>
+
+            <strong>
+              POLITICS
+            </strong>
+
+            <small>
+              INFLUENCE
+            </small>
+
+          </div>
+
+
+          <div class="vision-connector"></div>
+
+
+          <div class="vision-node">
+
+            <span class="vision-node-number">
+              03
+            </span>
+
+            <strong>
+              BUSINESS
+            </strong>
+
+            <small>
+              SCALE
+            </small>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="vision-ending reveal">
+
+          <span class="technical">
+            THE FUTURE IS NOT WAITING.
+          </span>
+
+          <p>
+            Someone is going to design it.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PART 6 — THE TEAM WILL CONTINUE HERE
+    ================================================== -->
+    <!-- =================================================
+         THE TEAM
+    ================================================== -->
+
+    <section class="section team-section" id="team">
+
+      <div class="container">
+
+        <div class="section-header reveal">
+
+          <div class="section-label">
+            06 — THE TEAM
+          </div>
+
+          <div class="section-number">
+            PRK / 06
+          </div>
+
+        </div>
+
+
+        <!-- TEAM INTRO -->
+
+        <div class="team-intro reveal">
+
+          <div class="team-intro-left">
+
+            <span class="technical">
+              DIFFERENT MINDS.
+            </span>
+
+            <h2>
+              One circle.
+              <br>
+              <em>Many perspectives.</em>
+            </h2>
+
+          </div>
+
+
+          <div class="team-intro-right">
+
+            <p>
+              I don't believe the best teams are made
+              from people who think alike.
+            </p>
+
+            <p>
+              I want people who question each other,
+              challenge assumptions, bring different
+              skills and see problems from completely
+              different angles.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TEAM PHILOSOPHY -->
+
+        <div class="team-philosophy reveal">
+
+          <div class="team-philosophy-mark">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+
+          <div class="team-philosophy-text">
+
+            <span class="technical">
+              THE RULE IS SIMPLE
+            </span>
+
+            <h3>
+              Agree when it makes sense.
+              <br>
+              Disagree when it matters.
+            </h3>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TEAM ROLES -->
+
+        <div class="team-grid">
+
+
+          <!-- THINKERS -->
+
+          <article class="team-card reveal">
+
+            <div class="team-card-top">
+
+              <span class="team-number">
+                01
+              </span>
+
+              <span class="team-symbol">
+                +
+              </span>
+
+            </div>
+
+
+            <div class="team-card-content">
+
+              <span class="technical">
+                THINKERS
+              </span>
+
+              <h3>
+                Ask why.
+              </h3>
+
+              <p>
+                People who question the problem
+                before trying to solve it.
+                They look beyond the obvious and
+                notice possibilities others might miss.
+              </p>
+
+            </div>
+
+
+            <div class="team-card-bottom">
+              QUESTION / ANALYSE / IMAGINE
+            </div>
+
+          </article>
+
+
+
+          <!-- BUILDERS -->
+
+          <article class="team-card reveal">
+
+            <div class="team-card-top">
+
+              <span class="team-number">
+                02
+              </span>
+
+              <span class="team-symbol">
+                □
+              </span>
+
+            </div>
+
+
+            <div class="team-card-content">
+
+              <span class="technical">
+                BUILDERS
+              </span>
+
+              <h3>
+                Make it real.
+              </h3>
+
+              <p>
+                People who turn ideas into
+                working systems, products,
+                technology and things that
+                can actually exist outside a conversation.
+              </p>
+
+            </div>
+
+
+            <div class="team-card-bottom">
+              DESIGN / ENGINEER / BUILD
+            </div>
+
+          </article>
+
+
+
+          <!-- CREATORS -->
+
+          <article class="team-card reveal">
+
+            <div class="team-card-top">
+
+              <span class="team-number">
+                03
+              </span>
+
+              <span class="team-symbol">
+                /
+              </span>
+
+            </div>
+
+
+            <div class="team-card-content">
+
+              <span class="technical">
+                CREATORS
+              </span>
+
+              <h3>
+                Make people notice.
+              </h3>
+
+              <p>
+                People who understand ideas,
+                communication, design, media and
+                storytelling — and know how to give
+                an idea a life of its own.
+              </p>
+
+            </div>
+
+
+            <div class="team-card-bottom">
+              CREATE / COMMUNICATE / INSPIRE
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+
+        <!-- DIFFERENT PERSPECTIVES -->
+
+        <div class="perspective-section reveal">
+
+          <div class="perspective-heading">
+
+            <span class="technical">
+              NO SINGLE WAY OF THINKING
+            </span>
+
+            <h3>
+              Bring the
+              <span>optimist.</span>
+              <br>
+              Bring the
+              <span>critic.</span>
+              <br>
+              Bring the
+              <span>skeptic.</span>
+            </h3>
+
+          </div>
+
+
+          <div class="perspective-list">
+
+
+            <div class="perspective-item">
+
+              <span>01</span>
+
+              <div>
+                <strong>
+                  The Optimist
+                </strong>
+
+                <p>
+                  Sees what could happen.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="perspective-item">
+
+              <span>02</span>
+
+              <div>
+                <strong>
+                  The Critic
+                </strong>
+
+                <p>
+                  Finds what could go wrong.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="perspective-item">
+
+              <span>03</span>
+
+              <div>
+                <strong>
+                  The Skeptic
+                </strong>
+
+                <p>
+                  Asks whether it should happen
+                  at all.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="perspective-item">
+
+              <span>04</span>
+
+              <div>
+                <strong>
+                  The Builder
+                </strong>
+
+                <p>
+                  Figures out how to make it happen.
+                </p>
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TEAM CLOSING -->
+
+        <div class="team-ending reveal">
+
+          <div class="team-ending-line"></div>
+
+          <p>
+            The goal is not to create a room full
+            of people who agree.
+          </p>
+
+          <p class="team-ending-large">
+            The goal is to create a room where
+            better ideas are impossible to ignore.
+          </p>
+
+          <div class="team-ending-meta">
+
+            <span>
+              SEARCHING FOR THE RIGHT PEOPLE
+            </span>
+
+            <span>
+              PRK / 2026
+            </span>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PART 7 — PROJECTS WILL CONTINUE HERE
+    ================================================== -->
+    <!-- =================================================
+         PROJECTS
+    ================================================== -->
+
+    <section class="section projects-section" id="projects">
+
+      <div class="container">
+
+        <div class="section-header reveal">
+
+          <div class="section-label">
+            07 — PROJECTS
+          </div>
+
+          <div class="section-number">
+            PRK / 07
+          </div>
+
+        </div>
+
+
+        <!-- PROJECT INTRO -->
+
+        <div class="projects-intro reveal">
+
+          <div>
+
+            <span class="technical">
+              THINGS I AM BUILDING
+            </span>
+
+            <h2>
+              Ideas are cheap.
+              <br>
+              <em>Building them isn't.</em>
+            </h2>
+
+          </div>
+
+
+          <p>
+            Some projects are already taking shape.
+            Others are still living somewhere between
+            a notebook, a conversation and a slightly
+            unreasonable idea.
+          </p>
+
+        </div>
+
+
+
+        <!-- PROJECT GRID -->
+
+        <div class="projects-grid">
+
+
+          <!-- =================================================
+               PROJECT 01 — FUTURE ASIA JOURNAL
+          ================================================== -->
+
+          <a
+            href="future-asia.html"
+            class="project-card project-card-featured reveal"
+          >
+
+            <div class="project-card-top">
+
+              <span class="project-number">
+                01
+              </span>
+
+              <span class="project-status">
+                ACTIVE / WEB
+              </span>
+
+              <span class="project-arrow">
+                ↗
+              </span>
+
+            </div>
+
+
+            <div class="project-card-main">
+
+              <span class="technical">
+                NEWS / ASIA / TECHNOLOGY
+              </span>
+
+              <h3>
+                Future Asia Journal
+              </h3>
+
+              <p>
+                A modern independent publication focused
+                on Asia-Pacific politics, technology,
+                artificial intelligence, countries,
+                global affairs and the ideas shaping
+                the future.
+              </p>
+
+            </div>
+
+
+            <div class="project-card-bottom">
+
+              <span>
+                EXPLORE PROJECT
+              </span>
+
+              <span>
+                FUTURE-ASIA.HTML
+              </span>
+
+            </div>
+
+          </a>
+
+
+
+          <!-- =================================================
+               PROJECT 02 — HARDWARE
+               NOT CLICKABLE
+          ================================================== -->
+
+          <article class="project-card reveal">
+
+            <div class="project-card-top">
+
+              <span class="project-number">
+                02
+              </span>
+
+              <span class="project-status">
+                IDEA / HARDWARE
+              </span>
+
+              <span class="project-arrow project-arrow-static">
+                +
+              </span>
+
+            </div>
+
+
+            <div class="project-card-main">
+
+              <span class="technical">
+                ENGINEERING / HARDWARE
+              </span>
+
+              <h3>
+                Hardware Company
+              </h3>
+
+              <p>
+                I want to build my own hardware company
+                and create products that can genuinely
+                change the way people interact with
+                technology.
+              </p>
+
+              <p>
+                The idea is still developing.
+                I would rather return with a clearer
+                idea than pretend a half-formed thought
+                is already a company.
+              </p>
+
+            </div>
+
+
+            <div class="project-card-bottom">
+
+              <span>
+                IN DEVELOPMENT
+              </span>
+
+              <span>
+                MORE TO COME
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- =================================================
+               PROJECT 03 — AI / ML
+               NOT CLICKABLE
+          ================================================== -->
+
+          <article class="project-card reveal">
+
+            <div class="project-card-top">
+
+              <span class="project-number">
+                03
+              </span>
+
+              <span class="project-status">
+                EXPLORING / AI
+              </span>
+
+              <span class="project-arrow project-arrow-static">
+                +
+              </span>
+
+            </div>
+
+
+            <div class="project-card-main">
+
+              <span class="technical">
+                AI / ML / SOFTWARE
+              </span>
+
+              <h3>
+                Intelligence Lab
+              </h3>
+
+              <p>
+                More ideas around artificial intelligence,
+                machine learning, software and systems
+                that can make technology more useful,
+                intelligent and accessible.
+              </p>
+
+              <p>
+                This is where experiments, questions
+                and unfinished ideas get a place to
+                become something more.
+              </p>
+
+            </div>
+
+
+            <div class="project-card-bottom">
+
+              <span>
+                IDEAS IN PROGRESS
+              </span>
+
+              <span>
+                2026 →
+              </span>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+
+        <!-- PROJECT CLOSING -->
+
+        <div class="projects-closing reveal">
+
+          <div class="projects-closing-mark">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+
+          <div>
+
+            <span class="technical">
+              STATUS
+            </span>
+
+            <p>
+              Not everything needs to be finished
+              before it becomes worth starting.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PART 8 — CONNECT + FOOTER + JAVASCRIPT
+         WILL CONTINUE HERE
+    ================================================== -->
+    <!-- =================================================
+         CONNECT
+    ================================================== -->
+
+    <section class="section connect-section" id="connect">
+
+      <div class="container">
+
+        <div class="section-header reveal">
+
+          <div class="section-label">
+            08 — LET'S CONNECT
+          </div>
+
+          <div class="section-number">
+            PRK / 08
+          </div>
+
+        </div>
+
+
+        <div class="connect-intro reveal">
+
+          <div>
+
+            <span class="technical">
+              OPEN CHANNEL
+            </span>
+
+            <h2>
+              Let's connect.
+              <br>
+              <em>Let's question.</em>
+            </h2>
+
+          </div>
+
+
+          <p>
+            Ideas become more interesting when
+            they leave your head and enter a
+            conversation.
+          </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONNECT LINKS
+        ================================================== -->
+
+        <div class="connect-links reveal">
+
+
+          <a
+            href="https://instagram.com/prkgoes"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="connect-link"
+          >
+
+            <span class="connect-index">
+              01
+            </span>
+
+            <span class="connect-name">
+              Instagram
+            </span>
+
+            <span class="connect-handle">
+              @prkgoes
+            </span>
+
+            <span class="connect-arrow">
+              ↗
+            </span>
+
+          </a>
+
+
+
+          <a
+            href="https://t.me/Sowhat1233"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="connect-link"
+          >
+
+            <span class="connect-index">
+              02
+            </span>
+
+            <span class="connect-name">
+              Telegram
+            </span>
+
+            <span class="connect-handle">
+              @Sowhat1233
+            </span>
+
+            <span class="connect-arrow">
+              ↗
+            </span>
+
+          </a>
+
+
+
+          <a
+            href="https://github.com/PriyanshuSPRK0611"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="connect-link"
+          >
+
+            <span class="connect-index">
+              03
+            </span>
+
+            <span class="connect-name">
+              GitHub
+            </span>
+
+            <span class="connect-handle">
+              PRK / CODE
+            </span>
+
+            <span class="connect-arrow">
+              ↗
+            </span>
+
+          </a>
+
+
+
+          <a
+            href="mailto:prkworldcare@gmail.com"
+            class="connect-link"
+          >
+
+            <span class="connect-index">
+              04
+            </span>
+
+            <span class="connect-name">
+              Email
+            </span>
+
+            <span class="connect-handle">
+              PRKWORLDCARE@GMAIL.COM
+            </span>
+
+            <span class="connect-arrow">
+              ↗
+            </span>
+
+          </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             ANIMATED DOT FIELD
+        ================================================== -->
+
+        <div class="connect-dots reveal">
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONNECT PHOTO
+    ================================================== -->
+
+    <section class="connect-image-section">
+
+      <div class="connect-photo">
+
+        <img
+          src="kv-0515-mo.jpg.thumb.webp"
+          alt="PRK"
+          class="connect-photo-content"
+        >
+
+        <div class="connect-photo-overlay"></div>
+
+
+        <div class="connect-photo-text">
+
+          <span>
+            PRK / 2026
+          </span>
+
+          <strong>
+            KEEP<br>
+            QUESTIONING.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="footer">
+
+      <div class="container">
+
+
+        <div class="footer-top">
+
+          <div class="footer-brand">
+
+            <div class="footer-prk">
+              PRK
+            </div>
+
+            <p>
+              Curiosity today.
+              Possibilities tomorrow.
+            </p>
+
+          </div>
+
+
+          <div class="footer-location">
+
+            <span class="technical">
+              BASED IN
+            </span>
+
+            <strong>
+              PURNIA, BIHAR
+            </strong>
+
+            <span>
+              INDIA
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="footer-line"></div>
+
+
+
+        <div class="footer-bottom">
+
+          <span>
+            © 2026 PRK
+          </span>
+
+          <span>
+            BUILT WITH CURIOSITY
+          </span>
+
+          <a href="#home">
+            BACK TO TOP ↑
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+
+
+  <!-- =================================================
+       JAVASCRIPT
+    ================================================== -->
+
+  <script>
+
+    /* =================================================
+       WELCOME SCREEN
+    ================================================== */
+
+    const welcomeScreen =
+      document.getElementById("welcomeScreen");
+
+    const welcomeButton =
+      document.getElementById("welcomeButton");
+
+
+    if (welcomeButton && welcomeScreen) {
+
+      welcomeButton.addEventListener("click", () => {
+
+        welcomeScreen.classList.add("welcome-hidden");
+
+        document.body.classList.remove("locked");
+
+        setTimeout(() => {
+
+          welcomeScreen.style.display = "none";
+
+        }, 900);
+
+      });
+
+    }
+
+
+
+    /* =================================================
+       DARK / LIGHT MODE
+    ================================================== */
+
+    const themeButton =
+      document.getElementById("themeButton");
+
+
+    const savedTheme =
+      localStorage.getItem("prk-theme");
+
+
+    if (savedTheme === "dark") {
+
+      document.documentElement.classList.add("dark");
+
+    }
+
+
+    if (themeButton) {
+
+      themeButton.addEventListener("click", () => {
+
+        document.documentElement.classList.toggle("dark");
+
+
+        const isDark =
+          document.documentElement.classList.contains("dark");
+
+
+        localStorage.setItem(
+          "prk-theme",
+          isDark ? "dark" : "light"
+        );
+
+      });
+
+    }
+
+
+
+    /* =================================================
+       SCROLL REVEAL
+    ================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach((element) => {
+
+      revealObserver.observe(element);
+
+    });
+
+
+
+    /* =================================================
+       ABOUT TEXT FADE
+    ================================================== */
+
+    const aboutFadeText =
+      document.querySelector(".about-fade-text");
+
+
+    function updateAboutFade() {
+
+      if (!aboutFadeText) return;
+
+
+      const rect =
+        aboutFadeText.getBoundingClientRect();
+
+
+      const windowHeight =
+        window.innerHeight;
+
+
+      const start =
+        windowHeight * 0.88;
+
+
+      const end =
+        windowHeight * 0.25;
+
+
+      let progress =
+        (start - rect.top) / (start - end);
+
+
+      progress =
+        Math.max(0, Math.min(1, progress));
+
+
+      aboutFadeText.style.opacity =
+        0.15 + (progress * 0.85);
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateAboutFade,
+      { passive: true }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      updateAboutFade
+    );
+
+
+    updateAboutFade();
+
+
+
+    /* =================================================
+       CONNECT DOT ANIMATION
+    ================================================== */
+
+    const dots =
+      document.querySelectorAll(".connect-dots span");
+
+
+    dots.forEach((dot, index) => {
+
+      dot.style.animationDelay =
+        `${index * 0.08}s`;
+
+    });
+
+
+
+    /* =================================================
+       SUBTLE IMAGE PARALLAX
+    ================================================== */
+
+    const photo =
+      document.querySelector(".connect-photo-content");
+
+
+    function updateParallax() {
+
+      if (!photo) return;
+
+
+      const rect =
+        photo.getBoundingClientRect();
+
+
+      const screen =
+        window.innerHeight;
+
+
+      if (
+        rect.bottom > 0 &&
+        rect.top < screen
+      ) {
+
+        const progress =
+          (screen - rect.top) /
+          (screen + rect.height);
+
+
+        const movement =
+          (progress - 0.5) * 18;
+
+
+        photo.style.transform =
+          `scale(1.08) translateX(${movement}px)`;
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateParallax,
+      { passive: true }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      updateParallax
+    );
+
+
+    updateParallax();
+
+
+
+    /* =================================================
+       SMOOTH NAVIGATION
+    ================================================== */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach((link) => {
+
+        link.addEventListener("click", (event) => {
+
+          const targetId =
+            link.getAttribute("href");
+
+
+          const target =
+            document.querySelector(targetId);
+
+
+          if (!target) return;
+
+
+          event.preventDefault();
+
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        });
+
+      });
+
+
+
+    /* =================================================
+       NAVIGATION SCROLL STATE
+    ================================================== */
+
+    const mainNav =
+      document.getElementById("mainNav");
+
+
+    function updateNavigation() {
+
+      if (!mainNav) return;
+
+
+      if (window.scrollY > 40) {
+
+        mainNav.classList.add("nav-scrolled");
+
+      } else {
+
+        mainNav.classList.remove("nav-scrolled");
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateNavigation,
+      { passive: true }
+    );
+
+
+    updateNavigation();
+
+
+
+    /* =================================================
+       REDUCED MOTION SUPPORT
+    ================================================== */
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+
+    if (prefersReducedMotion.matches) {
+
+      document.documentElement.classList.add(
+        "reduce-motion"
+      );
+
+    }
+
+  </script>
+
 
 </body>
 
