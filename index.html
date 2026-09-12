@@ -4708,3 +4708,504 @@ nav a.active::after{
   }
 }
 </style>
+
+<style>
+/* FOOTER — CURIOSITY / POSSIBILITIES CONTRAST FIX */
+
+.footer-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+.footer-section .footer-heading,
+.footer-section h1,
+.footer-section h2,
+.footer-section h3,
+.footer-section p,
+.footer-section span{
+  color:#f5f5f7 !important;
+}
+
+.footer-section .footer-heading{
+  opacity:1 !important;
+}
+
+.footer-section .footer-muted,
+.footer-section .muted{
+  color:#999 !important;
+}
+
+/* Make the main statement clearly visible */
+
+.footer-section .footer-heading{
+  text-shadow:0 0 30px rgba(255,255,255,.06);
+}
+
+/* Dark mode */
+
+.dark .footer-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+.dark .footer-section .footer-heading,
+.dark .footer-section h1,
+.dark .footer-section h2,
+.dark .footer-section h3,
+.dark .footer-section p,
+.dark .footer-section span{
+  color:#f5f5f7 !important;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+  .footer-section .footer-heading{
+    color:#f5f5f7 !important;
+    opacity:1 !important;
+  }
+}
+</style>
+
+<style>
+/* FINAL FOOTER CONTRAST FIX */
+
+.footer-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+  border-top:1px solid #242424 !important;
+}
+
+.footer-section *{
+  color:#f5f5f7 !important;
+}
+
+.footer-section p,
+.footer-section .muted,
+.footer-section .footer-muted{
+  color:#9a9a9a !important;
+}
+
+.footer-section .footer-heading{
+  color:#f5f5f7 !important;
+  opacity:1 !important;
+  text-shadow:0 0 35px rgba(255,255,255,.08);
+}
+
+.footer-section .footer-mark{
+  color:#f5f5f7 !important;
+}
+
+.footer-section .footer-coordinate,
+.footer-section .footer-meta{
+  color:#999 !important;
+}
+
+.footer-section .footer-signature{
+  color:#f5f5f7 !important;
+}
+
+.footer-section a{
+  color:#f5f5f7 !important;
+}
+
+.footer-section a:hover{
+  color:#aaa !important;
+}
+
+.footer-section .back-top{
+  color:#f5f5f7 !important;
+  border-color:#444 !important;
+}
+
+.footer-section .back-top:hover{
+  background:#f5f5f7 !important;
+  color:#080808 !important;
+  border-color:#f5f5f7 !important;
+}
+
+/* Footer statement */
+.footer-section .footer-heading,
+.footer-section .footer-title{
+  color:#f5f5f7 !important;
+  opacity:1 !important;
+}
+
+/* Dark mode remains identical */
+.dark .footer-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+/* Mobile */
+@media(max-width:700px){
+
+  .footer-section{
+    background:#080808 !important;
+  }
+
+  .footer-section .footer-heading,
+  .footer-section .footer-title{
+    color:#f5f5f7 !important;
+    opacity:1 !important;
+  }
+}
+</style>
+<style>
+/* FOOTER — WHITE DOT FIELD */
+
+.footer-section{
+  position:relative;
+  overflow:hidden;
+}
+
+.footer-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:radial-gradient(
+    circle,
+    #fff 1px,
+    transparent 1.5px
+  );
+  background-size:22px 22px;
+  mask-image:linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 25%,
+    #000 75%,
+    transparent 100%
+  );
+  animation:footerDotsMove 18s linear infinite;
+}
+
+.footer-section::after{
+  content:"";
+  position:absolute;
+  width:70vw;
+  height:70vw;
+  max-width:800px;
+  max-height:800px;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(255,255,255,.07) 0%,
+    rgba(255,255,255,.025) 35%,
+    transparent 70%
+  );
+  filter:blur(25px);
+  pointer-events:none;
+  animation:footerGlow 8s ease-in-out infinite;
+}
+
+.footer-section > *{
+  position:relative;
+  z-index:2;
+}
+
+@keyframes footerDotsMove{
+  0%{
+    background-position:0 0;
+    opacity:.12;
+  }
+
+  50%{
+    opacity:.28;
+  }
+
+  100%{
+    background-position:22px 22px;
+    opacity:.12;
+  }
+}
+
+@keyframes footerGlow{
+  0%,100%{
+    opacity:.35;
+    transform:translate(-50%,-50%) scale(.9);
+  }
+
+  50%{
+    opacity:.8;
+    transform:translate(-50%,-50%) scale(1.08);
+  }
+}
+
+@media(max-width:700px){
+
+  .footer-section::before{
+    background-size:18px 18px;
+    opacity:.18;
+  }
+
+  .footer-section::after{
+    width:120vw;
+    height:120vw;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .footer-section::before,
+  .footer-section::after{
+    animation:none;
+  }
+}
+</style>
+<script>
+/* PRK DARK / LIGHT MODE */
+
+(function(){
+
+  const body = document.body;
+  const button = document.querySelector(".theme-toggle");
+
+  function setTheme(theme){
+
+    if(theme === "dark"){
+      body.classList.add("dark");
+      localStorage.setItem("prk-theme","dark");
+
+      if(button){
+        button.setAttribute("aria-label","Switch to light mode");
+        button.textContent="☼";
+      }
+
+    }else{
+
+      body.classList.remove("dark");
+      localStorage.setItem("prk-theme","light");
+
+      if(button){
+        button.setAttribute("aria-label","Switch to dark mode");
+        button.textContent="☾";
+      }
+    }
+  }
+
+  const savedTheme=localStorage.getItem("prk-theme");
+
+  if(savedTheme){
+    setTheme(savedTheme);
+  }else{
+    setTheme("light");
+  }
+
+  if(button){
+
+    button.addEventListener("click",function(){
+
+      const isDark=body.classList.contains("dark");
+
+      setTheme(isDark ? "light" : "dark");
+
+    });
+
+  }
+
+})();
+</script>
+
+<style>
+/* PRK GLOBAL DARK MODE */
+
+body{
+  background:#f5f5f7;
+  color:#111;
+  transition:
+    background-color .5s ease,
+    color .5s ease;
+}
+
+/* DARK */
+
+body.dark{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+/* MAIN TEXT */
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p,
+body.dark span,
+body.dark li{
+  color:#f5f5f7;
+}
+
+/* MUTED TEXT */
+
+body.dark .muted,
+body.dark .about-alias,
+body.dark .about-coordinate,
+body.dark .project-description,
+body.dark .drive-description{
+  color:#999 !important;
+}
+
+/* LIGHT SECTIONS */
+
+body.dark .about-section,
+body.dark .projects-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+/* WHITE SECTION BORDERS */
+
+body.dark .technical-grid,
+body.dark .project-card,
+body.dark .team-card,
+body.dark .vision-node,
+body.dark .drive-card{
+  border-color:#303030 !important;
+}
+
+/* CARDS */
+
+body.dark .project-card,
+body.dark .team-card,
+body.dark .vision-node,
+body.dark .drive-card{
+  background:#111 !important;
+  color:#f5f5f7 !important;
+}
+
+/* PROJECT CARD HOVER */
+
+body.dark .project-card:hover,
+body.dark .team-card:hover,
+body.dark .vision-node:hover,
+body.dark .drive-card:hover{
+  background:#f5f5f7 !important;
+  color:#080808 !important;
+}
+
+body.dark .project-card:hover *,
+body.dark .team-card:hover *,
+body.dark .vision-node:hover *,
+body.dark .drive-card:hover *{
+  color:#080808 !important;
+}
+
+/* DRIVES */
+
+body.dark .drives-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+/* VISION */
+
+body.dark .vision-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+/* TEAM */
+
+body.dark .team-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+/* CONNECT */
+
+body.dark .connect-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+/* FOOTER */
+
+body.dark .footer-section{
+  background:#080808 !important;
+  color:#f5f5f7 !important;
+}
+
+body.dark .footer-section p,
+body.dark .footer-section span{
+  color:#f5f5f7 !important;
+}
+
+/* NAVIGATION */
+
+body.dark nav{
+  background:rgba(8,8,8,.72);
+  border-color:#292929;
+}
+
+body.dark nav a{
+  color:#f5f5f7 !important;
+}
+
+/* THEME BUTTON */
+
+body.dark .theme-toggle{
+  color:#f5f5f7 !important;
+  border-color:#444 !important;
+  background:#111 !important;
+}
+
+/* LINKS */
+
+body.dark a{
+  color:#f5f5f7;
+}
+
+/* LINES */
+
+body.dark hr,
+body.dark .line{
+  background:#303030 !important;
+  border-color:#303030 !important;
+}
+
+/* FOOTER DOTS */
+
+body.dark .footer-section::before{
+  opacity:.28;
+}
+
+body.dark .footer-section::after{
+  opacity:1;
+}
+
+/* SMOOTH TRANSITION */
+
+body *,
+body *::before,
+body *::after{
+  transition:
+    background-color .4s ease,
+    border-color .4s ease,
+    color .4s ease;
+}
+
+/* DO NOT SLOW DOWN ANIMATIONS */
+
+.connect-dot,
+.hero-glow,
+.footer-section::before,
+.footer-section::after,
+.reveal{
+  transition:none;
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  body,
+  body *{
+    transition:none !important;
+  }
+
+}
+</style>
