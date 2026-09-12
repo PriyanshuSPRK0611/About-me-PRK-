@@ -1837,3 +1837,2381 @@
     </div>
   </div>
 </section>
+<style>
+.vision-section{
+  position:relative;
+  background:var(--bg);
+  color:var(--text);
+  overflow:hidden;
+  padding:clamp(100px,12vw,180px) 6vw;
+}
+
+.vision-section::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  left:-330px;
+  top:15%;
+  border:1px solid var(--line);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 70px color-mix(in srgb,var(--line) 28%,transparent),
+    0 0 0 140px color-mix(in srgb,var(--line) 14%,transparent);
+  pointer-events:none;
+}
+
+.vision-top{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:6vw;
+  padding-bottom:70px;
+  border-bottom:1px solid var(--line);
+}
+
+.vision-label{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:11px;
+  letter-spacing:.18em;
+  opacity:.48;
+}
+
+.vision-title{
+  margin:0;
+  max-width:1000px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(55px,8.5vw,120px);
+  line-height:.84;
+  letter-spacing:-.075em;
+}
+
+.vision-title span{
+  display:block;
+  opacity:.28;
+}
+
+.vision-intro{
+  position:relative;
+  z-index:1;
+  max-width:850px;
+  margin:75px 0 100px auto;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(25px,3.3vw,43px);
+  line-height:1.25;
+  letter-spacing:-.03em;
+}
+
+.vision-system{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.vision-node{
+  position:relative;
+  min-height:390px;
+  padding:32px;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+  transition:background .45s ease,transform .45s ease;
+}
+
+.vision-node:last-child{
+  border-right:0;
+}
+
+.vision-node:hover{
+  background:var(--dark);
+  color:var(--darktext);
+  transform:translateY(-5px);
+}
+
+.vision-node::after{
+  content:"";
+  position:absolute;
+  width:170px;
+  height:170px;
+  right:-75px;
+  bottom:-75px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  opacity:.12;
+  transition:transform .7s ease;
+}
+
+.vision-node:hover::after{
+  transform:scale(1.55);
+}
+
+.vision-number{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.16em;
+  opacity:.45;
+}
+
+.vision-symbol{
+  width:54px;
+  height:54px;
+  border:1px solid currentColor;
+  display:grid;
+  place-items:center;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:22px;
+  margin-bottom:25px;
+}
+
+.vision-node h3{
+  margin:0 0 14px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(30px,3.5vw,48px);
+  letter-spacing:-.055em;
+}
+
+.vision-node p{
+  max-width:360px;
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.75;
+  opacity:.62;
+}
+
+.vision-statement{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  margin-top:100px;
+  padding-top:35px;
+  border-top:1px solid var(--line);
+}
+
+.vision-statement h3{
+  margin:0;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(32px,4vw,58px);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+
+.vision-statement p{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.8;
+  opacity:.65;
+}
+
+.vision-footer{
+  position:relative;
+  z-index:1;
+  display:flex;
+  justify-content:space-between;
+  margin-top:70px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+}
+
+.vision-meta{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.14em;
+  opacity:.4;
+  text-transform:uppercase;
+}
+
+@media(max-width:800px){
+  .vision-section{
+    padding:90px 6vw;
+  }
+
+  .vision-top{
+    grid-template-columns:1fr;
+    gap:25px;
+    padding-bottom:50px;
+  }
+
+  .vision-title{
+    font-size:clamp(56px,15vw,90px);
+  }
+
+  .vision-intro{
+    margin:55px 0 70px;
+    font-size:27px;
+  }
+
+  .vision-system{
+    grid-template-columns:1fr;
+  }
+
+  .vision-node{
+    min-height:300px;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .vision-node:last-child{
+    border-bottom:0;
+  }
+
+  .vision-statement{
+    grid-template-columns:1fr;
+    gap:30px;
+    margin-top:70px;
+  }
+
+  .vision-footer{
+    flex-direction:column;
+    gap:15px;
+  }
+}
+
+@media(max-width:480px){
+  .vision-section{
+    padding:75px 20px;
+  }
+
+  .vision-title{
+    font-size:57px;
+  }
+
+  .vision-intro{
+    font-size:24px;
+  }
+
+  .vision-node{
+    padding:25px 20px;
+  }
+
+  .vision-node h3{
+    font-size:34px;
+  }
+}
+</style>
+
+<section class="section vision-section" id="vision">
+  <div class="vision-top reveal">
+    <div class="vision-label">03 — VISION</div>
+
+    <h2 class="vision-title">
+      Change the world.
+      <span>Understand it first.</span>
+    </h2>
+  </div>
+
+  <div class="vision-intro reveal">
+    I believe the future will not be shaped by one thing alone.
+    Technology may build the tools, politics may shape the direction,
+    and business may turn ideas into reality.
+  </div>
+
+  <div class="vision-system">
+
+    <article class="vision-node reveal">
+      <div class="vision-number">01 / TECHNOLOGY</div>
+
+      <div>
+        <div class="vision-symbol">01</div>
+        <h3>Technology</h3>
+        <p>
+          The ability to create new possibilities, solve problems and
+          redefine what people believe is possible.
+        </p>
+      </div>
+    </article>
+
+    <article class="vision-node reveal">
+      <div class="vision-number">02 / POLITICS</div>
+
+      <div>
+        <div class="vision-symbol">02</div>
+        <h3>Politics</h3>
+        <p>
+          The force that decides how ideas, resources, power and people
+          move through society.
+        </p>
+      </div>
+    </article>
+
+    <article class="vision-node reveal">
+      <div class="vision-number">03 / BUSINESS</div>
+
+      <div>
+        <div class="vision-symbol">03</div>
+        <h3>Business</h3>
+        <p>
+          The mechanism that can turn an idea into something sustainable,
+          scalable and capable of reaching millions.
+        </p>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="vision-statement reveal">
+    <h3>
+      Technology + Politics + Business
+    </h3>
+
+    <p>
+      These three fundamentals interest me because they are deeply connected.
+      A technology can change society. Politics can accelerate or restrict
+      that change. Business can decide whether an idea remains an experiment
+      or becomes something people actually use.
+      <br><br>
+      I want to understand that connection — and eventually build within it.
+    </p>
+  </div>
+
+  <div class="vision-footer reveal">
+    <div class="vision-meta">PRK / 03 / FUTURE SYSTEM</div>
+    <div class="vision-meta">IDEAS → PEOPLE → IMPACT</div>
+  </div>
+</section>
+<style>
+.team-section{
+  position:relative;
+  background:var(--bg);
+  color:var(--text);
+  overflow:hidden;
+  padding:clamp(100px,12vw,175px) 6vw;
+}
+
+.team-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 85% 18%,rgba(0,0,0,.055),transparent 25%),
+    linear-gradient(rgba(0,0,0,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.025) 1px,transparent 1px);
+  background-size:auto,50px 50px,50px 50px;
+  pointer-events:none;
+}
+
+.team-header{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:6vw;
+  padding-bottom:70px;
+  border-bottom:1px solid var(--line);
+}
+
+.team-label{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:11px;
+  letter-spacing:.18em;
+  opacity:.48;
+}
+
+.team-title{
+  margin:0;
+  max-width:950px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(55px,8vw,115px);
+  line-height:.86;
+  letter-spacing:-.075em;
+}
+
+.team-title span{
+  display:block;
+  opacity:.27;
+}
+
+.team-intro{
+  position:relative;
+  z-index:1;
+  max-width:820px;
+  margin:75px 0 95px auto;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(24px,3vw,40px);
+  line-height:1.3;
+  letter-spacing:-.025em;
+}
+
+.team-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.team-card{
+  position:relative;
+  min-height:390px;
+  padding:32px;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+  transition:
+    background .5s ease,
+    color .5s ease,
+    transform .5s ease;
+}
+
+.team-card:last-child{
+  border-right:0;
+}
+
+.team-card::before{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  right:-90px;
+  bottom:-90px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  opacity:.1;
+  transition:transform .8s ease;
+}
+
+.team-card:hover{
+  background:var(--dark);
+  color:var(--darktext);
+  transform:translateY(-5px);
+}
+
+.team-card:hover::before{
+  transform:scale(1.55);
+}
+
+.team-number{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.16em;
+  opacity:.4;
+}
+
+.team-symbol{
+  width:58px;
+  height:58px;
+  border:1px solid currentColor;
+  display:grid;
+  place-items:center;
+  margin-bottom:28px;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:13px;
+  letter-spacing:.08em;
+}
+
+.team-card h3{
+  margin:0 0 15px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(31px,3.5vw,48px);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+
+.team-card p{
+  max-width:360px;
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.75;
+  opacity:.62;
+}
+
+.team-statement{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  margin-top:100px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+}
+
+.team-statement h3{
+  margin:0;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(34px,4.5vw,62px);
+  line-height:.98;
+  letter-spacing:-.06em;
+}
+
+.team-statement p{
+  margin:0;
+  max-width:600px;
+  font-family:Inter,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.8;
+  opacity:.65;
+}
+
+.team-footer{
+  position:relative;
+  z-index:1;
+  margin-top:75px;
+  padding-top:23px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.14em;
+  opacity:.4;
+}
+
+@media(max-width:800px){
+  .team-section{
+    padding:90px 6vw;
+  }
+
+  .team-header{
+    grid-template-columns:1fr;
+    gap:25px;
+    padding-bottom:50px;
+  }
+
+  .team-title{
+    font-size:clamp(56px,15vw,90px);
+  }
+
+  .team-intro{
+    margin:55px 0 70px;
+    font-size:26px;
+  }
+
+  .team-grid{
+    grid-template-columns:1fr;
+  }
+
+  .team-card{
+    min-height:300px;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .team-card:last-child{
+    border-bottom:0;
+  }
+
+  .team-statement{
+    grid-template-columns:1fr;
+    gap:30px;
+    margin-top:70px;
+  }
+
+  .team-footer{
+    flex-direction:column;
+    gap:12px;
+  }
+}
+
+@media(max-width:480px){
+  .team-section{
+    padding:75px 20px;
+  }
+
+  .team-title{
+    font-size:57px;
+  }
+
+  .team-intro{
+    font-size:23px;
+  }
+
+  .team-card{
+    padding:25px 20px;
+  }
+
+  .team-card h3{
+    font-size:34px;
+  }
+
+  .team-card p{
+    font-size:14px;
+  }
+
+  .team-statement h3{
+    font-size:39px;
+  }
+}
+</style>
+
+<section class="section team-section" id="team">
+  <div class="team-header reveal">
+    <div class="team-label">04 — THE TEAM</div>
+
+    <h2 class="team-title">
+      Different minds.
+      <span>One direction.</span>
+    </h2>
+  </div>
+
+  <div class="team-intro reveal">
+    I don't believe the strongest team is made of people who think the same.
+    I want people who see the same problem from completely different angles.
+  </div>
+
+  <div class="team-grid">
+
+    <article class="team-card reveal">
+      <div class="team-number">01 / THINKERS</div>
+
+      <div>
+        <div class="team-symbol">TH</div>
+        <h3>Thinkers</h3>
+        <p>
+          People who question assumptions, connect ideas and are willing to
+          think beyond the obvious answer.
+        </p>
+      </div>
+    </article>
+
+    <article class="team-card reveal">
+      <div class="team-number">02 / BUILDERS</div>
+
+      <div>
+        <div class="team-symbol">BL</div>
+        <h3>Builders</h3>
+        <p>
+          People who turn concepts into systems, products and real things
+          that can be tested, improved and used.
+        </p>
+      </div>
+    </article>
+
+    <article class="team-card reveal">
+      <div class="team-number">03 / CREATORS</div>
+
+      <div>
+        <div class="team-symbol">CR</div>
+        <h3>Creators</h3>
+        <p>
+          People who bring imagination, design, communication and completely
+          different perspectives into the room.
+        </p>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="team-statement reveal">
+    <h3>
+      Different perspectives
+      make stronger ideas.
+    </h3>
+
+    <p>
+      I want to bring together people with different mindsets — positive,
+      negative, doubtful, curious, creative and questioning.
+      <br><br>
+      Not everyone needs to agree. In fact, disagreement can be useful.
+      A strong idea should survive questions, criticism and different ways
+      of looking at the same problem.
+      <br><br>
+      I am searching for the right people to make this circle bigger,
+      more powerful and more meaningful.
+    </p>
+  </div>
+
+  <div class="team-footer reveal">
+    <span>PRK / 04 / THE CIRCLE</span>
+    <span>THINKERS — BUILDERS — CREATORS</span>
+  </div>
+</section>
+<style>
+.projects-section{
+  position:relative;
+  background:var(--dark);
+  color:var(--darktext);
+  overflow:hidden;
+  padding:clamp(100px,12vw,175px) 6vw;
+}
+
+.projects-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:50px 50px;
+  opacity:.6;
+  pointer-events:none;
+}
+
+.projects-header{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:6vw;
+  padding-bottom:65px;
+  border-bottom:1px solid rgba(255,255,255,.16);
+}
+
+.projects-label{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:11px;
+  letter-spacing:.18em;
+  opacity:.45;
+}
+
+.projects-title{
+  margin:0;
+  max-width:1000px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(55px,8vw,115px);
+  line-height:.85;
+  letter-spacing:-.075em;
+}
+
+.projects-title span{
+  display:block;
+  opacity:.28;
+}
+
+.projects-intro{
+  position:relative;
+  z-index:1;
+  max-width:780px;
+  margin:70px 0 90px auto;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(24px,3vw,40px);
+  line-height:1.3;
+  letter-spacing:-.025em;
+}
+
+.projects-list{
+  position:relative;
+  z-index:1;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+
+.project-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:90px 1fr 180px;
+  gap:35px;
+  min-height:260px;
+  padding:38px 0;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  text-decoration:none;
+  color:inherit;
+  overflow:hidden;
+  transition:padding .45s ease,background .45s ease;
+}
+
+.project-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.06),
+    transparent 70%
+  );
+  opacity:0;
+  transition:opacity .45s ease;
+  pointer-events:none;
+}
+
+.project-card:hover{
+  padding-left:25px;
+  padding-right:25px;
+  background:rgba(255,255,255,.035);
+}
+
+.project-card:hover::before{
+  opacity:1;
+}
+
+.project-number{
+  position:relative;
+  z-index:1;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:11px;
+  letter-spacing:.14em;
+  opacity:.42;
+}
+
+.project-main{
+  position:relative;
+  z-index:1;
+}
+
+.project-type{
+  margin-bottom:18px;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:.38;
+}
+
+.project-name{
+  margin:0 0 16px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(31px,4vw,55px);
+  line-height:.95;
+  letter-spacing:-.06em;
+}
+
+.project-description{
+  max-width:600px;
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.75;
+  opacity:.58;
+}
+
+.project-arrow{
+  position:relative;
+  z-index:1;
+  align-self:center;
+  justify-self:end;
+  width:58px;
+  height:58px;
+  border:1px solid rgba(255,255,255,.28);
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  transition:
+    transform .45s ease,
+    background .45s ease,
+    color .45s ease;
+}
+
+.project-card:hover .project-arrow{
+  transform:translate(7px,-7px);
+  background:var(--darktext);
+  color:var(--dark);
+}
+
+.project-static{
+  cursor:default;
+}
+
+.project-static:hover{
+  padding-left:0;
+  padding-right:0;
+  background:transparent;
+}
+
+.project-static:hover::before{
+  opacity:0;
+}
+
+.project-static .project-arrow{
+  opacity:.25;
+}
+
+.project-status{
+  position:relative;
+  z-index:1;
+  align-self:end;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:9px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  opacity:.3;
+}
+
+.projects-note{
+  position:relative;
+  z-index:1;
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  margin-top:70px;
+  padding-top:25px;
+  border-top:1px solid rgba(255,255,255,.12);
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.13em;
+  opacity:.35;
+}
+
+@media(max-width:800px){
+  .projects-section{
+    padding:90px 6vw;
+  }
+
+  .projects-header{
+    grid-template-columns:1fr;
+    gap:25px;
+    padding-bottom:50px;
+  }
+
+  .projects-title{
+    font-size:clamp(56px,15vw,90px);
+  }
+
+  .projects-intro{
+    margin:55px 0 65px;
+    font-size:25px;
+  }
+
+  .project-card{
+    grid-template-columns:55px 1fr;
+    gap:18px;
+    min-height:240px;
+    padding:30px 0;
+  }
+
+  .project-arrow{
+    position:absolute;
+    right:0;
+    bottom:30px;
+    width:45px;
+    height:45px;
+  }
+
+  .project-status{
+    display:none;
+  }
+
+  .project-description{
+    padding-right:45px;
+    font-size:14px;
+  }
+
+  .project-card:hover{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .project-static:hover{
+    padding-left:0;
+    padding-right:0;
+  }
+
+  .projects-note{
+    flex-direction:column;
+    gap:12px;
+  }
+}
+
+@media(max-width:480px){
+  .projects-section{
+    padding:75px 20px;
+  }
+
+  .projects-title{
+    font-size:57px;
+  }
+
+  .projects-intro{
+    font-size:23px;
+  }
+
+  .project-name{
+    font-size:34px;
+  }
+
+  .project-card{
+    grid-template-columns:45px 1fr;
+  }
+}
+</style>
+
+<section class="section projects-section" id="projects">
+  <div class="projects-header reveal">
+    <div class="projects-label">05 — PROJECTS</div>
+
+    <h2 class="projects-title">
+      Ideas are easy.
+      <span>Building them isn't.</span>
+    </h2>
+  </div>
+
+  <div class="projects-intro reveal">
+    Some ideas are already being built. Some are still waiting for the
+    right technology, the right people, or simply the right moment.
+  </div>
+
+  <div class="projects-list">
+
+    <a
+      class="project-card reveal"
+      href="future-asia.html"
+      aria-label="Open Future Asia Journal"
+    >
+      <div class="project-number">01</div>
+
+      <div class="project-main">
+        <div class="project-type">Editorial / Technology / Asia</div>
+
+        <h3 class="project-name">
+          Future Asia Journal
+        </h3>
+
+        <p class="project-description">
+          A modern independent publication focused on Asia, technology,
+          artificial intelligence, politics, countries and the future.
+          Built to explore what is happening today — and what it could mean
+          tomorrow.
+        </p>
+      </div>
+
+      <div class="project-arrow">↗</div>
+
+      <div class="project-status">
+        Explore project
+      </div>
+    </a>
+
+    <article class="project-card project-static reveal">
+      <div class="project-number">02</div>
+
+      <div class="project-main">
+        <div class="project-type">Hardware / Engineering / Future</div>
+
+        <h3 class="project-name">
+          Ideas in Progress
+        </h3>
+
+        <p class="project-description">
+          An idea for building my own hardware company and creating hardware
+          products that could change the way people interact with technology.
+          The concept is still developing. I will return to it with a clearer
+          idea, stronger technology and a better reason to build it.
+        </p>
+      </div>
+
+      <div class="project-arrow">+</div>
+
+      <div class="project-status">
+        Concept stage
+      </div>
+    </article>
+
+    <article class="project-card project-static reveal">
+      <div class="project-number">03</div>
+
+      <div class="project-main">
+        <div class="project-type">AI / Machine Learning / Software</div>
+
+        <h3 class="project-name">
+          More to come.
+        </h3>
+
+        <p class="project-description">
+          More ideas around artificial intelligence, machine learning,
+          software and future technologies are already somewhere in my head.
+          Some will become projects. Some will probably disappear after a
+          better idea arrives.
+        </p>
+      </div>
+
+      <div class="project-arrow">→</div>
+
+      <div class="project-status">
+        Thinking
+      </div>
+    </article>
+
+  </div>
+
+  <div class="projects-note reveal">
+    <span>PRK / 05 / PROJECT SYSTEM</span>
+    <span>BUILD — TEST — REDEFINE</span>
+  </div>
+</section>
+<style>
+.connect-section{
+  position:relative;
+  background:var(--bg);
+  color:var(--text);
+  overflow:hidden;
+  padding:clamp(100px,12vw,170px) 6vw 0;
+}
+
+.connect-section::before{
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  right:-390px;
+  top:10%;
+  border:1px solid var(--line);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 80px color-mix(in srgb,var(--line) 20%,transparent),
+    0 0 0 160px color-mix(in srgb,var(--line) 10%,transparent);
+  pointer-events:none;
+}
+
+.connect-header{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:6vw;
+  padding-bottom:70px;
+  border-bottom:1px solid var(--line);
+}
+
+.connect-label{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:11px;
+  letter-spacing:.18em;
+  opacity:.45;
+}
+
+.connect-title{
+  margin:0;
+  max-width:1000px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(55px,8.5vw,120px);
+  line-height:.84;
+  letter-spacing:-.075em;
+}
+
+.connect-title span{
+  display:block;
+  opacity:.28;
+}
+
+.connect-intro{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin:70px 0 70px auto;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(24px,3vw,40px);
+  line-height:1.3;
+  letter-spacing:-.025em;
+}
+
+.connect-links{
+  position:relative;
+  z-index:3;
+  border-top:1px solid var(--line);
+}
+
+.connect-link{
+  position:relative;
+  display:grid;
+  grid-template-columns:90px 1fr 60px;
+  align-items:center;
+  min-height:115px;
+  padding:20px 0;
+  border-bottom:1px solid var(--line);
+  color:inherit;
+  text-decoration:none;
+  overflow:hidden;
+  transition:
+    padding .45s ease,
+    background .45s ease;
+}
+
+.connect-link::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--dark);
+  transform:translateX(-101%);
+  transition:transform .55s cubic-bezier(.2,.7,.2,1);
+  z-index:-1;
+}
+
+.connect-link:hover{
+  color:var(--darktext);
+  padding-left:25px;
+  padding-right:25px;
+}
+
+.connect-link:hover::before{
+  transform:translateX(0);
+}
+
+.connect-number{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.14em;
+  opacity:.42;
+}
+
+.connect-name{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(30px,4vw,52px);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+
+.connect-handle{
+  display:block;
+  margin-top:8px;
+  font-family:Inter,Arial,sans-serif;
+  font-size:12px;
+  opacity:.45;
+}
+
+.connect-arrow{
+  justify-self:end;
+  width:45px;
+  height:45px;
+  border:1px solid currentColor;
+  display:grid;
+  place-items:center;
+  font-size:17px;
+  transition:transform .45s ease;
+}
+
+.connect-link:hover .connect-arrow{
+  transform:translate(5px,-5px);
+}
+
+.connect-visual{
+  position:relative;
+  z-index:1;
+  height:clamp(430px,58vw,700px);
+  margin-top:85px;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+}
+
+.connect-photo{
+  position:absolute;
+  inset:-8%;
+  width:116%;
+  height:116%;
+  object-fit:cover;
+  object-position:center center;
+  filter:grayscale(1) contrast(1.05);
+  opacity:.78;
+  transform:translate3d(0,0,0) scale(1.04);
+  transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.connect-visual:hover .connect-photo{
+  transform:translate3d(0,0,0) scale(1.1);
+}
+
+.connect-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:
+    linear-gradient(to bottom,
+      var(--bg) 0%,
+      color-mix(in srgb,var(--bg) 70%,transparent) 8%,
+      transparent 28%,
+      transparent 68%,
+      color-mix(in srgb,var(--dark) 65%,transparent) 100%
+    );
+  pointer-events:none;
+}
+
+.connect-visual::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  background:
+    radial-gradient(circle at 50% 45%,transparent 20%,rgba(0,0,0,.18) 100%);
+  pointer-events:none;
+}
+
+.connect-photo-content{
+  position:absolute;
+  z-index:4;
+  left:6%;
+  right:6%;
+  bottom:8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  color:#fff;
+}
+
+.connect-photo-title{
+  margin:0;
+  max-width:650px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(38px,6vw,82px);
+  line-height:.9;
+  letter-spacing:-.065em;
+}
+
+.connect-photo-meta{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:9px;
+  letter-spacing:.15em;
+  opacity:.65;
+  text-transform:uppercase;
+}
+
+.connect-dots{
+  position:absolute;
+  z-index:5;
+  top:8%;
+  right:6%;
+  display:flex;
+  gap:7px;
+}
+
+.connect-dots i{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#fff;
+  opacity:.35;
+  animation:connectPulse 2s ease-in-out infinite;
+}
+
+.connect-dots i:nth-child(2){animation-delay:.2s}
+.connect-dots i:nth-child(3){animation-delay:.4s}
+.connect-dots i:nth-child(4){animation-delay:.6s}
+.connect-dots i:nth-child(5){animation-delay:.8s}
+.connect-dots i:nth-child(6){animation-delay:1s}
+
+@keyframes connectPulse{
+  0%,100%{
+    opacity:.18;
+    transform:scale(.8);
+  }
+  50%{
+    opacity:.95;
+    transform:scale(1.35);
+  }
+}
+
+@media(max-width:800px){
+  .connect-section{
+    padding:90px 6vw 0;
+  }
+
+  .connect-header{
+    grid-template-columns:1fr;
+    gap:25px;
+    padding-bottom:50px;
+  }
+
+  .connect-title{
+    font-size:clamp(56px,15vw,90px);
+  }
+
+  .connect-intro{
+    margin:55px 0 60px;
+    font-size:25px;
+  }
+
+  .connect-link{
+    grid-template-columns:50px 1fr 45px;
+    min-height:100px;
+    gap:10px;
+  }
+
+  .connect-link:hover{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .connect-name{
+    font-size:31px;
+  }
+
+  .connect-handle{
+    font-size:11px;
+  }
+
+  .connect-visual{
+    height:500px;
+    margin-top:65px;
+  }
+
+  .connect-photo-content{
+    left:7%;
+    right:7%;
+    bottom:7%;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+
+  .connect-photo-title{
+    font-size:43px;
+  }
+}
+
+@media(max-width:480px){
+  .connect-section{
+    padding:75px 20px 0;
+  }
+
+  .connect-title{
+    font-size:57px;
+  }
+
+  .connect-intro{
+    font-size:23px;
+  }
+
+  .connect-link{
+    grid-template-columns:38px 1fr 40px;
+    min-height:92px;
+  }
+
+  .connect-name{
+    font-size:27px;
+  }
+
+  .connect-arrow{
+    width:38px;
+    height:38px;
+  }
+
+  .connect-visual{
+    height:460px;
+    margin-left:-20px;
+    margin-right:-20px;
+  }
+
+  .connect-photo{
+    object-position:center center;
+  }
+
+  .connect-photo-title{
+    font-size:38px;
+  }
+
+  .connect-photo-meta{
+    font-size:8px;
+  }
+}
+</style>
+
+<section class="section connect-section" id="connect">
+  <div class="connect-header reveal">
+    <div class="connect-label">06 — LET'S CONNECT</div>
+
+    <h2 class="connect-title">
+      Let's talk.
+      <span>Ideas welcome.</span>
+    </h2>
+  </div>
+
+  <div class="connect-intro reveal">
+    Good conversations can lead to unexpected ideas.
+    If you have something interesting to say, build, question or discuss,
+    you know where to find me.
+  </div>
+
+  <div class="connect-links">
+
+    <a
+      class="connect-link reveal"
+      href="https://instagram.com/prkgoes"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div class="connect-number">01</div>
+      <div>
+        <div class="connect-name">Instagram</div>
+        <span class="connect-handle">@prkgoes</span>
+      </div>
+      <div class="connect-arrow">↗</div>
+    </a>
+
+    <a
+      class="connect-link reveal"
+      href="https://t.me/Sowhat1233"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div class="connect-number">02</div>
+      <div>
+        <div class="connect-name">Telegram</div>
+        <span class="connect-handle">Direct conversation</span>
+      </div>
+      <div class="connect-arrow">↗</div>
+    </a>
+
+    <a
+      class="connect-link reveal"
+      href="https://github.com/PriyanshuSPRK0611"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div class="connect-number">03</div>
+      <div>
+        <div class="connect-name">GitHub</div>
+        <span class="connect-handle">Projects / Code / Experiments</span>
+      </div>
+      <div class="connect-arrow">↗</div>
+    </a>
+
+    <a
+      class="connect-link reveal"
+      href="mailto:prkworldcare@gmail.com"
+    >
+      <div class="connect-number">04</div>
+      <div>
+        <div class="connect-name">Email</div>
+        <span class="connect-handle">prkworldcare@gmail.com</span>
+      </div>
+      <div class="connect-arrow">↗</div>
+    </a>
+
+  </div>
+
+  <div class="connect-visual reveal">
+    <img
+      class="connect-photo"
+      src="kv-0515-mo.jpg.thumb.webp"
+      alt="PRK visual"
+    >
+
+    <div class="connect-dots" aria-hidden="true">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+
+    <div class="connect-photo-content">
+      <h3 class="connect-photo-title">
+        Stay curious.
+        <br>
+        Keep moving.
+      </h3>
+
+      <div class="connect-photo-meta">
+        PRK / 06<br>
+        PURNIA — INDIA
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+/* FINAL INTERACTION LAYER */
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  transition:
+    background-color .5s ease,
+    color .5s ease;
+}
+
+body::selection{
+  background:var(--text);
+  color:var(--bg);
+}
+
+::selection{
+  background:var(--text);
+  color:var(--bg);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:
+    opacity .9s cubic-bezier(.2,.7,.2,1),
+    transform .9s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.about-fade-text{
+  opacity:.08;
+  transition:opacity .2s linear;
+}
+
+.nav-scrolled{
+  background:color-mix(in srgb,var(--bg) 82%,transparent)!important;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom-color:var(--line)!important;
+}
+
+body.locked{
+  height:100vh;
+  overflow:hidden;
+}
+
+body:not(.locked) .welcome-screen{
+  pointer-events:none;
+}
+
+.welcome-screen.hide{
+  opacity:0;
+  visibility:hidden;
+  transform:scale(1.02);
+}
+
+.hero-glow{
+  animation:
+    heroFloat 8s ease-in-out infinite alternate,
+    heroBlur 6s ease-in-out infinite alternate;
+}
+
+@keyframes heroFloat{
+  from{
+    transform:translate3d(-2%,0,0) scale(1);
+  }
+  to{
+    transform:translate3d(2%,2%,0) scale(1.08);
+  }
+}
+
+@keyframes heroBlur{
+  from{
+    filter:blur(45px);
+    opacity:.45;
+  }
+  to{
+    filter:blur(70px);
+    opacity:.72;
+  }
+}
+
+.hero-title{
+  animation:heroTextIn 1.2s .25s both cubic-bezier(.2,.7,.2,1);
+}
+
+.hero-description{
+  animation:heroTextIn 1.1s .45s both cubic-bezier(.2,.7,.2,1);
+}
+
+@keyframes heroTextIn{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.scroll-indicator{
+  animation:scrollFloat 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollFloat{
+  0%,100%{
+    transform:translateY(0);
+    opacity:.45;
+  }
+  50%{
+    transform:translateY(7px);
+    opacity:.9;
+  }
+}
+
+.connect-photo{
+  will-change:transform;
+}
+
+.project-card,
+.connect-link,
+.team-card,
+.vision-node,
+.drive-card{
+  will-change:transform;
+}
+
+@media(max-width:800px){
+  .reveal{
+    transform:translateY(22px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+
+  .about-fade-text{
+    opacity:1!important;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+
+  const body=document.body;
+  const welcome=document.querySelector(".welcome-screen");
+  const welcomeButton=document.querySelector(".welcome-button");
+  const themeButton=document.querySelector(".theme-toggle");
+  const nav=document.querySelector("nav");
+  const reduceMotion=window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  /* WELCOME SCREEN */
+
+  if(welcomeButton){
+    welcomeButton.addEventListener("click",function(){
+
+      if(welcome){
+        welcome.classList.add("hide");
+      }
+
+      body.classList.remove("locked");
+
+      sessionStorage.setItem(
+        "prk-welcome-seen",
+        "true"
+      );
+    });
+  }
+
+  /* THEME */
+
+  const savedTheme=localStorage.getItem("prk-theme");
+
+  if(savedTheme==="dark"){
+    body.classList.add("dark");
+  }
+
+  if(savedTheme==="light"){
+    body.classList.remove("dark");
+  }
+
+  function updateThemeIcon(){
+
+    if(!themeButton) return;
+
+    const isDark=body.classList.contains("dark");
+
+    themeButton.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light mode" : "Switch to dark mode"
+    );
+
+    themeButton.textContent=isDark ? "○" : "●";
+  }
+
+  updateThemeIcon();
+
+  if(themeButton){
+    themeButton.addEventListener("click",function(){
+
+      body.classList.toggle("dark");
+
+      localStorage.setItem(
+        "prk-theme",
+        body.classList.contains("dark")
+          ? "dark"
+          : "light"
+      );
+
+      updateThemeIcon();
+    });
+  }
+
+  /* SCROLL REVEAL */
+
+  const revealItems=document.querySelectorAll(".reveal");
+
+  if(reduceMotion){
+    revealItems.forEach(function(item){
+      item.classList.add("visible");
+    });
+  }else{
+
+    const revealObserver=new IntersectionObserver(
+      function(entries){
+
+        entries.forEach(function(entry){
+
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+
+        });
+
+      },
+      {
+        threshold:.12,
+        rootMargin:"0px 0px -40px 0px"
+      }
+    );
+
+    revealItems.forEach(function(item){
+      revealObserver.observe(item);
+    });
+  }
+
+  /* NAVIGATION */
+
+  function updateNav(){
+
+    if(!nav) return;
+
+    if(window.scrollY>40){
+      nav.classList.add("nav-scrolled");
+    }else{
+      nav.classList.remove("nav-scrolled");
+    }
+  }
+
+  updateNav();
+
+  window.addEventListener(
+    "scroll",
+    updateNav,
+    {passive:true}
+  );
+
+  /* ACTIVE NAV SECTION */
+
+  const sections=document.querySelectorAll(
+    "main section[id]"
+  );
+
+  const navLinks=document.querySelectorAll(
+    "nav a[href^='#']"
+  );
+
+  if(sections.length && navLinks.length){
+
+    const sectionObserver=new IntersectionObserver(
+      function(entries){
+
+        entries.forEach(function(entry){
+
+          if(!entry.isIntersecting) return;
+
+          navLinks.forEach(function(link){
+
+            link.classList.remove("active");
+
+            if(
+              link.getAttribute("href") ===
+              "#" + entry.target.id
+            ){
+              link.classList.add("active");
+            }
+
+          });
+
+        });
+
+      },
+      {
+        rootMargin:"-35% 0px -55% 0px"
+      }
+    );
+
+    sections.forEach(function(section){
+      sectionObserver.observe(section);
+    });
+  }
+
+  /* SMOOTH INTERNAL LINKS */
+
+  document.querySelectorAll(
+    'a[href^="#"]'
+  ).forEach(function(link){
+
+    link.addEventListener("click",function(event){
+
+      const targetId=
+        link.getAttribute("href");
+
+      if(!targetId || targetId==="#") return;
+
+      const target=
+        document.querySelector(targetId);
+
+      if(!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior:reduceMotion
+          ? "auto"
+          : "smooth",
+        block:"start"
+      });
+
+    });
+
+  });
+
+  /* ABOUT TEXT FADE */
+
+  const aboutFade=
+    document.querySelector(".about-fade-text");
+
+  function updateAboutFade(){
+
+    if(!aboutFade) return;
+
+    const rect=
+      aboutFade.getBoundingClientRect();
+
+    const viewport=
+      window.innerHeight;
+
+    const start=
+      viewport*.9;
+
+    const end=
+      viewport*.18;
+
+    let progress=
+      (start-rect.top)/(start-end);
+
+    progress=
+      Math.max(0,Math.min(1,progress));
+
+    const opacity=
+      .08+(progress*.92);
+
+    aboutFade.style.opacity=
+      reduceMotion ? "1" : opacity.toFixed(3);
+  }
+
+  updateAboutFade();
+
+  window.addEventListener(
+    "scroll",
+    updateAboutFade,
+    {passive:true}
+  );
+
+  window.addEventListener(
+    "resize",
+    updateAboutFade
+  );
+
+  /* CINEMATIC IMAGE PARALLAX */
+
+  const connectVisual=
+    document.querySelector(".connect-visual");
+
+  const connectPhoto=
+    document.querySelector(".connect-photo");
+
+  function updateParallax(){
+
+    if(!connectVisual || !connectPhoto || reduceMotion){
+      return;
+    }
+
+    const rect=
+      connectVisual.getBoundingClientRect();
+
+    const viewport=
+      window.innerHeight;
+
+    if(
+      rect.bottom<0 ||
+      rect.top>viewport
+    ){
+      return;
+    }
+
+    const center=
+      rect.top+rect.height/2;
+
+    const distance=
+      (center-viewport/2)/viewport;
+
+    const move=
+      distance*-24;
+
+    connectPhoto.style.transform=
+      "translate3d(0,"+
+      move.toFixed(2)+
+      "px,0) scale(1.08)";
+  }
+
+  updateParallax();
+
+  window.addEventListener(
+    "scroll",
+    updateParallax,
+    {passive:true}
+  );
+
+  window.addEventListener(
+    "resize",
+    updateParallax
+  );
+
+  /* WELCOME KEYBOARD ACCESS */
+
+  document.addEventListener(
+    "keydown",
+    function(event){
+
+      if(
+        event.key==="Enter" &&
+        body.classList.contains("locked")
+      ){
+        if(welcomeButton){
+          welcomeButton.click();
+        }
+      }
+
+      if(event.key==="Escape"){
+        body.classList.remove("locked");
+      }
+
+    }
+  );
+
+});
+</script>
+<style>
+.footer-section{
+  position:relative;
+  background:var(--dark);
+  color:var(--darktext);
+  overflow:hidden;
+  padding:clamp(90px,11vw,150px) 6vw 35px;
+}
+
+.footer-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:50px 50px;
+  opacity:.5;
+  pointer-events:none;
+}
+
+.footer-glow{
+  position:absolute;
+  width:420px;
+  height:420px;
+  left:50%;
+  top:10%;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    circle,
+    rgba(255,255,255,.09),
+    transparent 68%
+  );
+  filter:blur(35px);
+  animation:footerGlow 7s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+
+@keyframes footerGlow{
+  from{
+    opacity:.35;
+    transform:translateX(-50%) scale(.9);
+  }
+  to{
+    opacity:.75;
+    transform:translateX(-50%) scale(1.15);
+  }
+}
+
+.footer-main{
+  position:relative;
+  z-index:1;
+  min-height:520px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.footer-heading{
+  max-width:1000px;
+  margin:0;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(65px,12vw,170px);
+  line-height:.8;
+  letter-spacing:-.085em;
+}
+
+.footer-heading span{
+  display:block;
+  opacity:.3;
+}
+
+.footer-middle{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:50px;
+  margin-top:100px;
+}
+
+.footer-statement{
+  max-width:570px;
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(24px,3vw,40px);
+  line-height:1.25;
+  letter-spacing:-.025em;
+}
+
+.footer-mark{
+  width:75px;
+  height:75px;
+  border:1px solid rgba(255,255,255,.3);
+  display:grid;
+  place-items:center;
+  font-family:"Archivo Black",sans-serif;
+  font-size:18px;
+  letter-spacing:-.04em;
+  position:relative;
+}
+
+.footer-mark::before,
+.footer-mark::after{
+  content:"";
+  position:absolute;
+  background:rgba(255,255,255,.35);
+}
+
+.footer-mark::before{
+  width:9px;
+  height:1px;
+  left:-16px;
+}
+
+.footer-mark::after{
+  width:1px;
+  height:9px;
+  top:-16px;
+}
+
+.footer-system{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:30px;
+  margin-top:100px;
+  padding:25px 0;
+  border-top:1px solid rgba(255,255,255,.15);
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.footer-system-item{
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:10px;
+  letter-spacing:.14em;
+  line-height:1.7;
+  opacity:.4;
+  text-transform:uppercase;
+}
+
+.footer-system-item:nth-child(2){
+  text-align:center;
+}
+
+.footer-system-item:nth-child(3){
+  text-align:right;
+}
+
+.footer-bottom{
+  position:relative;
+  z-index:1;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+  padding-top:28px;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:9px;
+  letter-spacing:.14em;
+  opacity:.35;
+  text-transform:uppercase;
+}
+
+.back-top{
+  color:inherit;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:opacity .3s ease;
+}
+
+.back-top:hover{
+  opacity:1;
+}
+
+.back-top span{
+  display:inline-block;
+  transition:transform .35s ease;
+}
+
+.back-top:hover span{
+  transform:translateY(-4px);
+}
+
+.footer-signature{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:12px;
+  letter-spacing:.08em;
+  opacity:.5;
+}
+
+@media(max-width:800px){
+  .footer-section{
+    padding:80px 6vw 30px;
+  }
+
+  .footer-main{
+    min-height:470px;
+  }
+
+  .footer-heading{
+    font-size:clamp(65px,17vw,105px);
+  }
+
+  .footer-middle{
+    margin-top:75px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:35px;
+  }
+
+  .footer-statement{
+    font-size:26px;
+  }
+
+  .footer-system{
+    grid-template-columns:1fr;
+    gap:18px;
+    margin-top:75px;
+  }
+
+  .footer-system-item,
+  .footer-system-item:nth-child(2),
+  .footer-system-item:nth-child(3){
+    text-align:left;
+  }
+
+  .footer-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:18px;
+  }
+}
+
+@media(max-width:480px){
+  .footer-section{
+    padding:70px 20px 25px;
+  }
+
+  .footer-heading{
+    font-size:67px;
+  }
+
+  .footer-statement{
+    font-size:24px;
+  }
+
+  .footer-mark{
+    width:65px;
+    height:65px;
+  }
+
+  .footer-system{
+    margin-top:60px;
+  }
+}
+</style>
+
+<section class="footer-section" id="footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-main">
+
+    <div class="reveal">
+      <h2 class="footer-heading">
+        Curiosity
+        <span>today.</span>
+        Possibilities
+        <span>tomorrow.</span>
+      </h2>
+    </div>
+
+    <div class="footer-middle reveal">
+      <p class="footer-statement">
+        There is always another question.
+        Another idea.
+        Another possibility.
+      </p>
+
+      <div class="footer-mark">
+        PRK
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-system reveal">
+    <div class="footer-system-item">
+      PRK / PERSONAL SYSTEM<br>
+      PURNIA — BIHAR — INDIA
+    </div>
+
+    <div class="footer-system-item">
+      BUILT WITH CURIOSITY
+    </div>
+
+    <div class="footer-system-item">
+      © 2026 PRK
+    </div>
+  </div>
+
+  <div class="footer-bottom reveal">
+    <div class="footer-signature">
+      PRK — Curiosity today. Possibilities tomorrow.
+    </div>
+
+    <a class="back-top" href="#home">
+      Back to top
+      <span>↑</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+</body>
+</html>
