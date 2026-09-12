@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="description"
+  content="PRK — Curiosity today. Possibilities tomorrow."
+>
+
+<title>PRK — Curiosity today. Possibilities tomorrow.</title>
+
+
+<!-- =========================
+     FONTS
+========================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+  rel="stylesheet"
+>
+
+
+<style>
+
+/* =====================================================
+   PRK — DESIGN SYSTEM
+===================================================== */
+
+:root {
+
+  --bg: #f4f4f2;
+  --white: #fafaf8;
+
+  --black: #070707;
+  --dark: #0b0b0b;
+
+  --text: #111111;
+  --muted: #707070;
+  --soft: #999999;
+
+  --line: #d5d5d1;
+  --dark-line: #292929;
+
+  --sans: "DM Sans", Arial, sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
+
+  /* PRK LOGO FONT */
+  --prk: "Archivo Black", Impact, sans-serif;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  font-family: var(--sans);
+
+  overflow-x: hidden;
+
+}
+
+
+body.welcome-active {
+
+  height: 100vh;
+
+  overflow: hidden;
+
+}
+
+
+a {
+  color: inherit;
+}
+
+
+button {
+  font-family: inherit;
+}
+
+
+/* =====================================================
+   COMMON CONTAINER
+===================================================== */
+
+.container {
+
+  width: min(
+    1180px,
+    calc(100% - 40px)
+  );
+
+  margin: 0 auto;
+
+}
+
+
+/* =====================================================
+   SECTION LABELS
+===================================================== */
+
+.section-label {
+
+  font-size: 10px;
+
+  letter-spacing: .18em;
+
+  text-transform: uppercase;
+
+  color: #777;
+
+}
+
+
+.technical {
+
+  font-size: 9px;
+
+  letter-spacing: .17em;
+
+  text-transform: uppercase;
+
+  color: #888;
+
+}
+
+
+/* =====================================================
+   WELCOME SCREEN
+===================================================== */
+
+.welcome-screen {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #050505;
+
+  color: white;
+
+  transition:
+    opacity .9s ease,
+    visibility .9s ease;
+
+}
+
+
+.welcome-screen.hide {
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+}
+
+
+/* TECHNICAL GRID */
+
+.welcome-grid {
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: .08;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255,255,255,.3) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.3) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+}
+
+
+/* SOFT BLUR */
+
+.welcome-blur {
+
+  position: absolute;
+
+  width: 650px;
+
+  height: 650px;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.16),
+      rgba(255,255,255,.06) 35%,
+      transparent 70%
+    );
+
+  filter: blur(55px);
+
+  animation:
+    welcomeFloat 12s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes welcomeFloat {
+
+  0% {
+
+    transform:
+      translate(-18%, -12%)
+      scale(.9);
+
+  }
+
+  50% {
+
+    transform:
+      translate(12%, 10%)
+      scale(1.08);
+
+  }
+
+  100% {
+
+    transform:
+      translate(-5%, 20%)
+      scale(.96);
+
+  }
+
+}
+
+
+/* WELCOME CONTENT */
+
+.welcome-content {
+
+  position: relative;
+
+  z-index: 2;
+
+  text-align: center;
+
+}
+
+
+.welcome-system {
+
+  margin-bottom: 25px;
+
+  color: #666;
+
+  font-size: 9px;
+
+  letter-spacing: .2em;
+
+}
+
+
+.welcome-mark {
+
+  font-family: var(--prk);
+
+  font-size: clamp(
+    110px,
+    20vw,
+    250px
+  );
+
+  line-height: .75;
+
+  letter-spacing: -.09em;
+
+}
+
+
+.welcome-caption {
+
+  margin-top: 42px;
+
+  margin-bottom: 23px;
+
+  color: #888;
+
+  font-family: var(--serif);
+
+  font-size: 16px;
+
+}
+
+
+.welcome-button {
+
+  padding: 14px 25px;
+
+  border: 1px solid #444;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: .35s ease;
+
+}
+
+
+.welcome-button:hover {
+
+  background: white;
+
+  color: black;
+
+  border-color: white;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  padding: 21px 0;
+
+  transition: .35s ease;
+
+}
+
+
+.nav.scrolled {
+
+  background:
+    rgba(244,244,242,.88);
+
+  backdrop-filter: blur(18px);
+
+  border-bottom:
+    1px solid rgba(0,0,0,.08);
+
+}
+
+
+.nav-inner {
+
+  width: min(
+    1180px,
+    calc(100% - 40px)
+  );
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+}
+
+
+.nav-logo {
+
+  font-family: var(--prk);
+
+  font-size: 20px;
+
+  letter-spacing: -.06em;
+
+  text-decoration: none;
+
+}
+
+
+.nav-links {
+
+  display: flex;
+
+  gap: 24px;
+
+  list-style: none;
+
+}
+
+
+.nav-links a {
+
+  color: #666;
+
+  font-size: 10px;
+
+  text-decoration: none;
+
+  transition: .25s ease;
+
+}
+
+
+.nav-links a:hover {
+
+  color: #111;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+  min-height: 88svh;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  border-bottom:
+    1px solid var(--line);
+
+}
+
+
+/* HERO GRID */
+
+.hero-grid {
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: .27;
+
+  background-image:
+
+    linear-gradient(
+      rgba(0,0,0,.045) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.045) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+}
+
+
+/* HERO ATMOSPHERE */
+
+.hero-blur {
+
+  position: absolute;
+
+  width: 650px;
+
+  height: 650px;
+
+  right: -180px;
+
+  top: -150px;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.95),
+      rgba(255,255,255,.45) 38%,
+      transparent 72%
+    );
+
+  filter: blur(35px);
+
+  animation:
+    heroFloat 13s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes heroFloat {
+
+  from {
+
+    transform:
+      translate(0,0)
+      scale(.9);
+
+  }
+
+  to {
+
+    transform:
+      translate(-90px,100px)
+      scale(1.1);
+
+  }
+
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  padding-top: 55px;
+
+}
+
+
+.hero-topline {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 32px;
+
+}
+
+
+.hero-topline span {
+
+  color: #777;
+
+  font-size: 9px;
+
+  letter-spacing: .16em;
+
+}
+
+
+.hero-title {
+
+  max-width: 1050px;
+
+  font-family: var(--serif);
+
+  font-size: clamp(
+    65px,
+    9vw,
+    125px
+  );
+
+  line-height: .88;
+
+  letter-spacing: -.06em;
+
+}
+
+
+.hero-title em {
+
+  font-weight: 400;
+
+}
+
+
+.hero-description {
+
+  max-width: 510px;
+
+  margin-top: 34px;
+
+  color: #666;
+
+  font-size: 17px;
+
+  line-height: 1.65;
+
+}
+
+
+.hero-scroll {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 38px;
+
+  color: #888;
+
+  font-size: 9px;
+
+  letter-spacing: .15em;
+
+}
+
+
+.scroll-line {
+
+  width: 38px;
+
+  height: 1px;
+
+  background: #999;
+
+}
+
+
+/* =====================================================
+   MOBILE — TIGHTER, NOT EMPTY
+===================================================== */
+
+@media (max-width: 800px) {
+
+
+  .container {
+
+    width:
+      calc(100% - 30px);
+
+  }
+
+
+  .nav-inner {
+
+    width:
+      calc(100% - 30px);
+
+  }
+
+
+  .nav-links {
+
+    display: none;
+
+  }
+
+
+  /* WELCOME */
+
+  .welcome-mark {
+
+    font-size:
+      clamp(
+        95px,
+        27vw,
+        170px
+      );
+
+  }
+
+
+  .welcome-caption {
+
+    margin-top: 32px;
+
+  }
+
+
+  /* HERO */
+
+  .hero {
+
+    min-height: 86svh;
+
+    align-items: flex-start;
+
+  }
+
+
+  .hero-content {
+
+    padding-top: 118px;
+
+  }
+
+
+  .hero-topline {
+
+    margin-bottom: 27px;
+
+  }
+
+
+  .hero-title {
+
+    font-size:
+      clamp(
+        52px,
+        13.5vw,
+        82px
+      );
+
+    line-height: .9;
+
+  }
+
+
+  .hero-description {
+
+    max-width: 350px;
+
+    margin-top: 27px;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+  }
+
+
+  .hero-scroll {
+
+    margin-top: 32px;
+
+  }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation: none !important;
+
+    transition: none !important;
+
+    scroll-behavior: auto !important;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body class="welcome-active">
+
+
+<!-- =====================================================
+     WELCOME SCREEN
+===================================================== -->
+
+<div
+  class="welcome-screen"
+  id="welcomeScreen"
+>
+
+  <div class="welcome-grid"></div>
+
+  <div class="welcome-blur"></div>
+
+
+  <div class="welcome-content">
+
+    <div class="welcome-system">
+      PRK / SYSTEM 001
+    </div>
+
+
+    <div class="welcome-mark">
+      PRK
+    </div>
+
+
+    <div class="welcome-caption">
+      Curiosity today. Possibilities tomorrow.
+    </div>
+
+
+    <button
+      class="welcome-button"
+      id="welcomeButton"
+    >
+      Welcome to PRK
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header
+  class="nav"
+  id="mainNav"
+>
+
+  <div class="nav-inner">
+
+
+    <a
+      href="#home"
+      class="nav-logo"
+    >
+      PRK
+    </a>
+
+
+    <ul class="nav-links">
+
+      <li>
+        <a href="#about">
+          About
+        </a>
+      </li>
+
+      <li>
+        <a href="#drives">
+          Drives
+        </a>
+      </li>
+
+      <li>
+        <a href="#vision">
+          Vision
+        </a>
+      </li>
+
+      <li>
+        <a href="#team">
+          Team
+        </a>
+      </li>
+
+      <li>
+        <a href="#projects">
+          Projects
+        </a>
+      </li>
+
+      <li>
+        <a href="#connect">
+          Connect
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+  class="hero"
+  id="home"
+>
+
+  <div class="hero-grid"></div>
+
+  <div class="hero-blur"></div>
+
+
+  <div class="container hero-content">
+
+
+    <div class="hero-topline">
+
+      <span>
+        PRK / PERSONAL SYSTEM
+      </span>
+
+      <span>
+        PURNIA · INDIA
+      </span>
+
+    </div>
+
+
+    <h1 class="hero-title">
+
+      Curiosity today.<br>
+
+      <em>
+        Possibilities tomorrow.
+      </em>
+
+    </h1>
+
+
+    <p class="hero-description">
+
+      A mind that keeps asking why,
+      how and what if — and refuses
+      to stop at the obvious answer.
+
+    </p>
+
+
+    <div class="hero-scroll">
+
+      <span class="scroll-line"></span>
+
+      SCROLL TO EXPLORE
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PART 2 STARTS HERE
+===================================================== --><!-- =========================
+     PART 2 — ABOUT / DRIVES / VISION
+========================= -->
+
+<section class="about-section" id="about">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-label">
+        01 — ABOUT ME
+      </div>
+
+      <div class="technical">
+        PERSONAL / 001
+      </div>
+
+    </div>
+
+
+    <div class="about-layout">
+
+      <div class="about-intro reveal">
+
+        <div class="about-number">
+          01
+        </div>
+
+        <h2>
+          I don't really
+          <em>fit into boxes.</em>
+        </h2>
+
+      </div>
+
+
+      <div class="about-text reveal">
+
+        <p class="about-lead">
+
+          Hi, I am <strong>Priyanshu Ranjan Karn</strong>.
+          People also know me as <strong>PRK</strong>.
+
+        </p>
+
+        <p>
+
+          I was born in Purnia, Bihar, India,
+          in a middle-class family. But being
+          middle-class never meant having
+          middle-sized thoughts.
+
+        </p>
+
+        <p>
+
+          Since childhood, my mind has been
+          unusually interested in three simple
+          questions:
+
+          <span class="question-line">
+            WHY?
+          </span>
+
+          <span class="question-line">
+            HOW?
+          </span>
+
+          <span class="question-line">
+            WHAT IF?
+          </span>
+
+        </p>
+
+        <p>
+
+          Those questions have taken me into
+          technology, politics, business, editing,
+          documentaries, conversations and
+          countless ideas that probably should
+          have stayed inside my head.
+
+          Fortunately, they didn't.
+
+        </p>
+
+        <p>
+
+          I am fascinated by technology because
+          I believe it does more than make life
+          convenient. It changes the way people
+          think, communicate, build and see the
+          world.
+
+        </p>
+
+        <p>
+
+          I am especially interested in coding,
+          artificial intelligence, machine learning
+          and engineering. Not because technology
+          is automatically the answer to everything—
+
+          <em>
+            but because finding better questions
+            usually starts there.
+          </em>
+
+        </p>
+
+        <p>
+
+          Politics interests me for a completely
+          different reason.
+
+          Politics decides how ideas move through
+          society. It influences technology,
+          business, people, resources, opinions
+          and sometimes even what becomes possible.
+
+        </p>
+
+        <p>
+
+          I like debating. I like questioning.
+          I like conversations where nobody is
+          completely sure who is right.
+
+          Because sometimes the best idea is the
+          one that survives the argument.
+
+        </p>
+
+        <p>
+
+          I also enjoy editing, documentaries,
+          discovering unusual ideas and learning
+          from people who see the world differently.
+
+        </p>
+
+        <p class="about-ending">
+
+          I am not trying to have all the answers.
+
+          I am more interested in becoming the
+          person who keeps asking better questions.
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="about-meta reveal">
+
+      <div>
+        <span>ORIGIN</span>
+        <strong>PURNIA, BIHAR</strong>
+      </div>
+
+      <div>
+        <span>INTERESTS</span>
+        <strong>TECH · AI · POLITICS · BUSINESS</strong>
+      </div>
+
+      <div>
+        <span>APPROACH</span>
+        <strong>QUESTION EVERYTHING</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="drives-section" id="drives">
+
+  <div class="container">
+
+    <div class="section-head section-head-dark reveal">
+
+      <div class="section-label">
+        02 — WHAT DRIVES ME
+      </div>
+
+      <div class="technical">
+        MINDSET / 002
+      </div>
+
+    </div>
+
+
+    <div class="drives-intro reveal">
+
+      <div class="drives-index">
+        02
+      </div>
+
+      <h2>
+        Curiosity is
+        <em>the engine.</em>
+      </h2>
+
+    </div>
+
+
+    <div class="drives-grid">
+
+
+      <article class="drive-item reveal">
+
+        <div class="drive-top">
+
+          <span>01</span>
+
+          <span>WHY</span>
+
+        </div>
+
+        <h3>
+          Question
+          <br>
+          everything.
+        </h3>
+
+        <p>
+
+          I naturally want to understand
+          what is happening underneath
+          the surface.
+
+        </p>
+
+      </article>
+
+
+
+      <article class="drive-item reveal">
+
+        <div class="drive-top">
+
+          <span>02</span>
+
+          <span>HOW</span>
+
+        </div>
+
+        <h3>
+          Understand
+          <br>
+          the system.
+        </h3>
+
+        <p>
+
+          Knowing what something does
+          is useful. Understanding how
+          it actually works is better.
+
+        </p>
+
+      </article>
+
+
+
+      <article class="drive-item reveal">
+
+        <div class="drive-top">
+
+          <span>03</span>
+
+          <span>WHAT IF</span>
+
+        </div>
+
+        <h3>
+          Imagine
+          <br>
+          what's next.
+        </h3>
+
+        <p>
+
+          The most interesting ideas
+          usually begin as something
+          that sounds slightly impossible.
+
+        </p>
+
+      </article>
+
+
+
+      <article class="drive-item reveal">
+
+        <div class="drive-top">
+
+          <span>04</span>
+
+          <span>BUILD</span>
+
+        </div>
+
+        <h3>
+          Turn ideas
+          <br>
+          into reality.
+        </h3>
+
+        <p>
+
+          Thinking is only the beginning.
+          The real challenge is building
+          something that actually works.
+
+        </p>
+
+      </article>
+
+
+    </div>
+
+
+    <div class="drive-statement reveal">
+
+      <span class="statement-mark">"</span>
+
+      <p>
+
+        The world doesn't need more people
+        who simply accept how things are.
+
+        It needs people willing to ask
+        why they are that way.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="vision-section" id="vision">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-label">
+        03 — VISION
+      </div>
+
+      <div class="technical">
+        DIRECTION / 003
+      </div>
+
+    </div>
+
+
+    <div class="vision-hero reveal">
+
+      <div class="vision-number">
+        03
+      </div>
+
+      <h2>
+
+        Technology.
+        <br>
+
+        Politics.
+        <br>
+
+        <em>Business.</em>
+
+      </h2>
+
+    </div>
+
+
+    <div class="vision-copy reveal">
+
+      <p class="vision-lead">
+
+        I believe these three forces have
+        an enormous influence on the shape
+        of the future.
+
+      </p>
+
+      <p>
+
+        Technology changes what humans
+        <em>can</em> do.
+
+        Politics influences what societies
+        <em>choose</em> to do.
+
+        Business decides, in many cases,
+        what actually gets <em>built</em>.
+
+      </p>
+
+      <p>
+
+        Put them together and you get
+        something much larger than a career
+        or a company.
+
+        You get the machinery that can
+        reshape the world around us.
+
+      </p>
+
+      <p>
+
+        My vision is to explore the intersection
+        of these three areas and understand
+        how they can be used to create better
+        systems, better technology and better
+        possibilities for the future.
+
+      </p>
+
+    </div>
+
+
+    <div class="vision-principles reveal">
+
+      <div class="principle">
+
+        <span>01</span>
+
+        <h3>
+          TECHNOLOGY
+        </h3>
+
+        <p>
+          Build what does not exist yet.
+        </p>
+
+      </div>
+
+
+      <div class="principle">
+
+        <span>02</span>
+
+        <h3>
+          POLITICS
+        </h3>
+
+        <p>
+          Understand how the world actually moves.
+        </p>
+
+      </div>
+
+
+      <div class="principle">
+
+        <span>03</span>
+
+        <h3>
+          BUSINESS
+        </h3>
+
+        <p>
+          Turn ambitious ideas into something real.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="vision-ending reveal">
+
+      <div class="technical">
+        LONG TERM / 003
+      </div>
+
+      <p>
+
+        I don't want to simply predict the future.
+
+        <br>
+
+        <em>
+          I want to participate in building it.
+        </em>
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PART 3 STARTS HERE -->
