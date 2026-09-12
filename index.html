@@ -3,993 +3,487 @@
 
 <head>
 
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="PRK — Curiosity today. Possibilities tomorrow."
-  >
-
-  <title>
-    PRK — Curiosity today. Possibilities tomorrow.
-  </title>
-
-
-  <!-- =========================================
-       GOOGLE FONTS
-  ========================================== -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
-    rel="stylesheet"
-  >
-
-
-  <!-- =========================================
-       MAIN CSS
-  ========================================== -->
-
-  <style>
-
-    /* =========================================
-       ROOT
-    ========================================== */
-
-    :root {
-
-      --black: #050505;
-
-      --dark: #0b0b0b;
-
-      --dark-grey: #151515;
-
-      --grey: #777777;
-
-      --mid-grey: #999999;
-
-      --light-grey: #d7d7d7;
-
-      --soft-grey: #eeeeee;
-
-      --white: #f7f7f7;
-
-      --pure-white: #ffffff;
-
-      --line: #d2d2d2;
-
-      --dark-line: #292929;
-
-      --serif: "Playfair Display", Georgia, serif;
-
-      --sans: "DM Sans", Arial, sans-serif;
-
-      --archivo: "Archivo Black", Impact, sans-serif;
-
-    }
-
-
-    /* =========================================
-       RESET
-    ========================================== */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
-    body {
-
-      background: var(--white);
-
-      color: #111111;
-
-      font-family: var(--sans);
-
-      overflow-x: hidden;
-
-      -webkit-font-smoothing: antialiased;
-
-    }
-
-
-    body.welcome-active {
-      overflow: hidden;
-    }
-
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    button {
-      font: inherit;
-    }
-
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-
-    ::selection {
-      background: #111111;
-      color: #ffffff;
-    }
-
-
-    /* =========================================
-       CONTAINER
-    ========================================== */
-
-    .container {
-
-      width: min(
-        calc(100% - 80px),
-        1280px
-      );
-
-      margin: 0 auto;
-
-    }
-
-
-    /* =========================================
-       WELCOME SCREEN
-    ========================================== */
-
-    .welcome-screen {
-
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 9999;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      overflow: hidden;
-
-      background: #030303;
-
-      color: #ffffff;
-
-      opacity: 1;
-
-      visibility: visible;
-
-      transform: scale(1);
-
-      transition:
-        opacity 1s ease,
-        visibility 1s ease,
-        transform 1.15s cubic-bezier(
-          0.2,
-          0.75,
-          0.2,
-          1
-        );
-
-    }
-
-
-    .welcome-screen.hide {
-
-      opacity: 0;
-
-      visibility: hidden;
-
-      pointer-events: none;
-
-      transform: scale(1.04);
-
-    }
-
-
-    /* =========================================
-       WELCOME LIGHT ATMOSPHERE
-    ========================================== */
-
-    .welcome-glow {
-
-      position: absolute;
-
-      border-radius: 50%;
-
-      pointer-events: none;
-
-      filter: blur(100px);
-
-      opacity: 0.45;
-
-    }
-
-
-    .welcome-glow-one {
-
-      width: 480px;
-
-      height: 480px;
-
-      background: rgba(
-        255,
-        255,
-        255,
-        0.13
-      );
-
-      top: -180px;
-
-      left: -100px;
-
-    }
-
-
-    .welcome-glow-two {
-
-      width: 600px;
-
-      height: 600px;
-
-      background: rgba(
-        180,
-        180,
-        180,
-        0.10
-      );
-
-      right: -220px;
-
-      bottom: -220px;
-
-    }
-
-
-    .welcome-glow-three {
-
-      width: 300px;
-
-      height: 300px;
-
-      background: rgba(
-        255,
-        255,
-        255,
-        0.07
-      );
-
-      top: 42%;
-
-      left: 48%;
-
-      transform: translate(
-        -50%,
-        -50%
-      );
-
-    }
-
-
-    /* =========================================
-       WELCOME CONTENT
-    ========================================== */
-
-    .welcome-content {
-
-      position: relative;
-
-      z-index: 2;
-
-      width: min(
-        calc(100% - 40px),
-        1000px
-      );
-
-      text-align: center;
-
-    }
-
-
-    .welcome-eyebrow {
-
-      margin-bottom: 35px;
-
-      color: #777777;
-
-      font-size: 0.65rem;
-
-      font-weight: 600;
-
-      letter-spacing: 0.24em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .welcome-logo {
-
-      font-family: var(--archivo);
-
-      font-size: clamp(
-        8rem,
-        24vw,
-        20rem
-      );
-
-      line-height: 0.78;
-
-      letter-spacing: -0.08em;
-
-      color: #ffffff;
-
-      text-shadow:
-        0 0 35px rgba(
-          255,
-          255,
-          255,
-          0.08
-        );
-
-      user-select: none;
-
-    }
-
-
-    .welcome-tagline {
-
-      margin-top: 42px;
-
-      color: #a0a0a0;
-
-      font-family: var(--serif);
-
-      font-size: clamp(
-        1rem,
-        2vw,
-        1.35rem
-      );
-
-      font-style: italic;
-
-      letter-spacing: 0.01em;
-
-    }
-
-
-    /* =========================================
-       WELCOME BUTTON
-    ========================================== */
-
-    .welcome-button {
-
-      margin-top: 55px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 18px;
-
-      padding: 15px 22px 15px 25px;
-
-      border: 1px solid #444444;
-
-      border-radius: 999px;
-
-      background: rgba(
-        255,
-        255,
-        255,
-        0.03
-      );
-
-      color: #ffffff;
-
-      cursor: pointer;
-
-      font-family: var(--sans);
-
-      font-size: 0.72rem;
-
-      font-weight: 500;
-
-      letter-spacing: 0.1em;
-
-      text-transform: uppercase;
-
-      backdrop-filter: blur(12px);
-
-      -webkit-backdrop-filter: blur(12px);
-
-      transition:
-        background 0.35s ease,
-        border-color 0.35s ease,
-        transform 0.35s ease;
-
-    }
-
-
-    .welcome-button:hover {
-
-      background: #ffffff;
-
-      color: #050505;
-
-      border-color: #ffffff;
-
-      transform: translateY(-3px);
-
-    }
-
-
-    .welcome-button-arrow {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      width: 27px;
-
-      height: 27px;
-
-      border: 1px solid #555555;
-
-      border-radius: 50%;
-
-      transition:
-        transform 0.35s ease,
-        background 0.35s ease;
-
-    }
-
-
-    .welcome-button:hover
-    .welcome-button-arrow {
-
-      background: #111111;
-
-      color: #ffffff;
-
-      transform: translateX(3px);
-
-    }
-
-
-    .welcome-footer {
-
-      position: absolute;
-
-      bottom: 30px;
-
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      color: #555555;
-
-      font-size: 0.58rem;
-
-      font-weight: 500;
-
-      letter-spacing: 0.2em;
-
-      white-space: nowrap;
-
-    }
-
-
-    /* =========================================
-       NAVIGATION
-    ========================================== */
-
-    .nav {
-
-      position: fixed;
-
-      top: 0;
-
-      left: 0;
-
-      right: 0;
-
-      z-index: 100;
-
-      height: 82px;
-
-      display: flex;
-
-      align-items: center;
-
-      border-bottom: 1px solid transparent;
-
-      transition:
-        background 0.35s ease,
-        border-color 0.35s ease,
-        backdrop-filter 0.35s ease;
-
-    }
-
-
-    .nav.scrolled {
-
-      background: rgba(
-        247,
-        247,
-        247,
-        0.88
-      );
-
-      border-color: var(--line);
-
-      backdrop-filter: blur(18px);
-
-      -webkit-backdrop-filter: blur(18px);
-
-    }
-
-
-    .nav-inner {
-
-      width: min(
-        calc(100% - 80px),
-        1280px
-      );
-
-      margin: 0 auto;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-    }
-
-
-    .nav-logo {
-
-      font-family: var(--archivo);
-
-      font-size: 1.25rem;
-
-      letter-spacing: -0.05em;
-
-    }
-
-
-    .nav-links {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 34px;
-
-    }
-
-
-    .nav-links a {
-
-      position: relative;
-
-      color: #555555;
-
-      font-size: 0.72rem;
-
-      font-weight: 500;
-
-      letter-spacing: 0.08em;
-
-      text-transform: uppercase;
-
-      transition: color 0.3s ease;
-
-    }
-
-
-    .nav-links a::after {
-
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-
-      bottom: -7px;
-
-      width: 0;
-
-      height: 1px;
-
-      background: #111111;
-
-      transition: width 0.3s ease;
-
-    }
-
-
-    .nav-links a:hover {
-
-      color: #111111;
-
-    }
-
-
-    .nav-links a:hover::after {
-
-      width: 100%;
-
-    }
-
-
-    .nav-status {
-
-      color: #888888;
-
-      font-size: 0.58rem;
-
-      letter-spacing: 0.13em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    /* =========================================
-       HERO
-    ========================================== */
-
-    .hero {
-
-      position: relative;
-
-      min-height: 100vh;
-
-      display: flex;
-
-      align-items: center;
-
-      overflow: hidden;
-
-      background: var(--white);
-
-    }
-
-
-    .hero::before {
-
-      content: "";
-
-      position: absolute;
-
-      width: 700px;
-
-      height: 700px;
-
-      right: -250px;
-
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      border-radius: 50%;
-
-      background: rgba(
-        180,
-        180,
-        180,
-        0.16
-      );
-
-      filter: blur(100px);
-
-      pointer-events: none;
-
-    }
-
-
-    .hero-inner {
-
-      position: relative;
-
-      z-index: 2;
-
-      padding-top: 100px;
-
-    }
-
-
-    .hero-eyebrow {
-
-      margin-bottom: 35px;
-
-      color: #777777;
-
-      font-size: 0.65rem;
-
-      font-weight: 600;
-
-      letter-spacing: 0.2em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .hero-title {
-
-      max-width: 1100px;
-
-      font-family: var(--serif);
-
-      font-size: clamp(
-        5rem,
-        12vw,
-        11rem
-      );
-
-      line-height: 0.82;
-
-      letter-spacing: -0.075em;
-
-      font-weight: 400;
-
-    }
-
-
-    .hero-title span {
-
-      color: #858585;
-
-      font-style: italic;
-
-    }
-
-
-    .hero-bottom {
-
-      margin-top: 90px;
-
-      padding-top: 25px;
-
-      border-top: 1px solid var(--line);
-
-      display: flex;
-
-      align-items: flex-start;
-
-      justify-content: space-between;
-
-      gap: 50px;
-
-    }
-
-
-    .hero-subtitle {
-
-      max-width: 520px;
-
-      color: #666666;
-
-      font-size: 1rem;
-
-      line-height: 1.8;
-
-    }
-
-
-    .hero-scroll {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 15px;
-
-      color: #777777;
-
-      font-size: 0.62rem;
-
-      font-weight: 600;
-
-      letter-spacing: 0.15em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .scroll-line {
-
-      width: 65px;
-
-      height: 1px;
-
-      background: #999999;
-
-    }
-
-
-    /* =========================================
-       RESPONSIVE — PART 1
-    ========================================== */
-
-    @media (max-width: 800px) {
-
-      .container,
-      .nav-inner {
-
-        width: min(
-          calc(100% - 36px),
-          1280px
-        );
-
-      }
-
-
-      .nav {
-
-        height: 70px;
-
-      }
-
-
-      .nav-links {
-
-        display: none;
-
-      }
-
-
-      .nav-status {
-
-        font-size: 0.52rem;
-
-      }
-
-
-      .hero-inner {
-
-        padding-top: 70px;
-
-      }
-
-
-      .hero-eyebrow {
-
-        margin-bottom: 25px;
-
-      }
-
-
-      .hero-title {
-
-        font-size: clamp(
-          4.2rem,
-          20vw,
-          8rem
-        );
-
-      }
-
-
-      .hero-bottom {
-
-        margin-top: 65px;
-
-        flex-direction: column;
-
-        gap: 35px;
-
-      }
-
-
-      .hero-subtitle {
-
-        font-size: 0.92rem;
-
-      }
-
-
-      .welcome-logo {
-
-        font-size: clamp(
-          6rem,
-          28vw,
-          11rem
-        );
-
-      }
-
-
-      .welcome-tagline {
-
-        margin-top: 30px;
-
-        font-size: 0.95rem;
-
-      }
-
-
-      .welcome-button {
-
-        margin-top: 40px;
-
-      }
-
-    }
-
-
-    @media (max-width: 480px) {
-
-      .welcome-eyebrow {
-
-        font-size: 0.55rem;
-
-      }
-
-
-      .welcome-logo {
-
-        font-size: 29vw;
-
-      }
-
-
-      .welcome-footer {
-
-        bottom: 22px;
-
-      }
-
-
-      .hero-title {
-
-        font-size: 20vw;
-
-      }
-
-
-      .hero-subtitle {
-
-        max-width: 330px;
-
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="description"
+content="PRK — Curiosity today. Possibilities tomorrow."
+>
+
+<title>PRK — Curiosity today. Possibilities tomorrow.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+rel="stylesheet">
+
+
+<style>
+
+/* =========================
+   PRK SYSTEM
+========================= */
+
+:root{
+  --white:#f7f7f5;
+  --black:#070707;
+  --text:#111;
+  --grey:#777;
+  --light-grey:#d8d8d5;
+  --dark-grey:#222;
+
+  --sans:"DM Sans",Arial,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --prk:"Archivo Black",Impact,sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--white);
+  color:var(--text);
+  font-family:var(--sans);
+  overflow-x:hidden;
+}
+
+body.welcome-active{
+  height:100vh;
+  overflow:hidden;
+}
+
+a{
+  color:inherit;
+}
+
+button{
+  font:inherit;
+}
+
+.container{
+  width:min(1240px,calc(100% - 48px));
+  margin:auto;
+}
+
+.section-label{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#777;
+}
+
+.technical{
+  font-size:9px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#888;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-screen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#050505;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  transition:
+    opacity 1s cubic-bezier(.77,0,.18,1),
+    visibility 1s;
+}
+
+.welcome-screen.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+
+/* moving soft atmosphere */
+
+.welcome-atmosphere{
+  position:absolute;
+  width:75vw;
+  height:75vw;
+  max-width:900px;
+  max-height:900px;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.17) 0%,
+      rgba(255,255,255,.08) 22%,
+      rgba(255,255,255,.025) 48%,
+      transparent 72%
+    );
+
+  filter:blur(65px);
+
+  animation:
+    atmosphereMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphereMove{
+
+  0%{
+    transform:
+      translate(-18%,-10%)
+      scale(.9);
+  }
+
+  50%{
+    transform:
+      translate(12%,12%)
+      scale(1.08);
+  }
+
+  100%{
+    transform:
+      translate(-5%,20%)
+      scale(.96);
+  }
+
+}
+
+
+/* tiny technical grid */
+
+.welcome-grid{
+  position:absolute;
+  inset:0;
+  opacity:.08;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.35) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.35) 1px,
+      transparent 1px
+    );
+
+  background-size:80px 80px;
+}
+
+
+/* welcome content */
+
+.welcome-content{
+  position:relative;
+  z-index:3;
+  text-align:center;
+}
+
+.welcome-index{
+  margin-bottom:25px;
+  font-size:10px;
+  letter-spacing:.22em;
+  color:#777;
+}
+
+.welcome-mark{
+  font-family:var(--prk);
+  font-size:clamp(100px,22vw,270px);
+  line-height:.75;
+  letter-spacing:-.09em;
+
+  animation:
+    prkFloat 7s ease-in-out infinite;
+}
+
+@keyframes prkFloat{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-7px);
+  }
+
+}
+
+.welcome-caption{
+  margin-top:55px;
+  margin-bottom:20px;
+  font-family:var(--serif);
+  font-size:17px;
+  color:#aaa;
+}
+
+.welcome-button{
+  border:1px solid #444;
+  background:transparent;
+  color:white;
+
+  padding:15px 27px;
+
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  transition:
+    background .35s ease,
+    color .35s ease,
+    border-color .35s ease;
+}
+
+.welcome-button:hover{
+  background:white;
+  color:#050505;
+  border-color:white;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+
+  z-index:900;
+
+  padding:23px 0;
+
+  transition:.45s ease;
+}
+
+.nav.scrolled{
+  background:rgba(247,247,245,.86);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.nav-inner{
+  width:min(1240px,calc(100% - 48px));
+  margin:auto;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.nav-logo{
+  font-family:var(--prk);
+  font-size:20px;
+  letter-spacing:-.06em;
+  text-decoration:none;
+}
+
+.nav-links{
+  display:flex;
+  gap:27px;
+  list-style:none;
+}
+
+.nav-links a{
+  font-size:11px;
+  text-decoration:none;
+  color:#666;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:#111;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:100vh;
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  overflow:hidden;
+
+  border-bottom:1px solid var(--light-grey);
+}
+
+.hero-grid{
+  position:absolute;
+  inset:0;
+  opacity:.25;
+
+  background-image:
+    linear-gradient(
+      rgba(0,0,0,.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.055) 1px,
+      transparent 1px
+    );
+
+  background-size:90px 90px;
+}
+
+.hero-blur{
+  position:absolute;
+
+  width:700px;
+  height:700px;
+
+  right:-220px;
+  top:-220px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,1),
+      rgba(255,255,255,.5) 35%,
+      transparent 70%
+    );
+
+  filter:blur(35px);
+
+  animation:
+    heroGlow 13s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow{
+
+  from{
+    transform:translate(0,0) scale(.9);
+  }
+
+  to{
+    transform:translate(-100px,120px) scale(1.12);
+  }
+
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding-top:70px;
+}
+
+.hero-topline{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:42px;
+
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#777;
+}
+
+.hero-title{
+  max-width:1150px;
+
+  font-family:var(--serif);
+
+  font-size:
+    clamp(68px,10vw,145px);
+
+  line-height:.86;
+
+  letter-spacing:-.065em;
+}
+
+.hero-title em{
+  font-weight:400;
+}
+
+.hero-description{
+  max-width:530px;
+
+  margin-top:55px;
+
+  font-size:17px;
+  line-height:1.75;
+
+  color:#666;
+}
+
+.hero-scroll{
+  position:absolute;
+  bottom:35px;
+  left:0;
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  font-size:9px;
+  letter-spacing:.16em;
+  color:#777;
+}
+
+.scroll-line{
+  width:45px;
+  height:1px;
+  background:#999;
+}
+
+
+/* =========================
+   RESPONSIVE BASE
+========================= */
+
+@media(max-width:800px){
+
+  .container,
+  .nav-inner{
+    width:calc(100% - 32px);
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero-topline{
+    align-items:flex-start;
+  }
+
+  .hero-title{
+    font-size:
+      clamp(58px,16vw,100px);
+  }
+
+  .welcome-mark{
+    font-size:32vw;
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -997,1525 +491,840 @@
 <body class="welcome-active">
 
 
-  <!-- =======================================
-       WELCOME SCREEN
-  ======================================== -->
+<!-- =========================
+     WELCOME SCREEN
+========================= -->
 
-  <div
-    class="welcome-screen"
-    id="welcomeScreen"
-  >
+<div class="welcome-screen" id="welcomeScreen">
 
-    <div
-      class="welcome-glow welcome-glow-one"
-    ></div>
+  <div class="welcome-atmosphere"></div>
 
-    <div
-      class="welcome-glow welcome-glow-two"
-    ></div>
+  <div class="welcome-grid"></div>
 
-    <div
-      class="welcome-glow welcome-glow-three"
-    ></div>
+  <div class="welcome-content">
+
+    <div class="welcome-index">
+      SYSTEM / 001
+    </div>
+
+    <div class="welcome-mark">
+      PRK
+    </div>
+
+    <div class="welcome-caption">
+      Curiosity today. Possibilities tomorrow.
+    </div>
+
+    <button
+      class="welcome-button"
+      id="welcomeButton"
+    >
+      Welcome to PRK
+    </button>
+
+  </div>
+
+</div>
 
 
-    <div class="welcome-content">
+<!-- =========================
+     NAV
+========================= -->
 
-      <div class="welcome-eyebrow">
-        PERSONAL SPACE · 2026
-      </div>
+<header class="nav" id="mainNav">
 
-      <div class="welcome-logo">
-        PRK
-      </div>
+  <div class="nav-inner">
 
-      <div class="welcome-tagline">
-        Curiosity today. Possibilities tomorrow.
-      </div>
+    <a href="#home" class="nav-logo">
+      PRK
+    </a>
 
-      <button
-        class="welcome-button"
-        id="welcomeButton"
-        type="button"
-      >
+    <ul class="nav-links">
 
-        <span>
-          Welcome to PRK
-        </span>
+      <li>
+        <a href="#about">About</a>
+      </li>
 
-        <span class="welcome-button-arrow">
-          →
-        </span>
+      <li>
+        <a href="#drives">Drives</a>
+      </li>
 
-      </button>
+      <li>
+        <a href="#vision">Vision</a>
+      </li>
+
+      <li>
+        <a href="#team">Team</a>
+      </li>
+
+      <li>
+        <a href="#projects">Projects</a>
+      </li>
+
+      <li>
+        <a href="#connect">Connect</a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+  <div class="hero-grid"></div>
+
+  <div class="hero-blur"></div>
+
+  <div class="container hero-content">
+
+    <div class="hero-topline">
+
+      <span>
+        PRK / PERSONAL SYSTEM
+      </span>
+
+      <span>
+        PURNIA · INDIA
+      </span>
 
     </div>
 
+    <h1 class="hero-title">
+      Curiosity today.<br>
+      <em>Possibilities tomorrow.</em>
+    </h1>
 
-    <div class="welcome-footer">
-      ENTER TO EXPLORE
+    <p class="hero-description">
+      A mind that keeps asking why, how and what if —
+      and refuses to stop at the obvious answer.
+    </p>
+
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      SCROLL TO EXPLORE
     </div>
 
   </div>
 
+</section>
+<!-- =========================
+     ABOUT ME
+========================= -->
 
-  <!-- =======================================
-       NAVIGATION
-  ======================================== -->
+<section class="about" id="about">
 
-  <header class="nav" id="mainNav">
+  <div class="container">
 
-    <div class="nav-inner">
+    <div class="about-top">
 
-      <a
-        href="#home"
-        class="nav-logo"
-      >
-        PRK
-      </a>
+      <div class="section-label">
+        01 / ABOUT ME
+      </div>
 
-
-      <nav class="nav-links">
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#drives">
-          Ideas
-        </a>
-
-        <a href="#vision">
-          Vision
-        </a>
-
-        <a href="#projects">
-          Projects
-        </a>
-
-        <a href="#connect">
-          Connect
-        </a>
-
-      </nav>
-
-
-      <div class="nav-status">
-        PERSONAL / DIGITAL
+      <div class="about-code">
+        PRK—001
       </div>
 
     </div>
 
-  </header>
 
+    <div class="about-grid">
 
-  <!-- =======================================
-       MAIN
-  ======================================== -->
+      <div>
 
-  <main>
-
-
-    <!-- =====================================
-         HERO
-    ====================================== -->
-
-    <section
-      class="hero"
-      id="home"
-    >
-
-      <div class="hero-inner container">
-
-        <div class="hero-eyebrow">
-          PRK · PERSONAL PORTFOLIO
-        </div>
-
-
-        <h1 class="hero-title">
-
-          Curiosity
-
-          <br>
-
-          <span>
-            today.
-          </span>
-
-        </h1>
-
-
-        <div class="hero-bottom">
-
-          <p class="hero-subtitle">
-
-            Exploring technology, ideas,
-            creativity and the possibilities
-            of what comes next.
-
-          </p>
-
-
-          <div class="hero-scroll">
-
-            <span>
-              EXPLORE
-            </span>
-
-            <span class="scroll-line"></span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!--
-      PART 2 STARTS HERE
-      Do not close main/body/html yet.
-    -->
-        <!-- =====================================
-         ABOUT
-    ====================================== -->
-
-    <section
-      class="about"
-      id="about"
-    >
-
-      <div class="container">
-
-        <div class="section-label">
-          01 — ABOUT
-        </div>
-
-
-        <div class="about-grid">
-
-          <div>
-
-            <h2 class="about-title reveal">
-              A mind built
-              <br>
-              to question.
-            </h2>
-
-          </div>
-
-
-          <div class="about-copy reveal">
-
-            <p class="about-lead">
-              PRK is a personal space for curiosity,
-              ideas, technology and the future.
-            </p>
-
-            <p>
-              I believe understanding begins with
-              asking better questions.
-            </p>
-
-            <p>
-              Why does something happen?
-              How does it work?
-              What could it become?
-            </p>
-
-            <p>
-              This mindset drives my interest in
-              technology, coding, artificial
-              intelligence, creativity and new ideas.
-            </p>
-
-            <p>
-              This website is a place to explore those
-              thoughts, experiments and possibilities.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         WHAT DRIVES ME
-    ====================================== -->
-
-    <section
-      class="drives"
-      id="drives"
-    >
-
-      <div class="container">
-
-        <div class="section-label">
-          02 — WHAT DRIVES ME
-        </div>
-
-
-        <div class="drives-grid">
-
-          <div>
-
-            <h2 class="drives-title reveal">
-              Stay curious.
-              <br>
-              Keep building.
-            </h2>
-
-          </div>
-
-
-          <div class="drives-content reveal">
-
-            <p class="drives-lead">
-              Curiosity is more than wanting to know
-              something. It is the desire to understand
-              the reason behind it.
-            </p>
-
-            <p>
-              Technology gives those questions a way
-              to become experiments, products and
-              possibilities.
-            </p>
-
-
-            <div class="drives-list">
-
-              <div class="drives-item">
-
-                <span>
-                  Technology
-                </span>
-
-                <span>
-                  01
-                </span>
-
-              </div>
-
-
-              <div class="drives-item">
-
-                <span>
-                  Artificial Intelligence
-                </span>
-
-                <span>
-                  02
-                </span>
-
-              </div>
-
-
-              <div class="drives-item">
-
-                <span>
-                  Coding
-                </span>
-
-                <span>
-                  03
-                </span>
-
-              </div>
-
-
-              <div class="drives-item">
-
-                <span>
-                  Creative Ideas
-                </span>
-
-                <span>
-                  04
-                </span>
-
-              </div>
-
-
-              <div class="drives-item">
-
-                <span>
-                  Future Thinking
-                </span>
-
-                <span>
-                  05
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         VISION
-    ====================================== -->
-
-    <section
-      class="vision"
-      id="vision"
-    >
-
-      <div class="container">
-
-        <div class="section-label">
-          03 — VISION
-        </div>
-
-
-        <h2 class="vision-title reveal">
-
-          Think beyond
-          <br>
-
-          what exists.
-
-          <span>
-            Build what could exist.
-          </span>
-
+        <h2 class="about-title">
+          I was never very
+          comfortable with
+          ordinary answers.
         </h2>
 
-
-        <div class="vision-bottom">
-
-          <p class="reveal">
-            The future is shaped by people willing
-            to explore ideas before they become
-            obvious.
-          </p>
+      </div>
 
 
-          <p class="reveal">
-            PRK is an ongoing journey of learning,
-            experimenting and turning curiosity into
-            something real.
-          </p>
+      <div class="about-copy">
 
+        <p class="about-lead">
+          Hi, I’m Priyanshu Ranjan Karn.
+          People also know me as PRK.
+        </p>
+
+        <p>
+          I was born in Purnia, Bihar, India,
+          in a middle-class family. But I never
+          really felt like a person with
+          middle-of-the-road thoughts.
+        </p>
+
+        <p>
+          Since childhood, there has always
+          been a small machine running inside
+          my head — asking <strong>why?</strong>
+          How? What?
+        </p>
+
+        <p>
+          Why does something happen the way it
+          does? How does it actually work?
+          What happens if we change it?
+          And what happens if we look at it
+          completely differently?
+        </p>
+
+        <p>
+          Those questions have followed me
+          through life. And strangely enough,
+          I don't see them as a problem.
+          I see them as a direction.
+        </p>
+
+        <p>
+          Because every question opens another
+          door. And behind some of those doors,
+          I have discovered ideas, technologies,
+          people, systems and ways of looking at
+          the world that I might never have found
+          otherwise.
+        </p>
+
+        <p>
+          I want to understand the world —
+          not simply live inside it.
+        </p>
+
+        <p>
+          Technology is one of the biggest
+          reasons for that curiosity.
+        </p>
+
+        <p>
+          I believe technology is not just
+          another industry. It can completely
+          change the way humanity sees the world.
+          It can redefine how we communicate,
+          build, learn, create and solve problems.
+        </p>
+
+        <p>
+          I am especially fascinated by
+          engineering, coding, artificial
+          intelligence, machine learning and
+          the systems behind modern technology.
+        </p>
+
+        <p>
+          I believe that with enough understanding
+          of technology, we may not simply react
+          to the future — we may be able to
+          anticipate parts of it and help build
+          what comes next.
+        </p>
+
+        <p>
+          But technology isn't the only force
+          that interests me.
+        </p>
+
+        <p>
+          Politics changes things too.
+        </p>
+
+        <p>
+          Politics can influence technology,
+          business, food, people, economies,
+          ideas, borders and even the way
+          societies think.
+        </p>
+
+        <p>
+          That is why I am deeply interested
+          in politics, geopolitics, diplomacy
+          and debate.
+        </p>
+
+        <p>
+          I love asking questions.
+          I love debating.
+          I love hearing an argument that
+          challenges my own thinking.
+        </p>
+
+        <p>
+          Because sometimes the most useful
+          person in a room is not the person
+          saying “yes”.
+          It is the person asking,
+          “But why?”
+        </p>
+
+        <p>
+          I am also interested in editing,
+          documentaries, storytelling and
+          anything that makes me look at an
+          ordinary subject from an unusual angle.
+        </p>
+
+        <p class="about-final">
+          Maybe I am still figuring out exactly
+          where all of this leads.
+        </p>
+
+        <p class="about-final">
+          But perhaps that is the point.
+        </p>
+
+        <p class="about-final">
+          I don't want a finished map.
+          I want to help draw one.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================
+     WHAT DRIVES ME
+========================= -->
+
+<section class="drives" id="drives">
+
+  <div class="drives-grid container">
+
+    <div>
+
+      <div class="section-label drives-label">
+        02 / WHAT DRIVES ME
+      </div>
+
+      <h2 class="drives-title">
+        Stay curious.<br>
+        Keep building.
+      </h2>
+
+    </div>
+
+
+    <div class="drives-content">
+
+      <p class="drives-lead">
+        I don't want to simply watch the future arrive.
+        I want to understand it, question it and
+        eventually help build it.
+      </p>
+
+      <div class="drives-list">
+
+        <div class="drives-item">
+          <span>Technology</span>
+          <span>01</span>
+        </div>
+
+        <div class="drives-item">
+          <span>Artificial Intelligence</span>
+          <span>02</span>
+        </div>
+
+        <div class="drives-item">
+          <span>Coding</span>
+          <span>03</span>
+        </div>
+
+        <div class="drives-item">
+          <span>Creative Ideas</span>
+          <span>04</span>
+        </div>
+
+        <div class="drives-item">
+          <span>Future Thinking</span>
+          <span>05</span>
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+</section>
 
 
+<!-- =========================
+     VISION
+========================= -->
 
-    <!-- =====================================
-         PART 3 WILL CONTINUE HERE
-    ====================================== -->
-    <!-- =====================================
-         THE TEAM
-    ====================================== -->
+<section class="vision" id="vision">
 
-    <section
-      class="team"
-      id="team"
-    >
+  <div class="container">
 
-      <div class="container">
+    <div class="section-label">
+      03 / VISION
+    </div>
+
+    <h2 class="vision-title">
+      Technology changes
+      what is possible.
+      Politics changes
+      what is allowed.
+      Business changes
+      what becomes real.
+    </h2>
+
+
+    <div class="vision-bottom">
+
+      <div class="vision-mark">
+        +
+      </div>
+
+      <div class="vision-copy">
+
+        <p>
+          I believe these three forces —
+          <strong>technology, politics and business</strong> —
+          can shape almost everything around us.
+        </p>
+
+        <p>
+          Technology gives humanity new capabilities.
+          Politics decides how societies use power,
+          resources and ideas. Business takes ideas
+          from imagination into the real world.
+        </p>
+
+        <p>
+          Put them together and something much bigger
+          becomes possible.
+        </p>
+
+        <p>
+          My ambition is not simply to become good
+          at one of them.
+        </p>
+
+        <p class="vision-bold">
+          I want to understand the intersection.
+        </p>
+
+        <p>
+          Because the biggest changes rarely belong
+          to one field alone. They happen when
+          different worlds collide.
+        </p>
+
+        <p>
+          A piece of technology can become a business.
+          A business can influence society.
+          Politics can accelerate or restrict it.
+          And society can demand something completely
+          new in return.
+        </p>
+
+        <p>
+          That cycle is where I want to learn,
+          experiment and eventually build.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TEAM
+========================= -->
+
+<section class="team" id="team">
+
+  <div class="container">
+
+    <div class="team-header">
+
+      <div>
 
         <div class="section-label">
-          04 — THE TEAM
+          04 / THE TEAM
         </div>
 
-
-        <div class="team-header">
-
-          <h2 class="team-title reveal">
-            Great ideas
-            <br>
-            need great people.
-          </h2>
-
-
-          <p class="team-intro reveal">
-            The future is rarely built alone.
-            I want to connect with curious people
-            who enjoy creating, experimenting and
-            thinking beyond the obvious.
-          </p>
-
-        </div>
-
-
-        <div class="team-grid">
-
-
-          <article class="team-card reveal">
-
-            <div class="team-number">
-              01
-            </div>
-
-            <h3>
-              Thinkers
-            </h3>
-
-            <p>
-              People who question assumptions,
-              explore possibilities and look for
-              better ways to understand problems.
-            </p>
-
-          </article>
-
-
-          <article class="team-card reveal">
-
-            <div class="team-number">
-              02
-            </div>
-
-            <h3>
-              Builders
-            </h3>
-
-            <p>
-              People who turn ideas into websites,
-              applications, technology and real
-              products.
-            </p>
-
-          </article>
-
-
-          <article class="team-card reveal">
-
-            <div class="team-number">
-              03
-            </div>
-
-            <h3>
-              Creators
-            </h3>
-
-            <p>
-              People who bring imagination, design,
-              storytelling and new perspectives
-              to the world.
-            </p>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         PROJECTS
-    ====================================== -->
-
-    <section
-      class="projects"
-      id="projects"
-    >
-
-      <div class="container">
-
-        <div class="section-label">
-          05 — PROJECTS
-        </div>
-
-
-        <div class="projects-header">
-
-          <h2 class="projects-title reveal">
-            Ideas in
-            <br>
-            progress.
-          </h2>
-
-
-          <p class="projects-description reveal">
-            Projects are experiments. Some become
-            products, some become lessons, and some
-            create the next idea.
-          </p>
-
-        </div>
-
-
-        <div class="project-list">
-
-
-          <!-- FUTURE ASIA JOURNAL -->
-
-          <a
-            href="future-asia.html"
-            class="project-card reveal"
-          >
-
-            <div class="project-info">
-
-              <div class="project-meta">
-                PROJECT 01 · MEDIA · ASIA
-              </div>
-
-              <h3>
-                Future Asia Journal
-              </h3>
-
-              <p>
-                An independent editorial project
-                exploring Asia, technology,
-                artificial intelligence, geopolitics
-                and the future.
-              </p>
-
-            </div>
-
-
-            <div class="project-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-
-          <!-- FUTURE PROJECTS -->
-
-          <div
-            class="project-card project-card-static reveal"
-          >
-
-            <div class="project-info">
-
-              <div class="project-meta">
-                PROJECT 02 · TECHNOLOGY
-              </div>
-
-              <h3>
-                Future Projects
-              </h3>
-
-              <p>
-                New digital products, applications
-                and technology experiments are
-                being explored.
-              </p>
-
-            </div>
-
-
-            <div class="project-arrow">
-              +
-            </div>
-
-          </div>
-
-
-
-          <!-- AI -->
-
-          <div
-            class="project-card project-card-static reveal"
-          >
-
-            <div class="project-info">
-
-              <div class="project-meta">
-                PROJECT 03 · AI
-              </div>
-
-              <h3>
-                AI & Beyond
-              </h3>
-
-              <p>
-                Exploring how artificial intelligence
-                can change the way people create,
-                communicate and solve problems.
-              </p>
-
-            </div>
-
-
-            <div class="project-arrow">
-              +
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         ASIA / CHINA
-    ====================================== -->
-
-    <section
-      class="asia"
-      id="asia"
-    >
-
-      <div class="container">
-
-        <div class="section-label">
-          06 — ASIA
-        </div>
-
-
-        <div class="asia-grid">
-
-
-          <div class="asia-heading reveal">
-
-            <span>
-              Looking
-            </span>
-
-            <strong>
-              East.
-            </strong>
-
-          </div>
-
-
-          <div class="asia-content reveal">
-
-            <p class="asia-lead">
-              Asia is becoming one of the most
-              important places for technology,
-              innovation, business and geopolitical
-              change.
-            </p>
-
-
-            <p>
-              Understanding the region means looking
-              beyond borders and thinking about how
-              different societies, technologies and
-              ideas interact.
-            </p>
-
-
-            <p>
-              From India and China to Japan,
-              Southeast Asia and beyond, the region
-              offers an enormous field for curiosity
-              and exploration.
-            </p>
-
-
-            <div class="asia-list">
-
-
-              <div class="asia-item">
-
-                <span>
-                  01
-                </span>
-
-                <strong>
-                  Technology
-                </strong>
-
-              </div>
-
-
-              <div class="asia-item">
-
-                <span>
-                  02
-                </span>
-
-                <strong>
-                  Artificial Intelligence
-                </strong>
-
-              </div>
-
-
-              <div class="asia-item">
-
-                <span>
-                  03
-                </span>
-
-                <strong>
-                  Geopolitics
-                </strong>
-
-              </div>
-
-
-              <div class="asia-item">
-
-                <span>
-                  04
-                </span>
-
-                <strong>
-                  Future
-                </strong>
-
-              </div>
-
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         FINAL STATEMENT
-    ====================================== -->
-
-    <section class="statement">
-
-      <div class="container">
-
-        <div class="statement-line"></div>
-
-
-        <h2 class="statement-title reveal">
-
-          The world is changing.
-
-          <br>
-
-          The question is
-
-          <span>
-            what we build next.
-          </span>
-
+        <h2 class="team-title">
+          Different minds.
+          Better possibilities.
         </h2>
 
+      </div>
 
-        <div class="statement-line"></div>
+
+      <div class="team-intro">
+
+        <p>
+          I don't believe great things are built
+          by everyone thinking the same way.
+        </p>
+
+        <p>
+          I believe they are built when different
+          minds collide.
+        </p>
 
       </div>
 
-    </section>
-
-
-
-    <!-- =====================================
-         PART 4 WILL CONTINUE HERE
-    ====================================== -->
-    <style>
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-  padding:140px 0;
-  border-top:1px solid var(--line);
-}
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1.4fr;
-  gap:100px;
-}
-
-.about-title{
-  font-family:var(--serif);
-  font-size:clamp(42px,6vw,82px);
-  line-height:.98;
-  letter-spacing:-.04em;
-  max-width:650px;
-}
-
-.about-copy{
-  max-width:620px;
-  font-size:18px;
-  line-height:1.8;
-  color:#555;
-}
-
-.about-lead{
-  font-size:25px;
-  line-height:1.45;
-  color:var(--text);
-  margin-bottom:30px;
-}
-
-
-/* =========================
-   WHAT DRIVES ME
-========================= */
-
-.drives{
-  padding:140px 0;
-  background:var(--dark);
-  color:var(--darktext);
-}
-
-.drives-grid{
-  display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:100px;
-}
-
-.drives-title{
-  font-family:var(--serif);
-  font-size:clamp(45px,6vw,80px);
-  line-height:1;
-  letter-spacing:-.04em;
-}
-
-.drives-content{
-  max-width:650px;
-}
-
-.drives-lead{
-  font-size:24px;
-  line-height:1.5;
-  color:#ddd;
-  margin-bottom:50px;
-}
-
-.drives-list{
-  border-top:1px solid #333;
-}
-
-.drives-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:22px 0;
-  border-bottom:1px solid #333;
-  font-size:18px;
-}
-
-.drives-item span:last-child{
-  color:#777;
-}
-
-
-/* =========================
-   VISION
-========================= */
-
-.vision{
-  padding:160px 0;
-}
-
-.vision-title{
-  max-width:1100px;
-  font-family:var(--serif);
-  font-size:clamp(50px,8vw,110px);
-  line-height:.95;
-  letter-spacing:-.05em;
-}
-
-.vision-bottom{
-  display:flex;
-  justify-content:flex-end;
-  margin-top:80px;
-}
-
-.vision-bottom p{
-  max-width:500px;
-  font-size:19px;
-  line-height:1.7;
-  color:#666;
-}
-
-
-/* =========================
-   TEAM
-========================= */
-
-.team{
-  padding:140px 0;
-  border-top:1px solid var(--line);
-}
-
-.team-header{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  margin-bottom:80px;
-}
-
-.team-title{
-  font-family:var(--serif);
-  font-size:clamp(48px,7vw,90px);
-  line-height:.95;
-  letter-spacing:-.04em;
-}
-
-.team-intro{
-  color:#666;
-  font-size:18px;
-  line-height:1.7;
-  max-width:520px;
-}
-
-.team-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--line);
-}
-
-.team-card{
-  min-height:300px;
-  padding:35px;
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  transition:.4s ease;
-}
-
-.team-card:last-child{
-  border-right:none;
-}
-
-.team-card:hover{
-  background:#111;
-  color:white;
-}
-
-.team-number{
-  color:#888;
-  font-size:13px;
-  letter-spacing:.12em;
-  margin-bottom:90px;
-}
-
-.team-card h3{
-  font-family:var(--serif);
-  font-size:32px;
-  margin-bottom:15px;
-}
-
-.team-card p{
-  color:#777;
-  line-height:1.6;
-}
-
-.team-card:hover p{
-  color:#bbb;
-}
-
-
-/* =========================
-   PROJECTS
-========================= */
-
-.projects{
-  padding:140px 0;
-  background:#ededf0;
-}
-
-.projects-header{
-  display:flex;
-  justify-content:space-between;
-  gap:40px;
-  align-items:flex-end;
-  margin-bottom:70px;
-}
-
-.projects-title{
-  font-family:var(--serif);
-  font-size:clamp(50px,7vw,90px);
-  line-height:.95;
-  letter-spacing:-.05em;
-}
-
-.projects-description{
-  max-width:430px;
-  color:#666;
-  line-height:1.7;
-}
-
-.project-list{
-  border-top:1px solid #bbb;
-}
-
-.project-card{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:42px 0;
-  border-bottom:1px solid #bbb;
-  text-decoration:none;
-  color:var(--text);
-  transition:.4s ease;
-}
-
-.project-card:hover{
-  padding-left:25px;
-  padding-right:25px;
-  background:#f7f7f7;
-}
-
-.project-info{
-  display:flex;
-  align-items:center;
-  gap:30px;
-}
-
-.project-meta{
-  font-size:12px;
-  letter-spacing:.12em;
-  color:#777;
-  min-width:90px;
-}
-
-.project-card h3{
-  font-family:var(--serif);
-  font-size:clamp(28px,4vw,48px);
-  font-weight:400;
-}
-
-.project-arrow{
-  font-size:28px;
-  transition:.3s ease;
-}
-
-.project-card:hover .project-arrow{
-  transform:translateX(8px);
-}
-
-.project-card-static{
-  cursor:default;
-}
-
-
-/* =========================
-   ASIA
-========================= */
-
-.asia{
-  padding:150px 0;
-  background:#080808;
-  color:white;
-}
-
-.asia-grid{
-  display:grid;
-  grid-template-columns:1fr 1.3fr;
-  gap:100px;
-}
-
-.asia-heading{
-  font-family:var(--serif);
-  font-size:clamp(60px,8vw,110px);
-  line-height:.9;
-  letter-spacing:-.05em;
-}
-
-.asia-content{
-  max-width:650px;
-}
-
-.asia-lead{
-  font-size:25px;
-  line-height:1.5;
-  color:#ddd;
-  margin-bottom:60px;
-}
-
-.asia-list{
-  border-top:1px solid #333;
-}
-
-.asia-item{
-  padding:22px 0;
-  border-bottom:1px solid #333;
-  font-size:18px;
-}
-
-
-/* =========================
-   STATEMENT
-========================= */
-
-.statement{
-  padding:170px 0;
-  text-align:center;
-}
-
-.statement-line{
-  width:70px;
-  height:1px;
-  background:#aaa;
-  margin:0 auto 50px;
-}
-
-.statement-title{
-  max-width:1000px;
-  margin:auto;
-  font-family:var(--serif);
-  font-size:clamp(45px,7vw,90px);
-  line-height:1;
-  letter-spacing:-.045em;
-}
-
-
-/* =========================
-   CONNECT
-========================= */
-
-.connect{
-  position:relative;
-  padding:140px 0;
-  background:#111;
-  color:white;
-  overflow:hidden;
-}
-
-.connect-header{
-  position:relative;
-  z-index:2;
-  max-width:850px;
-}
-
-.connect-title{
-  font-family:var(--serif);
-  font-size:clamp(55px,8vw,105px);
-  line-height:.9;
-  letter-spacing:-.05em;
-  margin-bottom:35px;
-}
-
-.connect-text{
-  max-width:500px;
-  color:#aaa;
-  font-size:18px;
-  line-height:1.7;
-}
-
-.connect-links{
-  position:relative;
-  z-index:2;
-  margin-top:70px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  max-width:800px;
-}
-
-.connect-link{
-  padding:25px 0;
-  border-bottom:1px solid #333;
-  color:white;
-  text-decoration:none;
-  font-size:18px;
-  transition:.3s ease;
-}
-
-.connect-link:hover{
-  color:#999;
-  padding-left:10px;
-}
-
-
-/* =========================
-   FINAL
-========================= */
-
-.final-section{
-  position:relative;
-  min-height:75vh;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  background:#f5f5f7;
-}
-
-.final-glow{
-  position:absolute;
-  width:600px;
-  height:600px;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(
-    circle,
-    rgba(255,255,255,.95) 0%,
-    rgba(255,255,255,.4) 35%,
-    transparent 70%
-  );
-  filter:blur(30px);
-}
-
-.final-inner{
-  position:relative;
-  z-index:1;
-  width:100%;
-  text-align:center;
-}
-
-.final-small{
-  color:#888;
-  font-size:13px;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  margin-bottom:30px;
-}
-
-.final-title{
-  font-family:var(--serif);
-  font-size:clamp(55px,9vw,120px);
-  line-height:.9;
-  letter-spacing:-.06em;
-}
-
-.final-bottom{
-  margin-top:60px;
-}
-
-.back-top{
-  display:inline-block;
-  border:1px solid #bbb;
-  padding:14px 22px;
-  color:#111;
-  text-decoration:none;
-  font-size:13px;
-  transition:.3s ease;
-}
-
-.back-top:hover{
-  background:#111;
-  color:white;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-  background:#080808;
-  color:white;
-  padding:70px 0 30px;
-}
-
-.footer-top{
-  display:flex;
-  justify-content:space-between;
-  gap:50px;
-  padding-bottom:70px;
-}
-
-.footer-logo{
-  font-family:var(--sans);
-  font-weight:900;
-  font-size:40px;
-  letter-spacing:-.05em;
-}
-
-.footer-description{
-  max-width:400px;
-  color:#777;
-  line-height:1.6;
-}
-
-.footer-bottom{
-  padding-top:25px;
-  border-top:1px solid #222;
-  display:flex;
-  justify-content:space-between;
-  color:#666;
-  font-size:12px;
-}
-
-
-/* =========================
-   REVEAL ANIMATION
-========================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(35px);
-  transition:
-    opacity .9s ease,
-    transform .9s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:800px){
-
-  .about,
-  .drives,
-  .team,
-  .projects,
-  .asia{
-    padding:90px 0;
-  }
-
-  .vision,
-  .statement{
-    padding:110px 0;
-  }
-
-  .about-grid,
-  .drives-grid,
-  .asia-grid{
-    grid-template-columns:1fr;
-    gap:50px;
-  }
-
-  .team-header{
-    grid-template-columns:1fr;
-    gap:30px;
-    margin-bottom:50px;
-  }
-
-  .team-grid{
-    grid-template-columns:1fr;
-  }
-
-  .team-card{
-    min-height:240px;
-    border-right:none;
-  }
-
-  .team-number{
-    margin-bottom:60px;
-  }
-
-  .projects-header{
-    display:block;
-  }
-
-  .projects-description{
-    margin-top:30px;
-  }
-
-  .project-info{
-    gap:15px;
-  }
-
-  .project-meta{
-    min-width:55px;
-  }
-
-  .connect-links{
-    grid-template-columns:1fr;
-  }
-
-  .footer-top,
-  .footer-bottom{
-    flex-direction:column;
-  }
-
-  .footer-top{
-    gap:35px;
-  }
-
-  .footer-bottom{
-    gap:10px;
-  }
-
-}
-
-</style>
+    </div>
+
+
+    <div class="team-philosophy">
+
+      <p>
+        The positive thinker.
+        The negative thinker.
+        The person who doubts everything.
+        The person who keeps asking questions.
+        The person who sees a problem.
+        The person who sees an opportunity.
+      </p>
+
+      <p>
+        These are the people through whom I believe
+        anything can be reshaped, redesigned and improved.
+      </p>
+
+      <p>
+        I love bringing people together from different
+        backgrounds, different skills, different fields
+        and completely different perspectives of the world.
+      </p>
+
+      <p>
+        I am always searching for the right people
+        around me — not simply to make my circle bigger,
+        but to make it more powerful, meaningful and
+        capable of creating something that none of us
+        could have created alone.
+      </p>
+
+      <p class="team-final-line">
+        Different minds don't weaken an idea.
+        Sometimes, they are exactly what makes it stronger.
+      </p>
+
+    </div>
+
+
+    <div class="team-grid">
+
+      <div class="team-card">
+
+        <span class="team-number">
+          01
+        </span>
+
+        <h3>
+          Thinkers
+        </h3>
+
+        <p>
+          People who question assumptions
+          and challenge the obvious.
+        </p>
+
+      </div>
+
+
+      <div class="team-card">
+
+        <span class="team-number">
+          02
+        </span>
+
+        <h3>
+          Builders
+        </h3>
+
+        <p>
+          People who turn ideas into systems,
+          products and real-world solutions.
+        </p>
+
+      </div>
+
+
+      <div class="team-card">
+
+        <span class="team-number">
+          03
+        </span>
+
+        <h3>
+          Creators
+        </h3>
+
+        <p>
+          People who imagine something that
+          did not exist before.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section class="projects" id="projects">
+
+  <div class="container">
+
+    <div class="projects-top">
+
+      <div class="section-label">
+        05 / IDEAS IN PROGRESS
+      </div>
+
+      <div class="project-counter">
+        03 / FUTURE
+      </div>
+
+    </div>
+
+
+    <div class="projects-intro">
+
+      <h2 class="projects-title">
+        Not everything
+        needs to exist yet.
+      </h2>
+
+      <p>
+        Some ideas need time.
+        Some need people.
+        Some need technology.
+        And some simply need someone
+        crazy enough to start.
+      </p>
+
+    </div>
+
+
+    <div class="project-list">
+
+
+      <!-- ONLY CLICKABLE PROJECT -->
+
+      <a
+        href="future-asia.html"
+        class="project-card project-clickable"
+      >
+
+        <div class="project-number">
+          01
+        </div>
+
+        <div class="project-info">
+
+          <div class="project-status">
+            ACTIVE PROJECT
+          </div>
+
+          <h3>
+            Future Asia Journal
+          </h3>
+
+          <p>
+            A future-facing publication exploring
+            Asia, technology, politics, AI and
+            the forces shaping tomorrow.
+          </p>
+
+        </div>
+
+        <div class="project-arrow">
+          ↗
+        </div>
+
+      </a>
+
+
+      <!-- NOT CLICKABLE -->
+
+      <div class="project-card">
+
+        <div class="project-number">
+          02
+        </div>
+
+        <div class="project-info">
+
+          <div class="project-status">
+            IDEA / IN PROGRESS
+          </div>
+
+          <h3>
+            My Own Hardware Company
+          </h3>
+
+          <p>
+            Building hardware products is one of
+            the ideas I believe could take my
+            vision to another level.
+          </p>
+
+          <p>
+            I want to explore how hardware,
+            software and intelligent systems
+            can come together to create products
+            that feel genuinely useful.
+          </p>
+
+          <p class="project-note">
+            More details will come when the idea
+            becomes clearer.
+          </p>
+
+        </div>
+
+        <div class="project-arrow">
+          +
+        </div>
+
+      </div>
+
+
+      <!-- NOT CLICKABLE -->
+
+      <div class="project-card">
+
+        <div class="project-number">
+          03
+        </div>
+
+        <div class="project-info">
+
+          <div class="project-status">
+            EXPLORING
+          </div>
+
+          <h3>
+            AI / Artificial Intelligence
+          </h3>
+
+          <p>
+            Ideas around artificial intelligence,
+            machine learning and intelligent
+            systems are also part of the road
+            ahead.
+          </p>
+
+          <p>
+            There is still a lot to understand,
+            experiment with and build.
+          </p>
+
+          <p class="project-note">
+            This is only the beginning.
+          </p>
+
+        </div>
+
+        <div class="project-arrow">
+          +
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 <!-- =========================
      CONNECT
 ========================= -->
 
-<section class="connect reveal" id="connect">
+<section class="connect" id="connect">
 
-  <div class="container">
+  <!-- animated dots -->
 
-    <div class="connect-header">
+  <div class="dot-field" id="dotField"></div>
 
-      <div class="section-label">
-        07 — CONNECT
-      </div>
+  <div class="connect-glow"></div>
 
-      <h2 class="connect-title">
-        Let’s connect.
-      </h2>
+  <div class="container connect-inner">
 
-      <p class="connect-text">
-        Ideas become stronger when people share them.
-        If you want to talk about technology, AI, projects,
-        ideas, Asia, or the future — reach out.
-      </p>
-
+    <div class="section-label">
+      06 / LET'S CONNECT
     </div>
+
+    <h2 class="connect-title">
+      Ideas are better
+      when they move.
+    </h2>
+
+    <p class="connect-description">
+      If you have an idea, a question,
+      a project, a different perspective,
+      or simply something worth discussing —
+      let's connect.
+    </p>
 
 
     <div class="connect-links">
 
       <a
-        class="connect-link"
         href="https://instagram.com/prkgoes"
         target="_blank"
         rel="noopener"
+        class="connect-link"
       >
-        Instagram ↗
+        <span>Instagram</span>
+        <span>↗</span>
       </a>
 
       <a
-        class="connect-link"
         href="https://t.me/Sowhat1233"
         target="_blank"
         rel="noopener"
+        class="connect-link"
       >
-        Telegram ↗
+        <span>Telegram</span>
+        <span>↗</span>
       </a>
 
       <a
-        class="connect-link"
         href="https://github.com/PriyanshuSPRK0611"
         target="_blank"
         rel="noopener"
+        class="connect-link"
       >
-        GitHub ↗
+        <span>GitHub</span>
+        <span>↗</span>
       </a>
 
       <a
-        class="connect-link"
         href="mailto:prkworldcare@gmail.com"
+        class="connect-link"
       >
-        Email ↗
+        <span>Email</span>
+        <span>↗</span>
       </a>
 
     </div>
@@ -2529,26 +1338,32 @@
      FINAL
 ========================= -->
 
-<section class="final-section reveal">
+<section class="final-section">
 
-  <div class="final-glow"></div>
+  <div class="final-blur"></div>
+
+  <div class="final-grid"></div>
 
   <div class="container final-inner">
 
-    <div class="final-small">
-      PRK
+    <div class="technical">
+      PRK / END OF PAGE
     </div>
 
-    <h2 class="final-title">
-      Curiosity today.<br>
-      Possibilities tomorrow.
+    <h2>
+      The world is changing.
     </h2>
 
-    <div class="final-bottom">
-      <a href="#home" class="back-top">
-        Back to top ↑
-      </a>
-    </div>
+    <p>
+      The question is what we build next.
+    </p>
+
+    <a
+      href="#home"
+      class="back-top"
+    >
+      RETURN TO START ↑
+    </a>
 
   </div>
 
@@ -2563,18 +1378,16 @@
 
   <div class="container">
 
-    <div class="footer-top">
+    <div class="footer-main">
 
-      <div>
-        <div class="footer-logo">
-          PRK
-        </div>
+      <div class="footer-logo">
+        PRK
       </div>
 
-      <p class="footer-description">
-        A personal space for ideas, technology,
-        curiosity and possibilities.
-      </p>
+      <div class="footer-text">
+        Curiosity today.<br>
+        Possibilities tomorrow.
+      </div>
 
     </div>
 
@@ -2585,194 +1398,1046 @@
       </span>
 
       <span>
-        Curiosity today. Possibilities tomorrow.
+        PURNIA · BIHAR · INDIA
+      </span>
+
+      <span>
+        PRK—001
       </span>
 
     </div>
 
   </div>
 
-</footer>
+</footer><style>
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+  padding:150px 0;
+  border-bottom:1px solid var(--light-grey);
+}
+
+.about-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:80px;
+}
+
+.about-code,
+.project-counter{
+  font-size:9px;
+  letter-spacing:.15em;
+  color:#999;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:110px;
+}
+
+.about-title{
+  font-family:var(--serif);
+  font-size:clamp(48px,6vw,82px);
+  line-height:.96;
+  letter-spacing:-.045em;
+  max-width:650px;
+}
+
+.about-copy{
+  max-width:680px;
+  color:#555;
+  font-size:17px;
+  line-height:1.85;
+}
+
+.about-copy p{
+  margin-bottom:28px;
+}
+
+.about-lead{
+  color:#111;
+  font-family:var(--serif);
+  font-size:27px;
+  line-height:1.45;
+}
+
+.about-final{
+  color:#111;
+  font-family:var(--serif);
+  font-size:23px;
+  line-height:1.5;
+}
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+/* =========================
+   DRIVES
+========================= */
+
+.drives{
+  padding:150px 0;
+  background:#080808;
+  color:white;
+}
+
+.drives-label{
+  color:#666;
+}
+
+.drives-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:110px;
+}
+
+.drives-title{
+  margin-top:35px;
+  font-family:var(--serif);
+  font-size:clamp(52px,7vw,95px);
+  line-height:.9;
+  letter-spacing:-.05em;
+}
+
+.drives-lead{
+  max-width:600px;
+  font-size:22px;
+  line-height:1.55;
+  color:#ccc;
+  margin-bottom:60px;
+}
+
+.drives-list{
+  border-top:1px solid #333;
+}
+
+.drives-item{
+  display:flex;
+  justify-content:space-between;
+  padding:23px 0;
+  border-bottom:1px solid #333;
+  color:#eee;
+}
+
+.drives-item span:last-child{
+  color:#666;
+  font-size:10px;
+}
+
+
+/* =========================
+   VISION
+========================= */
+
+.vision{
+  padding:160px 0;
+}
+
+.vision-title{
+  max-width:1100px;
+  margin-top:45px;
+
+  font-family:var(--serif);
+  font-size:clamp(52px,7vw,105px);
+  line-height:.94;
+  letter-spacing:-.055em;
+}
+
+.vision-bottom{
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  gap:100px;
+  margin-top:110px;
+}
+
+.vision-mark{
+  font-family:var(--prk);
+  font-size:100px;
+  line-height:1;
+}
+
+.vision-copy{
+  max-width:650px;
+  font-size:17px;
+  line-height:1.8;
+  color:#666;
+}
+
+.vision-copy p{
+  margin-bottom:28px;
+}
+
+.vision-copy strong{
+  color:#111;
+}
+
+.vision-bold{
+  font-family:var(--serif);
+  font-size:29px;
+  color:#111;
+}
+
+
+/* =========================
+   TEAM
+========================= */
+
+.team{
+  padding:150px 0;
+  background:#ededeb;
+}
+
+.team-header{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:100px;
+}
+
+.team-title{
+  margin-top:35px;
+  font-family:var(--serif);
+  font-size:clamp(52px,7vw,100px);
+  line-height:.9;
+  letter-spacing:-.055em;
+}
+
+.team-intro{
+  color:#666;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.team-intro p{
+  margin-bottom:25px;
+}
+
+.team-philosophy{
+  max-width:850px;
+  margin:100px 0;
+  margin-left:auto;
+
+  font-family:var(--serif);
+  font-size:27px;
+  line-height:1.5;
+}
+
+.team-philosophy p{
+  margin-bottom:35px;
+}
+
+.team-final-line{
+  font-style:italic;
+  color:#555;
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #bbb;
+}
+
+.team-card{
+  padding:35px 30px;
+  min-height:280px;
+
+  border-right:1px solid #bbb;
+  border-bottom:1px solid #bbb;
+
+  transition:.45s ease;
+}
+
+.team-card:last-child{
+  border-right:none;
+}
+
+.team-card:hover{
+  background:#111;
+  color:white;
+}
+
+.team-number{
+  display:block;
+  color:#999;
+  font-size:10px;
+  letter-spacing:.16em;
+  margin-bottom:90px;
+}
+
+.team-card h3{
+  font-family:var(--serif);
+  font-size:35px;
+  font-weight:400;
+  margin-bottom:15px;
+}
+
+.team-card p{
+  max-width:270px;
+  color:#777;
+  line-height:1.6;
+}
+
+.team-card:hover p{
+  color:#aaa;
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+  padding:150px 0;
+}
+
+.projects-top{
+  display:flex;
+  justify-content:space-between;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--light-grey);
+}
+
+.projects-intro{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:100px;
+  margin:75px 0 100px;
+}
+
+.projects-title{
+  font-family:var(--serif);
+  font-size:clamp(55px,7vw,105px);
+  line-height:.9;
+  letter-spacing:-.055em;
+}
+
+.projects-intro > p{
+  color:#666;
+  line-height:1.7;
+  max-width:450px;
+}
+
+.project-list{
+  border-top:1px solid #bbb;
+}
+
+.project-card{
+  display:grid;
+  grid-template-columns:70px 1fr 50px;
+  gap:30px;
+
+  padding:55px 0;
+
+  border-bottom:1px solid #bbb;
+
+  text-decoration:none;
+
+  transition:.4s ease;
+}
+
+.project-clickable:hover{
+  padding-left:20px;
+  padding-right:20px;
+  background:#f0f0ee;
+}
+
+.project-number{
+  color:#999;
+  font-size:11px;
+  letter-spacing:.12em;
+}
+
+.project-info{
+  max-width:760px;
+}
+
+.project-status{
+  font-size:9px;
+  letter-spacing:.15em;
+  color:#888;
+  margin-bottom:18px;
+}
+
+.project-info h3{
+  font-family:var(--serif);
+  font-size:clamp(32px,4vw,58px);
+  font-weight:400;
+  line-height:1;
+  margin-bottom:25px;
+}
+
+.project-info p{
+  max-width:650px;
+  color:#666;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.project-note{
+  font-size:12px;
+  letter-spacing:.04em;
+  color:#999!important;
+}
+
+.project-arrow{
+  font-size:28px;
+  align-self:start;
+  transition:.4s ease;
+}
+
+.project-clickable:hover .project-arrow{
+  transform:translate(7px,-7px);
+}
+
+
+/* =========================
+   CONNECT
+========================= */
+
+.connect{
+  position:relative;
+  overflow:hidden;
+
+  padding:150px 0;
+
+  background:#080808;
+  color:white;
+}
+
+.connect-inner{
+  position:relative;
+  z-index:3;
+}
+
+.connect .section-label{
+  color:#666;
+}
+
+.connect-title{
+  max-width:950px;
+  margin-top:45px;
+
+  font-family:var(--serif);
+  font-size:clamp(60px,9vw,125px);
+  line-height:.86;
+  letter-spacing:-.065em;
+}
+
+.connect-description{
+  max-width:540px;
+  margin-top:50px;
+
+  font-size:17px;
+  line-height:1.75;
+
+  color:#999;
+}
+
+
+/* dot animation */
+
+.dot-field{
+  position:absolute;
+  inset:0;
+  z-index:1;
+
+  display:grid;
+  grid-template-columns:
+    repeat(28,1fr);
+
+  gap:12px;
+
+  padding:35px;
+
+  opacity:.25;
+  pointer-events:none;
+}
+
+.dot{
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#777;
+
+  animation:
+    dotPulse 4s ease-in-out infinite;
+}
+
+@keyframes dotPulse{
+
+  0%,100%{
+    opacity:.15;
+    transform:scale(.7);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1.5);
+  }
+
+}
+
+.connect-glow{
+  position:absolute;
+
+  width:700px;
+  height:700px;
+
+  right:-300px;
+  bottom:-350px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.11),
+      transparent 68%
+    );
+
+  filter:blur(50px);
+}
+
+.connect-links{
+  max-width:800px;
+  margin-top:90px;
+
+  border-top:1px solid #292929;
+}
+
+.connect-link{
+  position:relative;
+  z-index:4;
+
+  display:flex;
+  justify-content:space-between;
+
+  padding:24px 0;
+
+  border-bottom:1px solid #292929;
+
+  text-decoration:none;
+  color:#eee;
+
+  font-size:14px;
+
+  transition:.35s ease;
+}
+
+.connect-link:hover{
+  padding-left:15px;
+  padding-right:15px;
+  color:white;
+  background:rgba(255,255,255,.03);
+}
+
+.connect-link span:last-child{
+  color:#666;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-section{
+  position:relative;
+  min-height:80vh;
+
+  display:flex;
+  align-items:center;
+
+  overflow:hidden;
+
+  text-align:center;
+}
+
+.final-grid{
+  position:absolute;
+  inset:0;
+  opacity:.3;
+
+  background-image:
+    linear-gradient(
+      rgba(0,0,0,.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.05) 1px,
+      transparent 1px
+    );
+
+  background-size:80px 80px;
+}
+
+.final-blur{
+  position:absolute;
+
+  width:600px;
+  height:600px;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  background:
+    radial-gradient(
+      circle,
+      white,
+      rgba(255,255,255,.5) 35%,
+      transparent 70%
+    );
+
+  filter:blur(30px);
+}
+
+.final-inner{
+  position:relative;
+  z-index:2;
+}
+
+.final-inner h2{
+  max-width:1000px;
+  margin:35px auto 20px;
+
+  font-family:var(--serif);
+  font-size:clamp(55px,8vw,115px);
+  line-height:.9;
+  letter-spacing:-.06em;
+}
+
+.final-inner > p{
+  color:#777;
+  font-size:18px;
+}
+
+.back-top{
+  display:inline-block;
+  margin-top:55px;
+
+  padding:14px 22px;
+
+  border:1px solid #bbb;
+
+  font-size:10px;
+  letter-spacing:.12em;
+  text-decoration:none;
+
+  transition:.35s ease;
+}
+
+.back-top:hover{
+  background:#111;
+  color:white;
+  border-color:#111;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  background:#050505;
+  color:white;
+  padding:70px 0 25px;
+}
+
+.footer-main{
+  display:flex;
+  justify-content:space-between;
+  gap:50px;
+  padding-bottom:70px;
+}
+
+.footer-logo{
+  font-family:var(--prk);
+  font-size:55px;
+  letter-spacing:-.08em;
+}
+
+.footer-text{
+  color:#777;
+  line-height:1.7;
+}
+
+.footer-bottom{
+  padding-top:25px;
+
+  border-top:1px solid #222;
+
+  display:flex;
+  justify-content:space-between;
+
+  font-size:9px;
+  letter-spacing:.12em;
+  color:#666;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .about,
+  .drives,
+  .team,
+  .projects,
+  .connect{
+    padding:95px 0;
+  }
+
+  .vision{
+    padding:105px 0;
+  }
+
+  .about-grid,
+  .drives-grid,
+  .vision-bottom,
+  .team-header,
+  .projects-intro{
+    grid-template-columns:1fr;
+    gap:55px;
+  }
+
+  .about-top,
+  .projects-top{
+    margin-bottom:55px;
+  }
+
+  .about-copy{
+    font-size:16px;
+  }
+
+  .about-lead{
+    font-size:24px;
+  }
+
+  .vision-title{
+    font-size:clamp(48px,13vw,75px);
+  }
+
+  .vision-mark{
+    font-size:65px;
+  }
+
+  .team-philosophy{
+    margin:70px 0;
+    font-size:23px;
+  }
+
+  .team-grid{
+    grid-template-columns:1fr;
+  }
+
+  .team-card{
+    border-right:none;
+    min-height:230px;
+  }
+
+  .team-number{
+    margin-bottom:60px;
+  }
+
+  .projects-intro{
+    margin:55px 0 70px;
+  }
+
+  .project-card{
+    grid-template-columns:35px 1fr 25px;
+    gap:15px;
+    padding:38px 0;
+  }
+
+  .project-info h3{
+    font-size:34px;
+  }
+
+  .connect-title{
+    font-size:clamp(55px,15vw,90px);
+  }
+
+  .dot-field{
+    grid-template-columns:repeat(16,1fr);
+    gap:14px;
+    padding:20px;
+  }
+
+  .footer-main,
+  .footer-bottom{
+    flex-direction:column;
+  }
+
+  .footer-bottom{
+    gap:12px;
+  }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+
+}
+
+</style>
+
 
 <script>
 
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   WELCOME
+========================= */
 
-  const welcomeScreen =
-    document.getElementById("welcomeScreen");
+const welcomeScreen =
+  document.getElementById("welcomeScreen");
 
-  const welcomeButton =
-    document.getElementById("welcomeButton");
+const welcomeButton =
+  document.getElementById("welcomeButton");
 
-  const body =
-    document.body;
-
-  const nav =
-    document.getElementById("mainNav");
-
-
-  /* =========================
-     WELCOME SCREEN
-  ========================= */
-
-  function enterSite(){
-
-    if(!welcomeScreen) return;
-
-    welcomeScreen.classList.add("hide");
-
-    body.classList.remove("welcome-active");
-
-    setTimeout(() => {
-      welcomeScreen.style.display = "none";
-    }, 1000);
-
-  }
+const body =
+  document.body;
 
 
-  if(welcomeButton){
+function enterPRK(){
 
-    welcomeButton.addEventListener(
-      "click",
-      enterSite
-    );
+  if(!welcomeScreen) return;
 
-  }
+  welcomeScreen.classList.add("hide");
+
+  body.classList.remove("welcome-active");
+
+  setTimeout(() => {
+
+    welcomeScreen.style.display = "none";
+
+  },1000);
+
+}
 
 
-  /* ENTER / SPACE KEY */
+if(welcomeButton){
 
-  document.addEventListener("keydown", (event) => {
+  welcomeButton.addEventListener(
+    "click",
+    enterPRK
+  );
+
+}
+
+
+/* keyboard */
+
+document.addEventListener(
+  "keydown",
+  function(event){
 
     if(
-      (event.key === "Enter" ||
-       event.key === " ") &&
-      body.classList.contains("welcome-active")
+      body.classList.contains("welcome-active") &&
+      (
+        event.key === "Enter" ||
+        event.key === " "
+      )
     ){
 
       event.preventDefault();
-      enterSite();
+
+      enterPRK();
 
     }
 
-  });
+  }
+);
 
 
-  /* =========================
-     SCROLL REVEAL
-  ========================= */
+/* =========================
+   NAV
+========================= */
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+const nav =
+  document.getElementById("mainNav");
 
 
-  const revealObserver =
-    new IntersectionObserver(
-      (entries) => {
+function updateNavigation(){
 
-        entries.forEach((entry) => {
+  if(!nav) return;
+
+  if(window.scrollY > 50){
+
+    nav.classList.add("scrolled");
+
+  }else{
+
+    nav.classList.remove("scrolled");
+
+  }
+
+}
+
+
+window.addEventListener(
+  "scroll",
+  updateNavigation,
+  {passive:true}
+);
+
+updateNavigation();
+
+
+/* =========================
+   DOT MATRIX
+========================= */
+
+const dotField =
+  document.getElementById("dotField");
+
+
+if(dotField){
+
+  const totalDots =
+    window.innerWidth < 800
+      ? 160
+      : 420;
+
+  for(
+    let i = 0;
+    i < totalDots;
+    i++
+  ){
+
+    const dot =
+      document.createElement("span");
+
+    dot.className = "dot";
+
+    dot.style.animationDelay =
+      `${Math.random() * 4}s`;
+
+    dot.style.opacity =
+      `${0.15 + Math.random() * .45}`;
+
+    dotField.appendChild(dot);
+
+  }
+
+}
+
+
+/* =========================
+   REVEAL MOTION
+========================= */
+
+const observer =
+  new IntersectionObserver(
+    function(entries){
+
+      entries.forEach(
+        function(entry){
 
           if(entry.isIntersecting){
 
-            entry.target.classList.add("visible");
+            entry.target.style.opacity = "1";
 
-            revealObserver.unobserve(
+            entry.target.style.transform =
+              "translateY(0)";
+
+            observer.unobserve(
               entry.target
             );
 
           }
 
-        });
+        }
+      );
 
-      },
-      {
-        threshold:0.12
-      }
-    );
-
-
-  revealElements.forEach((element) => {
-
-    revealObserver.observe(element);
-
-  });
-
-
-  /* =========================
-     NAV SCROLL EFFECT
-  ========================= */
-
-  function updateNav(){
-
-    if(!nav) return;
-
-    if(window.scrollY > 40){
-
-      nav.classList.add("scrolled");
-
-    }else{
-
-      nav.classList.remove("scrolled");
-
+    },
+    {
+      threshold:.12
     }
-
-  }
-
-
-  window.addEventListener(
-    "scroll",
-    updateNav,
-    {passive:true}
   );
 
-  updateNav();
+
+document
+  .querySelectorAll(
+    ".about, .drives, .vision, .team, .projects, .connect, .final-section"
+  )
+  .forEach(
+    function(section){
+
+      section.style.opacity = "0";
+
+      section.style.transform =
+        "translateY(30px)";
+
+      section.style.transition =
+        "opacity .9s ease, transform .9s ease";
+
+      observer.observe(section);
+
+    }
+  );
 
 
-  /* =========================
-     SMOOTH SCROLL
-  ========================= */
+/* =========================
+   SMOOTH ANCHORS
+========================= */
 
-  document.querySelectorAll(
+document
+  .querySelectorAll(
     'a[href^="#"]'
-  ).forEach((link) => {
+  )
+  .forEach(
+    function(link){
 
-    link.addEventListener("click", (event) => {
+      link.addEventListener(
+        "click",
+        function(event){
 
-      const targetId =
-        link.getAttribute("href");
+          const targetID =
+            link.getAttribute("href");
 
-      if(
-        !targetId ||
-        targetId === "#"
-      ) return;
+          if(
+            !targetID ||
+            targetID === "#"
+          ) return;
 
-      const target =
-        document.querySelector(targetId);
+          const target =
+            document.querySelector(targetID);
 
-      if(!target) return;
+          if(!target) return;
 
-      event.preventDefault();
+          event.preventDefault();
 
-      target.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
+          target.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
 
-    });
+        }
+      );
 
-  });
-
-
-});
+    }
+  );
 
 </script>
 
 </main>
 
 </body>
+
 </html>
