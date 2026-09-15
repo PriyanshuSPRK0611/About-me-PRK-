@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080808"
+  >
+
+  <meta
+    name="description"
+    content="PRK+ Compass — Find your direction."
+  >
+
+  <title>PRK+ Compass — Find your direction.</title>
+
+  <link rel="stylesheet" href="compass-story.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       TOP NAVIGATION
+  ====================================================== -->
+
+  <header class="story-nav">
+
+    <a href="index.html" class="story-logo">
+      PRK+
+    </a>
+
+    <nav class="story-nav-links">
+      <a href="#intro">Explore</a>
+      <a href="#features">Features</a>
+      <a href="#final">Try it</a>
+    </nav>
+
+    <a
+      href="https://calculator-ashen-ten-75.vercel.app/compass.html"
+      class="story-try"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Try it now
+    </a>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="compass-hero">
+
+      <div class="hero-background"></div>
+
+      <div class="hero-content">
+
+        <div class="story-eyebrow">
+          INTRODUCING
+        </div>
+
+        <h1>
+          PRK+ Compass
+        </h1>
+
+        <p>
+          Find your direction.
+          <span>Know where you are going.</span>
+        </p>
+
+        <div class="hero-scroll">
+          Scroll to explore
+          <span class="scroll-line"></span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INTRODUCTION — CINEMATIC COMPASS
+    ====================================================== -->
+
+    <section
+      class="compass-introduction"
+      id="intro"
+    >
+
+      <!-- Sticky visual layer -->
+
+      <div class="compass-cinematic">
+
+        <!-- Rotating Earth -->
+
+        <div
+          class="earth"
+          id="earth"
+          aria-hidden="true"
+        >
+
+          <div class="earth-surface">
+
+            <div class="earth-latitude latitude-1"></div>
+            <div class="earth-latitude latitude-2"></div>
+            <div class="earth-latitude latitude-3"></div>
+
+            <div class="earth-longitude longitude-1"></div>
+            <div class="earth-longitude longitude-2"></div>
+            <div class="earth-longitude longitude-3"></div>
+
+            <div class="earth-land land-1"></div>
+            <div class="earth-land land-2"></div>
+            <div class="earth-land land-3"></div>
+            <div class="earth-land land-4"></div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Large compass needle -->
+
+        <div
+          class="giant-needle"
+          id="giantNeedle"
+          aria-hidden="true"
+        >
+
+          <div class="needle-north">
+            <span>N</span>
+          </div>
+
+          <div class="needle-center"></div>
+
+          <div class="needle-south">
+            <span>S</span>
+          </div>
+
+        </div>
+
+
+        <!-- Compass degree ring -->
+
+        <div
+          class="giant-compass-ring"
+          aria-hidden="true"
+        >
+
+          <span class="degree degree-0">0°</span>
+          <span class="degree degree-45">45°</span>
+          <span class="degree degree-90">90°</span>
+          <span class="degree degree-135">135°</span>
+          <span class="degree degree-180">180°</span>
+          <span class="degree degree-225">225°</span>
+          <span class="degree degree-270">270°</span>
+          <span class="degree degree-315">315°</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Scroll storytelling -->
+
+      <div class="compass-story-content">
+
+
+        <article
+          class="compass-story-step"
+          data-heading="0"
+        >
+
+          <div class="story-step-number">
+            01
+          </div>
+
+          <h2>
+            Start with
+            <span>north.</span>
+          </h2>
+
+          <p>
+            A direction is more than a number.
+            It is the starting point for knowing
+            where you are and where you are going.
+          </p>
+
+        </article>
+
+
+        <article
+          class="compass-story-step"
+          data-heading="45"
+        >
+
+          <div class="story-step-number">
+            02
+          </div>
+
+          <h2>
+            Turn.
+            <span>Find your bearing.</span>
+          </h2>
+
+          <p>
+            As the direction changes, the compass
+            follows with smooth, precise movement.
+          </p>
+
+        </article>
+
+
+        <article
+          class="compass-story-step"
+          data-heading="90"
+        >
+
+          <div class="story-step-number">
+            03
+          </div>
+
+          <h2>
+            Every degree
+            <span>has meaning.</span>
+          </h2>
+
+          <p>
+            From north to east, every heading becomes
+            part of one continuous navigation system.
+          </p>
+
+        </article>
+
+
+        <article
+          class="compass-story-step"
+          data-heading="180"
+        >
+
+          <div class="story-step-number">
+            04
+          </div>
+
+          <h2>
+            Sometimes
+            <span>south is the way.</span>
+          </h2>
+
+          <p>
+            Direction is not about staying still.
+            It is about understanding the movement.
+          </p>
+
+        </article>
+
+
+        <article
+          class="compass-story-step"
+          data-heading="270"
+        >
+
+          <div class="story-step-number">
+            05
+          </div>
+
+          <h2>
+            Keep moving.
+            <span>Keep knowing.</span>
+          </h2>
+
+          <p>
+            PRK+ Compass turns your device into
+            a simple, modern navigation instrument.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EARTH + DIRECTION
+    ====================================================== -->
+
+    <section class="earth-section">
+
+      <div class="earth-section-content">
+
+        <div class="story-eyebrow">
+          DIRECTION / EARTH
+        </div>
+
+        <h2>
+          One planet.
+          <span>Infinite directions.</span>
+        </h2>
+
+        <p>
+          The Earth keeps moving.
+          Your direction keeps changing.
+          PRK+ Compass helps you understand both.
+        </p>
+
+      </div>
+
+      <div
+        class="earth-large"
+        id="earthLarge"
+        aria-hidden="true"
+      >
+
+        <div class="earth-surface">
+
+          <div class="earth-land land-1"></div>
+          <div class="earth-land land-2"></div>
+          <div class="earth-land land-3"></div>
+          <div class="earth-land land-4"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FEATURES
+    ====================================================== -->
+
+    <section
+      class="compass-features"
+      id="features"
+    >
+
+      <div class="features-header">
+
+        <div class="story-eyebrow">
+          WHAT IT CAN DO
+        </div>
+
+        <h2>
+          More than
+          <span>a compass.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="features-grid">
+
+
+        <article class="feature-card">
+
+          <div class="feature-number">
+            01
+          </div>
+
+          <h3>
+            Live Heading
+          </h3>
+
+          <p>
+            See your current direction with
+            continuously updated heading information.
+          </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+          <div class="feature-number">
+            02
+          </div>
+
+          <h3>
+            Bearing
+          </h3>
+
+          <p>
+            Set and follow a specific bearing
+            while keeping your direction visible.
+          </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+          <div class="feature-number">
+            03
+          </div>
+
+          <h3>
+            Direction Marker
+          </h3>
+
+          <p>
+            Keep a visual reference for the direction
+            you want to follow.
+          </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+          <div class="feature-number">
+            04
+          </div>
+
+          <h3>
+            Accuracy
+          </h3>
+
+          <p>
+            Understand the quality of the device
+            heading information.
+          </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+          <div class="feature-number">
+            05
+          </div>
+
+          <h3>
+            Level Mode
+          </h3>
+
+          <p>
+            Use the device orientation to help
+            maintain a stable level position.
+          </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+          <div class="feature-number">
+            06
+          </div>
+
+          <h3>
+            Heading History
+          </h3>
+
+          <p>
+            Visualize how your direction changes
+            throughout your journey.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FINAL PRODUCT REVEAL
+    ====================================================== -->
+
+    <section
+      class="compass-final"
+      id="final"
+    >
+
+      <div class="final-content">
+
+        <div class="story-eyebrow">
+          PRK+ COMPASS
+        </div>
+
+        <h2>
+          Know your direction.
+          <span>Then move.</span>
+        </h2>
+
+        <p>
+          A focused navigation experience designed
+          to make direction clear, simple and useful.
+        </p>
+
+        <a
+          href="https://YOUR-COMPASS-LINK-HERE"
+          class="final-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Try PRK+ Compass
+          <span>↗</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="story-footer">
+
+    <div>
+      PRK+
+    </div>
+
+    <div>
+      COMPASS / 2026
+    </div>
+
+    <a href="index.html">
+      Back to PRK
+    </a>
+
+  </footer>
+
+
+  <script src="compass-story.js"></script>
+
+</body>
+</html>
