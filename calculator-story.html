@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PRK+ Calculator</title>
+
+  <meta
+    name="description"
+    content="PRK+ Calculator — a powerful, simple and intelligent calculator experience."
+  >
+
+  <link rel="stylesheet" href="calculator-story.css">
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="story-background" aria-hidden="true">
+    <div class="gradient-orb orb-one"></div>
+    <div class="gradient-orb orb-two"></div>
+    <div class="gradient-orb orb-three"></div>
+  </div>
+
+
+  <!-- Navigation -->
+  <header class="topbar">
+    <a href="index.html" class="brand" aria-label="PRK+ Home">
+      PRK+
+    </a>
+
+    <div class="nav-actions">
+      <a href="#features" class="nav-link">Explore</a>
+
+      <a href="calculator.html" class="nav-button">
+        Try it now
+      </a>
+    </div>
+  </header>
+
+
+  <main>
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="hero story-section">
+
+      <div class="hero-copy reveal">
+
+        <p class="eyebrow">
+          Introducing
+        </p>
+
+        <h1>
+          PRK+ Calculator
+        </h1>
+
+        <p class="hero-description">
+          More than a calculator.
+          A simpler way to calculate, convert and understand.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="calculator.html" class="primary-button">
+            Try it now
+          </a>
+
+          <a href="#features" class="secondary-button">
+            Explore
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Animated Calculator -->
+      <div class="hero-calculator-wrap">
+
+        <div class="hero-glow"></div>
+
+        <div class="calculator-showcase">
+
+          <div class="calc-display">
+
+            <span class="calc-expression">
+              248 × 16
+            </span>
+
+            <strong class="calc-result">
+              3968
+            </strong>
+
+          </div>
+
+
+          <div class="calc-grid">
+
+            <button class="fake-key function">AC</button>
+            <button class="fake-key function">⌫</button>
+            <button class="fake-key function">%</button>
+            <button class="fake-key operator">÷</button>
+
+            <button class="fake-key">7</button>
+            <button class="fake-key">8</button>
+            <button class="fake-key">9</button>
+            <button class="fake-key operator">×</button>
+
+            <button class="fake-key">4</button>
+            <button class="fake-key">5</button>
+            <button class="fake-key">6</button>
+            <button class="fake-key operator">−</button>
+
+            <button class="fake-key">1</button>
+            <button class="fake-key">2</button>
+            <button class="fake-key">3</button>
+            <button class="fake-key operator">+</button>
+
+            <button class="fake-key wide">0</button>
+            <button class="fake-key">.</button>
+            <button class="fake-key equals">=</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         INTRODUCTION
+    ========================================== -->
+
+    <section class="intro-section story-section">
+
+      <div class="section-copy reveal">
+
+        <p class="eyebrow">
+          Simple by design
+        </p>
+
+        <h2>
+          Everything you need.
+          Nothing you don't.
+        </h2>
+
+        <p>
+          PRK+ Calculator brings everyday calculations,
+          scientific functions and useful tools together
+          in one focused experience.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         CALCULATION STORY
+    ========================================== -->
+
+    <section class="calculation-section story-section">
+
+      <div class="calculation-copy reveal">
+
+        <p class="eyebrow">
+          Fast calculations
+        </p>
+
+        <h2>
+          Just type.
+          Get the answer.
+        </h2>
+
+        <p>
+          Numbers, operators and results stay clear and
+          easy to follow, so you can focus on the calculation.
+        </p>
+
+      </div>
+
+
+      <div class="interactive-calculation">
+
+        <div class="story-display">
+
+          <span id="storyExpression">
+            128 + 64
+          </span>
+
+          <strong id="storyResult">
+            192
+          </strong>
+
+        </div>
+
+
+        <div class="story-number-line">
+
+          <span>1</span>
+          <span>2</span>
+          <span>8</span>
+
+          <span class="operator-symbol">+</span>
+
+          <span>6</span>
+          <span>4</span>
+
+          <span class="equals-symbol">=</span>
+
+          <strong>192</strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SCIENTIFIC
+    ========================================== -->
+
+    <section class="scientific-section story-section">
+
+      <div class="scientific-copy reveal">
+
+        <p class="eyebrow">
+          Scientific
+        </p>
+
+        <h2>
+          Go beyond
+          basic calculations.
+        </h2>
+
+        <p>
+          Scientific functions give you more control
+          when simple calculations aren't enough.
+        </p>
+
+      </div>
+
+
+      <div class="scientific-panel glass-panel">
+
+        <div class="scientific-display">
+          <span>sin(45°)</span>
+          <strong>0.7071</strong>
+        </div>
+
+
+        <div class="scientific-keys">
+
+          <span>sin</span>
+          <span>cos</span>
+          <span>tan</span>
+          <span>log</span>
+
+          <span>√</span>
+          <span>xʸ</span>
+          <span>π</span>
+          <span>e</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         ABACUS
+    ========================================== -->
+
+    <section class="abacus-section story-section">
+
+      <div class="abacus-copy reveal">
+
+        <p class="eyebrow">
+          Abacus
+        </p>
+
+        <h2>
+          See the calculation
+          come to life.
+        </h2>
+
+        <p>
+          A visual way to understand numbers.
+          Watch every position change as the value changes.
+        </p>
+
+      </div>
+
+
+      <div class="abacus-stage">
+
+        <div class="abacus">
+
+          <div class="abacus-row">
+            <span class="abacus-dot"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+          </div>
+
+          <div class="abacus-row">
+            <span class="abacus-dot"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+          </div>
+
+          <div class="abacus-row">
+            <span class="abacus-dot"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+          </div>
+
+          <div class="abacus-row">
+            <span class="abacus-dot"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+          </div>
+
+          <div class="abacus-row">
+            <span class="abacus-dot"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+            <span class="abacus-bead"></span>
+          </div>
+
+        </div>
+
+        <div class="abacus-value">
+          5,248
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         USEFUL TOOLS
+    ========================================== -->
+
+    <section id="features" class="tools-section story-section">
+
+      <div class="section-heading reveal">
+
+        <p class="eyebrow">
+          Built for more
+        </p>
+
+        <h2>
+          One calculator.
+          Many possibilities.
+        </h2>
+
+      </div>
+
+
+      <div class="feature-grid">
+
+        <!-- BMI -->
+        <article class="feature-card glass-card reveal">
+
+          <div class="feature-visual bmi-visual">
+
+            <span class="bmi-number">
+              21.8
+            </span>
+
+            <span class="bmi-label">
+              Healthy range
+            </span>
+
+          </div>
+
+          <div class="feature-content">
+
+            <h3>
+              BMI
+            </h3>
+
+            <p>
+              Understand your body mass index
+              with metric or imperial measurements.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- Converter -->
+        <article class="feature-card glass-card reveal">
+
+          <div class="feature-visual converter-visual">
+
+            <span>10 km</span>
+
+            <span class="conversion-arrow">
+              →
+            </span>
+
+            <strong>6.21 mi</strong>
+
+          </div>
+
+          <div class="feature-content">
+
+            <h3>
+              Unit Converter
+            </h3>
+
+            <p>
+              Convert length, weight and volume
+              without leaving the calculator.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- Speed -->
+        <article class="feature-card glass-card reveal">
+
+          <div class="feature-visual formula-visual">
+
+            <span>
+              distance
+            </span>
+
+            <strong>
+              ÷
+            </strong>
+
+            <span>
+              time
+            </span>
+
+            <strong>
+              =
+            </strong>
+
+            <strong>
+              speed
+            </strong>
+
+          </div>
+
+          <div class="feature-content">
+
+            <h3>
+              Speed
+            </h3>
+
+            <p>
+              Solve speed, distance and time
+              with a simple guided calculation.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- Acceleration -->
+        <article class="feature-card glass-card reveal">
+
+          <div class="feature-visual formula-visual">
+
+            <span>
+              Δv
+            </span>
+
+            <strong>
+              ÷
+            </strong>
+
+            <span>
+              t
+            </span>
+
+            <strong>
+              =
+            </strong>
+
+            <strong>
+              a
+            </strong>
+
+          </div>
+
+          <div class="feature-content">
+
+            <h3>
+              Acceleration
+            </h3>
+
+            <p>
+              Calculate acceleration from velocity
+              change and time.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- Percentage -->
+        <article class="feature-card glass-card reveal">
+
+          <div class="feature-visual percentage-visual">
+
+            <strong>
+              25%
+            </strong>
+
+            <span>
+              of 800
+            </span>
+
+            <strong>
+              = 200
+            </strong>
+
+          </div>
+
+          <div class="feature-content">
+
+            <h3>
+              Percentage
+            </h3>
+
+            <p>
+              Quickly calculate percentages,
+              increases and decreases.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- Time -->
+        <article class="feature-card glass-card reveal">
+
+          <div class="feature-visual time-visual">
+
+            <strong>
+              02:48:32
+            </strong>
+
+            <span>
+              duration
+            </span>
+
+          </div>
+
+          <div class="feature-content">
+
+            <h3>
+              Time
+            </h3>
+
+            <p>
+              Work with time and duration
+              through a dedicated calculation tool.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         LIQUID GLASS SECTION
+    ========================================== -->
+
+    <section class="glass-section story-section">
+
+      <div class="glass-copy reveal">
+
+        <p class="eyebrow">
+          Designed around you
+        </p>
+
+        <h2>
+          Clear when you need it.
+          Quiet when you don't.
+        </h2>
+
+        <p>
+          A focused interface with depth, translucency
+          and subtle motion that keeps the calculation
+          at the center.
+        </p>
+
+      </div>
+
+
+      <div class="glass-demo">
+
+        <div class="floating-glass-card">
+
+          <span>
+            Current calculation
+          </span>
+
+          <strong>
+            3,968
+          </strong>
+
+          <small>
+            Result
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         FINAL PRODUCT STATEMENT
+    ========================================== -->
+
+    <section class="final-story story-section">
+
+      <div class="final-copy reveal">
+
+        <p class="eyebrow">
+          PRK+
+        </p>
+
+        <h2>
+          Everything calculated.
+          Beautifully simple.
+        </h2>
+
+        <p>
+          From everyday numbers to advanced calculations,
+          PRK+ Calculator brings the tools together
+          in one seamless experience.
+        </p>
+
+      </div>
+
+
+      <div class="final-actions">
+
+        <a href="calculator.html" class="primary-button large">
+          Try it now
+        </a>
+
+        <a href="#features" class="secondary-button large">
+          Explore features
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PRODUCT SUMMARY
+    ========================================== -->
+
+    <section class="summary-section story-section">
+
+      <div class="summary-heading reveal">
+
+        <p class="eyebrow">
+          PRK+ Calculator
+        </p>
+
+        <h2>
+          Made to be useful.
+        </h2>
+
+      </div>
+
+
+      <div class="summary-grid">
+
+        <div class="summary-item">
+          <strong>Fast</strong>
+          <span>Instant calculations</span>
+        </div>
+
+        <div class="summary-item">
+          <strong>Powerful</strong>
+          <span>Advanced tools</span>
+        </div>
+
+        <div class="summary-item">
+          <strong>Visual</strong>
+          <span>Understand your numbers</span>
+        </div>
+
+        <div class="summary-item">
+          <strong>Focused</strong>
+          <span>Designed around clarity</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer class="footer">
+
+    <div class="footer-brand">
+      PRK+
+    </div>
+
+    <p>
+      PRK+ Calculator
+    </p>
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        PRK+
+      </a>
+
+      <a href="compass-story.html">
+        Compass
+      </a>
+
+      <a href="html-viewer-story.html">
+        HTML Viewer
+      </a>
+
+      <a href="calculator.html">
+        Calculator
+      </a>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- JavaScript -->
+  <script src="calculator-story.js"></script>
+
+</body>
+  </html>
