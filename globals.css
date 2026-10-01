@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  --paper: #f1f3ef; --surface: #fbfcfa; --ink: #18272b; --muted: #55666a;
+  --line: #cfd7d3; --contour: #1b6f72; --contour-ink: #ffffff; --flag: #d99a00;
+  --danger: #b3261e;
+}
+:root[data-theme="dark"] {
+  --paper: #0f1a1d; --surface: #162328; --ink: #e8efec; --muted: #9db0b0;
+  --line: #2a3b40; --contour: #4cb5b5; --contour-ink: #0f1a1d; --flag: #f0b92b;
+  --danger: #ff8a80;
+}
+@theme inline {
+  --color-paper: var(--paper); --color-surface: var(--surface); --color-ink: var(--ink);
+  --color-muted: var(--muted); --color-line: var(--line); --color-contour: var(--contour);
+  --color-contour-ink: var(--contour-ink); --color-flag: var(--flag); --color-danger: var(--danger);
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-plex), system-ui, sans-serif;
+  --radius-control: 6px;
+}
+body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); line-height: 1.6; }
+h1,h2,h3 { font-family: var(--font-display); line-height: 1.1; letter-spacing: -0.02em; }
+:focus-visible { outline: 2px solid var(--contour); outline-offset: 2px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
