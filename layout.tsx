@@ -14,6 +14,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const [locale, messages] = await Promise.all([getLocale(), getMessages()]);
   return (
     <html lang={locale} className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem("theme");if(!t&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t)document.documentElement.dataset.theme=t}catch(e){}` }} /></head>
       <body><NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider></body>
     </html>
   );

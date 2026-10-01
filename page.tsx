@@ -1,12 +1,17 @@
-import { getTranslations } from "next-intl/server";
-import { Button } from "@/components/ui/Button";
-export default async function Home() {
-  const t = await getTranslations("Hero");
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Skills } from "@/components/sections/Skills";
+import { Projects } from "@/components/sections/Projects";
+import { Contact } from "@/components/sections/Contact";
+export default function Home() {
   return (
-    <main className="mx-auto max-w-5xl px-5 py-24 md:py-40">
-      <h1 className="text-5xl md:text-7xl">{t("name")}</h1>
-      <p className="mt-4 max-w-prose text-xl text-muted">{t("tagline")}. {t("intro")}</p>
-      <div className="mt-8 flex flex-wrap gap-3"><Button>{t("work")}</Button><Button variant="secondary">{t("contact")}</Button></div>
-    </main>
+    <>
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-surface focus:p-3">Skip to content</a>
+      <Navbar />
+      <main id="main"><Hero /><About /><Skills /><Projects /><Contact /></main>
+      <Footer />
+    </>
   );
 }
