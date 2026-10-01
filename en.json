@@ -1,1 +1,50 @@
-{"Hero":{"name":"Priyanshu","tagline":"Creator, developer, curious mind","intro":"I build software and visual stories.","work":"Explore my work","contact":"Contact me"},"States":{"loading":"Loading","emptyTitle":"Nothing here yet","emptyBody":"Content will appear here once it is added.","errorTitle":"Something went wrong","retry":"Try again"}}
+{
+ "Hero": {
+  "name": "Priyanshu",
+  "tagline": "Creator, developer, curious mind",
+  "intro": "I build software and visual stories.",
+  "work": "Explore my work",
+  "contact": "Contact me"
+ },
+ "States": {
+  "loading": "Loading",
+  "emptyTitle": "Nothing here yet",
+  "emptyBody": "Content will appear here once it is added.",
+  "errorTitle": "Something went wrong",
+  "retry": "Try again"
+ },
+ "Nav": {
+  "about": "About",
+  "skills": "Skills",
+  "projects": "Projects",
+  "contact": "Contact",
+  "menu": "Menu",
+  "theme": "Theme",
+  "language": "Language"
+ },
+ "Footer": {
+  "rights": "© {year} Priyanshu"
+ },
+ "About": {
+  "title": "About",
+  "body": "I make software and visual content, and I am always learning something new."
+ },
+ "Skills": {
+  "title": "Skills"
+ },
+ "Projects": {
+  "title": "Projects",
+  "fade": {
+   "name": "Fade",
+   "desc": "A messaging app, designed from the ground up."
+  },
+  "codemotion": {
+   "name": "CodeMotion Studio",
+   "desc": "A studio for coding and motion work."
+  }
+ },
+ "Contact": {
+  "title": "Contact",
+  "body": "Have a project or an opportunity in mind? Get in touch."
+ }
+}

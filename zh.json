@@ -1,1 +1,50 @@
-{"Hero":{"name":"Priyanshu","tagline":"创作者、开发者、好奇的人","intro":"我开发软件,也制作视觉故事。","work":"查看我的作品","contact":"联系我"},"States":{"loading":"加载中","emptyTitle":"暂无内容","emptyBody":"添加内容后会显示在这里。","errorTitle":"出错了","retry":"重试"}}
+{
+ "Hero": {
+  "name": "Priyanshu",
+  "tagline": "创作者、开发者、好奇的人",
+  "intro": "我开发软件,也制作视觉故事。",
+  "work": "查看我的作品",
+  "contact": "联系我"
+ },
+ "States": {
+  "loading": "加载中",
+  "emptyTitle": "暂无内容",
+  "emptyBody": "添加内容后会显示在这里。",
+  "errorTitle": "出错了",
+  "retry": "重试"
+ },
+ "Nav": {
+  "about": "关于",
+  "skills": "技能",
+  "projects": "项目",
+  "contact": "联系",
+  "menu": "菜单",
+  "theme": "主题",
+  "language": "语言"
+ },
+ "Footer": {
+  "rights": "© {year} Priyanshu"
+ },
+ "About": {
+  "title": "关于我",
+  "body": "我制作软件和视觉内容,并且不断学习新东西。"
+ },
+ "Skills": {
+  "title": "技能"
+ },
+ "Projects": {
+  "title": "项目",
+  "fade": {
+   "name": "Fade",
+   "desc": "一款从零开始设计的即时通讯应用。"
+  },
+  "codemotion": {
+   "name": "CodeMotion Studio",
+   "desc": "专注于编程与动态设计的工作室。"
+  }
+ },
+ "Contact": {
+  "title": "联系我",
+  "body": "有项目或机会?欢迎联系。"
+ }
+}

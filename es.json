@@ -1,1 +1,50 @@
-{"Hero":{"name":"Priyanshu","tagline":"Creador, desarrollador, mente curiosa","intro":"Creo software e historias visuales.","work":"Ver mi trabajo","contact":"Contáctame"},"States":{"loading":"Cargando","emptyTitle":"Aún no hay nada","emptyBody":"El contenido aparecerá aquí cuando se añada.","errorTitle":"Algo salió mal","retry":"Reintentar"}}
+{
+ "Hero": {
+  "name": "Priyanshu",
+  "tagline": "Creador, desarrollador, mente curiosa",
+  "intro": "Creo software e historias visuales.",
+  "work": "Ver mi trabajo",
+  "contact": "Contáctame"
+ },
+ "States": {
+  "loading": "Cargando",
+  "emptyTitle": "Aún no hay nada",
+  "emptyBody": "El contenido aparecerá aquí cuando se añada.",
+  "errorTitle": "Algo salió mal",
+  "retry": "Reintentar"
+ },
+ "Nav": {
+  "about": "Sobre mí",
+  "skills": "Habilidades",
+  "projects": "Proyectos",
+  "contact": "Contacto",
+  "menu": "Menú",
+  "theme": "Tema",
+  "language": "Idioma"
+ },
+ "Footer": {
+  "rights": "© {year} Priyanshu"
+ },
+ "About": {
+  "title": "Sobre mí",
+  "body": "Hago software y contenido visual, y siempre estoy aprendiendo algo nuevo."
+ },
+ "Skills": {
+  "title": "Habilidades"
+ },
+ "Projects": {
+  "title": "Proyectos",
+  "fade": {
+   "name": "Fade",
+   "desc": "Una app de mensajería diseñada desde cero."
+  },
+  "codemotion": {
+   "name": "CodeMotion Studio",
+   "desc": "Un estudio de programación y motion."
+  }
+ },
+ "Contact": {
+  "title": "Contacto",
+  "body": "¿Tienes un proyecto o una oportunidad? Escríbeme."
+ }
+}
